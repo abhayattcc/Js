@@ -1,0 +1,4721 @@
+
+CHEMISTRY
+
+1.  Which branch of science is concerned with the composition, properties, characteristics, and reactions of substances along with energy changes?
+    a) Biology
+    b) Physics
+    c) Chemistry
+    d) Geology
+    Answer: c) Chemistry
+
+2.  Inorganic Chemistry is associated with the properties of compounds of the chemical elements contained in:
+    a) Living organisms
+    b) Minerals
+    c) Carbon
+    d) Water
+    Answer: b) Minerals
+
+3.  Organic Chemistry is concerned with the compounds of:
+    a) Nitrogen and Oxygen
+    b) Carbon and Hydrogen or their derivatives
+    c) Metals and Metalloids
+    d) Noble Gases
+    Answer: b) Carbon and Hydrogen or their derivatives
+
+STATES OF MATTER
+
+4.  Anything that occupies space and has mass or weight is called:
+    a) Energy
+    b) Matter
+    c) Light
+    d) Sound
+    Answer: b) Matter
+
+5.  Matter undergoes changes which may be:
+    a) Only physical changes
+    b) Only chemical changes
+    c) Either chemical changes or physical changes
+    d) Biological changes
+    Answer: c) Either chemical changes or physical changes
+
+6.  All matters exist in one of the three physical forms or states. These are:
+    a) Solid, liquid, and plasma
+    b) Solid, liquid, and gas
+    c) Liquid, gas, and Bose-Einstein condensate
+    d) Solid, plasma, and gas
+    Answer: b) Solid, liquid, and gas
+
+7.  The three states of matter are:
+    a) Non-interconvertible
+    b) Interconvertible
+    c) Only convert from solid to liquid
+    d) Only convert from liquid to gas
+    Answer: b) Interconvertible
+
+KINETIC THEORY OF MATTER
+
+8.  All forms of matter are composed of small:
+    a) Energy packets
+    b) Waves
+    c) Particles (molecules, atoms, ions)
+    d) Fields
+    Answer: c) Particles (molecules, atoms, ions)
+
+9.  The particles of matter are in continuous, never-ending motion, also known as:
+    a) Random walk
+    b) Orbital motion
+    c) Brownian motion
+    d) Vibrational motion
+    Answer: c) Brownian motion
+
+10. According to the kinetic theory of matter, the higher the temperature, the faster is the motion of particles, as thermal energy is converted into:
+    a) Potential energy
+    b) Electrical energy
+    c) Kinetic energy
+    d) Chemical energy
+    Answer: c) Kinetic energy
+
+11. The particles of matter attract one another with a force called:
+    a) Gravitational force
+    b) Electrostatic force
+    c) Intermolecular force
+    d) Nuclear force
+    Answer: c) Intermolecular force
+
+12. Intermolecular force in matter:
+    a) Increases with increasing distance between particles
+    b) Decreases with increasing distance between particles
+    c) Remains constant regardless of distance
+    d) Is only present in solids
+    Answer: b) Decreases with increasing distance between particles
+
+CHARACTERISTICS OF MATTER
+
+13. In a solid, the particles are:
+    a) Far apart and move freely
+    b) Packed closely together, so inter-particle attractive force is very high
+    c) Randomly distributed with weak forces
+    d) Constantly changing their positions
+    Answer: b) Packed closely together, so inter-particle attractive force is very high
+
+14. In liquids, the inter-particle force is:
+    a) Very high, preventing flow
+    b) Negligible, allowing free wandering
+    c) Weak, allowing them to flow and occupy the shape of the container
+    d) Non-existent
+    Answer: c) Weak, allowing them to flow and occupy the shape of the container
+
+15. In gases, the inter-particle force is:
+    a) Very high
+    b) Strong
+    c) Negligible
+    d) Moderate
+    Answer: c) Negligible
+
+16. The free random motion of particles in gases is called:
+    a) Orbital motion
+    b) Vibrational motion
+    c) Brownian motion
+    d) Translational motion
+    Answer: c) Brownian motion
+
+CHANGES IN STATES OF MATTER
+
+17. Heating a solid increases the kinetic energy and consequently motion of the particles, leading to:
+    a) Increased rigidity
+    b) Loss of the rigid structure
+    c) Stronger intermolecular forces
+    d) Decreased volume
+    Answer: b) Loss of the rigid structure
+
+18. When heat is removed from a gas (vapour), the kinetic energy of the particles is reduced, causing them to:
+    a) Speed up and move further apart
+    b) Become slower and come nearer
+    c) Remain unaffected
+    d) Convert directly into a solid
+    Answer: b) Become slower and come nearer
+
+19. The process where a gas becomes a liquid due to reduced kinetic energy and increased inter-particle attractive forces is called:
+    a) Evaporation
+    b) Sublimation
+    c) Condensation
+    d) Melting
+    Answer: c) Condensation
+
+20. The process where a solid changes directly into a gas on heating without undergoing the liquid state, or vice versa, is called:
+    a) Evaporation
+    b) Melting
+    c) Freezing
+    d) Sublimation
+    Answer: d) Sublimation
+
+21. Sublimation occurs when the attractive forces between the particles are:
+    a) Very high
+    b) Moderate
+    c) Low
+    d) Non-existent
+    Answer: c) Low
+
+CLASSIFICATION OF MATTER
+
+ELEMENTS
+
+22. A pure substance that is composed of only one kind of atoms is called an:
+    a) Compound
+    b) Mixture
+    c) Element
+    d) Solution
+    Answer: c) Element
+
+23. An element cannot be composed from or decomposed into simpler substances by:
+    a) Chemical means only
+    b) Physical means only
+    c) A physical or chemical change
+    d) Nuclear reactions only
+    Answer: c) A physical or chemical change
+
+24. Which of the following is an example of an element?
+    a) Water (H2O)
+    b) Sodium Chloride (NaCl)
+    c) Aluminium (Al)
+    d) Silicon Dioxide (SiO2)
+    Answer: c) Aluminium (Al)
+
+25. Which of the following is NOT a characteristic of metals?
+    a) Metallic Lustre
+    b) Good thermal and electrical conductivity
+    c) Ductility
+    d) Absence of malleability
+    Answer: d) Absence of malleability
+
+26. The property of metals that allows them to be drawn into wires is called:
+    a) Malleability
+    b) Brittleness
+    c) Ductility
+    d) Conductivity
+    Answer: c) Ductility
+
+27. The property of metals that allows them to be beaten into sheets is called:
+    a) Ductility
+    b) Lustre
+    c) Malleability
+    d) Conductivity
+    Answer: c) Malleability
+
+28. Which metal is known for being the most ductile and malleable, making it suitable for ornaments?
+    a) Copper
+    b) Iron
+    c) Aluminium
+    d) Gold
+    Answer: d) Gold
+
+29. Non-metals are characterized by:
+    a) Metallic lustre
+    b) Good thermal and electrical conductivity
+    c) Ductility and Malleability
+    d) Absence of metallic lustre, good conductivity, ductility, and malleability
+    Answer: d) Absence of metallic lustre, good conductivity, ductility, and malleability
+
+30. Elements that exhibit properties midway between those of metals and non-metals are called:
+    a) Non-conductors
+    b) Insulators
+    c) Metalloids
+    d) Allotropes
+    Answer: c) Metalloids
+
+31. Which of the following is an example of a metalloid?
+    a) Oxygen
+    b) Iron
+    c) Arsenic
+    d) Copper
+    Answer: c) Arsenic
+
+32. Except for one, all metals are solid at ordinary temperatures. Which metal is the exception?
+    a) Iron
+    b) Gold
+    c) Mercury
+    d) Aluminium
+    Answer: c) Mercury
+
+33. Except for one, all non-metals are gases or solids under ordinary conditions. Which non-metal is the exception?
+    a) Oxygen
+    b) Chlorine
+    c) Bromine
+    d) Sulfur
+    Answer: c) Bromine
+
+34. What is the approximate percentage of Oxygen in the human body?
+    a) 10%
+    b) 18%
+    c) 65%
+    d) 3%
+    Answer: c) 65%
+
+35. What is the approximate percentage of Carbon in the human body?
+    a) 65%
+    b) 18%
+    c) 10%
+    d) 3%
+    Answer: b) 18%
+
+36. What is the approximate percentage of Hydrogen in the human body?
+    a) 65%
+    b) 18%
+    c) 10%
+    d) 3%
+    Answer: c) 10%
+
+37. What is the approximate percentage of Nitrogen in the human body?
+    a) 65%
+    b) 18%
+    c) 10%
+    d) 3%
+    Answer: d) 3%
+
+COMPOUNDS
+
+38. A pure substance that is composed of two or more elements chemically combined in definite and constant proportions is called a:
+    a) Mixture
+    b) Element
+    c) Compound
+    d) Solution
+    Answer: c) Compound
+
+39. Which of the following is an example of a compound?
+    a) Iron (Fe)
+    b) Hydrogen (H)
+    c) Water (H2O)
+    d) Aluminium (Al)
+    Answer: c) Water (H2O)
+
+40. The separation of a compound into its constituent elements by chemical means is called:
+    a) Synthesis
+    b) Dissolution
+    c) Analysis
+    d) Crystallization
+    Answer: c) Analysis
+
+41. The formation of a compound by the union of elements is called:
+    a) Analysis
+    b) Decomposition
+    c) Synthesis
+    d) Separation
+    Answer: c) Synthesis
+
+42. The most commonly found compound on the Earth's crust in the lithosphere is:
+    a) Water (H2O)
+    b) Sodium Chloride (NaCl)
+    c) Silicon dioxide (SiO2)
+    d) Carbon dioxide (CO2)
+    Answer: c) Silicon dioxide (SiO2)
+
+43. The most commonly found element on Earth is:
+    a) Silicon
+    b) Oxygen
+    c) Aluminium
+    d) Iron
+    Answer: b) Oxygen
+
+44. The total number of different elements present in a molecule of a compound is called its:
+    a) Molarity
+    b) Atomicity
+    c) Molecular weight
+    d) Valency
+    Answer: b) Atomicity
+
+45. What is the atomicity of NaCl?
+    a) 1
+    b) 2
+    c) 3
+    d) 4
+    Answer: b) 2
+
+46. What is the atomicity of H2SO4?
+    a) 3
+    b) 5
+    c) 7
+    d) 9
+    Answer: c) 7
+
+MIXTURES
+
+47. Matter composed of two or more substances (elements, compounds or both) in variable proportions in which each of its components still exhibits its own characteristic properties is called a:
+    a) Compound
+    b) Element
+    c) Mixture
+    d) Pure substance
+    Answer: c) Mixture
+
+48. Mixtures can be:
+    a) Only homogeneous
+    b) Only heterogeneous
+    c) Heterogeneous or homogeneous
+    d) Only solutions
+    Answer: c) Heterogeneous or homogeneous
+
+49. A mixture with the same composition throughout the sample is called a:
+    a) Heterogeneous mixture
+    b) Homogeneous mixture
+    c) Suspension
+    d) Colloid
+    Answer: b) Homogeneous mixture
+
+50. An example of a homogeneous mixture is:
+    a) Mixture of iron and sulfur
+    b) Salt solution
+    c) Sand and water
+    d) Oil and water
+    Answer: b) Salt solution
+
+51. A mixture consisting of two or more parts which have different compositions is called a:
+    a) Homogeneous mixture
+    b) True solution
+    c) Heterogeneous mixture
+    d) Colloid
+    Answer: c) Heterogeneous mixture
+
+52. An example of a heterogeneous mixture is:
+    a) Air
+    b) Sugar in water
+    c) Mixture of iron and sulfur
+    d) Brass
+    Answer: c) Mixture of iron and sulfur
+
+TYPES OF COLLOIDS
+
+53. What is the dispersion medium for a solid sol?
+    a) Liquid
+    b) Gas
+    c) Solid
+    d) Air
+    Answer: c) Solid
+
+54. Minerals and rocks, and gems are examples of which type of colloid?
+    a) Sol
+    b) Emulsion
+    c) Solid sol
+    d) Gel
+    Answer: c) Solid sol
+
+55. Gold sol and sulfur sol are examples of colloids where the dispersed phase is solid and the dispersion medium is:
+    a) Gas
+    b) Solid
+    c) Liquid
+    d) Air
+    Answer: c) Liquid
+
+56. Smoke is an example of a colloid where the dispersed phase is solid and the dispersion medium is:
+    a) Liquid
+    b) Solid
+    c) Gas
+    d) Water
+    Answer: c) Gas
+
+57. Milk is an example of an emulsion, where the dispersed phase and dispersion medium are both:
+    a) Solid
+    b) Gas
+    c) Liquid
+    d) Solid and liquid respectively
+    Answer: c) Liquid
+
+58. Cheese and jellies are examples of gels, where the dispersed phase is liquid and the dispersion medium is:
+    a) Gas
+    b) Liquid
+    c) Solid
+    d) Air
+    Answer: c) Solid
+
+59. Clouds are examples of liquid aerosol, where the dispersed phase is liquid and the dispersion medium is:
+    a) Solid
+    b) Liquid
+    c) Gas
+    d) Water
+    Answer: c) Gas
+
+60. Foam and froth in air are examples of colloids where the dispersed phase is gas and the dispersion medium is:
+    a) Solid
+    b) Liquid
+    c) Gas
+    d) Water
+    Answer: b) Liquid
+
+61. Pumice stone is an example of a solid foam, where the dispersed phase is gas and the dispersion medium is:
+    a) Liquid
+    b) Gas
+    c) Solid
+    d) Air
+    Answer: c) Solid
+
+DISPERSION MEDIUM AND SOLUTION TYPE
+
+62. When water is the dispersion medium, the solution type is called:
+    a) Alcosol
+    b) Aerosol
+    c) Hydrosol
+    d) Organosol
+    Answer: c) Hydrosol
+
+63. When alcohol is the dispersion medium, the solution type is called:
+    a) Hydrosol
+    b) Aerosol
+    c) Alcosol
+    d) Organosol
+    Answer: c) Alcosol
+
+64. When air is the dispersion medium, the solution type is called:
+    a) Hydrosol
+    b) Aerosol
+    c) Alcosol
+    d) Organosol
+    Answer: b) Aerosol
+
+65. When an organic solvent is the dispersion medium, the solution type is called:
+    a) Hydrosol
+    b) Aerosol
+    c) Alcosol
+    d) Organosol
+    Answer: d) Organosol
+
+SOLUTIONS, SOLUTE AND SOLVENT
+
+66. A homogenous mixture of two or more substances is called a:
+    a) Compound
+    b) Element
+    c) Solution
+    d) Suspension
+    Answer: c) Solution
+
+67. In a solution, the substance which is dissolved is called the:
+    a) Solvent
+    b) Solute
+    c) Medium
+    d) Precipitate
+    Answer: b) Solute
+
+68. In a solution, the liquid in which the solute is dissolved is known as the:
+    a) Solute
+    b) Solution
+    c) Solvent
+    d) Mixture
+    Answer: c) Solvent
+
+69. True solutions are always:
+    a) Heterogeneous
+    b) Homogenous
+    c) Colloidal
+    d) Suspensions
+    Answer: b) Homogenous
+
+70. The size of solute particles in a true solution is less than:
+    a) $10^{-5}$ cm
+    b) $10^{-7}$ cm
+    c) $10^{-9}$ cm
+    d) $10^{-3}$ cm
+    Answer: b) $10^{-7}$ cm
+
+71. In a true solution, the solute particles can:
+    a) Be easily distinguished from solvent molecules using a microscope.
+    b) Be distinguished from solvent molecules only by the naked eye.
+    c) Not be distinguished from the solvent molecules even by using a microscope.
+    d) Form a separate layer.
+    Answer: c) Not be distinguished from the solvent molecules even by using a microscope.
+
+72. A kind of solution in which the size of solute particles is bigger than that of a true solution but smaller than those of a suspension is called a:
+    a) True solution
+    b) Precipitate
+    c) Colloid
+    d) Compound
+    Answer: c) Colloid
+
+73. Which of the following is an example of a colloidal solution?
+    a) Salt solution
+    b) Sugar solution
+    c) Milk
+    d) Air
+    Answer: c) Milk
+
+74. The scattering of light by colloidal particles is called:
+    a) Brownian motion
+    b) Diffusion
+    c) Tyndall effect
+    d) Osmosis
+    Answer: c) Tyndall effect
+
+75. Strength of a solution is defined as the amount of the solute in grams found dissolved in:
+    a) One milliliter of solution
+    b) One kilogram of solvent
+    c) One litre (or dm$^3$) of solution
+    d) One gram of solvent
+    Answer: c) One litre (or dm$^3$) of solution
+
+76. Strength of a solution is expressed in:
+    a) g/mol
+    b) mol/L
+    c) g/litre or g/dm$^3$
+    d) kg/m$^3$
+    Answer: c) g/litre or g/dm$^3$
+
+77. Molarity of a solution is defined as the number of moles of the solute dissolved per:
+    a) Kilogram of solvent
+    b) Gram of solution
+    c) Litre (or dm$^3$) of solution
+    d) Milliliter of solution
+    Answer: c) Litre (or dm$^3$) of solution
+
+78. Molarity is denoted by:
+    a) m
+    b) M
+    c) N
+    d) %
+    Answer: b) M
+
+SEPARATION OF A PURE SUBSTANCE
+
+79. A substance known for its specific properties such as boiling point, melting point, density, refractive index, etc., is called a:
+    a) Mixture
+    b) Compound
+    c) Pure substance
+    d) Element
+    Answer: c) Pure substance
+
+80. To obtain salt from sea water, which of the following methods are used?
+    a) Fractional distillation and chromatography
+    b) Evaporation and crystallization
+    c) Sublimation and filtration
+    d) Centrifugation and gravity separation
+    Answer: b) Evaporation and crystallization
+
+81. Which method is used to separate different fractions of petroleum such as gasoline, diesel, kerosene oil, etc., from crude oil?
+    a) Simple distillation
+    b) Fractional distillation
+    c) Sublimation
+    d) Filtration
+    Answer: b) Fractional distillation
+
+82. To separate cream from raw milk, which process is used?
+    a) Filtration
+    b) Distillation
+    c) Centrifugation
+    d) Evaporation
+    Answer: c) Centrifugation
+
+83. Which method is used to separate substances like camphor that sublimate on heating?
+    a) Distillation
+    b) Filtration
+    c) Sublimation
+    d) Crystallization
+    Answer: c) Sublimation
+
+84. Filtration is used to separate:
+    a) Soluble substances from a mixture
+    b) Insoluble substances from a mixture
+    c) Two miscible liquids
+    d) Components of a homogeneous mixture
+    Answer: b) Insoluble substances from a mixture
+
+85. To separate two immiscible liquids such as oil and water, which method is employed, often using a separating funnel?
+    a) Distillation
+    b) Centrifugation
+    c) Gravity separation
+    d) Fractional distillation
+    Answer: c) Gravity separation
+
+86. To separate potable water from marine water, the process of:
+    a) Distillation
+    b) Filtration
+    c) Reverse osmosis
+    d) Sublimation
+    Answer: c) Reverse osmosis
+
+PROPERTIES OF GASES AND GAS LAWS
+
+Kinetic-Molecular Theory of Gases
+
+87. According to the Kinetic-Molecular theory of gases, the total volume of the molecules is negligible compared to the volume of the gas as a whole because:
+    a) Molecules are very large
+    b) Molecules are closely packed
+    c) Gases consist of molecules widely separated in space
+    d) Gases have no volume
+    Answer: c) Gases consist of molecules widely separated in space
+
+88. A gas occupies both the shape and volume of its:
+    a) Molecules
+    b) Pressure
+    c) Container
+    d) Temperature
+    Answer: c) Container
+
+Boyle’s Law
+
+89. Boyle's Law states that the volume (V) of a given mass of a dry gas is inversely proportional to the pressure (P), if the:
+    a) Volume remains constant
+    b) Temperature remains constant
+    c) Mass remains constant
+    d) Pressure remains constant
+    Answer: b) Temperature remains constant
+
+90. Which of the following equations represents Boyle's Law?
+    a) V $\propto$ T
+    b) P $\propto$ V
+    c) P1V1 = P2V2
+    d) V/T = constant
+    Answer: c) P1V1 = P2V2
+
+Charles’s Law
+
+91. Charles's Law states that at constant pressure, the volume (V) of a given mass of gas is directly proportional to the:
+    a) Celsius temperature
+    b) Absolute (Kelvin) temperature
+    c) Pressure
+    d) Density
+    Answer: b) Absolute (Kelvin) temperature
+
+92. Charles's Law explains that gases expand on:
+    a) Cooling
+    b) Heating
+    c) Increasing pressure
+    d) Decreasing pressure
+    Answer: b) Heating
+
+93. Hot air is less dense than cool air because:
+    a) Its mass increases
+    b) Its volume decreases
+    c) The larger volume of gas at high temperature has less mass per unit volume
+    d) It undergoes condensation
+    Answer: c) The larger volume of gas at high temperature has less mass per unit volume
+
+94. Hot air balloons rise up in cool air or humid air due to:
+    a) Increased density of hot air
+    b) Lower density of hot air
+    c) Charles's Law not applying
+    d) Condensation of water vapor
+    Answer: b) Lower density of hot air
+
+Ideal Gas
+
+95. A gas that strictly obeys Boyle's law, Charles's law, and Avogadro's law is called an:
+    a) Real gas
+    b) Non-ideal gas
+    c) Ideal gas
+    d) Noble gas
+    Answer: c) Ideal gas
+
+96. The combined gas law states that P1V1/T1 = P2V2/T2. This leads to the ideal gas equation:
+    a) P/V = nRT
+    b) PV = nRT
+    c) PT = nRV
+    d) VT = nRP
+    Answer: b) PV = nRT
+
+97. In the ideal gas equation PV = nRT, R represents:
+    a) Pressure
+    b) Volume
+    c) Temperature
+    d) Work done per degree per mol or energy per degree per mole
+    Answer: d) Work done per degree per mol or energy per degree per mole
+
+98. The numerical value of the gas constant R is approximately:
+    a) 8.314 J mol-1 K-1
+    b) 0.0821 L atm K-1 mol-1
+    c) 6.023 x 10^23
+    d) 1.6 x 10^-19 C
+    Answer: b) 0.0821 L atm K-1 mol-1
+
+Dalton’s Law of Partial Pressure
+
+99. Dalton's law of partial pressure states that the pressure of a homogenous mixture of gases like air is equal to the:
+    a) Product of the partial pressures of individual gases
+    b) Difference of the partial pressures of individual gases
+    c) Sum of the partial pressure of individual gas present
+    d) Average of the partial pressures of individual gases
+    Answer: c) Sum of the partial pressure of individual gas present
+
+Non-ideal Gas
+
+100. A real gas, also called a non-ideal gas, does not follow all general gas equations at all:
+    a) Temperatures only
+    b) Pressures only
+    c) Temperatures and pressure
+    d) Volumes
+    Answer: c) Temperatures and pressure
+
+Diffusion and Osmosis
+
+101. The movement of fluid particles (liquid or gas) from the region of high concentration to the region of low concentration is called:
+    a) Osmosis
+    b) Evaporation
+    c) Diffusion
+    d) Condensation
+    Answer: c) Diffusion
+
+102. Osmosis is a special type of diffusion that involves the movement of:
+    a) Solute particles only
+    b) Solvent particles only across a membrane
+    c) Both solute and solvent particles
+    d) Gas particles only
+    Answer: b) Solvent particles only across a membrane
+
+103. In osmosis, solvent particles move from a:
+    a) Hypertonic solution to a hypotonic solution
+    b) Isotonic solution to a hypertonic solution
+    c) Hypotonic solution to a hypertonic solution
+    d) Hypertonic solution to an isotonic solution
+    Answer: c) Hypotonic solution to a hypertonic solution
+
+ATOMIC STRUCTURE
+
+104. According to Rutherford's Atomic Model, an atom consists of a small positively charged heavy nucleus with negatively charged light electrons:
+    a) Stationary within the nucleus
+    b) Revolving around the nucleus in circular orbits
+    c) Randomly distributed throughout the atom
+    d) Orbiting in elliptical paths only
+    Answer: b) Revolving around the nucleus in circular orbits
+
+105. The nucleus of an atom contains:
+    a) Electrons only
+    b) Protons and electrons
+    c) Protons and neutrons
+    d) Neutrons and electrons
+    Answer: c) Protons and neutrons
+
+106. Protons and neutrons are collectively called:
+    a) Isotopes
+    b) Ions
+    c) Nucleons
+    d) Quarks
+    Answer: c) Nucleons
+
+107. Which subatomic particle has a positive charge of 1.6 x 10$^{-19}$ coulomb?
+    a) Electron
+    b) Neutron
+    c) Proton
+    d) Alpha particle
+    Answer: c) Proton
+
+108. The mass of a proton is approximately:
+    a) 9.109 x 10$^{-31}$ kg
+    b) 1.672 x 10$^{-27}$ kg
+    c) 1.674 x 10$^{-27}$ kg
+    d) 0 kg
+    Answer: b) 1.672 x 10$^{-27}$ kg
+
+109. Which subatomic particle has a negative charge of -1.6 x 10$^{-19}$ coulomb?
+    a) Proton
+    b) Neutron
+    c) Electron
+    d) Positron
+    Answer: c) Electron
+
+110. The mass of an electron is approximately:
+    a) 1.672 x 10$^{-27}$ kg
+    b) 1.674 x 10$^{-27}$ kg
+    c) 9.109 x 10$^{-31}$ kg
+    d) 0 kg
+    Answer: c) 9.109 x 10$^{-31}$ kg
+
+111. Which subatomic particle is uncharged or neutral?
+    a) Proton
+    b) Electron
+    c) Neutron
+    d) Positron
+    Answer: c) Neutron
+
+112. The mass of a neutron is approximately:
+    a) 9.109 x 10$^{-31}$ kg
+    b) 1.672 x 10$^{-27}$ kg
+    c) 1.674 x 10$^{-27}$ kg
+    d) 0 kg
+    Answer: c) 1.674 x 10$^{-27}$ kg
+
+Symbols of some Important Particles
+
+113. What is the Atomic Number of an Alpha ($\alpha$) particle?
+    a) 0
+    b) 1
+    c) 2
+    d) 4
+    Answer: c) 2
+
+114. What is the Mass Number of an Alpha ($\alpha$) particle?
+    a) 0
+    b) 1
+    c) 2
+    d) 4
+    Answer: d) 4
+
+115. What is the Atomic Number of a Beta ($\beta$) particle?
+    a) -1
+    b) 0
+    c) 1
+    d) 2
+    Answer: a) -1
+
+116. What is the Mass Number of a Beta ($\beta$) particle?
+    a) -1
+    b) 0
+    c) 1
+    d) 2
+    Answer: b) 0
+
+117. What is the Atomic Number of a Proton?
+    a) 0
+    b) 1
+    c) 2
+    d) 4
+    Answer: b) 1
+
+118. What is the Mass Number of a Proton?
+    a) 0
+    b) 1
+    c) 2
+    d) 4
+    Answer: b) 1
+
+119. What is the Atomic Number of a Neutron?
+    a) 0
+    b) 1
+    c) -1
+    d) 2
+    Answer: a) 0
+
+120. What is the Mass Number of a Neutron?
+    a) 0
+    b) 1
+    c) 2
+    d) 4
+    Answer: b) 1
+
+121. What is the Atomic Number of a Gamma ($\gamma$) ray?
+    a) 0
+    b) 1
+    c) -1
+    d) 2
+    Answer: a) 0
+
+122. What is the Mass Number of a Gamma ($\gamma$) ray?
+    a) 0
+    b) 1
+    c) -1
+    d) 2
+    Answer: a) 0
+
+123. What is the Atomic Number of a Deuteron?
+    a) 0
+    b) 1
+    c) 2
+    d) 4
+    Answer: b) 1
+
+124. What is the Mass Number of a Deuteron?
+    a) 0
+    b) 1
+    c) 2
+    d) 4
+    Answer: c) 2
+
+125. What is the Atomic Number of a Positron?
+    a) 0
+    b) 1
+    c) -1
+    d) 2
+    Answer: b) 1
+
+126. What is the Mass Number of a Positron?
+    a) 0
+    b) 1
+    c) -1
+    d) 2
+    Answer: a) 0
+
+127. What is the Atomic Number of a Neutrino?
+    a) 0
+    b) 1
+    c) -1
+    d) 2
+    Answer: a) 0
+
+128. What is the Mass Number of a Neutrino?
+    a) 0
+    b) 1
+    c) -1
+    d) 2
+    Answer: a) 0
+
+FACTS TO REMEMBER
+
+129. Who discovered the electron in a cathode ray discharge tube?
+    a) Goldstein
+    b) Chadwick
+    c) J.J. Thomson
+    d) Rutherford
+    Answer: c) J.J. Thomson
+
+130. The ratio of charge to mass (e/m) for cathode rays is:
+    a) Different for different gases used in the discharge tube
+    b) Same for all cathode rays irrespective of gas used in discharge tube
+    c) Only dependent on the pressure in the discharge tube
+    d) Always zero
+    Answer: b) Same for all cathode rays irrespective of gas used in discharge tube
+
+131. Who used the discharge tube and anode rays consisting of protons, describing them as being located in the nucleus of an atom?
+    a) J.J. Thomson
+    b) Chadwick
+    c) Goldstein
+    d) Rutherford
+    Answer: c) Goldstein
+
+132. The presence of neutrons as sub-atomic particles in the nucleus was discovered and proposed by:
+    a) J.J. Thomson
+    b) Goldstein
+    c) Chadwick
+    d) Rutherford
+    Answer: c) Chadwick
+
+133. Which of the following is NOT one of the four quantum numbers?
+    a) Principal quantum number (n)
+    b) Azimuthal quantum number (l)
+    c) Magnetic quantum number (m)
+    d) Energy quantum number (e)
+    Answer: d) Energy quantum number (e)
+
+134. The nucleus, consisting of protons and neutrons, accounts for almost the whole mass of the:
+    a) Electron
+    b) Atom
+    c) Ion
+    d) Molecule
+    Answer: b) Atom
+
+135. The extra-nuclear part of an atom is occupied by:
+    a) Protons orbiting in fixed energy levels
+    b) Neutrons orbiting in fixed energy levels
+    c) Electrons orbiting in fixed energy levels
+    d) Alpha particles
+    Answer: c) Electrons orbiting in fixed energy levels
+
+136. An atom as a whole is neutral because it has:
+    a) Only protons
+    b) Only electrons
+    c) Equal number of protons and electrons
+    d) More neutrons than protons
+    Answer: c) Equal number of protons and electrons
+
+137. The Mass number (A) of an atom is the number of:
+    a) Protons in the nucleus
+    b) Neutrons in the nucleus
+    c) Protons plus the number of neutrons in the nucleus
+    d) Electrons plus the number of protons
+    Answer: c) Protons plus the number of neutrons in the nucleus
+
+138. The Atomic number (Z) of an atom is a number equal to the number of:
+    a) Neutrons in the nucleus
+    b) Electrons in the atom
+    c) Protons in the nucleus
+    d) Nucleons in the nucleus
+    Answer: c) Protons in the nucleus
+
+139. Electronic configuration describes the manner in which electrons arrange themselves in the various orbits based on the relation:
+    a) n^2
+    b) 2n
+    c) 2n^2
+    d) n^3
+    Answer: c) 2n^2
+
+140. For electronic configuration, the last and second last shell cannot have more than:
+    a) 2 electrons
+    b) 4 electrons
+    c) 6 electrons
+    d) 8 electrons
+    Answer: d) 8 electrons
+
+141. A mole refers to a group of:
+    a) 6.023 x 10$^{20}$ particles
+    b) 6.023 x 10$^{23}$ particles
+    c) 6.023 x 10$^{25}$ particles
+    d) 1 x 10$^{23}$ particles
+    Answer: b) 6.023 x 10$^{23}$ particles
+
+142. The number of moles of an element can be calculated as:
+    a) Gram atomic mass of element / Mass of element
+    b) Mass of element / Gram atomic mass of element
+    c) Mass of element x Gram atomic mass of element
+    d) Gram atomic mass of element + Mass of element
+    Answer: b) Mass of element / Gram atomic mass of element
+
+143. The mass of an atom of an element can be calculated as:
+    a) Gram atomic mass / Avogadro's number
+    b) Avogadro's number / Gram atomic mass
+    c) Gram atomic mass x Avogadro's number
+    d) Gram atomic mass - Avogadro's number
+    Answer: a) Gram atomic mass / Avogadro's number
+
+SOME PRINCIPLES
+
+144. Which principle states that it is not possible to determine simultaneously the position and the momentum of a body to an arbitrary accuracy?
+    a) Pauli’s exclusion principle
+    b) Hund’s rule
+    c) Aufbau’s principle
+    d) Heisenberg’s uncertainty principle
+    Answer: d) Heisenberg’s uncertainty principle
+
+145. Which principle states that no two electrons in an atom can have the same set of 4 quantum numbers?
+    a) Hund’s rule
+    b) Aufbau’s principle
+    c) Pauli’s exclusion principle
+    d) Heisenberg’s uncertainty principle
+    Answer: c) Pauli’s exclusion principle
+
+146. Which rule states that pairing of electrons in degenerate orbitals belonging to a particular sub-shell does not take place till each orbital is occupied by a single electron with parallel spin?
+    a) Pauli’s exclusion principle
+    b) Aufbau’s principle
+    c) Hund’s rule
+    d) Heisenberg’s uncertainty principle
+    Answer: c) Hund’s rule
+
+147. Which principle states that in the ground state of an atom, electrons enter the orbital of lowest energy first, and subsequent electrons are filled in order of increasing energies?
+    a) Hund’s rule
+    b) Pauli’s exclusion principle
+    c) Aufbau’s principle
+    d) Heisenberg’s uncertainty principle
+    Answer: c) Aufbau’s principle
+
+148. According to Aufbau's principle, what is the correct sequence of orbital filling for multi-electron atoms?
+    a) 1s, 2p, 2s, 3s, 3p, 3d, 4s
+    b) 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, 5s, 5d
+    c) 1s, 2s, 3s, 4s, 2p, 3p, 4p, 3d, 5d
+    d) 1s, 2s, 2p, 3d, 3p, 4s, 4p, 5s, 5d
+    Answer: b) 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, 5s, 5d
+
+ISOTOPES
+
+149. Atoms of the same element having the same atomic number, but different atomic weights or mass numbers are called:
+    a) Isobars
+    b) Isotones
+    c) Isotopes
+    d) Isodiaphers
+    Answer: c) Isotopes
+
+150. Protium ($_{1}H^{1}$), Deuterium ($_{1}H^{2}$), and Tritium ($_{1}H^{3}$) are examples of:
+    a) Isobars of hydrogen
+    b) Isotones of hydrogen
+    c) Isotopes of hydrogen
+    d) Isodiaphers of hydrogen
+    Answer: c) Isotopes of hydrogen
+
+151. Which of the following pairs are isotopes of carbon?
+    a) C-12 and N-14
+    b) C-12 and C-14
+    c) Ar-40 and Ca-40
+    d) O and NO$_{2}^{+}$
+    Answer: b) C-12 and C-14
+
+ISOBARS
+
+152. Atoms of two elements having the same mass number, though different atomic number, are called:
+    a) Isotopes
+    b) Isotones
+    c) Isobars
+    d) Isosters
+    Answer: c) Isobars
+
+153. Argon (Ar) and Calcium (Ca) both having a mass number of 40 are examples of:
+    a) Isotopes
+    b) Isotones
+    c) Isobars
+    d) Isodiaphers
+    Answer: c) Isobars
+
+154. C-14 and Nitrogen having a mass number of 14 but different atomic numbers are examples of:
+    a) Isotopes
+    b) Isotones
+    c) Isobars
+    d) Isodiaphers
+    Answer: c) Isobars
+
+ISOTONES
+
+155. Atoms with different atomic number and mass number, but having the same number of neutrons are called:
+    a) Isotopes
+    b) Isobars
+    c) Isotones
+    d) Isosters
+    Answer: c) Isotones
+
+ISOELECTRONIC SPECIES
+
+156. Chemical species which have the same number of electrons are called:
+    a) Isotopes
+    b) Isobars
+    c) Isotones
+    d) Isoelectronic species
+    Answer: d) Isoelectronic species
+
+157. O and NO$_{2}^{+}$ each having a sum of 20 electrons are examples of:
+    a) Isotopes
+    b) Isobars
+    c) Isotones
+    d) Isoelectronic species
+    Answer: d) Isoelectronic species
+
+ISODIAPHERS
+
+158. Nuclides which have different atomic numbers and mass numbers but the same number of excess neutrons (i.e., difference in number of neutrons and protons) are called:
+    a) Isomers
+    b) Isodiaphers
+    c) Isotones
+    d) Isosters
+    Answer: b) Isodiaphers
+
+159. $_{90}Th^{234}$ and $_{92}U^{238}$ are examples of isodiaphers because they both have a difference in number of neutrons and protons equal to:
+    a) 2
+    b) 4
+    c) 54
+    d) 238
+    Answer: c) 54
+
+ISOSTERS
+
+160. Molecules or ions with the same number of atoms and the same number of valence electrons are called:
+    a) Isotopes
+    b) Isobars
+    c) Isotones
+    d) Isosters
+    Answer: d) Isosters
+
+161. Hydrogen ion and fluoride ions are examples of:
+    a) Isotopes
+    b) Isobars
+    c) Isotones
+    d) Isosters
+    Answer: d) Isosters
+
+162. Sodium and hydrogen cations are examples of:
+    a) Isotopes
+    b) Isobars
+    c) Isotones
+    d) Isosters
+    Answer: d) Isosters
+
+163. o2 and N2o are examples of:
+    a) Isotopes
+    b) Isobars
+    c) Isotones
+    d) Isosters
+    Answer: d) Isosters
+
+
+
+PERIODIC TABLE OF ELEMENTS
+
+1.  The periodic table is the arrangement of elements according to some:
+    a) Random order
+    b) Alphabetical order
+    c) Recurring property
+    d) Atomic size only
+    Answer: c) Recurring property
+
+2.  What is the total number of known elements?
+    a) 92
+    b) 100
+    c) 114
+    d) 118
+    Answer: c) 114
+
+3.  Out of the total known elements, how many are naturally occurring?
+    a) 29
+    b) 92
+    c) 114
+    d) 18
+    Answer: b) 92
+
+4.  Elements that are artificially prepared in laboratories are called:
+    a) Natural elements
+    b) Common elements
+    c) Transuranic elements
+    d) Noble elements
+    Answer: c) Transuranic elements
+
+5.  Mendeleev's periodic table was based upon:
+    a) Atomic Number
+    b) Atomic Weights
+    c) Number of electrons
+    d) Chemical reactivity
+    Answer: b) Atomic Weights
+
+6.  The Modern Periodic Table, proposed by Moseley, is based upon:
+    a) Atomic Weights
+    b) Number of neutrons
+    c) Atomic Number
+    d) Mass number
+    Answer: c) Atomic Number
+
+Groups
+
+7.  Vertical columns of the periodic table are called:
+    a) Periods
+    b) Blocks
+    c) Groups
+    d) Rows
+    Answer: c) Groups
+
+8.  The group number of an element is assigned based on the number of:
+    a) Protons in the nucleus
+    b) Neutrons in the nucleus
+    c) Valence electrons
+    d) Total electrons
+    Answer: c) Valence electrons
+
+9.  How many main groups are there in the periodic table?
+    a) 7
+    b) 8
+    c) 14
+    d) 18
+    Answer: b) 8
+
+10. How many vertical columns represent the various sub-groups in total?
+    a) 8
+    b) 14
+    c) 18
+    d) 3
+    Answer: c) 18
+
+11. Which group is known as Alkali metals?
+    a) Group II A
+    b) Group VII A
+    c) Group 1 A
+    d) Zero Group
+    Answer: c) Group 1 A
+
+12. Which group is known as Alkaline earth metals?
+    a) Group 1 A
+    b) Group II A
+    c) Group VII A
+    d) Zero Group
+    Answer: b) Group II A
+
+13. Halogens belong to which group?
+    a) Group II A
+    b) Group VII A
+    c) Zero Group
+    d) Group 1 A
+    Answer: b) Group VII A
+
+14. Noble gases belong to which group?
+    a) Group 1 A
+    b) Group II A
+    c) Group VII A
+    d) Zero Group
+    Answer: d) Zero Group
+
+15. All Group B elements are known as:
+    a) Alkali metals
+    b) Halogens
+    c) Transition metals
+    d) Noble gases
+    Answer: c) Transition metals
+
+16. Transition metals are called so because their chemical properties are between those of elements in:
+    a) Group 1 and Group II
+    b) Group II and Group III
+    c) Group III and Group IV
+    d) Group V and Group VI
+    Answer: b) Group II and Group III
+
+17. Transition metals like manganese and copper are known to show:
+    a) Fixed valency
+    b) Variable valency with vacant d-orbital
+    c) Only monovalency
+    d) Zero valency
+    Answer: b) Variable valency with vacant d-orbital
+
+Periods
+
+18. Horizontal rows of the periodic table are called:
+    a) Groups
+    b) Blocks
+    c) Periods
+    d) Columns
+    Answer: c) Periods
+
+19. How many periods are there in the periodic table?
+    a) 2
+    b) 8
+    c) 7
+    d) 18
+    Answer: c) 7
+
+20. Each period in the periodic table generally begins with:
+    a) A noble gas
+    b) A halogen
+    c) An alkali metal
+    d) An alkaline earth metal
+    Answer: c) An alkali metal
+
+21. Each period in the periodic table generally ends with:
+    a) An alkali metal
+    b) A noble gas
+    c) A halogen
+    d) A transition metal
+    Answer: b) A noble gas
+
+22. How many elements are there in the 1st period of the periodic table?
+    a) 1
+    b) 2
+    c) 7
+    d) 18
+    Answer: b) 2
+
+23. How many elements are there in the 7th period of the periodic table, according to the text?
+    a) 2
+    b) 29
+    c) 32
+    d) 114
+    Answer: b) 29
+
+Periodic Properties
+
+24. Atomic radii is the distance between the centre of the nucleus and the:
+    a) Innermost electron shell
+    b) Outermost valency shell of the atom
+    c) Center of another atom
+    d) Edge of the electron cloud
+    Answer: b) Outermost valency shell of the atom
+
+25. As one moves across a period from left to right, the atomic radii:
+    a) Increases
+    b) Decreases
+    c) Remains constant
+    d) First increases then decreases
+    Answer: b) Decreases
+
+26. Ionisation (energy) potential is the amount of energy required to remove:
+    a) All electrons from an atom
+    b) One or more electrons from the valency shell of an isolated gaseous atom
+    c) Protons from the nucleus
+    d) Neutrons from the nucleus
+    Answer: b) One or more electrons from the valency shell of an isolated gaseous atom
+
+27. Ionisation energy is expressed in:
+    a) Joules
+    b) Calories
+    c) KJ mol–1
+    d) Electron Volts
+    Answer: c) KJ mol–1
+
+28. Why is the 1st ionization energy always less than the 2nd ionization energy?
+    a) Because of decreased electrostatic force
+    b) Because of increased electrostatic force
+    c) Because the atom becomes neutral
+    d) Because the atom becomes stable
+    Answer: b) Because of increased electrostatic force
+
+29. Electron Affinity is the amount of energy:
+    a) Required to remove an electron
+    b) Released on adding one or more electrons to the valence shell of an isolated gaseous atom
+    c) Absorbed when an electron is added
+    d) Released when a bond is broken
+    Answer: b) Released on adding one or more electrons to the valence shell of an isolated gaseous atom
+
+30. Which of the following correctly shows the relationship between successive ionization energies?
+    a) I.E1 > I.E2 > I.E3
+    b) I.E1 = I.E2 = I.E3
+    c) I.E1 < I.E2 < I.E3
+    d) I.E1 > I.E3 > I.E2
+    Answer: c) I.E1 < I.E2 < I.E3
+
+31. Electronegativity is the tendency of an atom to:
+    a) Lose electrons
+    b) Gain protons
+    c) Attract electrons to itself when combined in a compound
+    d) Become neutral
+    Answer: c) Attract electrons to itself when combined in a compound
+
+32. Across a period from left to right, electronegativity:
+    a) Decreases
+    b) Increases
+    c) Remains constant
+    d) First decreases then increases
+    Answer: b) Increases
+
+33. Down a group from top to bottom, electronegativity:
+    a) Increases
+    b) Decreases
+    c) Remains constant
+    d) First increases then decreases
+    Answer: b) Decreases
+
+34. Which element is the most electronegative?
+    a) Oxygen
+    b) Chlorine
+    c) Fluorine
+    d) Nitrogen
+    Answer: c) Fluorine
+
+35. Which element is the most electropositive among all elements?
+    a) Francium
+    b) Sodium
+    c) Potassium
+    d) Cesium
+    Answer: d) Cesium
+
+36. An element is considered as a metal if it:
+    a) Gains electrons when supplied with energy
+    b) Loses electrons when supplied with energy
+    c) Forms acidic oxides
+    d) Has high electronegativity
+    Answer: b) Loses electrons when supplied with energy
+
+37. When an element gains electrons, it is considered as a:
+    a) Metal
+    b) Metalloid
+    c) Non-metal
+    d) Noble gas
+    Answer: c) Non-metal
+
+38. As one moves across a period, metallic character:
+    a) Increases
+    b) Decreases
+    c) Remains constant
+    d) Fluctuates randomly
+    Answer: b) Decreases
+
+39. As one moves across a period, non-metallic characteristic:
+    a) Decreases
+    b) Increases
+    c) Remains constant
+    d) Fluctuates randomly
+    Answer: b) Increases
+
+40. Metals generally form:
+    a) Acidic oxides
+    b) Neutral oxides
+    c) Basic oxides
+    d) Amphoteric oxides
+    Answer: c) Basic oxides
+
+41. Non-metals generally form:
+    a) Basic oxides
+    b) Neutral oxides
+    c) Acidic oxides
+    d) Amphoteric oxides
+    Answer: c) Acidic oxides
+
+CHEMICAL BONDING
+
+42. The main purpose of chemical bond formation is to help atoms achieve:
+    a) A higher atomic weight
+    b) A more reactive state
+    c) The next noble gas electron arrangement and become stable
+    d) A lower boiling point
+    Answer: c) The next noble gas electron arrangement and become stable
+
+43. The type of compound formed (electrovalent or covalent) depends on the type of:
+    a) Temperature involved
+    b) Bonding involved in compound formation
+    c) Pressure exerted
+    d) Amount of substance
+    Answer: b) Bonding involved in compound formation
+
+44. Electrovalent bonds are formed between:
+    a) Atoms of similar elements
+    b) Atoms that do not undergo ionization
+    c) Cation and anion
+    d) Only non-metallic elements
+    Answer: c) Cation and anion
+
+45. Covalent bonds are formed between atoms of:
+    a) Strongly electropositive elements
+    b) Strongly electronegative elements
+    c) Similar elements or those that do not undergo ionization to form cation or anion
+    d) Metals and non-metals
+    Answer: c) Similar elements or those that do not undergo ionization to form cation or anion
+
+FACTS TO REMEMBER (Chemical Bonding)
+
+46. Chemical bonds are formed as a result of:
+    a) Nuclear reactions
+    b) Loss, gain or sharing of electrons between the atom of reacting elements
+    c) Proton transfer
+    d) Neutron exchange
+    Answer: b) Loss, gain or sharing of electrons between the atom of reacting elements
+
+47. Atoms tend to combine together to change from an unstable form with an incomplete outer shell to a more stable form having:
+    a) More protons
+    b) Fewer electrons
+    c) Complete shell
+    d) Increased atomic mass
+    Answer: c) Complete shell
+
+48. How many electrons are present in the first and outermost shell of Helium?
+    a) 1
+    b) 2
+    c) 8
+    d) 18
+    Answer: b) 2
+
+49. How many electrons are typically present in the outermost shell of inert gases (other than helium and hydrogen) for stability?
+    a) 2
+    b) 4
+    c) 6
+    d) 8
+    Answer: d) 8
+
+50. The linkage which actually holds the atoms together within the molecule is called a:
+    a) Physical bond
+    b) Magnetic bond
+    c) Chemical bond
+    d) Gravitational bond
+    Answer: c) Chemical bond
+
+51. A positively charged particle formed by the loss of an electron or more is called a:
+    a) Anion
+    b) Cation
+    c) Radical
+    d) Molecule
+    Answer: b) Cation
+
+52. Which of the following is an example of a cation?
+    a) Cl$^{-}$
+    b) O$^{2-}$
+    c) Na$^{+}$
+    d) H$_{2}$O
+    Answer: c) Na$^{+}$
+
+53. A negatively charged particle formed by the gain of an electron or more is called an:
+    a) Cation
+    b) Anion
+    c) Molecule
+    d) Radical
+    Answer: b) Anion
+
+54. Which of the following is an example of an anion?
+    a) Na$^{+}$
+    b) Mg$^{2+}$
+    c) Cl$^{-}$
+    d) Ca$^{2+}$
+    Answer: c) Cl$^{-}$
+
+55. The number of electrons present in the outermost shell of an atom are called:
+    a) Core electrons
+    b) Valence electrons
+    c) Inner electrons
+    d) Lone pair electrons
+    Answer: b) Valence electrons
+
+56. Valency of an element is the number of electrons:
+    a) Present in the inner shell
+    b) Lost, gained or shared by one atom of the element during chemical bonding
+    c) Total in the atom
+    d) In the nucleus
+    Answer: b) Lost, gained or shared by one atom of the element during the course of chemical bonding
+
+57. Electropositive nature is the tendency of an atom to:
+    a) Gain electrons and form anions
+    b) Lose electrons and form cations
+    c) Attract electrons
+    d) Become neutral
+    Answer: b) Lose electrons and form cations
+
+58. Which of the following is an example of an electropositive element?
+    a) Chlorine
+    b) Hydrogen
+    c) Sodium
+    d) Oxygen
+    Answer: c) Sodium
+
+59. Electronegative nature is the tendency of an atom to:
+    a) Lose electrons and become cation
+    b) Gain electrons and become anion
+    c) Form a neutral atom
+    d) Share electrons equally
+    Answer: b) Gain electrons and become anion
+
+60. Which of the following is an example of an electronegative element?
+    a) Sodium
+    b) Potassium
+    c) Chlorine
+    d) Magnesium
+    Answer: c) Chlorine
+
+61. A bond formed by the transfer of one or more electrons from the atom of an electropositive element to the atom of an electronegative element is called:
+    a) Covalent bond
+    b) Coordinate bond
+    c) Electrovalent or ionic bond
+    d) Hydrogen bond
+    Answer: c) Electrovalent or ionic bond
+
+62. Which of the following is an example of an electrovalent bond?
+    a) H2O
+    b) NH3
+    c) NaCl
+    d) H2
+    Answer: c) NaCl
+
+63. A chemical bond formed between two combining atoms by mutual sharing of one or more electrons of atoms of non-metallic elements is called:
+    a) Ionic bond
+    b) Metallic bond
+    c) Covalent bond
+    d) Hydrogen bond
+    Answer: c) Covalent bond
+
+64. Which of the following is an example of a covalent bond?
+    a) NaCl
+    b) MgCl2
+    c) H2O
+    d) CaO
+    Answer: c) H2O
+
+65. A bond is considered polar if the charge is:
+    a) Evenly spread over the bond
+    b) Concentrated on one atom
+    c) Unevenly spread over the bond
+    d) Only present in ionic compounds
+    Answer: c) Unevenly spread over the bond
+
+66. In a non-polar bond, the charge is:
+    a) Unevenly spread
+    b) Concentrated on one end
+    c) Evenly spread
+    d) Always negative
+    Answer: c) Evenly spread
+
+67. A type of covalent bond in which only one of the atoms contributes both the electrons of the shared electron pair is called a:
+    a) Ionic bond
+    b) Metallic bond
+    c) Coordinate bond
+    d) Hydrogen bond
+    Answer: c) Coordinate bond
+
+68. Which of the following is an example of a molecule with a coordinate bond?
+    a) H2
+    b) N2
+    c) H2SO4
+    d) H2O
+    Answer: c) H2SO4
+
+69. An electrostatic force between a covalently bonded hydrogen atom of one molecule and an electronegative atom (F, O, N) of another molecule is called a:
+    a) Ionic bond
+    b) Covalent bond
+    c) Metallic bond
+    d) Hydrogen bond
+    Answer: d) Hydrogen bond
+
+70. Hydrogen bonding is responsible for the exceptionally high melting and boiling points of:
+    a) Methane (CH4)
+    b) Carbon dioxide (CO2)
+    c) Water (H2O), Ammonia (NH3), and Hydrogen fluoride (HF)
+    d) Nitrogen (N2)
+    Answer: c) Water (H2O), Ammonia (NH3), and Hydrogen fluoride (HF)
+
+71. The force of attraction between neighboring atoms because of their different dipoles induced by instantaneous unsymmetrical distribution of electrons in the atom is called:
+    a) Ionic bond
+    b) Covalent bond
+    c) Van der Waal’s bond
+    d) Hydrogen bond
+    Answer: c) Van der Waal’s bond
+
+72. Van der Waal’s bond is responsible for the condensation of:
+    a) Ionic compounds
+    b) Metals
+    c) Inert elements, and gases like H2, N2, O2, methane etc.
+    d) Solids
+    Answer: c) Inert elements, and gases, like H2, N2, O2, methane etc.
+
+73. The attractive force between mobile electrons and the metallic kernels is called a:
+    a) Ionic bond
+    b) Covalent bond
+    c) Hydrogen bond
+    d) Metallic bond
+    Answer: d) Metallic bond
+
+74. Which of the following is an example of a substance with metallic bonding?
+    a) Water
+    b) Sodium chloride
+    c) Gold
+    d) Ammonia
+    Answer: c) Gold
+
+75. In an isoelectronic series, ions of different elements have the same number of electrons but differ in:
+    a) Atomic mass
+    b) Number of protons
+    c) Magnitude of nuclear charge
+    d) Number of neutrons
+    Answer: c) Magnitude of nuclear charge
+
+76. Which of the following is an isoelectronic series with 10 electrons?
+    a) N$^{3-}$, O$^{2-}$, F$^{-}$, Na$^{+}$, Mg$^{2+}$
+    b) H$^{+}$, He, Li$^{+}$
+    c) Cl$^{-}$, Ar, K$^{+}$
+    d) C, N, O
+    Answer: a) N$^{3-}$, O$^{2-}$, F$^{-}$, Na$^{+}$, Mg$^{2+}$
+
+CHEMICAL REACTION AND CHEMICAL EQUATION
+
+77. A chemical change is also termed as a:
+    a) Physical reaction
+    b) Nuclear reaction
+    c) Chemical reaction
+    d) Phase change
+    Answer: c) Chemical reaction
+
+78. In which type of reaction is a single or more new substance(s) formed by the union of two or more substances?
+    a) Decomposition reaction
+    b) Displacement reaction
+    c) Combination reaction
+    d) Neutralization reaction
+    Answer: c) Combination reaction
+
+79. In which type of reaction does a substance break up into smaller, simpler substances?
+    a) Combination reaction
+    b) Decomposition reaction
+    c) Displacement reaction
+    d) Precipitation reaction
+    Answer: b) Decomposition reaction
+
+80. In which type of reaction does one element displace another element from a compound?
+    a) Combination reaction
+    b) Decomposition reaction
+    c) Displacement reaction
+    d) Neutralization reaction
+    Answer: c) Displacement reaction
+
+81. A reaction in which two compounds in their aqueous state react to form an insoluble residue, called a precipitate, is known as a:
+    a) Neutralization reaction
+    b) Redox reaction
+    c) Precipitation reaction
+    d) Synthesis reaction
+    Answer: c) Precipitation reaction
+
+82. A reaction in which an acid and a base react and exchange their radicals to form salt and water is called a:
+    a) Precipitation reaction
+    b) Redox reaction
+    c) Neutralization reaction
+    d) Decomposition reaction
+    Answer: c) Neutralization reaction
+
+83. In redox reactions, which two processes take place simultaneously?
+    a) Precipitation and neutralization
+    b) Combination and decomposition
+    c) Oxidation and reduction
+    d) Displacement and synthesis
+    Answer: c) Oxidation and reduction
+
+84. Oxidation is the process in which a substance:
+    a) Gains electrons
+    b) Loses electrons
+    c) Gains protons
+    d) Loses neutrons
+    Answer: b) Loses electrons
+
+85. Oxidation is also described as a process involving:
+    a) Removal of oxygen
+    b) Addition of hydrogen
+    c) Addition of oxygen, or removal of hydrogen
+    d) Removal of both oxygen and hydrogen
+    Answer: c) Addition of oxygen, or removal of hydrogen
+
+86. Which of the following is an example of a process involving oxidation (addition of oxygen)?
+    a) Formation of ammonia
+    b) Combustion of methane
+    c) Haber's process
+    d) Reduction of iron ore
+    Answer: b) Combustion of methane
+
+87. Reduction is the process involving:
+    a) Loss of electrons
+    b) Gain of electrons
+    c) Loss of oxygen
+    d) Addition of hydrogen
+    Answer: b) Gain of electrons
+
+88. Which of the following is an example of a process involving reduction (gain of electrons)?
+    a) Aerobic respiration
+    b) Combustion of methane
+    c) Formation of ammonia in Haber’s process
+    d) Rusting of iron
+    Answer: c) Formation of ammonia in Haber’s process
+
+89. Reduction is also identified with:
+    a) Addition of oxygen
+    b) Removal of hydrogen
+    c) Removal of oxygen, or addition of hydrogen
+    d) Loss of electrons
+    Answer: c) Removal of oxygen, or addition of hydrogen
+
+90. A substance that brings about oxidation is called an:
+    a) Reducing agent
+    b) Oxidizing agent
+    c) Catalyst
+    d) Electrolyte
+    Answer: b) Oxidizing agent
+
+91. Which of the following is an example of an oxidizing agent?
+    a) Hydrogen
+    b) Carbon monoxide
+    c) Concentrated Sulphuric acid
+    d) Carbon
+    Answer: c) Concentrated Sulphuric acid
+
+92. A substance that brings about reduction is called a:
+    a) Oxidizing agent
+    b) Reducing agent
+    c) Catalyst
+    d) Precipitate
+    Answer: b) Reducing agent
+
+93. Which of the following is an example of a reducing agent?
+    a) Oxygen
+    b) Chlorine
+    c) Carbon monoxide
+    d) Concentrated Nitric acid
+    Answer: c) Carbon monoxide
+
+94. A reaction in which heat is absorbed is called an:
+    a) Exothermic reaction
+    b) Endothermic reaction
+    c) Redox reaction
+    d) Neutralization reaction
+    Answer: b) Endothermic reaction
+
+95. In an electrochemical cell, oxidation takes place at the:
+    a) Cathode
+    b) Anode
+    c) Electrolyte
+    d) Salt bridge
+    Answer: b) Anode
+
+96. In an electrochemical cell, reduction takes place at the:
+    a) Anode
+    b) Cathode
+    c) Electrolyte
+    d) Salt bridge
+    Answer: b) Cathode
+
+97. What is required for a photochemical reaction?
+    a) Heat
+    b) Electricity
+    c) Light
+    d) Pressure
+    Answer: c) Light
+
+98. Photosynthesis and photography changes are examples of:
+    a) Electrochemical reactions
+    b) Chemiluminiscent reactions
+    c) Photochemical reactions
+    d) Neutralization reactions
+    Answer: c) Photochemical reactions
+
+99. For a chemiluminescent reaction, what is required?
+    a) Light
+    b) Electricity
+    c) Heat
+    d) Pressure
+    Answer: b) Electricity
+
+100. In an electrochemical reaction, what is produced?
+    a) Heat
+    b) Light
+    c) Electricity
+    d) Sound
+    Answer: c) Electricity
+
+101. Nickel and chromium plating is done to prevent steel articles from:
+    a) Tarnishing
+    b) Rusting
+    c) Breaking
+    d) Scratching
+    Answer: b) Rusting
+
+102. Gold and silver plating is done on iron or brass objects to:
+    a) Increase their strength
+    b) Improve their appearance
+    c) Make them lighter
+    d) Prevent them from rusting
+    Answer: b) Improve their appearance
+
+103. The process by which impurities from metals are extracted by chemical processes and are removed electrolytically to obtain a highly pure metal is called:
+    a) Electrometallurgy
+    b) Electro-refining
+    c) Galvanization
+    d) Electroplating
+    Answer: b) Electro-refining
+
+104. In electro-refining, the pure metal is taken as the:
+    a) Anode
+    b) Cathode
+    c) Electrolyte
+    d) Impurity
+    Answer: b) Cathode
+
+105. In electro-refining, the impure metal is taken as the:
+    a) Cathode
+    b) Anode
+    c) Electrolyte
+    d) Pure metal
+    Answer: b) Anode
+
+106. Which of the following metals is generally refined by electro-refining?
+    a) Sodium
+    b) Aluminium
+    c) Zinc
+    d) Iron
+    Answer: c) Zinc
+
+107. The extraction of metals from its ores by electrolysis (e.g., sodium and aluminium from bauxite) is called:
+    a) Electro-refining
+    b) Electrometallurgy
+    c) Electroplating
+    d) Galvanization
+    Answer: b) Electrometallurgy
+
+108. A substance that causes a reaction to happen at a faster rate or at low temperature without itself undergoing any chemical change during the course of reaction is called a:
+    a) Reactant
+    b) Product
+    c) Catalyst
+    d) Inhibitor
+    Answer: c) Catalyst
+
+ACIDS, BASES AND SALTS
+
+109. Acids are substances which produce:
+    a) Hydroxyl ions (OH$^{-}$) in their aqueous solution
+    b) Hydronium ions (H$_{3}$O$^{+}$) in their aqueous solution
+    c) Both H$^{+}$ and OH$^{-}$
+    d) Neither H$^{+}$ nor OH$^{-}$
+    Answer: b) Hydronium ions (H$_{3}$O$^{+}$) in their aqueous solution
+
+110. Acids are also described as:
+    a) Proton acceptors
+    b) Electron donors
+    c) Proton donors
+    d) Electron acceptors
+    Answer: c) Proton donors
+
+111. Oxy-acids essentially contain oxygen along with:
+    a) Only hydrogen
+    b) Hydrogen and other elements
+    c) Only carbon
+    d) Only nitrogen
+    Answer: b) Hydrogen and other elements
+
+112. Which of the following is an example of an oxy-acid?
+    a) HCl
+    b) H$_{2}$SO$_{4}$
+    c) HBr
+    d) HI
+    Answer: b) H$_{2}$SO$_{4}$
+
+113. Bases are substances producing:
+    a) Hydronium ions (H$_{3}$O$^{+}$) in their aqueous solution
+    b) Hydroxyl ions (OH$^{-}$) in their aqueous solution
+    c) Only H$^{+}$
+    d) Only O$^{2-}$
+    Answer: b) Hydroxyl ions (OH$^{-}$) in their aqueous solution
+
+114. Bases are also described as:
+    a) Proton donors
+    b) Electron donors
+    c) Proton acceptors
+    d) Electron acceptors
+    Answer: c) Proton acceptors
+
+115. Oxides and hydroxides of metals (or metal-like radicals) are called:
+    a) Acids
+    b) Salts
+    c) Bases
+    d) Electrolytes
+    Answer: c) Bases
+
+116. A water-soluble base is called an:
+    a) Acid
+    b) Salt
+    c) Alkali
+    d) Electrolyte
+    Answer: c) Alkali
+
+117. Which of the following is an example of an alkali?
+    a) Magnesium hydroxide
+    b) Copper hydroxide
+    c) Sodium hydroxide
+    d) Aluminium hydroxide
+    Answer: c) Sodium hydroxide
+
+118. A weak acid remains weak even if it is concentrated because it produces a:
+    a) High concentration of hydrogen ions
+    b) Low concentration of hydrogen ions
+    c) High concentration of hydroxyl ions
+    d) Low concentration of hydroxyl ions
+    Answer: b) Low concentration of hydrogen ions
+
+119. A strong acid remains a strong acid even if it is diluted because it produces a:
+    a) Low concentration of hydrogen ions
+    b) Low concentration of hydroxyl ions
+    c) High concentration of hydrogen ions
+    d) High concentration of hydroxyl ions
+    Answer: c) High concentration of hydrogen ions
+
+120. Acids generally have a:
+    a) Bitter taste
+    b) Sour taste
+    c) Sweet taste
+    d) Salty taste
+    Answer: b) Sour taste
+
+121. Bases generally have a:
+    a) Sour taste
+    b) Sweet taste
+    c) Bitter taste
+    d) Salty taste
+    Answer: c) Bitter taste
+
+122. Strong acids are:
+    a) Mild and harmless
+    b) Corrosive and can burn through the skin
+    c) Soapy to touch
+    d) Used as food flavorings
+    Answer: b) Corrosive and can burn through the skin
+
+123. Bases are characterized by being:
+    a) Corrosive
+    b) Sour to taste
+    c) Soapy to touch
+    d) Highly acidic
+    Answer: c) Soapy to touch
+
+124. When an acid reacts with an alkali or base, what is formed along with water?
+    a) A new acid
+    b) A new base
+    c) Salt
+    d) Gas
+    Answer: c) Salt
+
+SOME IMPORTANT USES OF ACIDS, BASES AND SALTS
+
+Acids
+
+125. Which acid is known as the "King of chemicals" and is used in the manufacture of fertilizers, explosives, paints, and lead storage batteries?
+    a) Nitric acid
+    b) Hydrochloric acid
+    c) Sulphuric acid
+    d) Acetic acid
+    Answer: c) Sulphuric acid
+
+126. Nitric acid is used in the manufacture of:
+    a) Soap
+    b) Bleaching powder
+    c) Fertilizers, chemicals, explosives, paints, dyes and drugs
+    d) Fizzy drinks
+    Answer: c) Fertilizers, chemicals, explosives, paints, dyes and drugs
+
+127. Hydrochloric acid is used in which industries?
+    a) Food preservation
+    b) Fertilizers
+    c) Tanning and printing industry
+    d) Battery manufacturing
+    Answer: c) Tanning and printing industry
+
+128. Citric acid is used in medicine as a source of:
+    a) Vitamin A
+    b) Vitamin B
+    c) Vitamin C
+    d) Vitamin D
+    Answer: c) Vitamin C
+
+129. Boric acid is used as:
+    a) A food flavoring agent
+    b) An eye-wash and for preservation of grains
+    c) A battery electrolyte
+    d) A cleaning agent
+    Answer: b) An eye-wash and for preservation of grains
+
+130. Acetic acid is used for:
+    a) Removing ink-stains
+    b) Flavouring food and food preservation (Vinegar)
+    c) Softening hard water
+    d) Manufacturing soap
+    Answer: b) Flavouring food, food preservation (Vinegar)
+
+131. Benzoic acid is used for:
+    a) Making fizzy drinks
+    b) Food preservation (sodium benzoate)
+    c) As an antacid
+    d) Tanning
+    Answer: b) Food preservation (sodium benzoate)
+
+132. Which acid lends 'fizz' to aerated drinks?
+    a) Citric acid
+    b) Carbonic acid
+    c) Sulphuric acid
+    d) Oxalic acid
+    Answer: b) Carbonic acid
+
+133. Oxalic acid is used in:
+    a) Food preservation
+    b) Ink-stain removers
+    c) Manufacture of explosives
+    d) Alkaline batteries
+    Answer: b) Ink-stain removers
+
+134. Tartaric acid is a constituent of:
+    a) Fizzy drinks
+    b) Vinegar
+    c) Baking powder
+    d) Eye-wash
+    Answer: c) Baking powder
+
+Bases
+
+135. Sodium hydroxide is primarily used in the manufacture of:
+    a) Bleaching powder
+    b) Fertilizers
+    c) Soap
+    d) Medicines
+    Answer: c) Soap
+
+136. Calcium hydroxide is used for:
+    a) Manufacturing soap
+    b) Softening of hard water and neutralising acid in the soil
+    c) Alkaline batteries
+    d) Removing grease stains
+    Answer: b) Softening of hard water, neutralising acid in the soil and in water supplies.
+
+137. Potassium hydroxide is used in:
+    a) Soap manufacture
+    b) Bleaching powder manufacture
+    c) Alkaline batteries
+    d) Antacids
+    Answer: c) Alkaline batteries
+
+138. Magnesium hydroxide is used as an:
+    a) Oxidizing agent
+    b) Cleaning agent
+    c) Antacid to neutralise stomach acidity
+    d) Foaming agent
+    Answer: c) Antacid to neutralise acidity caused by excessive hydrochloric acid secretion in the stomach
+
+139. Aluminium hydroxide is used as a foaming agent in:
+    a) Soaps
+    b) Batteries
+    c) Fire extinguishers and as antacids
+    d) Fertilizers
+    Answer: c) Fire extinguishers and as antacids
+
+140. Ammonium hydroxide is used to remove:
+    a) Ink stains
+    b) Grease stains from clothes
+    c) Acid from soil
+    d) Hardness from water
+    Answer: b) Grease stains from clothes
+
+pH value/scale
+
+141. pH refers to the concentration of:
+    a) Hydroxide ions only
+    b) Hydrogen ions in a solution as compared to the hydroxide solution
+    c) Salt in a solution
+    d) Neutral particles
+    Answer: b) Hydrogen ions in a solution as compared to the hydroxide solution
+
+142. The pH range for soft drinks is typically:
+    a) 1-3
+    b) 2-4
+    c) 6-7
+    d) 8-9
+    Answer: b) 2-4
+
+143. The pH of tears is approximately:
+    a) 6
+    b) 7.4
+    c) 8.5
+    d) 2.2
+    Answer: b) 7.4
+
+144. Gastric juice has a pH range of:
+    a) 6-7
+    b) 1-3
+    c) 2.2-2.4
+    d) 7.3-7.4
+    Answer: b) 1-3
+
+145. The pH of sea water is around:
+    a) 6.0
+    b) 7.4
+    c) 8.5
+    d) 2.8
+    Answer: c) 8.5
+
+146. Lemon juice has a pH range of:
+    a) 1-3
+    b) 2.2-2.4
+    c) 6-7
+    d) 8-9
+    Answer: b) 2.2-2.4
+
+147. The pH of human urine is approximately:
+    a) 2.4-3.4
+    b) 6
+    c) 7.4
+    d) 8.5
+    Answer: b) 6
+
+148. Vinegar has a pH range of:
+    a) 1-3
+    b) 2.4-3.4
+    c) 6-7
+    d) 7.3-7.4
+    Answer: b) 2.4-3.4
+
+149. The pH of saliva is typically:
+    a) 1-3
+    b) 2.8
+    c) 6.5-7.5
+    d) 8.5
+    Answer: c) 6.5-7.5
+
+150. Rain water usually has a pH of approximately:
+    a) 2.8
+    b) 6.0
+    c) 7.3
+    d) 8.5
+    Answer: b) 6.0
+
+151. Human blood has a pH range of:
+    a) 2.8
+    b) 6.0
+    c) 7.3-7.4
+    d) 8.5
+    Answer: c) 7.3-7.4
+
+152. The pH of wine is approximately:
+    a) 1-3
+    b) 2.8
+    c) 6.0
+    d) 7.4
+    Answer: b) 2.8
+
+Salts
+
+153. Salts are ionic compounds containing:
+    a) Only positive ions
+    b) Only negative ions
+    c) A positive ion (cation) and a negative ion (anion)
+    d) Neutral molecules
+    Answer: c) A positive ion (cation) and a negative ion (anion)
+
+154. Sodium chloride (NaCl) is an example of a:
+    a) Basic salt
+    b) Acidic salt
+    c) Normal neutral salt
+    d) Double salt
+    Answer: c) Normal neutral salt
+
+155. Mohr's salt and Alum are examples of:
+    a) Normal neutral salts
+    b) Acidic salts
+    c) Basic salts
+    d) Double salts
+    Answer: d) Double salts
+
+156. The reaction in which a salt reacts with water to form a solution which is either acidic or alkaline is called:
+    a) Neutralization
+    b) Precipitation
+    c) Hydrolysis
+    d) Electrolysis
+    Answer: c) Hydrolysis
+
+157. The property of salts to lose their water of crystallization and hence, are transformed into a powder at ordinary temperatures is called:
+    a) Deliquescence
+    b) Hygroscopy
+    c) Efflorescence
+    d) Hydrolysis
+    Answer: c) Efflorescence
+
+158. The property of salts to absorb moisture at ordinary temperatures to lose their crystalline form and form a saturated solution (like NaCl, anhydrous copper sulphate, or cobalt chloride) is called:
+    a) Efflorescence
+    b) Hygroscopy
+    c) Deliquescence
+    d) Hydrolysis
+    Answer: c) Deliquescence
+
+159. The property of salts to absorb atmospheric moisture at ordinary temperature without dissolving in it is called:
+    a) Efflorescence
+    b) Deliquescence
+    c) Hygroscopy
+    d) Hydrolysis
+    Answer: c) Hygroscopy
+
+ELECTROLYSIS
+
+160. A chemical process by which a chemical substance, in its fused state or in aqueous solutions, is decomposed by the passage of an electric current, leading to the discharge of ions of the electrolyte at the two electrodes, is called:
+    a) Hydrolysis
+    b) Electroplating
+    c) Electrolysis
+    d) Electrometallurgy
+    Answer: c) Electrolysis
+
+161. A compound which, in the fused state or in aqueous solution, allows the passage of an electric current and is decomposed by it, is called an:
+    a) Non-electrolyte
+    b) Insulator
+    c) Electrolyte
+    d) Conductor
+    Answer: c) Electrolyte
+
+162. Which of the following is an example of a strong electrolyte?
+    a) Acetic acid
+    b) Ammonium hydroxide
+    c) Hydrochloric acid
+    d) Sugar solution
+    Answer: c) Hydrochloric acid
+
+163. Which of the following is an example of a weak electrolyte?
+    a) Sodium hydroxide
+    b) Nitric acid
+    c) Acetic acid
+    d) Sodium chloride
+    Answer: c) Acetic acid
+
+164. Compounds which, in the fused state or in the aqueous solution, do not dissociate into ions are called:
+    a) Strong electrolytes
+    b) Weak electrolytes
+    c) Non-electrolytes
+    d) Conductors
+    Answer: c) Non-electrolytes
+
+165. Which of the following is an example of a non-electrolyte?
+    a) Sulphuric acid
+    b) Potassium hydroxide
+    c) Distilled water
+    d) Lead bromide (fused)
+    Answer: c) Distilled water
+
+166. The two conducting poles of a metal or graphite, through which electric current enters or leaves an electrolyte, are called:
+    a) Wires
+    b) Terminals
+    c) Electrodes
+    d) Bridges
+    Answer: c) Electrodes
+
+167. The electrode connected to the positive terminal of the battery is called the:
+    a) Cathode
+    b) Anode
+    c) Neutral electrode
+    d) Negative electrode
+    Answer: b) Anode
+
+168. At the anode, during electrolysis, the atom:
+    a) Gains electrons to form neutral cation
+    b) Loses electrons to form neutral cation
+    c) Gains protons
+    d) Loses protons
+    Answer: b) Loses electrons to form neutral cation
+
+169. The electrode connected to the negative terminal of the battery is called the:
+    a) Anode
+    b) Cathode
+    c) Positive electrode
+    d) Neutral electrode
+    Answer: b) Cathode
+
+170. At the cathode, during electrolysis, the cation:
+    a) Loses electrons to form neutral atoms
+    b) Gains electrons to form neutral atoms
+    c) Loses protons
+    d) Gains protons
+    Answer: b) Gains electrons to form neutral atoms
+
+171. The complete set-up or vessel consisting of electrodes and electrolytes, in which electrolysis takes place, is called an:
+    a) Electrochemical cell
+    b) Voltameter or electrolytic cell
+    c) Battery
+    d) Fuel cell
+    Answer: b) Electrolytic cell or voltameter
+
+172. The natural process that converts a refined metal into its oxide, sulphide, etc., causing the gradual destruction of the metal or its gradual wasting away, is called:
+    a) Electroplating
+    b) Electrometallurgy
+    c) Corrosion
+    d) Electro-refining
+    Answer: c) Corrosion
+
+Steel
+
+173. Steel is an alloy of iron having variable amounts of:
+    a) Only carbon
+    b) Only manganese
+    c) Carbon, manganese and other elements
+    d) Only chromium
+    Answer: c) Carbon, manganese and other elements
+
+174. What is the typical carbon content in mild steel?
+    a) 0.05%
+    b) 0.30%
+    c) 0.5 - 1.0%
+    d) 10.5%
+    Answer: a) 0.05%
+
+175. What is the typical manganese content in medium carbon steel?
+    a) 0.05%
+    b) 0.4%
+    c) 1%
+    d) 0.3 - 0.9%
+    Answer: c) 1%
+
+176. High carbon steel typically contains what percentage of carbon?
+    a) 0.05%
+    b) 0.30%
+    c) 0.5 - 1.0%
+    d) 10.5%
+    Answer: c) 0.5 - 1.0%
+
+177. Stainless steel is an alloy of iron with a minimum of:
+    a) 0.05% carbon
+    b) 1% manganese
+    c) 10.5% chromium
+    d) 0.9% molybdenum
+    Answer: c) 10.5 % chromium
+
+178. What other elements can be included in stainless steel besides iron and chromium?
+    a) Carbon and sulfur
+    b) Nickel, molybdenum, titanium or copper
+    c) Zinc and lead
+    d) Gold and silver
+    Answer: b) Nickel, molybdenum, titanium or copper
+
+Prevention of Corrosion
+
+179. Which of the following is a method to prevent corrosion?
+    a) Exposing metal surface to air and moisture
+    b) Alloying, greasing, painting, galvanization, electroplating
+    c) Increasing temperature
+    d) Removing zinc
+    Answer: b) Alloying, greasing, painting, galvanisation, using zink or electro plating.
+
+Electrochemical Cell
+
+180. An electrochemical cell is a system that converts:
+    a) Electrical energy into chemical energy
+    b) Chemical energy into electrical energy
+    c) Heat energy into electrical energy
+    d) Light energy into chemical energy
+    Answer: b) Chemical energy into electrical energy
+
+181. A primary electrochemical cell:
+    a) Can be recharged like a lead storage battery
+    b) Cannot be recharged like a dry cell
+    c) Produces only heat
+    d) Requires light to function
+    Answer: b) Cannot be reacharged like a dry cell of 1.5V
+
+182. A secondary electrochemical cell:
+    a) Cannot be recharged
+    b) Can be recharged like a lead storage battery
+    c) Is always a dry cell
+    d) Produces no electricity
+    Answer: b) Can be recharged like a lead storage battery
+
+183. A Microbial Fuel Cell (MFC) converts chemical energy to electrical energy by the action of:
+    a) Catalysts
+    b) Electrolytes
+    c) Micro-organisms
+    d) Heat
+    Answer: c) Micro-organisms
+
+184. In a Microbial Fuel Cell, electrons produced during oxidation are transferred to:
+    a) The membrane
+    b) The electrolyte
+    c) The cathode only
+    d) Electrodes
+    Answer: d) Electrodes
+
+
+
+METALS AND NON-METALS
+
+1.  Which of the following describes a metal?
+    a) Electronegative, brittle, poor conductor
+    b) Electropositive, hard, sonorous, lustrous, malleable, ductile, good conductor
+    c) Always liquid at room temperature
+    d) Forms only acidic oxides
+    Answer: b) Electropositive, hard, sonorous, lustrous, malleable, ductile, good conductor
+
+2.  Metals typically form what type of oxides?
+    a) Acidic or neutral
+    b) Basic or amphoteric
+    c) Only acidic
+    d) Only neutral
+    Answer: b) Basic or amphoteric
+
+3.  Which of the following describes a non-metal?
+    a) Electropositive, ductile, good conductor
+    b) Electronegative, occurs as solids, liquids, and gases, generally poor conductors
+    c) Always lustrous and malleable
+    d) Forms only basic oxides
+    Answer: b) Electronegative, occurs as solids, liquids, and gases, generally poor conductors
+
+4.  If a non-metal is solid, it is usually:
+    a) Hard and ductile
+    b) Soft and brittle
+    c) Lustrous and sonorous
+    d) Malleable and strong
+    Answer: b) Soft and brittle
+
+5.  Solid, naturally occurring deposits in the earth’s crust that contain metals in the combined state, along with associated earthly impurities (gangue), are called:
+    a) Ores
+    b) Alloys
+    c) Minerals
+    d) Amalgams
+    Answer: c) Minerals
+
+6.  Commercially viable minerals from which metal can be extracted profitably are called:
+    a) Minerals
+    b) Ores
+    c) Gangue
+    d) Allotropes
+    Answer: b) Ores
+
+7.  Which statement is correct?
+    a) All minerals are ores.
+    b) All ores are minerals but all minerals cannot be ores.
+    c) Minerals and ores are the same thing.
+    d) Ores are never found with impurities.
+    Answer: b) All ores are minerals but all minerals cannot be ores.
+
+8.  A homogeneous mixture of two or more metals (or metal and nonmetal) combined in a definite proportion in their molten state is called an:
+    a) Ore
+    b) Mineral
+    c) Amalgam
+    d) Alloy
+    Answer: d) Alloy
+
+9.  An alloy in which one of the components is mercury is called an:
+    a) Ore
+    b) Mineral
+    c) Amalgam
+    d) Composite
+    Answer: c) Amalgam
+
+10. Which two metals are liquids at room temperature?
+    a) Gold and Platinum
+    b) Copper and Silver
+    c) Mercury and Gallium
+    d) Iron and Lead
+    Answer: c) Mercury and Gallium
+
+11. Vermilion is made from which mercury ore?
+    a) Calomel
+    b) Cinnabar (Mercury-sulphide)
+    c) Magnetite
+    d) Galena
+    Answer: b) Cinnabar (Mercury-sulphide)
+
+12. Which metals occur exclusively in the free state?
+    a) Copper and Mercury
+    b) Silver and Lead
+    c) Gold and Platinum
+    d) Iron and Aluminium
+    Answer: c) Gold and Platinum
+
+13. Which metals occur partly in the free state?
+    a) Iron and Zinc
+    b) Copper, Mercury and Silver
+    c) Gold and Platinum
+    d) Lithium and Iridium
+    Answer: b) Copper, Mercury and Silver
+
+14. Most metals occur in the form of:
+    a) Only pure elements
+    b) Oxides, sulphides, carbonates, sulphates, chlorides and silicates
+    c) Free state only
+    d) Hydrides
+    Answer: b) Oxides, sulphides, carbonates, sulphates, chlorides and silicates
+
+15. Which is the lightest metal?
+    a) Lithium
+    b) Sodium
+    c) Aluminium
+    d) Iron
+    Answer: a) Lithium
+
+16. Which metal has the highest density among metals?
+    a) Osmium
+    b) Platinum
+    c) Gold
+    d) Iridium
+    Answer: d) Iridium
+
+17. Which concentration method is used for metals having a low melting point, such as lead and tin?
+    a) Distillation
+    b) Oxidation
+    c) Liquation
+    d) Forth Floatation
+    Answer: c) Liquation
+
+18. Which concentration method is used for volatile metals like mercury and zinc that contain non-volatile impurities?
+    a) Liquation
+    b) Oxidation
+    c) Distillation
+    d) Roasting
+    Answer: c) Distillation
+
+19. Which concentration method is used for metals containing volatile impurities that are easily oxidised, e.g., Pig iron?
+    a) Distillation
+    b) Liquation
+    c) Oxidation
+    d) Calcination
+    Answer: c) Oxidation
+
+20. A carbonate ore is converted into metal oxide by heating in the absence of air, a process called:
+    a) Roasting
+    b) Calcination
+    c) Oxidation
+    d) Distillation
+    Answer: b) Calcination
+
+21. A sulphide ore is converted into metal oxide by heating in the presence of oxygen, a process called:
+    a) Calcination
+    b) Roasting
+    c) Liquation
+    d) Electrolysis
+    Answer: b) Roasting
+
+22. Metal oxides are reduced to metal by:
+    a) Heating in air
+    b) Carbon, aluminium or electrolytic reduction
+    c) Dissolving in water
+    d) Only distillation
+    Answer: b) Carbon, aluminium or electrolytic reduction
+
+23. The refining of metals can be done by which methods?
+    a) Only calcination
+    b) Only roasting
+    c) Electrolysis, liquation, distillation or oxidation methods
+    d) Only Forth Floatation
+    Answer: c) Electrolysis, liquation, distillation or oxidation methods.
+
+24. Which process is used for the concentration of sulphide ores?
+    a) Calcination
+    b) Roasting
+    c) Forth Floatation process
+    d) Liquation
+    Answer: c) Forth Floatation process
+
+LIST OF COMMON ORES
+
+25. Hematite (Fe2O3) and Magnetite (Fe3O4) are ores of which metal?
+    a) Aluminium
+    b) Copper
+    c) Iron
+    d) Zinc
+    Answer: c) Iron
+
+26. Bauxite (Al2O3.2H2O) and Kryolite (Na3AlF6) are ores of which metal?
+    a) Iron
+    b) Aluminium
+    c) Copper
+    d) Lead
+    Answer: b) Aluminium
+
+27. Copper pyrite (CuFeS2) and Copper glance (Cu2S) are ores of which metal?
+    a) Zinc
+    b) Copper
+    c) Tin
+    d) Silver
+    Answer: b) Copper
+
+28. Zincblende (ZnS) and Calamine (ZnCO3) are ores of which metal?
+    a) Copper
+    b) Lead
+    c) Zinc
+    d) Potassium
+    Answer: c) Zinc
+
+29. Karnalite (KCl MgCl2 6H2O) and Saltpetre (KNO3) are ores of which metal?
+    a) Sodium
+    b) Magnesium
+    c) Potassium
+    d) Calcium
+    Answer: c) Potassium
+
+30. Galena (PbS) is an ore of which metal?
+    a) Tin
+    b) Silver
+    c) Lead
+    d) Gold
+    Answer: c) Lead
+
+31. Cassiterite (SnO2) is an ore of which metal?
+    a) Lead
+    b) Silver
+    c) Tin
+    d) Mercury
+    Answer: c) Tin
+
+32. Silver glance (Ag2S) is an ore of which metal?
+    a) Gold
+    b) Mercury
+    c) Silver
+    d) Magnesium
+    Answer: c) Silver
+
+33. Calverite (Au Te2) and Silvenites (AgAuTe2) are ores of which metal?
+    a) Silver
+    b) Gold
+    c) Mercury
+    d) Lead
+    Answer: b) Gold
+
+34. Cinnabar (HgS) and Calomel (Hg2Cl2) are ores of which metal?
+    a) Tin
+    b) Silver
+    c) Gold
+    d) Mercury
+    Answer: d) Mercury
+
+35. Magnesite (MgCO3) and Dolomite (MgCO3 CaCO3) are ores of which metal?
+    a) Calcium
+    b) Potassium
+    c) Magnesium
+    d) Sodium
+    Answer: c) Magnesium
+
+IMPORTANT ALLOYS
+
+36. Brass is an alloy primarily composed of:
+    a) Copper and Tin
+    b) Copper and Zinc
+    c) Copper and Nickel
+    d) Copper and Aluminium
+    Answer: b) Copper and Zinc
+
+37. Brass is commonly used for:
+    a) Gun industries
+    b) Bells
+    c) Utensils and bullets
+    d) Jewelry
+    Answer: c) Utensils and bullet
+
+38. Bronze is an alloy primarily composed of:
+    a) Copper and Zinc
+    b) Copper and Tin
+    c) Copper and Nickel
+    d) Copper and Aluminium
+    Answer: b) Copper and Tin
+
+39. Bronze is commonly used for:
+    a) Acid pumps
+    b) Bells
+    c) Utensils and statues
+    d) Jewelry
+    Answer: c) Utensils and statue
+
+40. Phosphor bronze is used in:
+    a) Utensils and statues
+    b) Galvanometers and utensils
+    c) Jewelry
+    d) Gun industries
+    Answer: b) Galvanometer and utensils
+
+41. German silver contains what main elements?
+    a) Cu, Sn, Zn
+    b) Cu, Zn, Ni
+    c) Cu, Al, Sn
+    d) Cu, Ni, Mn
+    Answer: b) Cu: 50% to Zn: 25%, Ni; 25% (The specific percentages are given, but Cu, Zn, Ni are the main elements.)
+
+42. German silver is used for:
+    a) Acid pumps
+    b) Bells
+    c) Gun industries
+    d) Utensils
+    Answer: d) Utensils
+
+43. Al Bronze (Aluminium Bronze) is used for:
+    a) Utensils
+    b) Jewelry, golden paints, coins
+    c) Gun industries
+    d) Acid pumps
+    Answer: b) Jwellery, golden paints, coins
+
+44. Monel metal is used for:
+    a) Utensils
+    b) Jewelry
+    c) Acid pump
+    d) Gun industries
+    Answer: c) Acid pump
+
+45. Gun metal is primarily composed of:
+    a) Cu, Zn, Ni
+    b) Cu, Sn, Zn
+    c) Cu, Al, Sn
+    d) Cu, Ni, Mn
+    Answer: b) Cu: 87%, Sn: 10%, Zn: 3%
+
+46. Gun metal is used in:
+    a) Bells
+    b) Acid pumps
+    c) Gun industries
+    d) Utensils
+    Answer: c) Gun industries
+
+47. Bell metal is primarily composed of:
+    a) Copper and Zinc
+    b) Copper and Tin
+    c) Copper and Nickel
+    d) Copper and Aluminium
+    Answer: b) Copper and Tin
+
+48. Bell metal is used in:
+    a) Gun industries
+    b) Bells
+    c) Utensils
+    d) Acid pumps
+    Answer: b) In bells
+
+COMPOUNDS OF SODIUM
+
+49. Common salt is chemically known as:
+    a) Sodium carbonate
+    b) Sodium bicarbonate
+    c) Sodium chloride
+    d) Sodium hydroxide
+    Answer: c) Sodium chloride
+
+50. Common salt is hygroscopic due to the presence of a small amount of:
+    a) Potassium chloride
+    b) Calcium chloride
+    c) Magnesium chloride
+    d) Sodium bicarbonate
+    Answer: c) Magnesium chloride
+
+51. Washing soda is chemically known as:
+    a) Sodium chloride
+    b) Sodium bicarbonate
+    c) Sodium carbonate decahydrate
+    d) Sodium hydroxide
+    Answer: c) Sodium carbonate decahydrate, Na2CO3. 10H2O
+
+52. Washing soda is used for:
+    a) Flavoring food
+    b) Food preservation
+    c) Removing hardness of water and cleaning fabrics
+    d) Fire extinguishers
+    Answer: c) Remove hardness of water and in cleaning of fabrics
+
+53. Baking soda's chemical name is:
+    a) Sodium carbonate
+    b) Sodium chloride
+    c) Sodium bicarbonate or sodium hydrogen carbonate
+    d) Calcium oxide
+    Answer: c) Sodium bicarbonate or sodium hydrogen carbonate
+
+54. Baking soda is used in:
+    a) Removing hardness of water
+    b) Water fire extinguisher and as baking powder in cooking
+    c) Cleaning fabrics
+    d) Manufacturing cement
+    Answer: b) Water fire extinguisher and as baking powder in cooking
+
+55. Baking powder is a mixture of:
+    a) Sodium carbonate and citric acid
+    b) Sodium bicarbonate and tartaric acid
+    c) Sodium chloride and baking soda
+    d) Calcium oxide and sodium bicarbonate
+    Answer: b) Sodium bicarbonate and tartaric acid
+
+Glass
+
+56. Glass is described as a supercooled liquid formed from:
+    a) Clay, water, and sand
+    b) Sand, lime stone, soda ash and cullet
+    c) Only pure silica
+    d) Metals and non-metals
+    Answer: b) Sand, lime stone, soda ash and cullet
+
+57. The glass produced by heating sand, limestone, soda ash, and cullet in a regenerative furnace is called:
+    a) Borosilicate glass
+    b) Bullet proof glass
+    c) Soda glass
+    d) Laminated glass
+    Answer: c) Soda glass
+
+58. In borosilicate glass, soda is replaced with:
+    a) Zinc oxide
+    b) Lead oxide
+    c) Boron oxide
+    d) Aluminium oxide
+    Answer: c) Boron oxide
+
+59. Bullet Proof Glass is made of:
+    a) Soda glass and cullet
+    b) Poly carbonate, thermoplastic and laminated glass
+    c) Borosilicate glass only
+    d) Only natural glass
+    Answer: b) Poly carbonate, thermoplastic and laminated glass
+
+60. Glass is considered a:
+    a) Solid with crystalline structure
+    b) Super cooled liquid and highly viscous substance
+    c) Gas with high density
+    d) Non-viscous liquid
+    Answer: b) Super cooled liquid. It is considered as highly viscous substance.
+
+COMPOUNDS OF CALCIUM
+
+61. Lime is chemically known as:
+    a) Calcium hydroxide
+    b) Calcium carbonate
+    c) Calcium oxide
+    d) Calcium sulphate
+    Answer: c) Calcium oxide, CaO
+
+62. Lime (Calcium Oxide) is also called:
+    a) Slaked Lime
+    b) Quick Lime
+    c) Plaster of Paris
+    d) Bleaching Powder
+    Answer: b) Quick Lime
+
+63. Lime is prepared by heating limestone to a temperature of 800°C to 1000°C in a:
+    a) Blast furnace
+    b) Cement kiln
+    c) Lime kiln
+    d) Distillation apparatus
+    Answer: c) Lime kiln
+
+64. What is the approximate melting point of Calcium oxide (lime)?
+    a) 100°C
+    b) 800°C
+    c) 1500°C
+    d) 2600°C
+    Answer: d) 2600°C
+
+65. Calcium oxide (lime) is used in the manufacture of:
+    a) Soap and detergent
+    b) Cement and glass
+    c) Paper and textile
+    d) Fertilizers and explosives
+    Answer: b) Cement and glass
+
+66. Calcium oxide (lime) is used for drying:
+    a) Solids and liquids
+    b) Gases and alcohol
+    c) Acids and bases
+    d) Ores and minerals
+    Answer: b) Gases and alcohol
+
+67. Calcium oxide (lime) is used as a basic lining in:
+    a) Storage tanks
+    b) Furnaces
+    c) Water pipes
+    d) Electrical wires
+    Answer: b) Furnaces
+
+68. Calcium oxide (lime) is used in the preparation of:
+    a) Sodium bicarbonate
+    b) Calcium carbide, basic calcium nitrate, and calcium bisulphite
+    c) Magnesium hydroxide
+    d) Aluminium hydroxide
+    Answer: b) Calcium carbide, basic calcium nitrate, and calcium bisulphite
+
+69. The formation of calcium hydroxide from calcium oxide is called:
+    a) Roasting
+    b) Calcination
+    c) Slaking of lime
+    d) Hydration
+    Answer: c) Slaking of lime
+
+70. A solution of calcium hydroxide (slaked lime) in water, called lime-water, is used for testing:
+    a) Oxygen and nitrogen gas
+    b) Carbon dioxide and sulphur dioxide gas
+    c) Hydrogen and methane gas
+    d) Chlorine and ammonia gas
+    Answer: b) Carbon dioxide and sulphur dioxide gas
+
+71. When lime-water reacts with carbon dioxide, the white precipitate formation is:
+    a) Permanent
+    b) Temporary
+    c) Absent
+    d) Blue
+    Answer: b) Temporary
+
+72. When lime-water reacts with sulphur dioxide, the white precipitate formation is:
+    a) Temporary
+    b) Permanent
+    c) Absent
+    d) Green
+    Answer: b) Permanent
+
+73. Hard water is rich in which salts?
+    a) Chloride and sulphate salts of sodium and potassium
+    b) Chloride and sulphate salts of calcium and magnesium
+    c) Nitrate and carbonate salts of iron
+    d) Phosphate salts of zinc
+    Answer: b) Chloride and sulphate salts of calcium and magnesium
+
+74. Hard water is not good for laundry purposes because it:
+    a) Forms too much lather with soap
+    b) Does not form lather with soap
+    c) Leaves no scale of salt deposits
+    d) Is less dense than soft water
+    Answer: b) Does not form lather with soap
+
+75. Hard water, when boiled, leaves:
+    a) No residue
+    b) A clear solution
+    c) Scale of salt deposits
+    d) Only gas
+    Answer: c) Scale of salt deposits
+
+76. Bleaching powder is chemically known as:
+    a) Calcium carbonate
+    b) Calcium sulphate
+    c) Calcium oxychloride
+    d) Calcium hydroxide
+    Answer: c) Calcium oxychloride
+
+77. Bleaching powder is produced by passing chlorine gas over:
+    a) Dry quick lime
+    b) Wet quick lime
+    c) Dry slaked lime
+    d) Wet slaked lime
+    Answer: c) Dry slaked lime
+
+78. Bleaching powder gives a strong smell of chlorine if:
+    a) Heated
+    b) Cooled
+    c) Left exposed to air
+    d) Mixed with water
+    Answer: c) Left exposed to air
+
+79. Bleaching powder is commonly used for bleaching washed clothes in:
+    a) Textile industry
+    b) Laundry
+    c) Paper industry
+    d) Chemical industries
+    Answer: b) Laundry
+
+80. Bleaching powder is used for disinfecting drinking water supply, a process known as:
+    a) Filtration
+    b) Chlorination
+    c) Ozonation
+    d) Sedimentation
+    Answer: c) chlorination
+
+81. Bleaching powder is used for the manufacture of:
+    a) Methane
+    b) Chloroform (CHCl3)
+    c) Ethanol
+    d) Acetone
+    Answer: b) Chloroform (CHCl3)
+
+82. Plaster of Paris is chemically known as:
+    a) Calcium sulphate dihydrate
+    b) Calcium sulphate hemihydrate
+    c) Calcium carbonate
+    d) Calcium oxide
+    Answer: b) Calcium sulphate hemihydrate
+
+83. Plaster of Paris is prepared from:
+    a) Limestone
+    b) Gypsum
+    c) Chalk
+    d) Marble
+    Answer: b) Gypsum
+
+84. Gypsum is chemically:
+    a) Calcium sulphate hemihydrate
+    b) Calcium sulphate dihydrate
+    c) Calcium oxide
+    d) Calcium carbonate
+    Answer: b) Calcium sulphate dihydrate, CaSO4. 2H2O
+
+85. When gypsum is heated to a temperature of 100°C, it forms:
+    a) Dead plaster
+    b) Quick lime
+    c) Plaster of Paris
+    d) Slaked lime
+    Answer: c) Plaster of Paris
+
+86. If gypsum is heated at a higher temperature than 100°C, it produces:
+    a) Plaster of Paris
+    b) Dead plaster
+    c) Quick lime
+    d) Slaked lime
+    Answer: b) Dead plaster
+
+87. Plaster of Paris, when mixed with water, sets into a:
+    a) Soft mass
+    b) Liquid
+    c) Hard mass
+    d) Powder
+    Answer: c) Hard mass
+
+88. Plaster of Paris is used in hospitals for setting fractured bones because it:
+    a) Makes them flexible
+    b) Keeps the fractured bone straight and in a fixed position
+    c) Dissolves the bones
+    d) Provides warmth
+    Answer: b) Keeps the fractured bone straight.
+
+89. Plaster of Paris is used in chemistry laboratories for:
+    a) Cleaning glassware
+    b) Sealing the airgaps in apparatus
+    c) Filtering solutions
+    d) Heating chemicals
+    Answer: b) Sealing the airgaps in apparatus where air-tight arrangement is required.
+
+90. Plaster of Paris is used in making:
+    a) Metals
+    b) Fuels
+    c) Castings for statues, cheap ornaments, toys and decorative materials
+    d) Acids
+    Answer: c) Castings for statues, cheap ornaments, toys and decorative materials
+
+91. Plaster of Paris is used as a:
+    a) Cleaning agent
+    b) Food preservative
+    c) Fire-proofing material
+    d) Lubricant
+    Answer: c) Fire-proofing material
+
+92. Plaster of Paris is used in making:
+    a) Whiteboard markers
+    b) Black-board chalk
+    c) Pencils
+    d) Paint
+    Answer: b) Black-board chalk
+
+Allotropy
+
+93. The property in which an element exhibits itself in two or more than two physical forms is called:
+    a) Isomerism
+    b) Catenation
+    c) Allotropy
+    d) Polymerization
+    Answer: c) Allotropy
+
+94. Which of the following elements exhibits allotropy?
+    a) Sodium
+    b) Calcium
+    c) Carbon
+    d) Iron
+    Answer: c) Carbon
+
+95. Carbon exists in allotropic forms such as:
+    a) Graphite, diamond, carbon black, charcoal, and fullerenes
+    b) Only graphite and diamond
+    c) Only amorphous forms
+    d) Only crystalline forms
+    Answer: a) Graphite, diamond, carbon black, charcoal i.e., wood/ animal charcoal and fullerenes with minimum of C-60.
+
+96. Which allotropic form of phosphorus is stored in water due to its high reactivity and low ignition temperature?
+    a) Red phosphorus
+    b) Black phosphorus
+    c) White phosphorus
+    d) Violet phosphorus
+    Answer: c) White phosphorous
+
+97. White phosphorus is used in which industry?
+    a) Fertilizer
+    b) Match box industry in making match sticks
+    c) Textile
+    d) Cement
+    Answer: b) Match box industry in making match sticks
+
+98. Wood charcoal is used as fuel for absorption of gases in:
+    a) Water purifiers
+    b) Gas masks
+    c) Air conditioners
+    d) Furnaces
+    Answer: b) Gas masks
+
+99. Animal charcoal is used to remove pigment during filtration of molasses in the:
+    a) Paper industries
+    b) Textile industries
+    c) Sugar industries
+    d) Dye industries
+    Answer: c) Sugar industries
+
+ELEMENTS AND THEIR OCCURRENCE IN EARTH
+
+100. The solid phase of the earth is called the:
+    a) Hydrosphere
+    b) Atmosphere
+    c) Lithosphere
+    d) Biosphere
+    Answer: c) Lithosphere
+
+101. Which four elements are recovered commercially from sea water?
+    a) Iron, Zinc, Copper, Lead
+    b) Chlorine, Bromine, Sodium, Magnesium
+    c) Oxygen, Nitrogen, Argon, Carbon Dioxide
+    d) Potassium, Calcium, Sulphur, Carbon
+    Answer: b) Chlorine, Bromine, Sodium, Magnesium
+
+102. What might Manganese nodules found in the sea bed form a potential source of?
+    a) Common salts
+    b) Less common metals
+    c) Organic compounds
+    d) Noble gases
+    Answer: b) Some of the less common metals
+
+103. The gaseous phase of the earth is called the:
+    a) Lithosphere
+    b) Hydrosphere
+    c) Atmosphere
+    d) Biosphere
+    Answer: c) Atmosphere
+
+104. The atmosphere mainly consists of:
+    a) Oxygen and Carbon dioxide
+    b) Nitrogen (78.09%), Oxygen (20.95%), Argon (0.93%)
+    c) Hydrogen and Helium
+    d) Methane and Water vapor
+    Answer: b) Nitrogen (78.09%), Oxygen (20.95%). Argon (0.93) and other gases (<1%).
+
+105. How are the main atmospheric gases (Nitrogen, Oxygen, Argon) obtained?
+    a) Chemical reaction
+    b) Fractional distillation of air
+    c) Electrolysis of water
+    d) Combustion
+    Answer: b) Fractional distillation of air
+
+106. Carbon dioxide forms about what percentage of the atmosphere?
+    a) 20.95%
+    b) 0.93%
+    c) 0.04%
+    d) 78.09%
+    Answer: c) 0.04%
+
+107. Ozone exists mostly at the outer atmospheric level, where it helps in the absorption of:
+    a) Infrared radiation
+    b) Solar ultraviolet radiation
+    c) Visible light
+    d) Radio waves
+    Answer: b) Solar ultraviolet radiation
+
+108. Ozone is considered a "chemical weed" on the earth's surface because it is a:
+    a) Useful gas
+    b) Bluish toxic gas
+    c) Harmless gas
+    d) Greenish inert gas
+    Answer: b) Bluish toxic gas
+
+109. Which element is accumulated in sea weeds?
+    a) Vanadium
+    b) Potassium
+    c) Iodine
+    d) Iron
+    Answer: c) Iodine
+
+110. Which element is accumulated in sea cucumbers?
+    a) Iodine
+    b) Potassium
+    c) Vanadium
+    d) Magnesium
+    Answer: c) Vanadium
+
+111. Which element is concentrated in plant leaves?
+    a) Iron
+    b) Zinc
+    c) Magnesium
+    d) Potassium
+    Answer: d) Potassium
+
+112. Iron (Fe-11) is concentrated in which part of living beings?
+    a) Eyes
+    b) Chloroplast
+    c) Blood
+    d) Mollusc fluid
+    Answer: c) Blood
+
+113. Zinc is concentrated in which part of certain animals?
+    a) Blood
+    b) Chloroplast
+    c) Eyes
+    d) Mollusc fluid
+    Answer: c) Eyes
+
+114. Magnesium is concentrated in:
+    a) Blood
+    b) Eyes
+    c) Chloroplast
+    d) Mollusc fluid
+    Answer: c) Chloroplast
+
+115. Copper in mollusks is responsible for what characteristic of their blood?
+    a) Red color
+    b) Blue color fluid
+    c) Green color
+    d) Colorless fluid
+    Answer: b) Blue colour fluid (blood) because copperions.
+
+FUELS
+
+116. Materials which on combustion produce heat and light energy are known as:
+    a) Acids
+    b) Bases
+    c) Fuels
+    d) Salts
+    Answer: c) Fuels
+
+117. Which of the following is an example of a solid fuel?
+    a) Petrol
+    b) Natural gas
+    c) Coal
+    d) Kerosene
+    Answer: c) Coal
+
+118. Which of the following is an example of a liquid fuel?
+    a) Wood
+    b) LPG
+    c) Diesel
+    d) Producer gas
+    Answer: c) Diesel
+
+119. Which of the following is an example of a gaseous fuel?
+    a) Coke
+    b) Kerosene
+    c) Bio-gas (Gobar gas)
+    d) Alcohol
+    Answer: c) Gobar gas (Biogas)
+
+120. The waste material of living objects like cattle dung and the dead parts of living objects like plants, trees, is called:
+    a) Fossil fuel
+    b) Nuclear fuel
+    c) Bio-mass
+    d) Mineral
+    Answer: c) Bio–mass
+
+121. Bio-mass is the oldest source of heat energy for domestic purposes and contains:
+    a) Only hydrogen compounds
+    b) Only oxygen compounds
+    c) Carbon compounds
+    d) Only nitrogen compounds
+    Answer: c) Carbon compounds
+
+122. Which of the following is an example of Bio-mass used as a fuel?
+    a) Natural gas
+    b) Wood
+    c) Diesel
+    d) Coal gas
+    Answer: b) Wood
+
+123. The destructive distillation of wood yields:
+    a) Crude oil
+    b) Wood gas, charcoal, methyl alcohol, acetic acid
+    c) Only charcoal
+    d) Only methyl alcohol
+    Answer: b) Wood gas, charcoal, methyl alcohol, acetic acid
+
+124. Bio-gas is a mixture primarily of:
+    a) Hydrogen and nitrogen
+    b) Methane (65%), carbon-dioxide, hydrogen and hydrogen sulphide
+    c) Carbon monoxide and hydrogen
+    d) Propane and butane
+    Answer: b) Methane (65%), carbon-dioxide, hydrogen and hydrogen sulphide
+
+125. The major constituent of bio-gas is:
+    a) Carbon dioxide
+    b) Hydrogen sulphide
+    c) Methane (65%)
+    d) Hydrogen
+    Answer: c) Methane (65%)
+
+126. Bio-gas is obtained by the anaerobic fermentation of animal and vegetable (plant) wastes in the absence of water, brought up by:
+    a) Fungi
+    b) Yeasts
+    c) Methanogens, bacteria present in cow dung
+    d) Algae
+    Answer: c) Methanogens, bacteria present in cow dung
+
+127. Which organization is the major one engaged in the promotion and construction of bio-gas plants?
+    a) UNICEF
+    b) WHO
+    c) Khadi and Village Industries Commission (KUIC)
+    d) UNESCO
+    Answer: c) Khadi and Village Industries Commission (KUIC)
+
+128. Coal is a complex mixture of compounds of:
+    a) Only carbon
+    b) Carbon, hydrogen and oxygen
+    c) Only hydrogen
+    d) Nitrogen and sulfur
+    Answer: b) Carbon, hydrogen and oxygen
+
+129. Coal was formed by the carbonisation of large plants and trees buried under the earth:
+    a) Recently
+    b) Millions of years ago
+    c) Thousands of years ago
+    d) Centuries ago
+    Answer: b) Millions of year ago
+
+130. Which type of coal is used as fuel in households and industry?
+    a) Peat
+    b) Lignite
+    c) Bituminous
+    d) Anthracite
+    Answer: c) Bituminous coal
+
+131. What is the approximate carbon content of Peat coal?
+    a) 60%
+    b) 70%
+    c) 80%
+    d) 90%
+    Answer: a) 60%
+
+132. What is the approximate carbon content of Lignite coal?
+    a) 60%
+    b) 70%
+    c) 80%
+    d) 90%
+    Answer: b) 70%
+
+133. What is the approximate carbon content of Bituminous coal?
+    a) 60%
+    b) 70%
+    c) 80%
+    d) 90%
+    Answer: c) 80%
+
+134. What is the approximate carbon content of Anthracite coal?
+    a) 60%
+    b) 70%
+    c) 80%
+    d) 90%
+    Answer: d) 90%
+
+135. The destructive distillation of coal yields:
+    a) Only coal gas
+    b) Coal gas, ammoniacal liquor, coal tar and coke
+    c) Only coke
+    d) Only coal tar
+    Answer: b) Coal gas, ammoniacal liquor, coal tar and coke
+
+136. Coke is used as a fuel with high calorific value and as a:
+    a) Oxidizing agent
+    b) Reducing agent in reduction of metallic oxides to metal
+    c) Catalyst
+    d) Lubricant
+    Answer: b) Reducing agent in reduction of metallic oxides to metal
+
+137. Coal gas is a mixture of:
+    a) Carbon monoxide and hydrogen
+    b) Hydrogen, methane, and carbon monoxide
+    c) Carbon monoxide and nitrogen
+    d) Butane, propane, and ethane
+    Answer: b) Hydrogen, methane, and carbon monoxide
+
+138. Water gas is a mixture of:
+    a) Hydrogen and methane
+    b) Carbon monoxide and hydrogen
+    c) Carbon monoxide and nitrogen
+    d) Butane and propane
+    Answer: b) Carbon monoxide and hydrogen
+
+139. Producer gas is a mixture of:
+    a) Carbon monoxide and hydrogen
+    b) Hydrogen and methane
+    c) Carbon monoxide and nitrogen
+    d) Butane and ethane
+    Answer: c) Carbon monoxide and nitrogen
+
+140. Crude oil was formed from the carbonisation of remains of:
+    a) Large plants and trees
+    b) Extremely small plants and animals along with prokaryotes like bacteria
+    c) Minerals and rocks
+    d) Only marine animals
+    Answer: b) Extremely small plants and animals along with procaryotes like bacteria buried under the sea millions of years ago in high temperature and pressure conditions.
+
+141. The refining of petroleum is done by the process of:
+    a) Simple distillation
+    b) Fractional distillation
+    c) Cracking
+    d) Pyrolysis
+    Answer: b) Fractional distillation
+
+142. Which of the following is an important petrochemical?
+    a) Water
+    b) Sulphuric acid
+    c) Ethyl Alcohol
+    d) Common salt
+    Answer: c) Ethyl Alcohol
+
+143. Petroleum gas is a mixture of:
+    a) Methane and ethane
+    b) Butane, propane and ethane
+    c) Carbon monoxide and hydrogen
+    d) Hydrogen and nitrogen
+    Answer: b) Butane, propane and ethane
+
+144. Petroleum gas liquefied under pressure is called:
+    a) CNG
+    b) LNG
+    c) LPG
+    d) NGL
+    Answer: c) Liquefied Petroleum Gas (LPG)
+
+145. LPG consists mainly of:
+    a) Methane
+    b) Butane and small amount of propane and ethane
+    c) Carbon monoxide
+    d) Hydrogen
+    Answer: b) Butane and small amount of propane and ethane
+
+146. What is added to LPG to help in the detection of gas leakage?
+    a) Methane
+    b) Ethyl mercaptan
+    c) Carbon dioxide
+    d) Propane
+    Answer: b) Ethyl mercaptan
+
+147. Natural gas mainly consists of:
+    a) Ethane
+    b) Propane
+    c) Methane (CH4)
+    d) Butane
+    Answer: c) Methane (CH4)
+
+148. The process of breaking bigger hydrocarbon molecules into smaller hydrocarbon molecules by heating in the presence of a catalyst is called:
+    a) Pyrolysis
+    b) Distillation
+    c) Cracking
+    d) Oxidation
+    Answer: c) Cracking
+
+149. The process of breaking bigger hydrocarbon molecules into smaller hydrocarbon molecules by heating in the absence of oxygen is called:
+    a) Cracking
+    b) Pyrolysis
+    c) Distillation
+    d) Oxidation
+    Answer: b) Pyrolysis
+
+150. The amount of heat produced by burning a unit mass of the fuel completely (complete combustion of a gram of fuel) is known as its:
+    a) Ignition temperature
+    b) Flash point
+    c) Calorific value
+    d) Boiling point
+    Answer: c) Calorific value
+
+NOBLE GASES
+
+151. How many noble gases are there?
+    a) Four
+    b) Five
+    c) Six
+    d) Seven
+    Answer: c) Six
+
+152. Which of the following is a noble gas?
+    a) Nitrogen
+    b) Oxygen
+    c) Krypton
+    d) Carbon dioxide
+    Answer: c) Krypton
+
+153. Noble gases are also called 'rare gases' because:
+    a) They are hard to find on other planets
+    b) They are present in very small quantities in the air
+    c) They are expensive to produce
+    d) They are found only in specific minerals
+    Answer: b) They are present in very small quantities in the air
+
+154. Which noble gas is not present in air and is the rarest of gases?
+    a) Helium
+    b) Neon
+    c) Argon
+    d) Radon
+    Answer: d) Radon
+
+155. Noble gases are also called 'inert gases' because:
+    a) They are colorless
+    b) They do not enter into chemical reactions
+    c) They are heavy
+    d) They are rare
+    Answer: b) They do not enter into chemical reactions
+
+156. Helium is used for:
+    a) Making advertising signs
+    b) Filling meteorological balloons and also used by sea divers
+    c) Creating an inert atmosphere in chemical reactions
+    d) Electrical valves
+    Answer: b) Filling meteorological balloons and also used by sea divers
+
+157. Neon is used in:
+    a) Filling meteorological balloons
+    b) Making advertising signs and gives orange-red colour to fluorescent tubes
+    c) Creating an inert atmosphere
+    d) Electrical valves
+    Answer: b) Making advertising signs. It gives orange-red colour to fluorescent tubes.
+
+158. Argon is used to:
+    a) Fill meteorological balloons
+    b) Make advertising signs
+    c) Create an inert atmosphere in chemical reactions and in electric bulbs
+    d) Electrical valves
+    Answer: c) Create an inert atmosphere in chemical reactions and in electric bulbs.
+
+159. Argon gives what color to fluorescent tubes?
+    a) Orange-red
+    b) Bluish-green
+    c) Yellow
+    d) White
+    Answer: b) Bluishgreen colour to flouorescent tubes.
+
+160. Krypton and Xenon are used in:
+    a) Filling meteorological balloons
+    b) Advertising signs
+    c) Electrical valves and TV tubes and also in lighthouses and miner’s lamp
+    d) Only electric bulbs
+    Answer: c) Electrical valves and TV tubes and also in lighthouses and miner’s lamp.
+
+161. Xenon is known to react with fluorine or oxygen because of their:
+    a) Low reactivity
+    b) Very high electronegative and electropositive nature
+    c) Small size
+    d) High density
+    Answer: b) Very high electro negative and electropositive nature
+
+Common Organic Compounds
+
+162. Marsh gas is the common name for:
+    a) Ethanol
+    b) Methane
+    c) Acetone
+    d) Formaldehyde
+    Answer: b) Methane
+
+163. Trichloromethane is the chemical name for:
+    a) Methanol
+    b) Ethanol
+    c) Chloroform
+    d) Acetic acid
+    Answer: c) Chloroform
+
+164. Methyl Alcohol is the chemical name for:
+    a) Ethanol
+    b) Methanol
+    c) Propanone
+    d) Formaldehyde
+    Answer: b) Methanol
+
+165. Ethyl Alcohol is the chemical name for:
+    a) Methanol
+    b) Ethanol
+    c) Acetone
+    d) Acetic acid
+    Answer: b) Ethanol
+
+166. Vinegar is a dilute solution of:
+    a) Citric acid
+    b) Tartaric acid
+    c) Acetic acid
+    d) Carbonic acid
+    Answer: c) Acetic acid
+
+CARBON AND COMPOUNDS
+
+167. Carbon is the first element of which group of the periodic table?
+    a) 12th group
+    b) 13th group
+    c) 14th group
+    d) 15th group
+    Answer: c) 14th group
+
+168. Carbon's atomic number is:
+    a) 4
+    b) 6
+    c) 8
+    d) 12
+    Answer: b) 6
+
+169. Carbon's valency is:
+    a) 2
+    b) 3
+    c) 4
+    d) 6
+    Answer: c) 4
+
+170. The property of carbon to form long straight or branched chain compounds is called:
+    a) Isomerism
+    b) Homologous series
+    c) Catenation
+    d) Allotropy
+    Answer: c) Catenation
+
+Saturated and Unsaturated hydrocarbons
+
+171. Saturated hydrocarbons have:
+    a) Double covalent bonds
+    b) Triple covalent bonds
+    c) Single covalent bonds
+    d) Both double and triple bonds
+    Answer: c) Single covalent bond.
+
+172. Saturated hydrocarbons burn with what type of flame?
+    a) Sooty flame
+    b) Non-sooty flame
+    c) Blue flame
+    d) Yellow flame
+    Answer: b) Non-sooty flame.
+
+173. Unsaturated hydrocarbons have:
+    a) Only single covalent bonds
+    b) Either double or triple covalent bonds
+    c) Only ionic bonds
+    d) No covalent bonds
+    Answer: b) Either double or triple covalent bond.
+
+174. Unsaturated hydrocarbons burn with what type of flame?
+    a) Non-sooty flame
+    b) Sooty flame
+    c) Invisible flame
+    d) Blue flame
+    Answer: b) Sooty flame.
+
+175. Unsaturated hydrocarbons react with bromine water to:
+    a) Not react
+    b) React very slowly
+    c) Decolorize it fastly
+    d) Remain unchanged
+    Answer: c) React fastly with the bromine water to decolourize it.
+
+176. The general structural formula for Alkanes is:
+    a) CnH2n+2
+    b) CnH2n
+    c) CnH2n-2
+    d) CnH2n+1
+    Answer: a) CnH2n+2
+
+177. The general structural formula for Alkenes is:
+    a) CnH2n+2
+    b) CnH2n
+    c) CnH2n-2
+    d) CnH2n-1
+    Answer: b) CnH2n
+
+178. The general structural formula for Alkynes is:
+    a) CnH2n+2
+    b) CnH2n
+    c) CnH2n-2
+    d) CnH2n+1
+    Answer: c) CnH2n–2
+
+179. A series of hydrocarbons in which all members follow the same structural formula and every succeeding member differs from the adjacent by a -CH2 group or 14 amu by mass is called a:
+    a) Isomer
+    b) Allotrope
+    c) Homologous series
+    d) Polymer
+    Answer: c) Homologues series
+
+180. A phenomenon in which a hydrocarbon exists having two or more structural formulas without undergoing any change in its molecular formula is called:
+    a) Allotropy
+    b) Catenation
+    c) Isomerism
+    d) Homology
+    Answer: c) Isomerism
+
+181. When carbon bonds with hydrogen, it forms compounds called:
+    a) Carbohydrates
+    b) Hydrocarbons
+    c) Alcohols
+    d) Esters
+    Answer: b) Hydrocarbons
+
+182. The study of hydrocarbons or their derivatives is called:
+    a) Inorganic chemistry
+    b) Physical chemistry
+    c) Organic chemistry
+    d) Analytical chemistry
+    Answer: c) Organic chemistry
+
+183. The alcohol consumed by people is:
+    a) Methanol
+    b) Propanol
+    c) Ethanol
+    d) Butanol
+    Answer: c) Ethanol
+
+184. Methanol, also called spirit, if consumed, leads to:
+    a) Increased energy
+    b) Blindness and even death
+    c) Improved vision
+    d) Enhanced digestion
+    Answer: b) Blindness and even death
+
+185. To prevent the consumption of ethanol by workers, it is denatured by adding:
+    a) Water
+    b) Copper sulphate or pyridine
+    c) Sugar
+    d) Salt
+    Answer: b) Copper sulphate or pyridine
+
+186. TNT stands for:
+    a) Total Nitrogen Trioxide
+    b) Trinitro Toulene
+    c) Titanium Nitrate Trioxide
+    d) Thermal Nitro Test
+    Answer: b) Trinitro toulene (2, 4, 6-trinitro toulene)
+
+187. TNT is a yellow-colored solid with:
+    a) Lubricating properties
+    b) Fire-proofing properties
+    c) Explosive properties for military, industrial, and mining operations
+    d) Cleaning properties
+    Answer: c) Explosive properties for use in military, industrial and mining operations.
+
+188. Dynamite is an explosive made of:
+    a) TNT
+    b) RDX
+    c) Nitroglycerin
+    d) Hexamine
+    Answer: c) Nitroglycerin
+
+189. Who developed dynamite by mixing nitroglycerin with inert absorbent like 'Icieslguhr' or diatomaceous earth?
+    a) Marie Curie
+    b) Alfred Nobel
+    c) Dmitri Mendeleev
+    d) John Dalton
+    Answer: b) Alfred Nobel
+
+190. RDX stands for:
+    a) Reactive Dynamite X
+    b) Research Development Explosive
+    c) Rapid Detonation Xylol
+    d) Royal Demolition Explosive
+    Answer: b) Research Development Explosive
+
+191. RDX is obtained by reacting white fuming nitric acid with:
+    a) Nitroglycerin
+    b) TNT
+    c) Hexamine
+    d) Carbon
+    Answer: c) Hexamine
+
+Uses of known organic compounds
+
+192. Ethyl alcohol is used as an organic solvent and as a thermometric fluid in alcohol thermometers to measure:
+    a) High temperature
+    b) Low temperature
+    c) Room temperature
+    d) Boiling points
+    Answer: b) Low temperature
+
+193. The approximate percentage of ethyl alcohol in whisky is:
+    a) 4-6%
+    b) 10-14%
+    c) 35% or more
+    d) 50%
+    Answer: c) 35%, or more
+
+194. The approximate percentage of ethyl alcohol in wine is:
+    a) 4-6%
+    b) 10-14%
+    c) 35%
+    d) 50%
+    Answer: b) 10 – 14%
+
+195. The approximate percentage of ethyl alcohol in beer is:
+    a) 4-6%
+    b) 10-14%
+    c) 35%
+    d) 50%
+    Answer: a) 4-6%
+
+196. Ethyl alcohol is used as an antifreeze in radiators of motor vehicles in:
+    a) Hot countries
+    b) Cold countries
+    c) Tropical countries
+    d) Desert areas
+    Answer: b) Cold countries
+
+197. Formaldehyde (Methanal) in dilute solution is used as a preservative for:
+    a) Food
+    b) Biological specimens
+    c) Buildings
+    d) Clothing
+    Answer: b) Biological specimens
+
+198. Propanone (acetone) is used as:
+    a) A fuel
+    b) Nail polish remover, as a solvent and in manufacture of chloroform and artificial leather and plastic called perspex
+    c) A fertilizer
+    d) A lubricant
+    Answer: b) Nail polish remover, as a solvent and in manufacture of chloroform and artificial leather and plastic called perspex.
+
+199. A dilute solution of acetic acid (5% – 7%) is:
+    a) Lemon juice
+    b) Vinegar
+    c) Sulphuric acid
+    d) Hydrochloric acid
+    Answer: b) Vinegar
+
+200. Acetic acid is used in making artificial fibre cellulose acetate and in coagulation of:
+    a) Milk from cream
+    b) Rubber from latex obtained from rubber tree
+    c) Oil from seeds
+    d) Sugar from molasses
+    Answer: b) Rubber from latex obtained from rubber tree.
+
+
+
+COMMONLY USED CHEMICALS AT HOUSEHOLD
+
+1.  What is added to table salt to prevent goitre?
+    a) Calcium
+    b) Iron
+    c) Iodine
+    d) Fluoride
+    Answer: c) Iodine
+
+2.  Shampoo is a hair care product primarily used for the removal of:
+    a) Hair color
+    b) Oils, dirt, skin particles, dandruff and environmental pollutants
+    c) Excess moisture
+    d) Split ends
+    Answer: b) Oils, dirt, skin particles, dandruff and environmental pollutants
+
+3.  Chemically, soap is:
+    a) Sodium or potassium salt of long chain fatty acids
+    b) Sodium salt of sulphonic acid
+    c) Glycerol
+    d) Ethanol
+    Answer: a) Sodium or potassium salt of long chain fatty acids
+
+4.  Soap is prepared by heating equal volumes of fatty acid, NaOH, and ethanol in a water bath until:
+    a) A liquid forms
+    b) Paste formation
+    c) Gas evolves
+    d) Crystals appear
+    Answer: b) Paste formation
+
+5.  What is added to the soap mixture as it cools to remove glycerol and NaOH?
+    a) Dilute HCl solution
+    b) Saturated NaCl solution
+    c) Pure water
+    d) Ethanol
+    Answer: b) Saturated NaCl solution
+
+6.  A detergent is chemically:
+    a) The potassium salt of fatty acids
+    b) The sodium salt of sulphonic acid
+    c) A long chain alcohol
+    d) Glycerol
+    Answer: b) The sodium salt of sulphonic acid
+
+7.  Which statement is true regarding soap and detergent?
+    a) Both form lather only with soft water.
+    b) Soap forms lather with both soft and hard water, but detergent only with soft.
+    c) Soap forms lather only with soft water, but detergent is effective in forming rich lather of foam both in soft water and hard water.
+    d) Neither forms lather in hard water.
+    Answer: c) Soap forms lather only with soft water but detergent is effective in forming rich lather of foam both in soft water and hard water.
+
+8.  Which of the following causes water pollution?
+    a) Soap
+    b) Detergents
+    c) Both soap and detergents
+    d) Neither soap nor detergents
+    Answer: b) the use of detergents cause water pollution but not of soap.
+
+9.  Chemicals used on living tissues and cells, commonly as hand wash and in treatment of mouth and throat infection, are called:
+    a) Disinfectants
+    b) Antiseptics
+    c) Oxidizing agents
+    d) Fungicides
+    Answer: b) Antiseptics
+
+10. Which type of chemicals cannot be used on living tissue or cells?
+    a) Antiseptics
+    b) Antibacterials
+    c) Disinfectants
+    d) Antifungals
+    Answer: c) Disinfectants
+
+11. Which of the following is an example of an oxidizing disinfectant?
+    a) Quaternary ammonium compound
+    b) Hydrogen peroxide
+    c) Fungicides
+    d) Amphoterics
+    Answer: b) Hydrogen peroxide
+
+12. Which of the following is an example of a non-oxidizing disinfectant?
+    a) Hypochlorite
+    b) Hydrogen peroxide
+    c) Quaternary ammonium compound
+    d) Bleaching powder
+    Answer: c) Quaternary ammonium compound
+
+Fire Extinguishers
+
+13. What type of fire extinguisher is used for fires involving wood, paper, and cloth?
+    a) B-type
+    b) C-type
+    c) A-type
+    d) D-type
+    Answer: c) A-type
+
+14. For fires involving gasoline, oil, and paints, which type of fire extinguisher should be used?
+    a) A-type
+    b) B-type
+    c) C-type
+    d) K-type
+    Answer: b) B-type
+
+15. Electrical fires require which type of fire extinguisher?
+    a) A-type
+    b) B-type
+    c) C-type
+    d) D-type
+    Answer: c) C-type
+
+16. What type of fire extinguisher is used for fires involving combustible metals?
+    a) A-type
+    b) B-type
+    c) C-type
+    d) D-type
+    Answer: d) D-type
+
+17. Fires involving cooking media, vegetable, or animal oils or fats require which type of fire extinguisher?
+    a) A-type
+    b) B-type
+    c) C-type
+    d) K-type
+    Answer: d) K-type
+
+Beverages type percentage of alcohol and Source
+
+18. What is the approximate alcohol percentage in Rum?
+    a) 10-15%
+    b) 3-6%
+    c) 45-55%
+    d) 40-50%
+    Answer: c) 45-55%
+
+19. Rum is sourced from:
+    a) Barley
+    b) Grapes
+    c) Apples
+    d) Molasses (Cane Sugar)
+    Answer: d) Molasses (Cane Sugar)
+
+20. What is the approximate alcohol percentage in Whisky?
+    a) 10-15%
+    b) 3-6%
+    c) 45-55%
+    d) 40-50%
+    Answer: d) 40-50%
+
+21. Whisky is sourced from:
+    a) Molasses
+    b) Grapes
+    c) Barley
+    d) Apples
+    Answer: c) Barley
+
+22. What is the approximate alcohol percentage in Brandy?
+    a) 10-15%
+    b) 3-6%
+    c) 45-55%
+    d) 40-50%
+    Answer: d) 40-50 %
+
+23. Brandy is sourced from:
+    a) Barley
+    b) Grapes
+    c) Apples
+    d) Molasses
+    Answer: b) Grapes
+
+24. What is the approximate alcohol percentage in Champagne?
+    a) 10-15%
+    b) 3-6%
+    c) 45-55%
+    d) 40-50%
+    Answer: a) 10-15%
+
+25. Champagne is sourced from:
+    a) Barley
+    b) Grapes
+    c) Apples
+    d) Molasses
+    Answer: b) Grapes
+
+26. What is the approximate alcohol percentage in Beer?
+    a) 10-15%
+    b) 3-6%
+    c) 45-55%
+    d) 40-50%
+    Answer: b) 3-6%
+
+27. Beer is sourced from:
+    a) Molasses
+    b) Grapes
+    c) Barley
+    d) Apples
+    Answer: c) Barley
+
+28. What is the approximate alcohol percentage in Cider?
+    a) 10-15%
+    b) 2-6%
+    c) 45-55%
+    d) 40-50%
+    Answer: b) 2-6%
+
+29. Cider is sourced from:
+    a) Barley
+    b) Grapes
+    c) Apples
+    d) Molasses
+    Answer: c) Apples
+
+Food additives
+
+30. Substances added to food to preserve flavor or enhance taste and flavor are called:
+    a) Nutrients
+    b) Contaminants
+    c) Food additives
+    d) Preservatives only
+    Answer: c) Food additives
+
+31. Pickling food is a method of preservation using:
+    a) Salt
+    b) SO2
+    c) Vinegar
+    d) Sugar
+    Answer: c) Vinegar
+
+32. Salting is a method of food preservation, as seen with:
+    a) Fishes
+    b) Bacon
+    c) Milk powder
+    d) Beverages
+    Answer: b) Bacon
+
+33. Which of the following are examples of antioxidants used as food additives?
+    a) Citric acid and lactic acid
+    b) Vitamin-C and nitrogen
+    c) Annatto extract and beta-extract
+    d) Saccharin and aspartame
+    Answer: b) Vitamin-C and nitrogen
+
+34. Weak acids like citric acid, acetic acid, and lactic acid are used as:
+    a) Anticalving agents
+    b) Sweeteners
+    c) Acids in food additives
+    d) Coloring agents
+    Answer: c) Acids
+
+35. Anticalving agents are used for:
+    a) Enhancing flavor
+    b) Keeping food in powder form like milk powder
+    c) Preserving liquids
+    d) Adding color to food
+    Answer: b) keeping food in powder form like milk powder.
+
+36. Annatto extract provides what color to food?
+    a) Bluish-red to brown
+    b) Red or green
+    c) Yellow
+    d) Blue
+    Answer: c) Yellow color
+
+37. Dehydrated beets provide what color range to food?
+    a) Yellow
+    b) Bluish-red to brown
+    c) Red or green
+    d) Blue
+    Answer: b) Bluish-red to brown
+
+38. Beta-extract provides what color range to food?
+    a) Yellow
+    b) Bluish-red to brown
+    c) Red or green
+    d) Blue
+    Answer: c) Red or green
+
+39. Which of the following is an artificial sweetener?
+    a) Vitamin-C
+    b) Lactic acid
+    c) Aspartame
+    d) Annatto extract
+    Answer: c) Aspartame
+
+40. Artificial sweeteners help in:
+    a) Weight gain
+    b) Increasing blood sugar
+    c) Weight loss, checking diabetes, dental care and reactive hypoglycemia
+    d) Increasing appetite
+    Answer: c) Weight loss, check diabetes, dental care and reactive hypoglycemia.
+
+Polymerisation
+
+41. The process of reacting monomer molecules together to form a polymer chain is called:
+    a) Hydrolysis
+    b) Condensation
+    c) Polymerisation
+    d) Fermentation
+    Answer: c) Polymerisation
+
+42. Plastics that can be remoulded on heating are called:
+    a) Thermosetting plastics
+    b) Thermoplastics
+    c) Natural polymers
+    d) Elastomers
+    Answer: b) Thermoplastics
+
+43. Which of the following is an example of a thermoplastic?
+    a) Bakelite
+    b) Melamine
+    c) Polyethylene
+    d) Urea formaldehyde
+    Answer: c) Polyethylene
+
+44. Plastics which cannot be remoulded after their heating are called:
+    a) Thermoplastics
+    b) Thermosetting plastics
+    c) Natural polymers
+    d) Elastomers
+    Answer: b) Thermosetting plastics
+
+45. Which of the following is an example of a thermosetting plastic?
+    a) PVC
+    b) Polypropylene
+    c) Bakelite
+    d) PET
+    Answer: c) Bakelite
+
+Rubber
+
+46. Natural rubber is a polymer of:
+    a) Chloroprene
+    b) Styrene butadiene
+    c) Isoprene (2-methyl-1, 3-butadiene)
+    d) Butadiene
+    Answer: c) Isoprene (2-methyl-1, 3-butadiene)
+
+47. Natural rubber is extracted from:
+    a) Roots of rubber plant
+    b) Latex collected from rubber tree
+    c) Leaves of rubber plant
+    d) Seeds of rubber plant
+    Answer: b) Latex collected from rubber tree
+
+48. The process of heating natural rubber with sulphur for commercial use is called:
+    a) Polymerisation
+    b) Vulcanization
+    c) Distillation
+    d) Chlorination
+    Answer: b) Vulcanization
+
+49. When isoprene is heated with chlorine, the result is:
+    a) Natural rubber
+    b) Vulcanized rubber
+    c) Chloroprene, fire resistant rubber
+    d) Styrene butadiene rubber
+    Answer: c) Chloroprene, fire resistant rubber
+
+50. Styrene butadiene rubber (SRB) is used for:
+    a) Improving elasticity
+    b) Covering different hoses
+    c) Making fire-resistant materials
+    d) Tyre cords
+    Answer: b) covering different hoses.
+
+51. Butadiene rubber (BR) is mostly mixed with other rubber types to improve:
+    a) Fire resistance
+    b) Tensile strength
+    c) Elasticity, wear resistance and low temperature properties
+    d) Hardness
+    Answer: c) elasticity, wear resistance and low temperature properties.
+
+52. Neoprene is a polymer of:
+    a) Isoprene
+    b) Butadiene
+    c) Chloroprene
+    d) Styrene
+    Answer: c) chloroprene
+
+53. Neoprene is known for being:
+    a) Non-fire resistant
+    b) Fire resistant with high tensile strength
+    c) Very soft
+    d) Easily soluble in water
+    Answer: b) fire resistant with high tensile strength.
+
+DIFFERENT TYPE OF POLYMERS WITH USES
+
+54. The raw material for Polyethylene is:
+    a) Propylene
+    b) Styrene
+    c) Ethylene
+    d) Methyl methacrylate
+    Answer: c) Ethylene
+
+55. Polyethylene is used for:
+    a) Making carpet fibres
+    b) Insulating wires, making toys, flexible pipes, bottle containers
+    c) Making toys, hot drinking cups
+    d) Non-sticking surface of cooking vessels
+    Answer: b) Insulating wires, making toys, flexible pipes, bottle containers like cans for storing liquid chemicals including water.
+
+56. The raw material for Polypropylene is:
+    a) Ethylene
+    b) Propylene
+    c) Styrene
+    d) Vinyl chloride
+    Answer: b) Propylene
+
+57. Polypropylene is used for:
+    a) Insulating wires
+    b) Making carpet fibres, seat covers, ropes, wraps for records and for packaging
+    c) Head transparent covering for lights
+    d) Insulation of electric cables
+    Answer: b) Making carpet fibres, seat covers, ropes, wraps for records and for packaging.
+
+58. The raw material for Polystyrene is:
+    a) Propylene
+    b) Ethylene
+    c) Styrene
+    d) Methyl methacrylate
+    Answer: c) Styrene
+
+59. Polystyrene is used for:
+    a) Making carpet fibres
+    b) Non-sticking surface of cooking vessels
+    c) Making toys, hot drinking cups, combs, lining material for T.V. cabinet and refrigerators
+    d) Making magnetic recording tapes
+    Answer: c) Making toys, hot drinking cups, combs, lining material for T.V. cabinet and refrigerators.
+
+60. PMMA (Poly methyl methacrylate) or Perspex is made from:
+    a) Ethylene
+    b) Methyl methacrylate
+    c) Tetrafluro ethylene
+    d) Vinyl chloride
+    Answer: b) Methyl methacrylate
+
+61. PMMA or Perspex is used for:
+    a) Insulating electric cables
+    b) Making magnetic recording tapes
+    c) Head transparent covering for the unbreakable lights, protective coating, aeroplane windows
+    d) Making of board, pens
+    Answer: c) Head transparent covering for the unbreakable lights, protective coating, aeroplane windows.
+
+62. Teflon or polytetrafluoroethylene is made from:
+    a) Methyl methacrylate
+    b) Tetrafluro ethylene
+    c) Vinyl chloride
+    d) Ethylene glycol
+    Answer: b) Tetrafluro ethylene
+
+63. Teflon is used for:
+    a) Making toys and combs
+    b) Making seal to withstand high temperature and pressure, non-sticking surface of cooking vessels, insulation of high frequency electric installation
+    c) Making carpet fibres
+    d) Insulating wires
+    Answer: b) Making seal to withstand high temperature and pressure, nonsticking surface of cooking vessels, non-sticking surface of cooking vessels, insulation of high frequency electric installation.
+
+64. PVC (Polyvinyl chloride) is made from:
+    a) Propylene
+    b) Vinyl chloride
+    c) Ethylene glycol
+    d) Adipic acid
+    Answer: b) Vinyl chloride
+
+65. PVC is used for:
+    a) Making magnetic recording tapes
+    b) Making of unbreakable cups
+    c) Insulation of electric cables, rain coats, table cloths, conveyor belts, etc.
+    d) Milk bristles of tooth brush
+    Answer: c) Insulation of electric cables, rain coats, table cloths, convey/or belts, etc.
+
+66. Terylene is made from:
+    a) Ethylene glycol and terephthalic acid
+    b) Adipic acid and Hexamethylene diamines
+    c) Cyclohexane and Caprolactum
+    d) Melamine and formaldehyde
+    Answer: a) Ethylene glycol and terephthalic acid
+
+67. Terylene is used for:
+    a) Making toys
+    b) Making magnetic recording tapes, aprons for industrial workers, blend in cloth etc.
+    c) Insulation of electric cables
+    d) Tyre cords
+    Answer: b) Making magnetic recording tapes, aprons for industrial workers, blend in cloth etc.
+
+68. Nylon-66 is made from:
+    a) Ethylene glycol and terephthalic acid
+    b) Adipic acid and Hexamethylene diamines
+    c) Cyclohexane and Caprolactum
+    d) Melamine and formaldehyde
+    Answer: b) Adipic acid and Hexamethylene diamines
+
+69. Nylon-66 is used for:
+    a) Tyre cords
+    b) Making magnetic recording tapes
+    c) Milk bristles of tooth brush, sheets, climbing ropes, socks, sweater and jersey
+    d) Making of board, pens
+    Answer: c) Milk bristles of tooth brush, sheets, climbing ropes, socks, sweater and jersey.
+
+70. Nylon-6 is made from:
+    a) Adipic acid and Hexamethylene diamines
+    b) Cyclohexane and Caprolactum
+    c) Melamine and formaldehyde
+    d) Glycodic acid and lactic acid
+    Answer: b) Cyclohexane and Caprolactum
+
+71. Nylon-6 is used for:
+    a) Milk bristles of toothbrush
+    b) Tyre cords, ropes, fabrics
+    c) Making of unbreakable cups
+    d) Sutures after operation
+    Answer: b) Tyre cords, ropes, fabrics.
+
+72. Bakelite is made from:
+    a) Melamine and formaldehyde
+    b) O-hydroxymethyl phenol and P-hydroxymethyl phenol
+    c) Glycodic acid and lactic acid
+    d) Cyclohexane and Caprolactum
+    Answer: b) O-hydroxymethyl phenol and P-hydroxymethyl phenol
+
+73. Bakelite is used for:
+    a) Making of unbreakable cups
+    b) Making of board, pens, formica table, taps and electrical switches
+    c) Tyre cords
+    d) Magnetic recording tapes
+    Answer: b) Making of board, pens, formica table, taps and electrical switches.
+
+74. Melamine is made from:
+    a) O-hydroxymethyl phenol and P-hydroxymethyl phenol
+    b) Melamine and formaldehyde
+    c) Glycodic acid and lactic acid
+    d) Adipic acid and Hexamethylene diamines
+    Answer: b) Melamine and formaldehyde
+
+75. Melamine is used for:
+    a) Making of board, pens
+    b) Making of unbreakable cups, glass sheets and plates
+    c) Electrical switches
+    d) Climbing ropes
+    Answer: b) Making of unbreakable cups, glass sheets and plates.
+
+76. Dextron is made from:
+    a) Melamine and formaldehyde
+    b) Glycodic acid and lactic acid
+    c) O-hydroxymethyl phenol and P-hydroxymethyl phenol
+    d) Vinyl chloride
+    Answer: b) Glycodic acid lactic acid
+
+77. Dextron is used as:
+    a) Electrical insulation
+    b) Non-stick coating
+    c) Sutures after operation
+    d) Carpet fibres
+    Answer: c) Sutures after operation. These are self soluble in a week's time.
+
+SCIENTISTS AND THEIR CONTRIBUTIONS
+
+78. Neils Bohr is known for his contribution to:
+    a) Discovery of radioactivity
+    b) Atomic model
+    c) Laws of electrolysis
+    d) Periodic table
+    Answer: b) Atomic model
+
+79. Burzelius is associated with:
+    a) Atomic model
+    b) Catalysis
+    c) Discovery of neutron
+    d) Periodic table
+    Answer: b) Catalysis
+
+80. H. Becquerrel is known for the discovery of:
+    a) Proton
+    b) Electron
+    c) Radioactivity
+    d) X-rays
+    Answer: c) Radioactivity
+
+81. Bronsted-Lowry contributed to the concept of:
+    a) Atomic structure
+    b) Acid-Base concept
+    c) Chemical bonding
+    d) Laws of motion
+    Answer: b) Acid-Base concept
+
+82. J. Chadwick is known for the discovery of:
+    a) Proton
+    b) Electron
+    c) Neutron
+    d) X-rays
+    Answer: c) Discovery of neutron
+
+83. de Broglie is known for the:
+    a) Discovery of proton
+    b) Wave nature of electron
+    c) Laws of electrolysis
+    d) Atomic model
+    Answer: b) Wave nature of electron
+
+84. Faraday is known for his:
+    a) Discovery of nucleus
+    b) Laws of electrolysis
+    c) pH scale
+    d) Periodic table
+    Answer: b) Laws of electrolysis
+
+85. Goldstein is known for the discovery of:
+    a) Electron
+    b) Proton
+    c) Neutron
+    d) X-rays
+    Answer: b) Discovery of proton
+
+86. Heitlor-London is associated with the:
+    a) Molecular orbital theory
+    b) Valence bond theory
+    c) Acid-Base concept
+    d) Laws of electrolysis
+    Answer: b) Valence bond theory
+
+87. Madam Curie is known for her contribution to:
+    a) Discovery of neutron
+    b) Artificial radioactivity
+    c) Discovery of X-rays
+    d) Atomic model
+    Answer: b) Artificial radioactivity
+
+88. Mendeleef is known for the:
+    a) Modern periodic law
+    b) Periodic table
+    c) Discovery of nucleus
+    d) Wave nature of light
+    Answer: b) Periodic table
+
+89. Mosley is known for his contribution to:
+    a) Laws of electrolysis
+    b) Discovery of electron
+    c) Modern periodic law and table
+    d) Atomic model
+    Answer: c) Modern periodic law and table
+
+90. Planck is known for his contribution to the:
+    a) Wave nature of electron
+    b) Wave nature of light
+    c) Discovery of X-rays
+    d) Radioactivity
+    Answer: b) Wave nature of light
+
+91. Rutherford is known for the:
+    a) Discovery of neutron
+    b) Discovery of nucleus, nuclear reactions
+    c) Photo electric effect
+    d) pH and its scale
+    Answer: b) Discovery of nucleus, nuclear reactions
+
+92. Roentzen is known for the discovery of:
+    a) Radioactivity
+    b) X-rays
+    c) Electron
+    d) Proton
+    Answer: b) Discovery of X-rays
+
+93. Sorenson is known for:
+    a) Atomic model
+    b) Catalysis
+    c) pH and its scale
+    d) Laws of electrolysis
+    Answer: c) pH and its scale
+
+94. Thomson is known for the:
+    a) Discovery of proton
+    b) Discovery of electron, photo electric effect
+    c) Discovery of neutron
+    d) Discovery of nucleus
+    Answer: b) Discovery of electron, photo electric effect
+
+95. Tyndall is known for:
+    a) Acid-Base concept
+    b) Light scattering by solute particles
+    c) Valence bond theory
+    d) Molecular orbital theory
+    Answer: b) Light scattering by solute particles
+
+NATURAL OCCURENCE OF SOME ACIDS
+
+96. Citric acid is naturally found in:
+    a) Sour milk
+    b) Urine
+    c) Citrus fruits (lemon, orange)
+    d) Sting of bees and ants
+    Answer: c) Citrus fruits (lemon, orange)
+
+97. Lactic acid is naturally found in:
+    a) Tamarind
+    b) Sour milk
+    c) Apples
+    d) Tomatoes
+    Answer: b) Sour milk
+
+98. Uric acid is naturally found in:
+    a) Gastric juice
+    b) Vinegar
+    c) Urine
+    d) Rancid butter
+    Answer: c) Urine
+
+99. Formic acid is naturally found in:
+    a) Rancid butter
+    b) Tamarind
+    c) Sting of bees and ants
+    d) Apples
+    Answer: c) Sting of bees and ants
+
+100. Butyric acid is naturally found in:
+    a) Urine
+    b) Gastric juice
+    c) Rancid butter
+    d) Vinegar
+    Answer: c) Rancid butter
+
+101. Tartaric acid is naturally found in:
+    a) Lemons
+    b) Sour milk
+    c) Tamarind, grapes, apples
+    d) Tomatoes
+    Answer: c) Tamarind, grapes, apples
+
+102. Malic acid is naturally found in:
+    a) Grapes
+    b) Apples
+    c) Lemons
+    d) Oranges
+    Answer: b) Apples
+
+103. Stearic acid is naturally found in:
+    a) Urine
+    b) Gastric juice
+    c) Fats
+    d) Vinegar
+    Answer: c) Fats
+
+104. Hydrochloric acid is naturally found in:
+    a) Urine
+    b) Gastric juice
+    c) Vinegar
+    d) Tomatoes
+    Answer: b) Gastric juice
+
+105. Acetic acid is naturally found in:
+    a) Sour milk
+    b) Urine
+    c) Vinegar
+    d) Sting of bees and ants
+    Answer: c) Vinegar
+
+106. Oxalic acid is naturally found in:
+    a) Apples
+    b) Grapes
+    c) Tomatoes
+    d) Citrus fruits
+    Answer: c) Tomatoes.
+
+completed

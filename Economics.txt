@@ -1,0 +1,3402 @@
+
+
+ECONOMY AND ECONOMICS
+
+1.  What is the primary focus of "Economy"?
+    a) The branch of knowledge concerned with wealth transfer.
+    b) The state of a country in terms of production, consumption, and money supply.
+    c) The study of individual market decisions.
+    d) The analysis of global economic systems.
+    Answer: b) The state of a country in terms of production, consumption, and money supply.
+
+2.  Which statement best defines "Economics"?
+    a) The production and consumption of goods and services.
+    b) The supply of money in a region.
+    c) The branch of knowledge concerned with the production, consumption, and transfer of wealth.
+    d) The study of government intervention in markets.
+    Answer: c) The branch of knowledge concerned with the production, consumption, and transfer of wealth.
+
+---
+
+VARIOUS TYPES OF ECONOMY
+
+3.  Which of the following is a key feature of a Capitalist Economy?
+    a) Social ownership of the means of production.
+    b) Direct public ownership.
+    c) Private ownership of capital and production inputs.
+    d) Production carried out directly for use.
+    Answer: c) Private ownership of capital and production inputs.
+
+4.  In a Capitalist Economy, what mechanism primarily determines prices?
+    a) Government decree
+    b) Democratic control
+    c) Price Mechanism
+    d) Central planning
+    Answer: c) Price Mechanism
+
+5.  What is a defining characteristic of a Socialist Economy?
+    a) Dominance of the profit motive.
+    b) Private property rights.
+    c) Social ownership and democratic control of the means of production.
+    d) Absence of government interference.
+    Answer: c) Social ownership and democratic control of the means of production.
+
+6.  An economic system that combines elements of markets and economic planning, or public and private ownership, is known as a:
+    a) Capitalist Economy
+    b) Socialist Economy
+    c) Mixed Economy
+    d) Closed Economy
+    Answer: c) Mixed Economy
+
+7.  Which type of economy is the Indian economy cited as an example of?
+    a) Capitalist Economy
+    b) Socialist Economy
+    c) Mixed Economy
+    d) Open Economy
+    Answer: c) Mixed Economy
+
+8.  An economy generally free from trade barriers where exports and imports form a large percentage of GDP is called an:
+    a) Closed Economy
+    b) Mixed Economy
+    c) Open Economy
+    d) Socialist Economy
+    Answer: c) Open Economy
+
+9.  What is the primary characteristic of a Closed Economy?
+    a) High levels of international trade.
+    b) No economic activity conducted with other economies.
+    c) A balance between public and private ownership.
+    d) Reliance on price mechanisms.
+    Answer: b) No economic activity conducted with other economies.
+
+---
+
+ECONOMIC GROWTH
+
+10. What is Economic Growth defined as?
+    a) A decrease in the production of goods and services.
+    b) An increase in the amount of goods and services produced per head of the population over a period of time.
+    c) A decline in aggregate demand.
+    d) A reduction in productive capacity.
+    Answer: b) An increase in the amount of goods and services produced per head of the population over a period of time.
+
+11. Which of the following is a cause of economic growth?
+    a) A decrease in aggregate supply.
+    b) A decrease in aggregate demand.
+    c) An increase in aggregate supply (productive capacity).
+    d) An increase in unemployment.
+    Answer: c) An increase in aggregate supply (productive capacity).
+
+---
+
+SECTORS OF INDIAN ECONOMY
+
+12. Which sector involves economic activity mainly dependent on the exploitation of natural resources?
+    a) Secondary Sector
+    b) Tertiary Sector
+    c) Primary Sector
+    d) Organized Sector
+    Answer: c) Primary Sector
+
+13. Agriculture and agriculture-related activities fall under which sector of the economy?
+    a) Secondary Sector
+    b) Tertiary Sector
+    c) Primary Sector
+    d) Public Sector
+    Answer: c) Primary Sector
+
+14. When the main activity involves manufacturing, it comes under which sector?
+    a) Primary Sector
+    b) Secondary Sector
+    c) Tertiary Sector
+    d) Unorganized Sector
+    Answer: b) Secondary Sector
+
+15. Industrial production where physical goods are produced is characteristic of the:
+    a) Primary Sector
+    b) Secondary Sector
+    c) Tertiary Sector
+    d) Private Sector
+    Answer: b) Secondary Sector
+
+16. Which sector is characterized by providing intangible goods like services?
+    a) Primary Sector
+    b) Secondary Sector
+    c) Tertiary Sector
+    d) Organized Sector
+    Answer: c) Tertiary Sector
+
+17. Financial services, banks, and management fall under which sector of the economy?
+    a) Primary Sector
+    b) Secondary Sector
+    c) Tertiary Sector
+    d) Public Sector
+    Answer: c) Tertiary Sector
+
+18. A sector that carries out all activity through a system and follows the law of the land is called the:
+    a) Unorganized Sector
+    b) Organized Sector
+    c) Public Sector
+    d) Private Sector
+    Answer: b) Organized Sector
+
+19. Tea stalls, grocery shops, and daily wage labor are examples commonly found in which sector?
+    a) Organized Sector
+    b) Public Sector
+    c) Unorganized Sector
+    d) Private Sector
+    Answer: c) Unorganized Sector
+
+20. Companies like BHEL, GAIL, and SAIL, which are run and financed by the Government, comprise the:
+    a) Private Sector
+    b) Organized Sector
+    c) Unorganized Sector
+    d) Public Sector
+    Answer: d) Public Sector
+
+21. Companies run and financed by private individuals are part of the:
+    a) Public Sector
+    b) Organized Sector
+    c) Private Sector
+    d) Tertiary Sector
+    Answer: c) Private Sector
+
+---
+
+GENERAL PRINCIPLES OF ECONOMICS
+
+22. According to J.B. Say, Economics is the science of:
+    a) Human behavior and resource allocation.
+    b) Production, distribution, and consumption of wealth.
+    c) Government intervention in markets.
+    d) Prices and quantities of individual goods.
+    Answer: b) Production, distribution, and consumption of wealth.
+
+23. Which form of economics studies the decisions of people and businesses and their interaction in markets?
+    a) Macro Economics
+    b) Micro Economics
+    c) Financial Economics
+    d) Behavioral Economics
+    Answer: b) Micro Economics
+
+24. The goal of microeconomics is to explain:
+    a) General price level and national income.
+    b) Global economic systems.
+    c) The prices and quantities of individual goods and services.
+    d) Government spending and deficits.
+    Answer: c) The prices and quantities of individual goods and services.
+
+25. What does Macro Economics primarily study?
+    a) Individual consumer choices.
+    b) The national economy as well as the global economy.
+    c) Specific market regulations.
+    d) The behavior of a single firm.
+    Answer: b) The national economy as well as the global economy.
+
+26. Which of the following is a goal of macroeconomics?
+    a) Explaining the supply and demand for a single product.
+    b) Studying the effects of taxes on individual goods.
+    c) Explaining general price level, national income, and employment.
+    d) Analyzing the profit motive of private firms.
+    Answer: c) Explaining general price level, national income, and employment.
+
+---
+
+MARKET STRUCTURES
+
+27. A market structure characterized by an absence of competition and often resulting in high prices and inferior goods, containing a single firm, is called:
+    a) Duopoly
+    b) Oligopoly
+    c) Monopoly
+    d) Perfect Competition
+    Answer: c) Monopoly
+
+28. A situation in which two companies own all or nearly all of the market for a given product or service is known as:
+    a) Monopoly
+    b) Oligopoly
+    c) Duopoly
+    d) Monopolistic Competition
+    Answer: c) Duopoly
+
+29. Which market situation describes a particular market controlled by a small group of firms?
+    a) Monopoly
+    b) Duopoly
+    c) Oligopoly
+    d) Perfect Competition
+    Answer: c) Oligopoly
+
+30. In which market structure are there many buyers and sellers, and prices reflect supply and demand?
+    a) Monopoly
+    b) Oligopoly
+    c) Duopoly
+    d) Perfect Competition
+    Answer: d) Perfect Competition
+
+31. Which of the following is NOT a characteristic of Perfect Competition?
+    a) Many buyers and sellers.
+    b) Consumers have many substitutes.
+    c) New firms can easily enter the market.
+    d) A single firm supplies a particular good or service.
+    Answer: d) A single firm supplies a particular good or service.
+
+32. A market structure where many firms sell products that are similar but not identical is called:
+    a) Monopoly
+    b) Oligopoly
+    c) Perfect Competition
+    d) Monopolistic Competition
+    Answer: d) Monopolistic Competition
+
+33. Which of the following is a characteristic of Monopolistic Competition?
+    a) Only one seller.
+    b) Homogeneous products.
+    c) Product differentiation.
+    d) High barriers to entry.
+    Answer: c) Product differentiation.
+
+---
+
+ECONOMIC LAWS AND CONCEPTS
+
+34. The law stating that people generally spend a smaller part of their budget on food as their income rises is known as:
+    a) Okun's Law
+    b) Gresham's Law
+    c) Engel's Law
+    d) Laffer Curve
+    Answer: c) Engel's Law
+
+35. The curve that represents the hypothetical relationship between rates of taxation and resulting levels of government revenue is the:
+    a) Phillips Curve
+    b) Kuznets Curve
+    c) Laffer Curve
+    d) Okun's Law
+    Answer: c) Laffer Curve
+
+36. Which law describes the relationship between an economy's unemployment rate and its gross national product (GNP)?
+    a) Gresham's Law
+    b) Phillips Curve
+    c) Okun's Law
+    d) Engel's Law
+    Answer: c) Okun's Law
+
+37. "Bad Money drives out good money" is a common statement of which economic law?
+    a) Engel's Law
+    b) Laffer Curve
+    c) Gresham's Law
+    d) Okun's Law
+    Answer: c) Gresham's Law
+
+38. The inverse relationship between the rate of inflation and the rate of unemployment is shown in the:
+    a) Kuznets Curve
+    b) Phillips Curve
+    c) Laffer Curve
+    d) Okun's Law
+    Answer: b) Phillips Curve
+
+39. The hypothesis that as an economy develops, market forces first increase and then decrease economic inequality is graphed by the:
+    a) Phillips Curve
+    b) Laffer Curve
+    c) Kuznets Curve
+    d) Okun's Law
+    Answer: c) Kuznets Curve
+
+40. What is a "Giffen Good"?
+    a) A good whose demand decreases when its price increases.
+    b) A good whose demand increases even after its price rises, violating the law of supply and demand.
+    c) A good that always has many substitutes.
+    d) A good primarily produced in the public sector.
+    Answer: b) A good whose demand increases even after its price rises, violating the law of supply and demand.
+
+---
+
+INFLATION AND RELATED CONCEPTS
+
+41. What is Inflation defined as?
+    a) A decrease in the general level of prices.
+    b) A period of no economic growth.
+    c) The rate at which the general level of prices for goods and services is rising, and purchasing power is falling.
+    d) An increase in the supply of money that is slower than the supply of goods.
+    Answer: c) The rate at which the general level of prices for goods and services is rising, and purchasing power is falling.
+
+42. Which type of inflation occurs when demand exceeds supply?
+    a) Cost-Push Inflation
+    b) Stagflation
+    c) Demand-Pull Inflation
+    d) Deflation
+    Answer: c) Demand-Pull Inflation
+
+43. An increase in the cost of raw materials leading to higher prices for goods is an example of:
+    a) Demand-Pull Inflation
+    b) Cost-Push Inflation
+    c) Deflation
+    d) Reflation
+    Answer: b) Cost-Push Inflation
+
+44. When the general prices of goods and services of an economy fall for a significant period of time, it is called:
+    a) Inflation
+    b) Stagflation
+    c) Deflation
+    d) Disinflation
+    Answer: c) Deflation
+
+45. An economic cycle characterized by a high rate of both inflation and unemployment is known as:
+    a) Recession
+    b) Depression
+    c) Stagflation
+    d) Disinflation
+    Answer: c) Stagflation
+
+46. What is the primary cause of high unemployment during stagflation?
+    a) Increased consumer confidence.
+    b) Economic contraction and slowing production of goods and services.
+    c) High interest rates leading to increased investment.
+    d) An increase in aggregate demand.
+    Answer: b) Economic contraction and slowing production of goods and services.
+
+47. An economic downturn where real GDP declines by more than 10% for a long period is defined as a:
+    a) Recession
+    b) Stagflation
+    c) Depression
+    d) Disinflation
+    Answer: c) Depression
+
+48. A period of general economic decline, typically accompanied by a drop in the stock market, an increase in unemployment, and a decline in the housing market, and generally less severe than a depression, is a:
+    a) Depression
+    b) Stagflation
+    c) Recession
+    d) Reflation
+    Answer: c) Recession
+
+49. Which of the following is NOT listed as a factor of recession?
+    a) High interest rate
+    b) Inflation
+    c) Increased consumer confidence
+    d) Reduced real wages
+    Answer: c) Increased consumer confidence
+
+50. What is "Disinflation"?
+    a) A decrease in the general level of goods and services.
+    b) A slow down in the rate of increase of the general price level of goods and services.
+    c) A period of high inflation and high unemployment.
+    d) Stimulating the economy by increasing the money supply.
+    Answer: b) A slow down in the rate of increase of the general price level of goods and services.
+
+51. The act of stimulating the economy by increasing the money supply or by reducing taxes, seeking to bring the economy back up to the long-term trend, is called:
+    a) Deflation
+    b) Disinflation
+    c) Reflation
+    d) Stagflation
+    Answer: c) Reflation
+
+---
+
+PRICE INDICES AND ECONOMIC INDICATORS
+
+52. What does the Consumer Price Index (CPI) measure?
+    a) The price of a representative basket of wholesale goods.
+    b) The growth of various industrial sectors.
+    c) Changes in the price level of a market basket of consumer goods and services purchased by households.
+    d) The relationship between unemployment and GNP.
+    Answer: c) Changes in the price level of a market basket of consumer goods and services purchased by households.
+
+53. The annual percentage change in which index is used as a measure of inflation?
+    a) WPI
+    b) IIP
+    c) CPI
+    d) HDI
+    Answer: c) CPI
+
+54. Which index focuses on the price of goods traded between corporations, rather than goods bought by consumers?
+    a) CPI
+    b) IIP
+    c) WPI
+    d) HDI
+    Answer: c) WPI
+
+55. The Index of Industrial Production (IIP) details out the growth of various sectors in an economy such as:
+    a) Agriculture, fishing, and forestry.
+    b) Mining, electricity, and manufacturing.
+    c) Financial services, education, and healthcare.
+    d) Retail, wholesale, and transportation.
+    Answer: b) Mining, electricity, and manufacturing.
+
+---
+
+INFLATION AND CLASS EFFECTS
+
+56. During inflation, what is the effect on consumers?
+    a) Profit
+    b) Loss
+    c) No change
+    d) Increase in purchasing power
+    Answer: b) Loss
+
+57. How does inflation typically affect lenders?
+    a) They experience a profit.
+    b) They experience a loss.
+    c) Their real income increases.
+    d) Their loan portfolios expand without risk.
+    Answer: b) They experience a loss.
+
+58. What is the typical effect of inflation on borrowers?
+    a) Loss
+    b) Profit
+    c) No change
+    d) Increased real debt burden
+    Answer: b) Profit
+
+59. During inflation, what happens to public saving?
+    a) Increases
+    b) Remains stable
+    c) Loss
+    d) Leads to higher interest rates
+    Answer: c) Loss
+
+60. What is the effect of inflation on public expenditure?
+    a) Decrease
+    b) Remains constant
+    c) Increase
+    d) Leads to budget surplus
+    Answer: c) Increase
+
+61. How does inflation generally affect imports?
+    a) Decrease
+    b) Increase
+    c) No change
+    d) Becomes cheaper for the importing country
+    Answer: b) Increase
+
+62. What is the effect of inflation on exports?
+    a) Increase
+    b) Decrease
+    c) No change
+    d) Becomes more competitive internationally
+    Answer: b) Decrease
+
+63. Inflation generally leads to what effect on employment?
+    a) Decrease
+    b) No change
+    c) Increase
+    d) Becomes more volatile
+    Answer: c) Increase
+
+64. What is the effect of inflation on production?
+    a) Loss
+    b) Decrease
+    c) Profit
+    d) No significant impact
+    Answer: c) Profit
+
+65. How does inflation typically affect trader groups?
+    a) Loss
+    b) No change
+    c) Profit
+    d) Leads to reduced sales
+    Answer: c) Profit
+
+66. What is the effect of inflation on farmers?
+    a) Loss
+    b) No change
+    c) Profit
+    d) Decreased crop yields
+    Answer: c) Profit
+
+67. How are pensioner groups typically affected by inflation?
+    a) Profit
+    b) No change
+    c) Loss
+    d) Increased real pension value
+    Answer: c) Loss
+
+---
+
+COMPARISON: WPI, CPI, IIP
+
+68. Which index uses Lespecyre's Formula for calculation?
+    a) CPI
+    b) IIP
+    c) WPI
+    d) HDI
+    Answer: c) WPI
+
+69. Who is responsible for publishing the CPI data?
+    a) Economic Advisor
+    b) CSO
+    c) NSSO
+    d) Ministeries, Dept.
+    Answer: b) CSO
+
+70. From where does the CSO get data for CPI?
+    a) Ministeries, Dept.
+    b) NSSO and Postal
+    c) Economic Advisor
+    d) Only from industrial surveys
+    Answer: b) NSSO and Postal
+
+71. How frequently is the WPI data released?
+    a) Monthly only
+    b) Weekly & Monthly
+    c) Annually
+    d) Quarterly
+    Answer: b) Weekly & Monthly
+
+72. What is the base year for WPI as per the provided text?
+    a) 2012
+    b) 2004
+    c) 1990
+    d) 1857
+    Answer: b) 2004
+
+73. What is the base year for CPI as per the provided text?
+    a) 2004
+    b) 2012
+    c) 1990
+    d) No specific base year mentioned
+    Answer: b) 2012
+
+74. What is the base year for IIP as per the provided text?
+    a) 2012
+    b) 2004
+    c) 1990
+    d) Not mentioned
+    Answer: b) 2004
+
+75. Which index has components categorized as MFG > Primary > Fuel?
+    a) CPI
+    b) IIP
+    c) WPI
+    d) All of the above
+    Answer: c) WPI
+
+76. Which index measures data for Workers 5 Categories?
+    a) WPI
+    b) CPI
+    c) IIP
+    d) None of the above
+    Answer: b) CPI
+
+77. Which index has components categorized as MFG > Mining > Electricity?
+    a) WPI
+    b) CPI
+    c) IIP
+    d) All of the above
+    Answer: c) IIP
+
+---
+
+SOCIAL AND ECONOMIC DEVELOPMENT INDEX
+
+78. The Human Development Index (HDI) was developed by which economist?
+    a) Robert Giffen
+    b) Arthur Okun
+    c) Mahbub-ul-Haq
+    d) Ernst Engel
+    Answer: c) Mahbub-ul-Haq
+
+79. When was the HDI developed?
+    a) 1993
+    b) 1857
+    c) 1990
+    d) 1957
+    Answer: c) 1990
+
+80. Which of the following is an indicator of the Human Development Index (HDI)?
+    a) Wholesale Price Index (WPI)
+    b) Index of Industrial Production (IIP)
+    c) Life expectancy at birth
+    d) Tax rates and government revenue
+    Answer: c) Life expectancy at birth
+
+81. What does "Knowledge" in HDI measurement encompass?
+    a) Per capita income
+    b) Adult literacy rate and combined gross enrolment ratio.
+    c) Number of universities
+    d) Technological advancements
+    Answer: b) Adult literacy rate and combined gross enrolment ratio.
+
+82. How is a "decent standard of living" measured in the HDI?
+    a) Unemployment rate
+    b) Gross Domestic Product (GDP) per capita at purchasing power parity (PPP) in US Dollars.
+    c) Inflation rate
+    d) Income inequality
+    Answer: b) Gross Domestic Product (GDP) per capita at purchasing power parity (PPP) in US Dollars.
+
+83. What does the IHDI (Inequality-adjusted Human Development Index) do?
+    a) Measures only economic growth.
+    b) Adjusts the HDI for inequality in the distribution of each dimension across the population.
+    c) Focuses solely on health indicators.
+    d) Replaces GDP with Giffen goods.
+    Answer: b) Adjusts the HDI for inequality in the distribution of each dimension across the population.
+
+
+
+INDIA: A MIXED ECONOMY
+
+1.  What type of economy does India have, according to the text?
+    a) Capitalist Economy
+    b) Socialist Economy
+    c) Mixed Economy
+    d) Closed Economy
+    Answer: c) Mixed Economy
+
+2.  The Indian economy acquired its current form due to the growth of a large public sector since when?
+    a) Before independence
+    b) Since Independence
+    c) Since economic liberalization
+    d) Since the year 2000
+    Answer: b) Since Independence
+
+---
+
+GDP, GNP, NDP, NNP, NATIONAL INCOME
+
+3.  What is GDP officially measured as?
+    a) The total market value of all intermediate goods produced.
+    b) The total output of goods and services in the economy within a nation's domestic border.
+    c) The income earned by residents from overseas investments.
+    d) The sum of consumption and investment only.
+    Answer: b) The total output of goods and services in the economy within a nation's domestic border.
+
+4.  In the GDP formula, what does 'C' stand for?
+    a) Capital
+    b) Cost
+    c) Consumption
+    d) Currency
+    Answer: c) Consumption
+
+5.  In the GDP formula, what does 'I' represent?
+    a) Income
+    b) Industry
+    c) Investment
+    d) Imports
+    Answer: c) Investment
+
+6.  In the GDP formula, what does 'G' stand for?
+    a) Growth
+    b) Goods
+    c) Government Spending
+    d) Gross
+    Answer: c) Government Spending
+
+7.  Which component is subtracted in the GDP formula to account for trade?
+    a) (X + M)
+    b) (X - M)
+    c) (M - X)
+    d) (G - I)
+    Answer: b) (X - M)
+
+8.  What does the word 'domestic' in GDP imply?
+    a) Counting only goods produced by citizens.
+    b) Counting goods produced within the nation's domestic border, regardless of who produced them.
+    c) Counting only goods consumed domestically.
+    d) Excluding goods produced by foreigners.
+    Answer: b) Counting goods produced within the nation's domestic border, regardless of who produced them.
+
+9.  GNP is the market value of all products and services produced in a year by whom?
+    a) By all residents, including foreigners.
+    b) By the citizens of a country.
+    c) By public sector enterprises only.
+    d) By foreign companies operating domestically.
+    Answer: b) By the citizens of a country.
+
+10. How is GNP calculated in relation to GDP, according to the text?
+    a) GNP = GDP - (X - M)
+    b) GNP = GDP + (X - M), where X is earned income in foreign countries by citizens and M is earned income by foreigners in a country.
+    c) GNP = GDP + Depreciation
+    d) GNP = GDP - Indirect Taxes
+    Answer: b) GNP = GDP + (X - M), where X is earned income in foreign countries by citizens and M is earned income by foreigners in a country.
+
+11. When would GDP be equal to GNP?
+    a) When X > M
+    b) When X < M
+    c) When X = M
+    d) When depreciation is zero
+    Answer: c) When X = M
+
+12. What type of economy would result if GDP is equal to GNP (X=M)?
+    a) Open economy
+    b) Mixed economy
+    c) Closed economy
+    d) Capitalist economy
+    Answer: c) Closed economy
+
+13. How is Net Domestic Product (NDP) calculated?
+    a) GDP + depreciation
+    b) GDP - depreciation
+    c) GNP - depreciation
+    d) NNP + subsidies
+    Answer: b) GDP - depreciation
+
+14. What does Net Domestic Product (NDP) account for?
+    a) Income from abroad.
+    b) Capital consumed over the year in the form of deterioration.
+    c) Government spending.
+    d) Indirect taxes.
+    Answer: b) Capital consumed over the year in the form of deterioration.
+
+15. How is Net National Product (NNP) derived?
+    a) GDP - depreciation
+    b) GNP - depreciation
+    c) NDP + depreciation
+    d) NI + indirect taxes
+    Answer: b) GNP - depreciation
+
+16. What is National Income also known as?
+    a) GNP at Market Price
+    b) NNP at Market Price
+    c) National Income at factor cost
+    d) Gross Domestic Product
+    Answer: c) National Income at factor cost
+
+17. How is National Income (NI) calculated using NNP?
+    a) NI = NNP + Indirect taxes - Subsidies
+    b) NI = NNP - Subsidies + Indirect taxes
+    c) NI = NNP + Subsidies - Indirect taxes
+    d) NI = NNP - Depreciation
+    Answer: c) NI = NNP + Subsidies - Indirect taxes
+
+18. What is Disposable Income (DI)?
+    a) Total personal income before taxes.
+    b) Income left after payment of direct taxes from Personal Income.
+    c) Income after indirect taxes.
+    d) National Income per capita.
+    Answer: b) Income left after payment of direct taxes from Personal Income.
+
+19. How is Per Capita Income (PCI) derived?
+    a) Dividing total national income by total national population.
+    b) Dividing GDP by total population.
+    c) Multiplying NNP by total population.
+    d) Dividing disposable income by total population.
+    Answer: a) Dividing total national income by total national population.
+
+20. According to the important concepts, what is GNPMP equal to?
+    a) GDPMP - Income from Abroad
+    b) GDPMP + Income from Abroad
+    c) NNPMP - Depreciation
+    d) NDPMP + Depreciation
+    Answer: b) GDPMP + Income from Abroad
+
+21. NNPMP is equal to:
+    a) GNPMP - Depreciation
+    b) GNPMP + Depreciation
+    c) GDPMP - Depreciation
+    d) GDPMP + Income from Abroad
+    Answer: a) GNPMP - Depreciation
+
+22. NDPMP is equal to:
+    a) GDPMP - Depreciation
+    b) GNPMP - Depreciation
+    c) NNPMP - Depreciation
+    d) NNPMP + Depreciation
+    Answer: a) GDPMP - Depreciation
+
+23. GDPMP is equal to:
+    a) GNPMP + Income from Abroad
+    b) GNPMP - Income from Abroad
+    c) NNPMP + Depreciation
+    d) NDPMP + Depreciation
+    Answer: b) GNPMP - Income from Abroad
+
+24. NNPFC is equal to:
+    a) GNPFC - Depreciation
+    b) GNPMP - Depreciation
+    c) GNPMP - Indirect Taxes + Subsidy
+    d) GNPFC + Indirect Taxes
+    Answer: a) GNPFC - Depreciation
+
+25. GNPFC is equal to:
+    a) GNPMP - Indirect Taxes + Subsidy
+    b) GNPMP + Indirect Taxes - Subsidy
+    c) GDPFC + Income from Abroad
+    d) NNPFC + Depreciation
+    Answer: a) GNPMP - Indirect Taxes + Subsidy
+
+26. GDPFC is equal to:
+    a) GDPMP - Indirect Taxes + Subsidy
+    b) GDPMP + Indirect Taxes - Subsidy
+    c) GNPFC - Income from Abroad
+    d) NDPFC + Depreciation
+    Answer: a) GDPMP - Indirect Taxes + Subsidy
+
+27. NNPFC is equal to:
+    a) GNPMP - Depreciation - Indirect Taxes + Subsidy
+    b) GNPFC + Depreciation
+    c) NNPMP - Indirect Taxes + Subsidy
+    d) GDPMP - Indirect Taxes + Subsidy
+    Answer: a) GNPMP - Depreciation - Indirect Taxes + Subsidy
+
+28. NDPFC is equal to:
+    a) GDPMP - Depreciation - Indirect Taxes + Subsidy
+    b) GDPFC + Depreciation
+    c) NNPFC - Income from Abroad
+    d) NNPMP - Indirect Taxes + Subsidy
+    Answer: a) GDPMP - Depreciation - Indirect Taxes + Subsidy
+
+---
+
+PUBLIC FINANCE CONCEPTS
+
+29. Which account allows the government to act only as a banker, and does not require parliamentary consent to withdraw money?
+    a) Consolidated Fund
+    b) Public Account
+    c) Contingency Fund
+    d) National Investment Fund
+    Answer: b) Public Account
+
+30. Which fund is kept at the disposal of the President to meet unforeseen expenditure?
+    a) Public Account
+    b) Consolidated Fund
+    c) Contingency Fund
+    d) Public Receipts
+    Answer: c) Contingency Fund
+
+31. Who operates the Contingency Fund on behalf of the President?
+    a) Prime Minister
+    b) Finance Minister
+    c) Secretary, Ministry of Finance
+    d) RBI Governor
+    Answer: c) Secretary, Ministry of Finance
+
+32. Public Receipts include:
+    a) Only revenue from taxes.
+    b) All income as well as non-income accruals of the government.
+    c) Only borrowings.
+    d) Only disinvestment proceeds.
+    Answer: b) All income as well as non-income accruals of the government.
+
+33. Which type of receipt does NOT create any corresponding liability for the government and does NOT cause any reduction in assets?
+    a) Capital Receipts
+    b) Recovery of Loans
+    c) Revenue Receipts
+    d) Borrowings
+    Answer: c) Revenue Receipts
+
+34. Tax revenue and Non-Tax revenue are two kinds of:
+    a) Capital Receipts
+    b) Public Receipts
+    c) Revenue Receipts
+    d) Other Receipts
+    Answer: c) Revenue Receipts
+
+35. Which of the following is an example of Non-Tax Revenue?
+    a) Corporate Tax
+    b) Income Tax
+    c) Fees, Fines, Grants
+    d) Custom Duties
+    Answer: c) Fees, Fines, Grants
+
+36. Which type of receipts create a liability for the government and cause a reduction in its assets?
+    a) Revenue Receipts
+    b) Tax Revenue
+    c) Non-Tax Revenue
+    d) Capital Receipts
+    Answer: d) Capital Receipts
+
+37. Recovery of Loans for the government are treated as Capital Receipts because:
+    a) They increase government assets.
+    b) They are recurring in nature.
+    c) They reduce financial liability of the government.
+    d) They are generated from operating activities.
+    Answer: c) They reduce financial liability of the government.
+
+38. Funds raised by the government from borrowing are considered:
+    a) Revenue Receipts
+    b) Non-Tax Revenue
+    c) Capital Receipts
+    d) Tax Revenue
+    Answer: c) Capital Receipts
+
+39. Funds raised through disinvestment are classified under which category of Capital Receipts?
+    a) Recovery of Loans
+    b) Borrowings
+    c) Other Receipts
+    d) Tax Revenue
+    Answer: c) Other Receipts
+
+40. According to the comparison chart, what is the nature of Capital Receipts?
+    a) Recurring
+    b) Short term
+    c) Non recurring
+    d) Income generated from operating activities
+    Answer: c) Non recurring
+
+41. Revenue Receipts are typically characterized as:
+    a) Long term
+    b) Non recurring
+    c) Income generated from investment activities
+    d) Recurring
+    Answer: d) Recurring
+
+---
+
+GOVERNMENT EXPENDITURE
+
+42. An expenditure that does not create assets or reduce liability is called:
+    a) Capital Expenditure
+    b) Planned Expenditure
+    c) Revenue Expenditure
+    d) Non-Planned Expenditure
+    Answer: c) Revenue Expenditure
+
+43. Which of the following is an example of Revenue Expenditure?
+    a) Construction of roads
+    b) Investment in electricity generation
+    c) Salaries of government employees
+    d) Purchase of machinery
+    Answer: c) Salaries of government employees
+
+44. Expenditure that leads to the creation of assets and reduction in liabilities is known as:
+    a) Revenue Expenditure
+    b) Non-Planned Expenditure
+    c) Capital Expenditure
+    d) Interest payments on loans
+    Answer: c) Capital Expenditure
+
+45. Construction works, roads, and bridges are examples of:
+    a) Revenue Expenditure
+    b) Planned Expenditure only
+    c) Capital Expenditure
+    d) Non-Planned Expenditure
+    Answer: c) Capital Expenditure
+
+46. Expenditure incurred on programmes detailed under the current plan of the center or center's advances to states for their plan expenditure is called:
+    a) Non-Planned Expenditure
+    b) Revenue Expenditure
+    c) Planned Expenditure
+    d) Capital Expenditure
+    Answer: c) Planned Expenditure
+
+47. Expenditure on police, judiciary, and military typically falls under:
+    a) Planned Expenditure
+    b) Capital Expenditure
+    c) Revenue Expenditure only
+    d) Non-Planned Expenditure
+    Answer: d) Non-Planned Expenditure
+
+---
+
+INDIAN TAX STRUCTURE
+
+48. What is a "Tax" defined as?
+    a) A voluntary payment by citizens to the government.
+    b) A compulsory payment by citizens to the government to meet public expenditure.
+    c) A loan given by citizens to the government.
+    d) A form of non-tax revenue.
+    Answer: b) A compulsory payment by citizens to the government to meet public expenditure.
+
+49. Which type of tax is charged upon and collected directly from the person or organization that ultimately pays the tax?
+    a) Indirect Tax
+    b) Sales Tax
+    c) Direct Tax
+    d) Custom Duties
+    Answer: c) Direct Tax
+
+50. Which of the following is the largest source of revenue for the Central Government among the direct taxes listed?
+    a) Income Tax
+    b) Gift Tax
+    c) Wealth Tax
+    d) Corporate Tax
+    Answer: d) Corporate Tax
+
+51. Tax levied directly on the income of people by the Central Government is known as:
+    a) Corporate Tax
+    b) Gift Tax
+    c) Income Tax
+    d) Service Tax
+    Answer: c) Income Tax
+
+52. Which direct tax was removed from the Indian tax system since April 2015?
+    a) Income Tax
+    b) Corporate Tax
+    c) Gift Tax
+    d) Wealth Tax
+    Answer: d) Wealth Tax
+
+53. In which type of tax do the incidence and impact fall at different points, with the burden ultimately borne by general consumers?
+    a) Direct Tax
+    b) Corporate Tax
+    c) Income Tax
+    d) Indirect Tax
+    Answer: d) Indirect Tax
+
+54. Duties imposed on commodities imported or exported from India are called:
+    a) Central Excise Duties
+    b) Service Tax
+    c) Custom Duties
+    d) Value Added Tax
+    Answer: c) Custom Duties
+
+55. Central Excise Duties are imposed by the Central Government on goods produced within the country, except for which type of goods?
+    a) Manufacturing goods
+    b) Liquor, drugs, etc.
+    c) Services
+    d) Agricultural products
+    Answer: b) Liquor, drugs, etc.
+
+56. When was Service Tax introduced in India?
+    a) 1990-1991
+    b) 1994-1995
+    c) 2000-2001
+    d) 2010-2011
+    Answer: b) 1994-1995
+
+57. A tax collected at every stage of value addition (by production or distribution) is known as:
+    a) Central Excise Duty
+    b) Service Tax
+    c) Value Added Tax (VAT)
+    d) Custom Duty
+    Answer: c) Value Added Tax (VAT)
+
+58. In which year did the central government start collecting its excise duty on the VAT method, renaming it CENVAT?
+    a) 1994
+    b) 1996
+    c) 2000
+    d) 2015
+    Answer: b) 1996
+
+59. What is the primary objective of Goods and Service Tax (GST)?
+    a) To increase direct tax revenue.
+    b) To simplify and harmonize the indirect tax regime in the country.
+    c) To abolish all state taxes.
+    d) To impose different rates across states.
+    Answer: b) To simplify and harmonize the indirect tax regime in the country.
+
+60. Which of the following is NOT a stated benefit of GST?
+    a) It will boost the GDP growth of the country.
+    b) It will mobilize revenue systematically and reduce the fiscal deficit.
+    c) It will increase cascading taxes.
+    d) It will simplify the indirect tax regime with a single tax.
+    Answer: c) It will increase cascading taxes.
+
+---
+
+TAX RELATED TERMINOLOGY
+
+61. What is the legal usage of the tax regime to one's own advantage to reduce the amount of tax payable by means within the law?
+    a) Tax Evasion
+    b) Tax Avoidance
+    c) Tax Buoyancy
+    d) Tax Heaven
+    Answer: b) Tax Avoidance
+
+62. What is the illegal evasion of taxes by individuals, corporations, and trusts?
+    a) Tax Avoidance
+    b) Tax Buoyancy
+    c) Tax Evasion
+    d) Tax Elasticity
+    Answer: c) Tax Evasion
+
+63. A country or territory where certain taxes are levied at a low rate or not at all is referred to as a:
+    a) Tax Buoyancy Zone
+    b) Tax Heaven
+    c) Tax Elasticity Area
+    d) Tax Avoidance Region
+    Answer: b) Tax Heaven
+
+64. What term refers to the percentage change in tax collections with the growth of national income (growth-based increase)?
+    a) Tax Elasticity
+    b) Tax Avoidance
+    c) Tax Buoyancy
+    d) Tax Evasion
+    Answer: c) Tax Buoyancy
+
+65. What is defined as the percentage change in tax revenue in response to a change in the tax rate and the extension of coverage?
+    a) Tax Buoyancy
+    b) Tax Evasion
+    c) Tax Elasticity
+    d) Tax Avoidance
+    Answer: c) Tax Elasticity
+
+---
+
+INFRASTRUCTURAL FACILITIES
+
+66. Which of the following is considered an infrastructural facility related to "Energy"?
+    a) Railways
+    b) Telecommunications
+    c) Coal
+    d) Banking
+    Answer: c) Coal
+
+67. Civil aviation is categorized under which infrastructural facility?
+    a) Energy
+    b) Transport
+    c) Communications
+    d) Social overheads
+    Answer: b) Transport
+
+68. Posts and telegraph, and telephones, fall under which category of infrastructural facilities?
+    a) Transport
+    b) Banking, finance and insurance
+    c) Communications
+    d) Science and technology
+    Answer: c) Communications
+
+69. Health and hygiene are considered what type of infrastructural facilities?
+    a) Economic overheads
+    b) Transport
+    c) Social overheads
+    d) Communications
+    Answer: c) Social overheads
+
+---
+
+LIST OF MAHARATNA, NAVRATNA AND MINIRATNA
+
+70. When was the Maharatna scheme introduced for Central Public Sector Enterprises (CPSEs)?
+    a) 1997
+    b) May, 2010
+    c) April, 2015
+    d) 1994-1995
+    Answer: b) May, 2010
+
+71. Which of the following is a criterion for a company to be eligible for Maharatna status?
+    a) Average turnover of less than Rs. 5,000 crore.
+    b) Must not be a shareholding under SEBI regulations.
+    c) Average annual net profit over Rs. 5,000 crore during the last three years.
+    d) Must only have domestic presence.
+    Answer: c) Average annual net profit over Rs. 5,000 crore during the last three years.
+
+72. According to the text, what is the total number of Maharatna companies?
+    a) 9
+    b) 17
+    c) 7
+    d) 10
+    Answer: c) 7
+
+73. Which of the following is NOT listed as a Maharatna company?
+    a) Indian Oil Corporation Limited (IOC)
+    b) Steel Authority of India Limited (SAIL)
+    c) Bharat Sanchar Nigam Limited (BSNL)
+    d) NTPC Limited
+    Answer: c) Bharat Sanchar Nigam Limited (BSNL)
+
+74. When did the government introduce the Navaratna PSEs scheme?
+    a) 2010
+    b) 1997
+    c) 2015
+    d) 1994
+    Answer: b) 1997
+
+75. How many CPSEs are currently in the Navratna companies list, according to the text?
+    a) 9
+    b) 7
+    c) 17
+    d) 20
+    Answer: c) 17
+
+76. For a Medium Enterprise in the Manufacturing Sector, what is the investment range in plant and machinery?
+    a) Less than Rs. 2 crore
+    b) More than Rs. 5 crore, but does not exceed Rs. 10 crore
+    c) More than Rs. 10 crore
+    d) Less than Rs. 5 crore
+    Answer: b) More than Rs. 5 crore, but does not exceed Rs. 10 crore
+
+77. For a Medium Enterprise in the Service Sector, what is the investment range in equipment?
+    a) Less than Rs. 2 crore
+    b) More than Rs. 2 crore, but does not exceed Rs. 5 crore
+    c) More than Rs. 5 crore
+    d) Less than Rs. 1 crore
+    Answer: b) More than Rs. 2 crore, but does not exceed Rs. 5 crore
+
+
+
+
+HISTORY OF PLANNING IN INDIA
+
+1.  In what year was Vishvesvaraya's plan, detailed in his book 'The Planned Economy in India', published?
+    a) 1938
+    b) 1944
+    c) 1934
+    d) 1950
+    Answer: c) 1934
+
+2.  Which plan, proposed by Nehru, was not implemented?
+    a) Vishvesvaraya Plan
+    b) Bombay Plan
+    c) Congress Plan
+    d) Sarvodya Plan
+    Answer: c) Congress Plan
+
+3.  The Bombay Plan, developed by industrialists like JRD Tata and GD Birla, was formulated in which year?
+    a) 1938
+    b) 1944
+    c) 1945
+    d) 1950
+    Answer: b) 1944
+
+4.  Who authored 'The Gandhian Plan', which emphasized agriculture and cottage industries?
+    a) JRD Tata
+    b) M.N. Roy
+    c) Narayan Agarwal
+    d) Jayprakash Narayan
+    Answer: c) Narayan Agarwal
+
+5.  M.N. Roy's 'People's Plan' had a socialist leaning and was introduced in:
+    a) 1944
+    b) 1945
+    c) 1950
+    d) 1952
+    Answer: b) 1945
+
+6.  Jayprakash Narayan's Sarvodya Plan was based on the philosophy of:
+    a) Mahatma Gandhi
+    b) Vinoba Bhave
+    c) Jawaharlal Nehru
+    d) M.N. Roy
+    Answer: b) Vinoba Bhave
+
+7.  In what year was the National Development Council (NDC) established by a cabinet resolution?
+    a) 1950
+    b) 1952
+    c) 2014
+    d) 2015
+    Answer: b) 1952
+
+8.  In which year did Prime Minister Modi shut down the Planning Commission?
+    a) 2015
+    b) 2014
+    c) 1950
+    d) 2009
+    Answer: b) 2014
+
+9.  When did the Government notify the formation of NITI Ayog?
+    a) 2014
+    b) 2015
+    c) 1952
+    d) 1934
+    Answer: b) 2015
+
+---
+
+NITI AYOG
+
+10. What is the full form of NITI Ayog?
+    a) National Institute for Technical Innovation Ayog
+    b) National Institution for Transforming India Ayog
+    c) National India Transformation Institute Ayog
+    d) New India Technology Initiative Ayog
+    Answer: b) National Institution for Transforming India Ayog
+
+11. NITI Ayog primarily serves as a:
+    a) Legislative body
+    b) Policy think tank
+    c) Judicial review board
+    d) Financial regulatory authority
+    Answer: b) Policy think tank
+
+12. Who is the Chairperson of NITI Ayog?
+    a) The Finance Minister
+    b) The President of India
+    c) The Prime Minister of India
+    d) The Vice-Chairperson of NITI Ayog
+    Answer: c) The Prime Minister of India
+
+13. When was the formation of NITI Ayog announced by the government?
+    a) January 1st, 2014
+    b) January 1st, 2015
+    c) December 31st, 2014
+    d) August 15th, 2015
+    Answer: b) January 1st, 2015
+
+14. The Governing Council of NITI Ayog comprises:
+    a) The Prime Minister and Union Cabinet Ministers.
+    b) The Chief Ministers of all states and Lieutenant-Governors of UTs.
+    c) Only the Chief Ministers of major states.
+    d) Experts from various fields.
+    Answer: b) The Chief Ministers of all states and Lieutenant-Governors of UTs.
+
+15. Who convenes the Regional Councils of NITI Ayog?
+    a) The CEO of NITI Ayog
+    b) The Vice-Chairperson of NITI Ayog
+    c) The Prime Minister
+    d) The Chief Ministers of the concerned states
+    Answer: c) The Prime Minister
+
+16. Who appoints the Vice-Chairperson of NITI Ayog?
+    a) The President
+    b) The Prime Minister
+    c) The Governing Council
+    d) The Chief Ministers
+    Answer: b) The Prime Minister
+
+17. The CEO of NITI Ayog is appointed by:
+    a) The Governing Council
+    b) The Prime Minister
+    c) The President
+    d) The Chief Justice of India
+    Answer: b) The Prime Minister
+
+---
+
+FIVE YEAR PLANS
+
+18. The First Five Year Plan (1951-56) was based on which model?
+    a) P.C. Mahalanobis Model
+    b) Sukhmoy Chakraborty and Sanddy Model
+    c) Harrod Domar Model
+    d) John W. Miller Model
+    Answer: c) Harrod Domar Model
+
+19. What was the main focus of the First Five Year Plan?
+    a) Rapid industrialization
+    b) Poverty removal
+    c) Agriculture, irrigation, & power
+    d) Employment generation
+    Answer: c) Agriculture, irrigation, & power
+
+20. The Second Five Year Plan (1956-61) was based on which model?
+    a) Harrod Domar Model
+    b) P.C. Mahalanobis Model
+    c) John W. Miller Model
+    d) Sukhmoy Chakraborty and Sanddy Model
+    Answer: b) P.C. Mahalanobis Model
+
+21. What was the primary theme of the Second Five Year Plan?
+    a) Growth with stability
+    b) Inclusive growth
+    c) Rapid industrialization, heavy industries
+    d) Poverty removal
+    Answer: c) Rapid industrialization, heavy industries
+
+22. The Third Five Year Plan (1961-66) is also known as:
+    a) Harrod Domar Yojna
+    b) Mahalanobis Yojna
+    c) Gadgil Yojna
+    d) John Miller Yojna
+    Answer: c) Gadgil Yojna
+
+23. Why did the Third Five Year Plan fail to achieve its target?
+    a) Lack of funding
+    b) Focus on wrong sectors
+    c) Droughts and war with Pakistan & China
+    d) Political instability
+    Answer: c) Droughts and war with Pakistan & China
+
+24. A "Plan Holiday" was declared during which period?
+    a) 1956-61
+    b) 1961-66
+    c) 1966-69
+    d) 1974-79
+    Answer: c) 1966-69
+
+25. How many Annual Plans were implemented during the "Plan Holiday"?
+    a) 2
+    b) 3
+    c) 4
+    d) 5
+    Answer: b) 3
+
+26. The Fourth Five Year Plan (1969-74) had which theme?
+    a) Rapid industrialization
+    b) Poverty removal
+    c) Growth with stability
+    d) Inclusive growth
+    Answer: c) Growth with stability
+
+27. The Fifth Five Year Plan (1974-79) focused on:
+    a) Agriculture and power
+    b) Heavy industries
+    c) Poverty removal
+    d) Employment
+    Answer: c) Poverty removal
+
+28. Which government introduced the Rolling Plan System?
+    a) Congress Government
+    b) Morarji Desai's Janata Government
+    c) P.V. Narasimha Rao's Government
+    d) NDA Government
+    Answer: b) Morarji Desai's Janata Government
+
+29. The Sixth Five Year Plan (1980-85) continued to focus on:
+    a) Industrial growth
+    b) Poverty Removal (e.g., IRDP, NREM, TRYSEM)
+    c) Information Technology
+    d) Agricultural diversification
+    Answer: b) Poverty Removal (e.g., IRDP, NREM, TRYSEM)
+
+30. Jawahar Rojgar Yojana was started during which Five Year Plan?
+    a) Sixth
+    b) Seventh
+    c) Eighth
+    d) Ninth
+    Answer: b) Seventh
+
+31. Due to political instability at the center, only annual plans were implemented during which period?
+    a) 1978-80
+    b) 1989-91
+    c) 1992-97
+    d) 2002-2007
+    Answer: b) 1989-91
+
+32. The Eighth Five Year Plan (1992-97) was based on which model?
+    a) Harrod Domar Model
+    b) P.C. Mahalanobis Model
+    c) John W. Miller Model
+    d) Gadgil Yojna
+    Answer: c) John W. Miller Model
+
+33. Which significant economic reforms occurred during the Eighth Five Year Plan under P.V. Narasimha Rao's government?
+    a) Nationalization of banks
+    b) LPG reforms (Liberalization, Privatization, Globalization)
+    c) Focus on heavy industries
+    d) Implementation of Green Revolution
+    Answer: b) LPG reforms (Liberalization, Privatization, Globalization)
+
+34. The Ninth Five Year Plan (1997-2002) had a theme of:
+    a) Rapid industrialization
+    b) Poverty removal
+    c) Growth with Social Justice
+    d) Inclusive growth
+    Answer: c) Growth with Social Justice
+
+35. The Tenth Five Year Plan (2002-2007) targeted what GDP growth rate?
+    a) 7%
+    b) 8%
+    c) 9%
+    d) 10%
+    Answer: b) 8%
+
+36. What was the theme of the Eleventh Five Year Plan (2007-12)?
+    a) Poverty removal
+    b) Rapid industrialization
+    c) Growth with Social Justice
+    d) Inclusive growth
+    Answer: d) Inclusive growth
+
+---
+
+POVERTY AND THE PLANNING PROCESS IN INDIA
+
+37. Poverty is defined as a social phenomenon where a section of society is unable to fulfill:
+    a) Its luxury demands.
+    b) Its cultural aspirations.
+    c) Even its basic necessities of life.
+    d) Its investment goals.
+    Answer: c) Even its basic necessities of life.
+
+38. The Lakdawala Committee was formed in 1989 by the Planning Commission for:
+    a) Estimating national income.
+    b) Estimating total number of poor.
+    c) Reforming the tax structure.
+    d) Assessing industrial growth.
+    Answer: b) Estimating total number of poor.
+
+39. The Tendulkar Committee's report on poverty was submitted in:
+    a) September 1989
+    b) May 2010
+    c) December 2009
+    d) June 2012
+    Answer: c) December 2009
+
+40. In its definition of poverty, the Tendulkar Committee gave importance to expenditure on health, education, and clothing, in addition to:
+    a) Entertainment
+    b) Transportation
+    c) Food
+    d) Savings
+    Answer: c) Food
+
+41. The SR Hashim Committee was constituted in May 2010 to:
+    a) Review agricultural policies.
+    b) Identify urban poor using a three-stage approach.
+    c) Estimate rural poverty.
+    d) Suggest methods for economic growth.
+    Answer: b) Identify urban poor using a three-stage approach.
+
+42. Dr. C. Rangarajan chaired a committee constituted by the Planning Commission in June 2012 to:
+    a) Assess the impact of globalization.
+    b) Review the methodology for measurement of poverty in the country.
+    c) Develop new Five Year Plans.
+    d) Analyze unemployment trends.
+    Answer: b) Review the methodology for measurement of poverty in the country.
+
+43. According to the Rangarajan Report, what was the percentage of people below the poverty line in rural areas in 2011-12?
+    a) 26.4%
+    b) 30.95%
+    c) 21.9%
+    d) 37.2%
+    Answer: b) 30.95%
+
+44. What was the percentage of people below the poverty line in urban areas in 2011-12, as per the Rangarajan Report?
+    a) 30.95%
+    b) 26.4%
+    c) 21.9%
+    d) 37.2%
+    Answer: b) 26.4%
+
+---
+
+TYPES OF POVERTY
+
+45. When the income level of people is so low that they cannot meet even their basic minimum requirements, it is called:
+    a) Relative Poverty
+    b) Absolute Poverty
+    c) Urban Poverty
+    d) Seasonal Poverty
+    Answer: b) Absolute Poverty
+
+46. When we compare the incomes of different people and find some people poorer than others, it is called:
+    a) Absolute Poverty
+    b) Relative Poverty
+    c) Disguised Poverty
+    d) Open Poverty
+    Answer: b) Relative Poverty
+
+---
+
+TYPES OF UNEMPLOYMENT
+
+47. In which type of unemployment do laborers not find work to do, and unskilled labor unemployment is often included?
+    a) Structural Unemployment
+    b) Underemployment
+    c) Open Unemployment
+    d) Disguised Unemployment
+    Answer: c) Open Unemployment
+
+48. Which type of unemployment is related to the economic structure of the country, is long-term, and found when demand for labor cannot keep pace with supply due to high population growth and low capital formation?
+    a) Frictional Unemployment
+    b) Seasonal Unemployment
+    c) Structural Unemployment
+    d) Voluntary Unemployment
+    Answer: c) Structural Unemployment
+
+49. When a person is engaged in work, but their efficiency and capability are not being utilized to the optimum level, it is called:
+    a) Open Unemployment
+    b) Disguised Unemployment
+    c) Underemployment
+    d) Frictional Unemployment
+    Answer: c) Underemployment
+
+50. If a person's marginal productivity contribution is zero, even though they are engaged in work, this is an example of:
+    a) Open Unemployment
+    b) Structural Unemployment
+    c) Seasonal Unemployment
+    d) Disguised Unemployment
+    Answer: d) Disguised Unemployment
+
+51. Disguised unemployment is mainly found in which sector of developing economies?
+    a) Industrial sector
+    b) Service sector
+    c) Agriculture sector
+    d) IT sector
+    Answer: c) Agriculture sector
+
+52. What happens to total production if disguised unemployed individuals are removed from work?
+    a) It increases.
+    b) It decreases significantly.
+    c) It will not affect total production.
+    d) It might increase or decrease depending on the season.
+    Answer: c) It will not affect total production.
+
+53. Unemployment that arises because demand for labor changes with seasons, leading to workers getting employment only in peak seasons, is called:
+    a) Frictional Unemployment
+    b) Voluntary Unemployment
+    c) Seasonal Unemployment
+    d) Structural Unemployment
+    Answer: c) Seasonal Unemployment
+
+54. The unemployment that results due to changes in demand and supply conditions in the market, often when workers are shifting from one job to another, is:
+    a) Structural Unemployment
+    b) Seasonal Unemployment
+    c) Frictional Unemployment
+    d) Disguised Unemployment
+    Answer: c) Frictional Unemployment
+
+55. When there are jobs available, but people are not ready to take them at the prevailing wage rate, this is known as:
+    a) Frictional Unemployment
+    b) Involuntary Unemployment
+    c) Voluntary Unemployment
+    d) Underemployment
+    Answer: c) Voluntary Unemployment
+
+---
+
+VARIOUS DEVELOPMENT AND EMPLOYMENT PROGRAMMES IN INDIA
+
+56. When was the Jawahar Gram Samridhi Yojana (JGSY) launched?
+    a) December 16, 2005
+    b) February 2, 2006
+    c) April 1999
+    d) October 1, 2007
+    Answer: c) April 1999
+
+57. The Bharat Nirman Programme, launched in December 2005, focuses on the development of rural infrastructure, including how many components?
+    a) 3
+    b) 4
+    c) 5
+    d) 6
+    Answer: d) 6
+
+58. The National Rural Employment Scheme aims to provide at least how many days of wage employment in rural areas?
+    a) 50 days
+    b) 75 days
+    c) 100 days
+    d) 150 days
+    Answer: c) 100 days
+
+59. Rastriya Swasthya Bima Yojana, launched in 2007, provides health insurance to workers in which sector?
+    a) Organized sector
+    b) Public sector
+    c) Unorganised area below poverty line
+    d) Private sector
+    Answer: c) Unorganised area below poverty line
+
+60. Aam Aadmi Bima Yojana provides insurance cover to the head of the family of which demographic?
+    a) Urban slum dwellers
+    b) Rural landless households
+    c) Government employees
+    d) Industrial workers
+    Answer: b) Rural landless households
+
+61. What was the objective of the Rajiv Awas Yojana, launched in 2009?
+    a) To provide urban housing loans.
+    b) To make India slum free in 5 years.
+    c) To promote rural housing.
+    d) To construct new cities.
+    Answer: b) To make India slum free in 5 years.
+
+62. The Indira Gandhi Matritva Sahyog Yojana (IGMSY) was launched in 2010 with the objective of:
+    a) Providing education to women.
+    b) Improving the health and nutrition status of pregnant and lactating women and infants.
+    c) Promoting women entrepreneurship.
+    d) Ensuring women's safety.
+    Answer: b) Improving the health and nutrition status of pregnant and lactating women and infants.
+
+63. The Nirbhaya Fund, created in 2013, is dedicated to:
+    a) Women's education.
+    b) Women's economic empowerment.
+    c) The security of women.
+    d) Women's health.
+    Answer: c) The security of women.
+
+64. What was the primary objective of the Pradhan Mantri Jan Dhan Yojana, launched on August 28, 2014?
+    a) To provide housing for all.
+    b) To promote digital literacy.
+    c) Fiscal consolidation and opening of at least one bank account for every family.
+    d) To boost manufacturing.
+    Answer: c) Fiscal consolidation and opening of at least one bank account for every family.
+
+65. The "Make in India" initiative, launched on September 25, 2014, aimed to:
+    a) Promote agricultural exports.
+    b) Make India a manufacturing hub to obtain larger foreign investment.
+    c) Improve the service sector.
+    d) Develop rural infrastructure.
+    Answer: b) Make India a manufacturing hub to obtain larger foreign investment.
+
+66. The Clean India Mission (Swachh Bharat Abhiyan) was launched on October 2, 2014, with the goal of cleaning every village by which year and significant anniversary?
+    a) 2020, 75th Independence Anniversary
+    b) 2019, 150th birth Anniversary of Gandhiji
+    c) 2022, 75th Independence Anniversary
+    d) 2017, 100th birth Anniversary of Gandhiji
+    Answer: b) 2019, 150th birth Anniversary of Gandhiji
+
+67. Under the Sansad Adarsh Gram Yojana, launched on October 11, 2014, MPs are responsible for developing socio-economic and physical infrastructure of how many villages by 2019?
+    a) 1 village
+    b) 2 villages
+    c) 3 villages
+    d) 8 villages
+    Answer: c) 3 villages
+
+68. The Prime Minister Suraksha Bima Yojana, launched in 2015, provides compensation in case of:
+    a) Illness
+    b) Unemployment
+    c) Accidental death or becoming handicapped in an accident
+    d) Natural disaster
+    Answer: c) Accidental death or becoming handicapped in an accident.
+
+69. What is the main objective of AMRUT (Atal Mission for Rejuvenation and Urban Transformation), launched on June 24, 2015?
+    a) To promote rural development.
+    b) To improve the quality of life in urban areas by providing basic services and building amenities.
+    c) To develop smart cities.
+    d) To provide housing to the urban poor.
+    Answer: b) To improve the quality of life in urban areas by providing basic services and building amenities.
+
+70. The DELP (Domestic Efficient Lighting Programme), launched in July 2015, aims to replace regular bulbs and CFL lights with:
+    a) Halogen lamps
+    b) Incandescent bulbs
+    c) LED lights
+    d) Sodium lamps
+    Answer: c) LED lights
+
+71. The PMKSY (Pradhan Mantri Krishi Sinchayee Yojana), launched on July 1, 2015, aims to provide:
+    a) Crop insurance.
+    b) Irrigation facilities to every village.
+    c) Agricultural loans.
+    d) Organic farming promotion.
+    Answer: b) Irrigation facilities to every village.
+
+72. What are the key objectives of Digital India, launched on July 2, 2015?
+    a) Promoting cashless transactions only.
+    b) Creation of digital infrastructure, delivering services digitally, and raising digital literacy.
+    c) Providing free internet to all.
+    d) Developing software industries.
+    Answer: b) Creation of digital infrastructure, delivering services digitally, and raising digital literacy.
+
+73. The Skill India initiative, launched on July 15, 2015, aims to:
+    a) Provide financial assistance to startups.
+    b) Create jobs and utilize the potential of youth.
+    c) Promote higher education.
+    d) Develop rural infrastructure.
+    Answer: b) Create jobs and utilize the potential of youth.
+
+74. DUGJY, launched on July 25, 2015, aims to provide 24x7 uninterrupted electricity supply to each rural household across the country by which year?
+    a) 2019
+    b) 2020
+    c) 2022
+    d) 2024
+    Answer: c) 2022
+
+75. The Sagarmala Project, launched on July 31, 2015, aims to:
+    a) Develop coastal tourism.
+    b) Modernize India's ports for the development of the country's trade economy.
+    c) Promote deep-sea fishing.
+    d) Build new naval bases.
+    Answer: b) Modernize India's ports for the development of the country's trade economy.
+
+76. The SAHAJ Scheme, launched on August 30, 2015, is for:
+    a) Online booking of train tickets.
+    b) Online booking of LPG.
+    c) Online application for government schemes.
+    d) Online banking services.
+    Answer: b) Online booking of LPG.
+
+77. The Shyama Prasad Mukherji Rural Mission (SPMRM), launched on September 16, 2015, focuses on:
+    a) Urban infrastructure development.
+    b) Social, economic, and infrastructure development in rural areas.
+    c) Agricultural research.
+    d) Poverty alleviation in specific districts.
+    Answer: b) Social, economic, and infrastructure development in rural areas.
+
+78. The PMKKY (Pradhan Mantri Khanij Kshetra Kalyan Yojana), launched on September 17, 2015, is for the welfare of people affected by:
+    a) Droughts.
+    b) Natural disasters.
+    c) Mining-related operations.
+    d) Industrial pollution.
+    Answer: c) Mining-related operations.
+
+79. Project Neeranchal, launched on October 7, 2015, aims to bring institutional changes in:
+    a) Urban water supply management.
+    b) Rainfed and watershed agricultural management practices.
+    c) River interlinking projects.
+    d) Irrigation of dry lands.
+    Answer: b) Rainfed and watershed agricultural management practices.
+
+80. UDAY (Ujwal DISCOM Assurance Yojana), launched on November 4, 2015, is for:
+    a) Providing solar power to rural areas.
+    b) Financial restructuring of debt of power distribution companies.
+    c) Promoting renewable energy.
+    d) Electrifying all villages.
+    Answer: b) Financial restructuring of debt of power distribution companies.
+
+81. The Gold Monetisation Scheme (GMS), launched on November 5, 2015, provides an option to people to:
+    a) Buy gold at subsidized rates.
+    b) Deposit their precious metal and earn interest on it.
+    c) Invest in gold bonds.
+    d) Exchange old gold for new.
+    Answer: b) Deposit their precious metal and earn interest on it.
+
+82. The GIAN (Global Initiative of Academic Networks) Scheme, launched on November 30, 2015, aims to improve the quality of higher education through:
+    a) Domestic faculty development.
+    b) International collaboration.
+    c) Online courses only.
+    d) Increased government funding.
+    Answer: b) International collaboration.
+
+83. Pradhan Mantri Fasal Bima Yojana, launched on January 13, 2016, is a new scheme for:
+    a) Agricultural loans.
+    b) Crop insurance.
+    c) Farm mechanization.
+    d) Irrigation facilities.
+    Answer: b) Crop insurance.
+
+84. The Startup India, Standup India Scheme, launched on January 16, 2016, aims at:
+    a) Promoting bank financing for startup ventures to boost entrepreneurship and encourage startups with job creation.
+    b) Providing subsidies to large industries.
+    c) Supporting only IT sector startups.
+    d) Encouraging foreign companies to set up in India.
+    Answer: a) Promoting bank financing for startup ventures to boost entrepreneurship and encourage startups with job creation.
+
+85. Project Sunrise, launched on February 5, 2015, is for:
+    a) Solar energy promotion.
+    b) Prevention of AIDS in North Eastern States.
+    c) Tourism development in coastal areas.
+    d) Rural electrification.
+    Answer: b) Prevention of AIDS in North Eastern States.
+
+86. The Setu Bharatam Project, launched on March 3, 2016, aims to make all national highways free of railway crossings by which year?
+    a) 2018
+    b) 2019
+    c) 2020
+    d) 2022
+    Answer: b) 2019
+
+87. What does the One Rank One Pension (OROP) scheme, implemented in 2016, provide?
+    a) Equal pension for all ex-servicemen.
+    b) Uniform pension for ex-servicemen of the same rank and same length of service, regardless of date of retirement.
+    c) Increased pension based on inflation.
+    d) Pension only for officers.
+    Answer: b) Uniform pension for ex-servicemen of the same rank and same length of service, regardless of date of retirement.
+
+88. The UJALA Scheme, launched on May 1, 2016, is a LED-based Domestic Efficient Lighting Programme (DELP) which is aimed at:
+    a) Providing street lighting.
+    b) Promoting industrial lighting.
+    c) Replacing regular bulbs and CFLs with LED lights.
+    d) Enhancing agricultural lighting.
+    Answer: c) Replacing regular bulbs and CFLs with LED lights.
+
+89. The Pradhan Mantri Ujjwala Yojana, launched on May 1, 2016, aims to provide:
+    a) Free electricity connections.
+    b) Free of cost LPG connections to women from BPL Households.
+    c) Free housing to rural poor.
+    d) Subsidized petrol.
+    Answer: b) Free of cost LPG connections to women from BPL Households.
+
+90. The National Green Highways Mission, launched on July 1, 2016, aims to provide a green canopy along 100,000 km of highways and create jobs for how many youth?
+    a) 100,000
+    b) 500,000
+    c) 1 million
+    d) 2 million
+    Answer: c) 1 million
+
+91. The Krishi Vigyan Kendra (KVK) Portal, launched on July 8, 2016, aims to:
+    a) Provide financial assistance to farmers.
+    b) Offer information and advisory to farmers and facilitate online monitoring of KVK Activities.
+    c) Market agricultural produce online.
+    d) Register new farmers.
+    Answer: b) Offer information and advisory to farmers and facilitate online monitoring of KVK Activities.
+
+92. The Pashudhan Bima Yojana, launched by the Haryana Government on July 28, 2016, provides:
+    a) Health insurance for farm workers.
+    b) Crop insurance.
+    c) Insurance cover to cattle breeders in the state.
+    d) Life insurance for farmers.
+    Answer: c) Insurance cover to cattle breeders in the state.
+
+93. The MAA (Mothers' Absolute Affection) Programme, launched on August 5, 2016, aims to enhance:
+    a) Maternal literacy rates.
+    b) Optional breastfeeding practices in the country.
+    c) Access to maternal healthcare facilities.
+    d) Nutritional supplements for mothers.
+    Answer: b) Optional breastfeeding practices in the country.
+
+94. The Baristha Bunkar Sahayata Yojana (by Odisha govt.), launched on August 7, 2016, aims at improving the financial conditions of how many weavers in the state?
+    a) Over 5,000
+    b) Over 8,000
+    c) Over 10,000
+    d) Over 12,000
+    Answer: b) Over 8,000
+
+95. Mission Bhagiratha (by Telangana Govt.), launched on August 7, 2016, is a water grid project that aims to provide:
+    a) Irrigation for all agricultural land.
+    b) Safe drinking water to all in the state.
+    c) Water for industrial use.
+    d) Flood control.
+    Answer: b) Safe drinking water to all in the state.
+
+96. The Biju Kanya Ratna Yojana, launched on September 4, 2016, has the objective of improving:
+    a) Female literacy rate.
+    b) Sex Ratio at Birth in three districts of the state.
+    c) Access to education for girls.
+    d) Women's health in rural areas.
+    Answer: b) Sex Ratio at Birth in three districts of the state.
+
+
+
+AGRICULTURE
+
+1.  What percentage of India's GDP does agriculture contribute?
+    a) Nearly one-tenth
+    b) Nearly one-fifth
+    c) Nearly one-third
+    d) Nearly half
+    Answer: b) Nearly one-fifth
+
+2.  Approximately what percentage of India's population is engaged in agriculture?
+    a) 20 per cent
+    b) 40 per cent
+    c) 60 per cent
+    d) 80 per cent
+    Answer: c) 60 per cent
+
+---
+
+LAND REFORMS
+
+3.  At the time of Independence, how many types of land tenure systems were prevailing in India?
+    a) Two
+    b) Three
+    c) Four
+    d) Five
+    Answer: b) Three
+
+4.  Which of the following was NOT a land tenure system prevailing in India at Independence?
+    a) Zamindari system
+    b) Mahalwari system
+    c) Ryotwari system
+    d) Panchayatwari system
+    Answer: d) Panchayatwari system
+
+5.  Land reforms and institutional changes were concentrated during which period of the Five Year Plans?
+    a) First to Second Five Year Plan
+    b) First to Third Five Year Plan
+    c) Second to Fourth Five Year Plan
+    d) Third to Fifth Five Year Plan
+    Answer: b) First to Third Five Year Plan
+
+6.  Which of the following was a step taken as part of land reforms to bring about rapid agricultural growth?
+    a) Introduction of the Ryotwari system.
+    b) Abolition of Zamindari and tenancy reforms.
+    c) Establishment of large private farms.
+    d) Focus on industrial development only.
+    Answer: b) Abolition of Zamindari and tenancy reforms.
+
+7.  Which of the following is an aim or objective associated with land reforms?
+    a) Increase in indirect taxes.
+    b) Establishment of monopolies in agriculture.
+    c) Ownership rights for tenants.
+    d) Promotion of large-scale industrialization.
+    Answer: c) Ownership rights for tenants.
+
+8.  Consolidation of holdings is an objective of:
+    a) Industrial policy
+    b) Trade policy
+    c) Land reforms
+    d) Fiscal policy
+    Answer: c) Land reforms
+
+---
+
+GREEN REVOLUTION
+
+9.  Green Revolution refers to a major increase in agricultural productivity due to the introduction of:
+    a) Traditional farming methods.
+    b) High Yield Variety of Seeds (HYVS) and new techniques.
+    c) Organic farming only.
+    d) Small-scale irrigation.
+    Answer: b) High Yield Variety of Seeds (HYVS) and new techniques.
+
+10. The Green Revolution led to a significant increase in the production of which two crops?
+    a) Pulses and oilseeds
+    b) Wheat and Rice
+    c) Cotton and Jute
+    d) Meat and Tomato
+    Answer: b) Wheat and Rice
+
+11. Who is credited with ushering in the era of Green Revolution in India?
+    a) Dr. William Goud
+    b) Dr. Norman Borlaug and Dr. M.S. Swaminathan
+    c) Dr. C. Rangarajan
+    d) Dr. D.T. Lakdawala
+    Answer: b) Dr. Norman Borlaug and Dr. M.S. Swaminathan
+
+12. Who gave the term "Green Revolution"?
+    a) Dr. M.S. Swaminathan
+    b) Dr. Norman Borlaug
+    c) Dr. William Goud
+    d) Dr. V. Kurien
+    Answer: c) Dr. William Goud
+
+13. What was a negative aspect of the Green Revolution in India?
+    a) It was confined to pulses only.
+    b) It did not cover wheat and rice.
+    c) It remained confined to wheat and rice only, not covering pulses.
+    d) It led to a decrease in overall agricultural production.
+    Answer: c) It remained confined to wheat and rice only, not covering pulses.
+
+---
+
+VARIOUS REVOLUTIONS (Agricultural)
+
+14. The Yellow Revolution is associated with which commodity?
+    a) Wheat
+    b) Oilseeds
+    c) Horticulture
+    d) Milk
+    Answer: b) Oilseeds
+
+15. Which revolution is linked to Horticulture?
+    a) Green Revolution
+    b) Yellow Revolution
+    c) Golden Revolution
+    d) Golden Fiber Revolution
+    Answer: c) Golden Revolution
+
+16. Jute production is associated with which revolution?
+    a) Golden Revolution
+    b) Golden Fiber Revolution
+    c) Silver Fiber Revolution
+    d) Rainbow Revolution
+    Answer: b) Golden Fiber Revolution
+
+17. Which revolution covers all aspects of Agriculture?
+    a) Green Revolution
+    b) White Revolution
+    c) Rainbow Revolution
+    d) Evergreen Revolution
+    Answer: c) Rainbow Revolution
+
+18. Milk production is related to which revolution?
+    a) Blue Revolution
+    b) White Revolution
+    c) Red Revolution
+    d) Pink Revolution
+    Answer: b) White Revolution
+
+19. Fish production is associated with the:
+    a) White Revolution
+    b) Blue Revolution
+    c) Red Revolution
+    d) Brown Revolution
+    Answer: b) Blue Revolution
+
+20. Which revolution is associated with Meat and Tomato?
+    a) Pink Revolution
+    b) Black Revolution
+    c) Red Revolution
+    d) Round Revolution
+    Answer: c) Red Revolution
+
+21. Lobster (Fish) production is linked to which revolution?
+    a) Blue Revolution
+    b) Red Revolution
+    c) Pink Revolution
+    d) Grey Revolution
+    Answer: c) Pink Revolution
+
+22. The Black Revolution is related to:
+    a) Fertilizers
+    b) Wool
+    c) Petroleum Products
+    d) Eggs
+    Answer: c) Petroleum Products
+
+23. Fertilizers are associated with which revolution?
+    a) Black Revolution
+    b) Brown Revolution
+    c) Grey Revolution
+    d) Silver Revolution
+    Answer: b) Brown Revolution
+
+24. Wool production is linked to the:
+    a) Brown Revolution
+    b) Grey Revolution
+    c) Round Revolution
+    d) Silver Revolution
+    Answer: b) Grey Revolution
+
+25. The Round Revolution is associated with:
+    a) Milk
+    b) Potato
+    c) Egg
+    d) Cotton
+    Answer: b) Potato
+
+26. Egg/poultry production is part of which revolution?
+    a) Round Revolution
+    b) Silver Fiber Revolution
+    c) Silver Revolution
+    d) Evergreen Revolution
+    Answer: c) Silver Revolution
+
+27. Cotton production is related to the:
+    a) Golden Fiber Revolution
+    b) Silver Fiber Revolution
+    c) Silver Revolution
+    d) Green Revolution
+    Answer: b) Silver Fiber Revolution
+
+28. Which revolution aims for an increase in productivity and prosperity without ecological harm?
+    a) Green Revolution
+    b) Rainbow Revolution
+    c) Evergreen Revolution
+    d) Golden Revolution
+    Answer: c) Evergreen Revolution
+
+---
+
+AGRICULTURE PRICE POLICY
+
+29. Which body provides expert advice to the government on agricultural price policy?
+    a) Food Corporation of India (FCI)
+    b) Cabinet Committee on Economic Affairs (CCEA)
+    c) Commission on Agricultural Costs and Prices (CACP)
+    d) NABARD
+    Answer: c) Commission on Agricultural Costs and Prices (CACP)
+
+30. Which organization acts as the Government's operational arm for guaranteeing price support to farmers by entering the market?
+    a) NABARD
+    b) CCEA
+    c) Food Corporation of India (FCI)
+    d) RBI
+    Answer: c) Food Corporation of India (FCI)
+
+31. What is MSP?
+    a) The price at which the government sells crops to farmers.
+    b) The price announced by the Government to purchase crops directly from farmers if market prices fall below it.
+    c) The maximum price a farmer can sell their crop for.
+    d) A subsidy given to farmers for their produce.
+    Answer: b) The price announced by the Government to purchase crops directly from farmers if market prices fall below it.
+
+32. How many commodities does CACP recommend Minimum Support Prices (MSPs) for?
+    a) 15
+    b) 20
+    c) 23
+    d) 30
+    Answer: c) 23
+
+33. Which central government body gives approval for the MSPs?
+    a) Ministry of Agriculture
+    b) Food Corporation of India (FCI)
+    c) Cabinet Committee on Economic Affairs (CCEA)
+    d) NITI Ayog
+    Answer: c) Cabinet Committee on Economic Affairs (CCEA)
+
+34. For which commodity is "Fair and Remunerative Price" declared instead of MSP?
+    a) Wheat
+    b) Rice
+    c) Pulses
+    d) Sugarcane
+    Answer: d) Sugarcane
+
+35. What is one of the main objectives behind MSPs?
+    a) To increase food exports.
+    b) To prevent fall in price & to protect the interest of farmers.
+    c) To encourage diversification of crops.
+    d) To reduce government expenditure.
+    Answer: b) To prevent fall in price & to protect the interest of farmers.
+
+36. How do Procurement Prices compare to MSPs?
+    a) They are fixed at lower levels than MSPs.
+    b) They are fixed at higher levels than MSPs.
+    c) They are identical to MSPs.
+    d) They are determined by market forces only.
+    Answer: b) They are fixed at higher levels than MSPs.
+
+37. What is the purpose of Procurement Prices?
+    a) To ensure farmers get a high market price.
+    b) To purchase quantities needed by the Government for maintaining the PDS and building buffer stocks.
+    c) To promote private trade in agriculture.
+    d) To reduce food inflation.
+    Answer: b) To purchase quantities needed by the Government for maintaining the PDS and building buffer stocks.
+
+38. What do Issue Prices indicate?
+    a) The prices at which farmers sell their crops to private traders.
+    b) The prices at which the Government supplies food grains through fair price shops and national depots.
+    c) The cost of production for farmers.
+    d) The maximum retail price of agricultural commodities.
+    Answer: b) The prices at which the Government supplies food grains through fair price shops and national depots.
+
+---
+
+NATIONAL BANK FOR AGRICULTURE AND RURAL DEVELOPMENT (NABARD)
+
+39. When was NABARD established?
+    a) July 12, 1970
+    b) July 12, 1982
+    c) July 12, 1992
+    d) July 12, 2002
+    Answer: b) July 12, 1982
+
+40. What was the initial paid-up capital of NABARD?
+    a) Rs. 50 crore
+    b) Rs. 100 crore
+    c) Rs. 200 crore
+    d) Rs. 500 crore
+    Answer: b) Rs. 100 crore
+
+41. The initial paid-up capital of NABARD was contributed equally by:
+    a) State Governments and commercial banks.
+    b) Indian Government and RBI.
+    c) Private banks and public sector banks.
+    d) International financial institutions and Indian Government.
+    Answer: b) Indian Government and RBI.
+
+42. What is NABARD's role in relation to agriculture and rural development finance?
+    a) It is a commercial bank.
+    b) It is a regulatory body.
+    c) It is the apex institution providing finance.
+    d) It is a research institution.
+    Answer: c) It is the apex institution providing finance.
+
+---
+
+OPERATION FLOOD
+
+43. In what year was "Operation Flood," the largest dairy development project, launched?
+    a) 1960
+    b) 1970
+    c) 1979
+    d) 1982
+    Answer: b) 1970
+
+44. What was the main object of Operation Flood?
+    a) To establish private dairies.
+    b) To set up AMUL-like organizations linking rural milk procurement with urban demand centers.
+    c) To promote export of dairy products.
+    d) To reduce milk production.
+    Answer: b) To set up AMUL-like organizations linking rural milk procurement with urban demand centers.
+
+45. Where was AMUL (Anand Milk Union Ltd.) set up in the 1960s?
+    a) Kheda district of Gujarat
+    b) Anand in Uttar Pradesh
+    c) Mumbai in Maharashtra
+    d) Jaipur in Rajasthan
+    Answer: a) Kheda district of Gujarat
+
+46. When was Operation Flood II launched?
+    a) 1970
+    b) 1979
+    c) 1982
+    d) 1990
+    Answer: b) 1979
+
+47. What was the aim of Operation Flood II?
+    a) To increase milk imports.
+    b) To set up a National Milk Grid by linking rural milk sheds to major urban demand centers.
+    c) To establish private milk cooperatives.
+    d) To reduce government intervention in dairy.
+    Answer: b) To set up a National Milk Grid by linking rural milk sheds to major urban demand centers.
+
+48. What is India's current ranking in world milk production?
+    a) Second
+    b) Third
+    c) First
+    d) Fourth
+    Answer: c) First
+
+---
+
+MONEY & BANKING - SUPPLY OF MONEY
+
+49. How many types of currency concepts are published in India, according to the text?
+    a) Two
+    b) Three
+    c) Four
+    d) Five
+    Answer: c) Four
+
+50. Which institution calculates the four concepts of money supply in India?
+    a) Ministry of Finance
+    b) NABARD
+    c) Reserve Bank of India (RBI)
+    d) State Bank of India
+    Answer: c) Reserve Bank of India (RBI)
+
+51. Which measure of money supply is called "narrow money"?
+    a) M0
+    b) M1
+    c) M2
+    d) M3
+    Answer: b) M1
+
+52. What are the two relevant indicators of money supply in India currently?
+    a) M0 and M1
+    b) M1 and M2
+    c) M1 and M3
+    d) M2 and M4
+    Answer: c) M1 and M3
+
+53. M0 is also known as:
+    a) Narrow money
+    b) Broad money
+    c) Reserve money or high power money
+    d) Time deposits
+    Answer: c) Reserve money or high power money
+
+54. M1 includes:
+    a) Currency with the public + Time deposits.
+    b) Currency with the public + Demand deposit with the banking system + other deposit with the RBI.
+    c) M0 + saving deposits of post office.
+    d) M3 + all deposits with the post office saving.
+    Answer: b) Currency with the public + Demand deposit with the banking system + other deposit with the RBI.
+
+55. M2 includes:
+    a) M1 + Time deposit with the banking system.
+    b) M1 + saving deposits of post office, saving banks.
+    c) Currency with the public + Demand deposits.
+    d) M3 + All deposits with the post office saving.
+    Answer: b) M1 + saving deposits of post office, saving banks.
+
+56. M3 includes:
+    a) M1 + saving deposits of post office, saving banks.
+    b) M1 + Time deposit with the banking system.
+    c) M2 + All deposits with the post office saving.
+    d) Currency with the public + other deposits with the RBI.
+    Answer: b) M1 + Time deposit with the banking system.
+
+57. M4 includes:
+    a) M3 + All deposits with the post office saving (excluding NSC).
+    b) M3 + saving deposits of post office, saving banks.
+    c) M1 + Time deposit with the banking system.
+    d) M2 + other deposits with the RBI.
+    Answer: a) M3 + All deposits with the post office saving (excluding NSC).
+
+58. Coins in India are considered:
+    a) Unlimited legal tender.
+    b) Limited legal tender.
+    c) Fiduciary money.
+    d) Credit money.
+    Answer: b) Limited legal tender.
+
+59. Paper currency in India is:
+    a) Limited legal tender.
+    b) Unlimited legal tender.
+    c) Fiduciary money only.
+    d) Credit money only.
+    Answer: b) Unlimited legal tender.
+
+60. Why is Narrow money considered the most liquid part of the money supply?
+    a) Because it includes time deposits.
+    b) Because it includes only currency.
+    c) Because demand deposits can be withdrawn anytime.
+    d) Because it is backed by gold.
+    Answer: c) Because demand deposits can be withdrawn anytime.
+
+---
+
+FORMS OF MONEY
+
+61. What type of money has value only by government order and is not derived from any intrinsic value or commodity guarantee?
+    a) Credit Money
+    b) Fiduciary Money
+    c) Fiat Money
+    d) Commodity Money
+    Answer: c) Fiat Money
+
+62. Money that is backed by a promise to pay made by someone other than the state is called:
+    a) Fiat Money
+    b) Credit Money
+    c) Fiduciary Money
+    d) Reserve Money
+    Answer: b) Credit Money
+
+63. Which type of money depends for its value on confidence that it is an accepted medium of exchange and originated as a paper certificate promising a certain amount of gold or silver?
+    a) Fiat Money
+    b) Credit Money
+    c) Fiduciary Money
+    d) Narrow Money
+    Answer: c) Fiduciary Money
+
+---
+
+DEFICITS AND BUDGET
+
+64. What is a "Budget deficit"?
+    a) When budget receipts are greater than budget expenditures.
+    b) When budget expenditures of the government are greater than budget receipts.
+    c) When revenue receipts equal revenue expenditure.
+    d) When the government has a surplus.
+    Answer: b) When budget expenditures of the government are greater than budget receipts.
+
+65. How many types of budget deficits are mentioned?
+    a) Two
+    b) Three
+    c) Four
+    d) Five
+    Answer: b) Three
+
+66. Revenue Deficit is the excess of:
+    a) Total budget expenditure over total budget receipts.
+    b) Total revenue expenditure of the government over its total revenue receipts.
+    c) Capital expenditure over capital receipts.
+    d) Fiscal deficit over interest payments.
+    Answer: b) Total revenue expenditure of the government over its total revenue receipts.
+
+67. What does a Revenue Deficit signify?
+    a) That the government has sufficient earnings for its normal functioning.
+    b) That the government's own earning is insufficient to meet normal functioning and provision of services.
+    c) That the government is increasing its assets.
+    d) That the government is reducing its liabilities.
+    Answer: b) That the government's own earning is insufficient to meet normal functioning and provision of services.
+
+68. Revenue deficit primarily results in:
+    a) Increased tax collection.
+    b) Reduction in government spending.
+    c) Borrowing.
+    d) Economic growth.
+    Answer: c) Borrowing.
+
+69. Which of the following is a main remedy to control revenue deficit?
+    a) Increase in unnecessary expenditure.
+    b) Government should raise rate of taxes.
+    c) Decrease in new taxes.
+    d) Reduce government earnings.
+    Answer: b) Government should raise rate of taxes.
+
+70. Fiscal Deficit is defined as the excess of total budget expenditure over total budget receipts, excluding:
+    a) Revenue receipts.
+    b) Capital receipts.
+    c) Borrowing.
+    d) Government spending.
+    Answer: c) Borrowing.
+
+71. What does the Primary Deficit indicate?
+    a) The total borrowing requirements of the government.
+    b) The interest obligations on accumulated debt.
+    c) The deficit amount that the government needs to borrow for consumption and investment purposes.
+    d) The difference between revenue expenditure and revenue receipts.
+    Answer: c) The deficit amount that the government needs to borrow for consumption and investment purposes.
+
+72. Primary Deficit is calculated as:
+    a) Gross Fiscal Deficit + Net Interest Liabilities
+    b) Gross Fiscal Deficit - Net Interest Liabilities
+    c) Revenue Deficit + Interest Payments
+    d) Total Expenditure - Total Receipts
+    Answer: b) Gross Fiscal Deficit - Net Interest Liabilities
+
+---
+
+OBJECTIVES AND TYPES OF GOVERNMENT BUDGET
+
+73. Which of the following is an objective of the Government Budget?
+    a) Increasing inflation.
+    b) Reducing economic growth.
+    c) Reallocation of resources.
+    d) Increasing inequalities.
+    Answer: c) Reallocation of resources.
+
+74. How many types of budgets are mentioned?
+    a) Two
+    b) Three
+    c) Four
+    d) Five
+    Answer: b) Three
+
+75. A government budget where estimated receipts are equal to estimated expenditure is called a:
+    a) Surplus Budget
+    b) Deficit Budget
+    c) Balanced Budget
+    d) Zero-based Budget
+    Answer: c) Balanced Budget
+
+76. What does a Balanced Budget ensure?
+    a) Economic instability.
+    b) Financial stability.
+    c) Increased wasteful expenditure.
+    d) High inflation.
+    Answer: b) Financial stability.
+
+77. When government receipts are more than government expenditure in the budget, it is called a:
+    a) Deficit Budget
+    b) Balanced Budget
+    c) Surplus Budget
+    d) Crisis Budget
+    Answer: c) Surplus Budget
+
+78. What does a Surplus Budget indicate?
+    a) That the government is pumping more money into the economic system.
+    b) That the government is taking away more money than what it is pumping in the economic systems.
+    c) That there is a need for more government spending.
+    d) That the economy is in a recession.
+    Answer: b) That the government is taking away more money than what it is pumping in the economic systems.
+
+79. When government estimated expenditure exceeds government receipts, the budget is said to be a:
+    a) Balanced Budget
+    b) Surplus Budget
+    c) Deficit Budget
+    d) Growth Budget
+    Answer: c) Deficit Budget
+
+---
+
+BALANCE OF PAYMENT
+
+80. Overall Balance of Payments is the sum of:
+    a) Balance of payments on current account + Balance of payments on capital account.
+    b) Balance of trade + Net visibles.
+    c) Exports - Imports.
+    d) FDI + FII.
+    Answer: a) Balance of payments on current account + Balance of payments on capital account.
+
+81. Which account is made up of exports and imports, expenses on travel, transportation, insurance, investment income, and transfer payments?
+    a) Balance of Payments on Capital Account
+    b) Balance of Trade
+    c) Balance of Payments on Current Account
+    d) Foreign Direct Investment
+    Answer: c) Balance of Payments on Current Account
+
+82. What do "Visibles" in the Balance of Payments on Current Account refer to?
+    a) Service exports and imports.
+    b) Commodity exports and imports.
+    c) Investment income.
+    d) Transfer payments.
+    Answer: b) Commodity exports and imports.
+
+83. Which of the following is considered an "Invisible" in the Balance of Payments on Current Account?
+    a) Commodity exports.
+    b) Purchase of securities.
+    c) Shipping freight and passenger fares.
+    d) Sale of assets to foreigners.
+    Answer: c) Shipping freight and passenger fares.
+
+84. The Balance of Payments on Capital Account is made up of:
+    a) Travel and insurance expenses.
+    b) Borrowing and lending of capital, and sale/purchase of securities from foreigners.
+    c) Commodity exports and imports.
+    d) Interest payments on external debt.
+    Answer: b) Borrowing and lending of capital, and sale/purchase of securities from foreigners.
+
+85. Balance of trade is defined as:
+    a) Value of commodity exports - Value of commodity imports.
+    b) Trade balance + Net invisibles.
+    c) Sum of both visibles and invisibles.
+    d) Foreign direct investment.
+    Answer: a) Value of commodity exports - Value of commodity imports.
+
+86. What does "Balance of payments" refer to?
+    a) Value of commodity exports only.
+    b) Value of commodity imports only.
+    c) The sum of both visibles and invisibles.
+    d) Net capital transactions.
+    Answer: c) The sum of both visibles and invisibles.
+
+---
+
+FOREIGN DIRECT INVESTMENT (FDI)
+
+87. FDI involves the injection of foreign funds into an enterprise operating in a different country of origin from the investor. What minimum percentage of shares must belong to the foreign company for it to be considered FDI?
+    a) Not less than 5%
+    b) Not less than 10%
+    c) Not less than 25%
+    d) Not less than 51%
+    Answer: b) Not less than 10%
+
+88. FDI is classified as what type of capital flow?
+    a) Debt capital flow
+    b) Non-debt capital flow
+    c) Short-term capital flow
+    d) Portfolio capital flow
+    Answer: b) Non-debt capital flow
+
+89. When foreign investment is made in the form of shares, equities, and bonds by a foreign company, it is called:
+    a) Foreign Direct Investment (FDI)
+    b) Foreign Institutional Investment (FII)
+    c) Overseas Direct Investment (ODI)
+    d) External Commercial Borrowing (ECB)
+    Answer: b) Foreign Institutional Investment (FII)
+
+90. Which of the following is NOT one of the three main institutions that handle FDI-related issues in India?
+    a) Foreign Investment Promotion Board (FIPB)
+    b) Reserve Bank of India (RBI)
+    c) Foreign Investment Implementation Authority (FIIA)
+    d) Secretariat for Industrial Assistance (SIA)
+    Answer: b) Reserve Bank of India (RBI)
+
+91. Which two sectors are NOT opened to the private sector for FDI?
+    a) Banking and Insurance
+    b) Telecommunications and Media
+    c) Railways and Atomic Energy
+    d) Education and Health
+    Answer: c) Railways and Atomic Energy
+
+92. FDI in Limited Liability Partnership (LLP) has been allowed since:
+    a) May 20, 2010
+    b) May 20, 2011
+    c) May 20, 2012
+    d) May 20, 2015
+    Answer: b) May 20, 2011
+
+---
+
+FDI LIMITS IN VARIOUS SECTORS
+
+93. What is the FDI limit in the Defense Sector?
+    a) 26%
+    b) 49%
+    c) 51%
+    d) 100%
+    Answer: b) 49%
+
+94. What is the entry route for FDI up to 49% in Telecom Services?
+    a) Government route
+    b) FIPB route
+    c) Automatic route
+    d) Not permitted
+    Answer: c) Automatic route
+
+95. What is the FDI limit for Tea Plantation?
+    a) 49%
+    b) 51%
+    c) 74%
+    d) 100%
+    Answer: d) 100%
+
+96. What is the FDI limit in Petroleum and Natural Gas?
+    a) 49%
+    b) 74%
+    c) 100%
+    d) 26%
+    Answer: a) 49%
+
+97. What is the FDI limit for Commodity Exchanges?
+    a) 26%
+    b) 49%
+    c) 51%
+    d) 74%
+    Answer: b) 49%
+
+98. What is the FDI limit for Credit Information Companies?
+    a) 49%
+    b) 51%
+    c) 74%
+    d) 100%
+    Answer: c) 74%
+
+99. What is the FDI limit for Courier Services?
+    a) 49%
+    b) 74%
+    c) 100%
+    d) Not permitted
+    Answer: c) 100%
+
+100. For Single Brand Product Retail Trading, what is the FDI limit?
+    a) 49%
+    b) 51%
+    c) 74%
+    d) 100%
+    Answer: d) 100%
+
+101. What is the FDI limit in the Insurance Sector?
+    a) 26%
+    b) 49%
+    c) 51%
+    d) 74%
+    Answer: b) 49%
+
+102. What is the FDI limit for Multi Brand Retail?
+    a) 49%
+    b) 51%
+    c) 74%
+    d) 100%
+    Answer: b) 51%
+
+103. What is the FDI limit in Print Media?
+    a) 26%
+    b) 49%
+    c) 51%
+    d) 74%
+    Answer: b) 49%
+
+104. What is the FDI limit in the Education sector?
+    a) 49%
+    b) 51%
+    c) 74%
+    d) 100%
+    Answer: d) 100%
+
+105. What is the FDI limit for FM Radio?
+    a) 26%
+    b) 49%
+    c) 51%
+    d) 74%
+    Answer: a) 26%
+
+
+
+BANKING SYSTEM IN INDIA
+
+1.  A banking institution is described as indispensable in what kind of society?
+    a) Traditional society
+    b) Modern society
+    c) Agricultural society
+    d) Industrial society
+    Answer: b) Modern society
+
+2.  What does the banking system form the core of in an advanced country?
+    a) Stock market
+    b) Capital market
+    c) Money market
+    d) Commodity market
+    Answer: c) Money market
+
+---
+
+SCHEDULED COMMERCIAL BANKS IN INDIA
+
+3.  The commercial banking structure in India consists of:
+    a) Only Scheduled Commercial Banks.
+    b) Scheduled Commercial Banks and Unscheduled Banks.
+    c) Only Public Sector Banks.
+    d) Only Private Sector Banks.
+    Answer: b) Scheduled Commercial Banks and Unscheduled Banks.
+
+4.  A "Scheduled bank in India" is defined as a bank included in which schedule of the Reserve Bank of India Act, 1934?
+    a) First Schedule
+    b) Second Schedule
+    c) Third Schedule
+    d) Fourth Schedule
+    Answer: b) Second Schedule
+
+5.  Which type of bank is explicitly excluded from the definition of a "Scheduled bank in India"?
+    a) Commercial bank
+    b) Co-operative bank
+    c) Private sector bank
+    d) Foreign bank
+    Answer: b) Co-operative bank
+
+6.  "Non-scheduled banks in India" are those banks which are not included in the:
+    a) First schedule of RBI, 1934
+    b) Second schedule of RBI, 1934
+    c) Third schedule of RBI, 1934
+    d) Fourth schedule of RBI, 1934
+    Answer: b) Second schedule of RBI, 1934
+
+7.  Local Area Banks (LABs) were announced in which Union Budget?
+    a) 1991-92
+    b) 1996-97
+    c) 2000-01
+    d) 2005-06
+    Answer: b) 1996-97
+
+8.  Local Area Banks operate within a narrow geographical area of how many contiguous districts?
+    a) One
+    b) Two
+    c) Three
+    d) Five
+    Answer: c) Three
+
+9.  Which sector is allowed entry into the Local Area Bank segment?
+    a) Public sector only
+    b) Private sector
+    c) Cooperative sector only
+    d) Foreign sector only
+    Answer: b) Private sector
+
+---
+
+REGIONAL RURAL BANK (RRB)
+
+10. Regional Rural Banks (RRBs) were established since which year?
+    a) 1970
+    b) 1975
+    c) 1982
+    d) 1991
+    Answer: b) 1975
+
+11. What is the primary objective of RRBs?
+    a) Developing urban infrastructure.
+    b) Providing credit and deposit facilities for agriculture and other productive activities in rural areas.
+    c) Focusing on large-scale industrial lending.
+    d) Managing foreign exchange reserves.
+    Answer: b) Providing credit and deposit facilities for agriculture and other productive activities in rural areas.
+
+12. What is the proportion of equity contribution by the Central Government, concerned state Government, and the sponsor bank in RRBs?
+    a) 35:15:50
+    b) 15:50:35
+    c) 50:15:35
+    d) 50:35:15
+    Answer: c) 50:15:35
+
+13. How many RRBs are there at present, according to the text?
+    a) 45
+    b) 50
+    c) 56
+    d) 60
+    Answer: c) 56
+
+---
+
+RESERVE BANK OF INDIA
+
+14. When was the Reserve Bank of India (RBI) established?
+    a) April 1934
+    b) April 1935
+    c) January 1, 1949
+    d) July 12, 1982
+    Answer: b) April 1935
+
+15. Under which Act was RBI established?
+    a) Banking Regulation Act, 1949
+    b) Reserve Bank of India Act, 1934
+    c) Companies Act, 1956
+    d) NABARD Act, 1981
+    Answer: b) Reserve Bank of India Act, 1934
+
+16. What was the authorized capital of RBI at its establishment?
+    a) 1 crore
+    b) 5 crore
+    c) 10 crore
+    d) 50 crore
+    Answer: b) 5 crore
+
+17. When was the Reserve Bank of India nationalized?
+    a) January 1, 1935
+    b) January 1, 1947
+    c) January 1, 1949
+    d) January 1, 1950
+    Answer: c) January 1, 1949
+
+18. Who heads the Central Board that governs the RBI?
+    a) Finance Minister
+    b) Prime Minister
+    c) Governor
+    d) Chief Economic Advisor
+    Answer: c) Governor
+
+19. Besides the Governor, how many Deputy Governors are part of the Central Board of Directors of RBI?
+    a) Two
+    b) Three
+    c) Four
+    d) Five
+    Answer: c) Four
+
+20. Which of the following is NOT an office of the Local Boards of RBI?
+    a) New Delhi
+    b) Kolkata
+    c) Mumbai
+    d) Bengaluru
+    Answer: d) Bengaluru
+
+---
+
+FUNCTIONS OF RBI
+
+21. Which of the following is a function of the RBI?
+    a) Directly providing loans to farmers.
+    b) Issuing bank notes.
+    c) Managing private sector banks only.
+    d) Setting up new commercial banks.
+    Answer: b) Issuing bank notes.
+
+22. RBI acts as the "Banker's Bank". What does this imply?
+    a) It provides loans to individuals.
+    b) It manages accounts of other banks.
+    c) It is responsible for all banking operations in the country.
+    d) It only advises commercial banks.
+    Answer: b) It manages accounts of other banks.
+
+23. One of the supervisory functions of RBI includes:
+    a) Directly lending to industries.
+    b) Collecting and publishing economic data.
+    c) Controlling credit.
+    d) Selling of Government securities.
+    Answer: c) Controlling credit.
+
+24. Which function of RBI involves providing a facility of Clearing House to banks?
+    a) Banker to the Government
+    b) Custodian of foreign exchange reserves
+    c) Supervisory functions
+    d) Arrangement of agriculture credit
+    Answer: c) Supervisory functions (The text lists 'Provide Facility of Clearing House to banks' as a separate function, but supervisory functions generally encompass such regulatory/facilitating roles).
+
+---
+
+INSTRUMENTS OF CREDIT CONTROL - QUANTITATIVE MEASURES
+
+25. Which of the following is a quantitative measure of credit control by RBI?
+    a) Rationing of credit
+    b) Direct Action
+    c) Bank Rate
+    d) Fixing minimum margins
+    Answer: c) Bank Rate
+
+26. What is the Bank Rate?
+    a) The rate at which commercial banks lend to customers.
+    b) The rate at which RBI is willing to lend to commercial banks.
+    c) The interest rate on savings deposits.
+    d) The rate for inter-bank lending.
+    Answer: b) The rate at which RBI is willing to lend to commercial banks.
+
+27. In the context of the Bank Rate, what happens to liquidity when the Bank Rate increases?
+    a) Liquidity increases.
+    b) Liquidity decreases.
+    c) Liquidity remains unchanged.
+    d) Liquidity fluctuates unpredictably.
+    Answer: b) Liquidity decreases.
+
+28. Commercial banks are required to keep a certain amount of cash reserves at the central bank (RBI). This percentage amount is called:
+    a) Statutory Liquidity Ratio (SLR)
+    b) Repo Rate
+    c) Cash Reserve Ratio (CRR)
+    d) Reverse Repo Rate
+    Answer: c) Cash Reserve Ratio (CRR)
+
+29. In what form is CRR maintained with RBI?
+    a) Gold
+    b) Approved securities
+    c) Cash form only
+    d) Any liquid asset
+    Answer: c) Cash form only
+
+30. What is the Repo Rate?
+    a) The rate at which RBI borrows from commercial banks.
+    b) The rate at which commercial banks lend to customers.
+    c) The rate at which banks borrow rupees from RBI.
+    d) The rate for government securities.
+    Answer: c) The rate at which banks borrow rupees from RBI.
+
+31. Repo rate is an instrument under which facility?
+    a) Marginal Standing Facility (MSF)
+    b) Open Market Operations (OMO)
+    c) Liquidity Adjustment Facility (LAF)
+    d) Cash Authorization Scheme
+    Answer: c) Liquidity Adjustment Facility (LAF)
+
+32. What happens to liquidity when the Repo rate increases?
+    a) Liquidity increases.
+    b) Liquidity decreases.
+    c) Liquidity remains unchanged.
+    d) Liquidity becomes unstable.
+    Answer: b) Liquidity decreases.
+
+33. What is the Reverse Repo Rate?
+    a) The rate at which RBI lends to commercial banks.
+    b) The rate at which RBI borrows from commercial banks.
+    c) The rate at which commercial banks borrow from each other.
+    d) The rate for long-term loans.
+    Answer: b) The rate at which RBI borrows from commercial banks.
+
+34. In case of inflationary tendencies, what can RBI do with the Reverse Repo Rate to absorb excess liquidity?
+    a) Decrease it.
+    b) Keep it unchanged.
+    c) Hike it.
+    d) Introduce a new rate.
+    Answer: c) Hike it.
+
+35. What does the Statutory Liquidity Ratio (SLR) require commercial banks to maintain?
+    a) A certain percentage of their profits as liquid assets.
+    b) A certain percentage of their net demand and time liabilities (NDTL) as liquid assets.
+    c) A certain amount of cash only with RBI.
+    d) A fixed amount of gold only.
+    Answer: b) A certain percentage of their net demand and time liabilities (NDTL) as liquid assets.
+
+36. In what forms can liquid assets for SLR be maintained?
+    a) Cash only.
+    b) Gold only.
+    c) Approved securities only.
+    d) Cash, gold, or approved securities.
+    Answer: d) Cash, gold, or approved securities.
+
+37. What does the Liquid Adjustment Facility (LAF) consist of?
+    a) Bank Rate and CRR operations.
+    b) Repo and Reverse Repo operations.
+    c) SLR and MSF.
+    d) Direct action and rationing of credit.
+    Answer: b) Repo and Reverse Repo operations.
+
+38. When RBI starts buying or selling government securities to control money supply, this is known as:
+    a) Repo Rate adjustment.
+    b) Reverse Repo Rate adjustment.
+    c) Open Market Operations.
+    d) Cash Reserve Ratio adjustment.
+    Answer: c) Open Market Operations.
+
+39. What is Marginal Standing Facility (MSF)?
+    a) The rate at which commercial banks lend to each other.
+    b) The penal rate at which banks can borrow money from the Central Bank by pledging government securities within SLR limits.
+    c) The rate for inter-bank deposits.
+    d) The interest rate on long-term government bonds.
+    Answer: b) The penal rate at which banks can borrow money from the Central Bank by pledging government securities within SLR limits.
+
+---
+
+INSTRUMENTS OF CREDIT CONTROL - QUALITATIVE MEASURES
+
+40. Which of the following is a qualitative measure of credit control?
+    a) Bank Rate
+    b) Cash Reserve Ratio
+    c) Rationing of credit
+    d) Open Market Operations
+    Answer: c) Rationing of credit
+
+41. Under the Cash Authorisation Scheme, what do commercial banks have to obtain RBI's authorization for?
+    a) Before opening new branches.
+    b) Before sanctioning any fresh credit above a certain limit.
+    c) Before issuing new types of loans.
+    d) Before changing their interest rates.
+    Answer: b) Before sanctioning any fresh credit above a certain limit.
+
+42. Selective controls are mainly focused on credit to traders for financing inventories for purposes of:
+    a) Long-term investment.
+    b) Industrial production.
+    c) Hoarding and speculation.
+    d) Export promotion.
+    Answer: c) Hoarding and speculation.
+
+---
+
+PRINTING PRESS
+
+43. Where is the Indian Security Press located?
+    a) Hyderabad
+    b) Devas
+    c) Nasik
+    d) Hoshangabad
+    Answer: c) Nasik (Maharashtra)
+
+44. Which printing press is responsible for making ink for currency notes?
+    a) Indian Security Press, Nasik
+    b) Security Printing Press, Hyderabad
+    c) Bank Note Press, Devas
+    d) Currency Press Note, Nasik
+    Answer: c) Bank Note Press, Devas (Madhya Pradesh)
+
+45. Which facility is specifically for printing currency note paper and non-judicial stamps?
+    a) Bank Note Press – Devas
+    b) Security Paper Mill – Hoshangabad
+    c) Indian Security Press – Nasik
+    d) Shahbani (West Bengal)
+    Answer: b) Security Paper Mill – Hoshangabad (M.P)
+
+46. New currency notes under RBI are printed at:
+    a) Nasik and Hyderabad
+    b) Devas and Hoshangabad
+    c) Shahbani (West Bengal) and Mysuru (Karnataka)
+    d) Kolkata and Mumbai
+    Answer: c) Shahbani (West Bengal, and Mysuru Karnataka)
+
+---
+
+CAPITAL MARKET
+
+47. Capital markets are markets for buying and selling what?
+    a) Short-term debt instruments only.
+    b) Equity and debt instruments.
+    c) Commodities only.
+    d) Foreign exchange.
+    Answer: b) Equity and debt instruments.
+
+48. Capital markets channel savings and investment between suppliers of capital and users of capital. Who are typically the suppliers of capital?
+    a) Businesses and governments.
+    b) Retail investors and institutional investors.
+    c) Individuals and corporations.
+    d) Banks and financial institutions.
+    Answer: b) Retail investors and institutional investors.
+
+49. What are the two types of markets included in capital markets?
+    a) Spot markets and future markets.
+    b) Primary markets and secondary markets.
+    c) Money markets and commodity markets.
+    d) Debt markets and equity markets.
+    Answer: b) Primary markets and secondary markets.
+
+50. In which market are new stock and bond issues sold to investors?
+    a) Secondary market
+    b) Tertiary market
+    c) Primary market
+    d) Derivatives market
+    Answer: c) Primary market
+
+---
+
+DEMAT TRADING
+
+51. Demat Trading refers to trading in shares, bonds, and debentures through which mode?
+    a) Physical mode
+    b) Electronic mode
+    c) Hybrid mode
+    d) Manual mode
+    Answer: b) Electronic mode
+
+52. How many depositories are mentioned for Demat trading?
+    a) One
+    b) Two
+    c) Three
+    d) Four
+    Answer: b) Two
+
+53. When was NSDL (National Securities Depositories Ltd.) established?
+    a) 1998
+    b) 1996
+    c) 2000
+    d) 1992
+    Answer: b) 1996
+
+54. CSDL (Central Depositories Services Ltd.) was established in:
+    a) 1996
+    b) 1998
+    c) 2000
+    d) 1992
+    Answer: b) 1998
+
+---
+
+MUTUAL FUNDS
+
+55. Mutual Funds are sizeable collections of savings managed by whom?
+    a) Individual investors.
+    b) Commercial banks.
+    c) Specialists/fund managers.
+    d) Government bodies.
+    Answer: c) Specialists/fund managers.
+
+56. Mutual Funds in India are set up under the guidelines provided by:
+    a) RBI
+    b) Ministry of Finance
+    c) SEBI
+    d) IRDA
+    Answer: c) SEBI
+
+57. A mutual fund is described as a group of investors operating through a fund manager to purchase a diverse portfolio of:
+    a) Real estate.
+    b) Commodities.
+    c) Stocks or bonds.
+    d) Foreign currency.
+    Answer: c) Stocks or bonds.
+
+---
+
+STOCK EXCHANGE
+
+58. Which of the following is a Regional Stock Exchange mentioned in the text?
+    a) National Stock Exchange (NSE)
+    b) Bombay Stock Exchange (BSE)
+    c) Over the Counter Exchange of India Ltd. (OTCEI)
+    d) Inter Connected Stock Exchange of India Ltd. (ISE)
+    Answer: b) Bombay Stock Exchange (BSE)
+
+59. How many National Stock Exchanges are mentioned in the text?
+    a) One
+    b) Two
+    c) Three
+    d) Four
+    Answer: c) Three
+
+60. The Phelwani Committee (1991) recommended the establishment of which stock exchange?
+    a) BSE
+    b) OTCEI
+    c) NSE
+    d) ISE
+    Answer: c) NSE
+
+61. Which institution was authorized by the Government to establish NSE in 1992, and is thus its main promoter?
+    a) SEBI
+    b) RBI
+    c) IDBI
+    d) SBI
+    Answer: c) IDBI
+
+62. What is a "Bull" on the stock exchange?
+    a) A speculator who sells shares in anticipation of falling prices.
+    b) A speculator who buys shares in anticipation of rising prices to resell them at a profit.
+    c) An investor who always holds onto shares.
+    d) A company that issues new shares.
+    Answer: b) A speculator who buys shares in anticipation of rising prices to resell them at a profit.
+
+63. What is a "Bear" on the stock exchange?
+    a) A speculator who buys shares anticipating rising prices.
+    b) A speculator who sells shares in anticipation of falling prices to buy them back and make a profit.
+    c) An investor who only deals in commodities.
+    d) A company with declining profits.
+    Answer: b) A speculator who sells shares in anticipation of falling prices to buy them back and make a profit.
+
+64. What does "Footsie" stand for?
+    a) Financial Trade Stock Exchange
+    b) Foreign Time Stock Exchange
+    c) Financial Times Stock Exchange 100 share Index
+    d) Futures Trading Stock Exchange
+    Answer: c) Financial Times Stock Exchange 100 share Index.
+
+65. What does MIBOR refer to?
+    a) Mumbai Inter-bank Bid Rate
+    b) Mumbai Inter-bank Offer Rate (Lending rate for loans)
+    c) Mumbai Inter-bank Interest Rate
+    d) Mumbai Inter-bank Buy Rate
+    Answer: b) Mumbai Inter-bank Offer Rate (Lending rate for loans)
+
+66. What does MIBIR refer to?
+    a) Mumbai Inter-bank Offer Rate
+    b) Mumbai Inter-bank Buy Rate
+    c) Mumbai Inter-bank Borrowing Rate
+    d) Mumbai Inter-bank Bid Rate (Lending rate for recipients)
+    Answer: d) Mumbai Inter-bank Bid Rate (Lending rate for recipients)
+
+---
+
+BOMBAY STOCK EXCHANGE
+
+67. The Bombay Stock Exchange Limited (BSE) is the oldest stock exchange in:
+    a) India
+    b) Asia
+    c) The world
+    d) South Asia
+    Answer: b) Asia
+
+68. BSE was established as 'The Native Share & Stock Brokers Association' in which year?
+    a) 1850
+    b) 1875
+    c) 1934
+    d) 1956
+    Answer: b) 1875
+
+69. In what year did BSE obtain permanent recognition from the Government of India under the Securities Controls (Regulation) Act, 1956?
+    a) 1875
+    b) 1934
+    c) 1956
+    d) 1988
+    Answer: c) 1956
+
+---
+
+SECURITIES AND EXCHANGE BOARD OF INDIA (SEBI)
+
+70. When was SEBI set up as a non-statutory body?
+    a) April, 1988
+    b) 1992
+    c) August, 2000
+    d) January, 1956
+    Answer: a) April, 1988
+
+71. In what year was SEBI given statutory status?
+    a) 1988
+    b) 1990
+    c) 1992
+    d) 1995
+    Answer: c) 1992
+
+72. Which of the following is a function of SEBI?
+    a) Issue of bank notes.
+    b) Regulate commercial banks.
+    c) Curb fraudulent and unfair trade practices including insider trading.
+    d) Directly manage mutual funds.
+    Answer: c) Curb fraudulent and unfair trade practices including insider trading.
+
+73. SEBI is responsible for registering and regulating which entities?
+    a) Commercial banks.
+    b) Public sector enterprises.
+    c) Intermediaries such as stock brokers.
+    d) Regional Rural Banks.
+    Answer: c) Intermediaries such as stock brokers.
+
+---
+
+MONEY MARKET
+
+74. The money market provides investment avenues of what tenor?
+    a) Long-term
+    b) Medium-term
+    c) Short-term
+    d) Indefinite
+    Answer: c) Short-term
+
+75. By definition, what is the maximum tenor for money market transactions?
+    a) Six months
+    b) Nine months
+    c) One year
+    d) Two years
+    Answer: c) One year
+
+76. In the money market, what is the tenor of transactions in the "Overnight market"?
+    a) Two days
+    b) One working day
+    c) From 2 days to 14 days
+    d) From 15 days to one year
+    Answer: b) One working day
+
+77. What is the tenor of transactions in the "Notice money market"?
+    a) One working day
+    b) From 2 days to 14 days
+    c) From 15 days to one year
+    d) Over one year
+    Answer: b) From 2 days to 14 days
+
+78. What is the tenor of transactions in the "Term money market"?
+    a) One working day
+    b) From 2 days to 14 days
+    c) From 15 days to one year
+    d) Over one year
+    Answer: c) From 15 days to one year
+
+---
+
+NEFT & IFSC
+
+79. What does NEFT stand for?
+    a) National Electronic Financial Transfer
+    b) National Economy Funds Transaction
+    c) National Electronic Funds Transfer
+    d) New Electronic Fund Transmission
+    Answer: c) National Electronic Funds Transfer
+
+80. What is the length of an IFSC (Indian Financial System Code)?
+    a) 9 digits
+    b) 10 digits
+    c) 11 digits
+    d) 12 digits
+    Answer: c) 11 digits
+
+81. In an IFSC code, what do the first 4 alpha characters represent?
+    a) The branch
+    b) The bank
+    c) The city
+    d) The state
+    Answer: b) The bank
+
+82. What is the 5th character in an IFSC code?
+    a) Any alphabet
+    b) Any number
+    c) Zero
+    d) A specific symbol
+    Answer: c) Zero
+
+83. In an IFSC code, what do the last 6 numeric characters represent?
+    a) The bank
+    b) The city code
+    c) The branch
+    d) The region
+    Answer: c) The branch
+
+---
+
+INSURANCE SECTOR
+
+84. When was an Ordinance issued nationalizing the Life Insurance sector?
+    a) January 19, 1956
+    b) January 1, 1973
+    c) August 2000
+    d) 1999
+    Answer: a) January 19, 1956
+
+85. General insurance business was nationalized with effect from January 1, 1973, with the passing of which Act?
+    a) Life Insurance Corporation Act, 1956
+    b) General Insurance Business (Nationalisation) Act, 1972
+    c) Insurance Act, 1938
+    d) IRDA Act, 1999
+    Answer: b) General Insurance Business (Nationalisation) Act, 1972
+
+86. Which of the following is NOT one of the four companies held by GIC (General Insurance Corporation) as mentioned?
+    a) National Insurance Company Ltd.
+    b) New India Assurance Company Ltd.
+    c) Oriental Fire and Insurance Company Ltd.
+    d) Life Insurance Corporation of India (LIC)
+    Answer: d) Life Insurance Corporation of India (LIC)
+
+87. When did the IROA (presumably IRDA) open up the market by inviting applications for registrations?
+    a) January 1956
+    b) January 1973
+    c) August 2000
+    d) 1999
+    Answer: c) August 2000
+
+88. Under which section of the Insurance Act 1938 does the Authority (IRDA) have the power to frame regulations?
+    a) Section 100-A
+    b) Section 114-A
+    c) Section 120-A
+    d) Section 130-A
+    Answer: b) Section 114-A
+
+---
+
+INSURANCE REGULATORY AND DEVELOPMENT AUTHORITY (IRDA)
+
+89. When was IRDA set up?
+    a) 1999
+    b) 2000
+    c) 1998
+    d) 2001
+    Answer: b) 2000
+
+90. Through which Act was IRDA set up?
+    a) Insurance Act, 1938
+    b) IRDA Act, 1999
+    c) General Insurance Business (Nationalisation) Act, 1972
+    d) RBI Act, 1934
+    Answer: b) Insurance Regulatory and Development Act, 1999
+
+91. What is IRDA responsible for in the Indian insurance industry?
+    a) Only development.
+    b) Only regulation.
+    c) Regulation, development and supervision.
+    d) Only supervision.
+    Answer: c) Regulation, development and supervision.
+
+completed

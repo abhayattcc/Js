@@ -1,0 +1,2809 @@
+
+
+PHYSICS - GENERAL
+
+1.  Physics is the branch of science that deals with the study of:
+    a) Matter and its composition
+    b) Energy and its transformations
+    c) Matter and energy and their inter-relationship
+    d) Living organisms
+    Answer: c) Matter and energy and their inter-relationship
+
+---
+
+MOTION
+
+2.  Motion is defined as a change in position of a body with respect to:
+    a) Only time
+    b) Only a reference point
+    c) Time and a reference point
+    d) Force applied
+    Answer: c) Time and a reference point
+
+3.  Which of the following is NOT a type of motion mentioned?
+    a) Linear Motion
+    b) Curvilinear Motion
+    c) Rotatory Motion
+    d) Oscillatory Motion
+    Answer: d) Oscillatory Motion
+
+---
+
+SCALAR AND VECTOR QUANTITIES
+
+4.  Which type of physical quantities are completely described by their magnitude alone?
+    a) Vector quantities
+    b) Scalar quantities
+    c) Both scalar and vector quantities
+    d) Neither scalar nor vector quantities
+    Answer: b) Scalar quantities
+
+5.  Which of the following is an example of a scalar quantity?
+    a) Displacement
+    b) Velocity
+    c) Force
+    d) Work
+    Answer: d) Work
+
+6.  Which of the following is an example of a vector quantity?
+    a) Length
+    b) Mass
+    c) Temperature
+    d) Momentum
+    Answer: d) Momentum
+
+7.  Which physical quantity requires both magnitude and direction for its complete description?
+    a) Area
+    b) Volume
+    c) Pressure
+    d) Acceleration
+    Answer: d) Acceleration
+
+---
+
+DISTANCE
+
+8.  Distance traveled by a body is described as the:
+    a) Shortest path between initial and final position.
+    b) Actual length of the path covered irrespective of direction.
+    c) Rate of change of displacement.
+    d) Displacement per unit time.
+    Answer: b) Actual length of the path covered irrespective of direction.
+
+9.  Distance is a:
+    a) Vector quantity
+    b) Scalar quantity
+    c) Dimensionless quantity
+    d) Fundamental quantity
+    Answer: b) Scalar quantity
+
+---
+
+DISPLACEMENT
+
+10. Displacement is defined as the:
+    a) Actual length of the path covered.
+    b) Distance traveled in one second.
+    c) Shortest distance between the initial and final position along with direction.
+    d) Rate of change of velocity.
+    Answer: c) Shortest distance between the initial and final position along with direction.
+
+11. Displacement is a:
+    a) Scalar quantity
+    b) Vector quantity
+    c) Unitless quantity
+    d) Pure number
+    Answer: b) Vector quantity
+
+---
+
+SPEED
+
+12. Speed is the scalar form of:
+    a) Displacement
+    b) Acceleration
+    c) Velocity
+    d) Momentum
+    Answer: c) Velocity
+
+13. Speed is defined as the:
+    a) Displacement traveled in one second.
+    b) Distance traveled in one second.
+    c) Rate of change of displacement.
+    d) Rate of change of velocity.
+    Answer: b) Distance traveled in one second.
+
+14. If a body covers a distance 'd' in time 't', the speed (V) is given by the formula:
+    a) V = t/d
+    b) V = d/t
+    c) V = d  t
+    d) V = d + t
+    Answer: b) V = d/t
+
+---
+
+AVERAGE SPEED
+
+15. If a body has travelled 'S1' and 'S2' distance with 'V1' and 'V2' velocities, the average speed is given by:
+    a) (V1 + V2) / 2
+    b) (S1 + S2) / (V1 + V2)
+    c) Total distance / Total time
+    d) (S1  V1) + (S2  V2)
+    Answer: c) Total distance / Total time
+
+---
+
+VELOCITY
+
+16. The rate of change of displacement is called:
+    a) Speed
+    b) Acceleration
+    c) Velocity
+    d) Momentum
+    Answer: c) Velocity
+
+17. Velocity is a:
+    a) Scalar quantity
+    b) Vector quantity
+    c) Constant quantity
+    d) Pure number
+    Answer: b) Vector quantity
+
+18. Velocity can be:
+    a) Only positive
+    b) Only negative
+    c) Only zero
+    d) Positive, negative, or zero depending on displacement
+    Answer: d) Positive, negative, or zero depending on displacement.
+
+---
+
+UNIFORM VELOCITY
+
+19. When a body covers equal displacement in equal intervals of time, the velocity is said to be:
+    a) Variable
+    b) Average
+    c) Uniform
+    d) Instantaneous
+    Answer: c) Uniform
+
+20. If a body moves with uniform velocity, which of the following is true?
+    a) Acceleration is necessarily present.
+    b) Initial velocity is greater than final velocity.
+    c) Acceleration is absent.
+    d) Direction of velocity changes.
+    Answer: c) Acceleration is absent.
+
+---
+
+VARIABLE VELOCITY
+
+21. When a body covers unequal displacement in equal intervals of time, it is said to have:
+    a) Uniform velocity
+    b) Constant speed
+    c) Variable velocity
+    d) Zero acceleration
+    Answer: c) Variable velocity
+
+22. In motion with variable velocity, what is necessarily present?
+    a) Uniform speed
+    b) Zero acceleration
+    c) Acceleration
+    d) Constant displacement
+    Answer: c) Acceleration
+
+23. In uniform circular motion, what changes with respect to time, even if speed is constant?
+    a) Magnitude of velocity
+    b) Direction of velocity
+    c) Both magnitude and direction of velocity
+    d) Displacement becomes zero
+    Answer: b) Direction of velocity
+
+---
+
+AVERAGE VELOCITY
+
+24. Average velocity is zero if the body:
+    a) Moves with constant speed.
+    b) Moves in a straight line.
+    c) Returns to its starting point in the given time interval.
+    d) Covers unequal displacement.
+    Answer: c) Returns to its starting point in the given time interval.
+
+25. A body whose velocity reduces with the passage of time is said to be undergoing:
+    a) Acceleration
+    b) Deceleration or retardation
+    c) Uniform motion
+    d) Constant velocity
+    Answer: b) Deceleration or retardation
+
+26. The acceleration of a moving body is the rate of change of its:
+    a) Displacement
+    b) Speed
+    c) Velocity
+    d) Position
+    Answer: c) Velocity
+
+---
+
+ACCELERATION
+
+27. Time rate of change in velocity is known as:
+    a) Speed
+    b) Displacement
+    c) Acceleration
+    d) Force
+    Answer: c) Acceleration
+
+28. Acceleration is a:
+    a) Scalar quantity
+    b) Vector quantity
+    c) Dimensionless quantity
+    d) Pure number
+    Answer: b) Vector quantity
+
+29. Negative acceleration is known as:
+    a) Acceleration due to gravity
+    b) Impulse
+    c) Retardation
+    d) Uniform acceleration
+    Answer: c) Retardation
+
+30. What does negative acceleration indicate?
+    a) The velocity of the object is increasing.
+    b) The velocity of the object is decreasing with respect to time.
+    c) The object is at rest.
+    d) The object is moving with constant velocity.
+    Answer: b) The velocity of the object is decreasing with respect to time.
+
+---
+
+VARIABLE ACCELERATION
+
+31. If the velocity of a body changes in different amounts during the same time intervals, its acceleration is known as:
+    a) Uniform acceleration
+    b) Constant acceleration
+    c) Variable acceleration
+    d) Zero acceleration
+    Answer: c) Variable acceleration
+
+32. Acceleration is variable if:
+    a) Only its direction changes.
+    b) Only its magnitude changes.
+    c) Both its direction and magnitude change.
+    d) Either its direction or magnitude or both changes with respect to time.
+    Answer: d) Either its direction or magnitude or both changes with respect to time.
+
+33. A body in uniform circular motion is an example of motion with:
+    a) Zero acceleration
+    b) Uniform acceleration
+    c) Variable acceleration
+    d) Constant speed and constant velocity
+    Answer: c) Variable acceleration
+
+---
+
+UNIFORM ACCELERATION
+
+34. If the velocity of the body changes by the same amounts in the same intervals of time, then the acceleration of the body is known as:
+    a) Variable acceleration
+    b) Non-uniform acceleration
+    c) Uniform acceleration
+    d) Deceleration
+    Answer: c) Uniform acceleration
+
+35. What is an example of uniform acceleration?
+    a) A motor cyclist riding on a busy city road.
+    b) Acceleration due to gravity.
+    c) A car speeding up randomly.
+    d) A ball rolling on an uneven surface.
+    Answer: b) Acceleration due to gravity.
+
+---
+
+UNIFORM CIRCULAR MOTION
+
+36. When a particle moves in a circle at a constant speed, the motion is called:
+    a) Linear motion
+    b) Rotatory motion
+    c) Uniform circular motion
+    d) Vibratory motion
+    Answer: c) Uniform circular motion
+
+37. Why is circular motion considered as accelerated motion, even at constant speed?
+    a) Because its speed changes.
+    b) Because its position and thus velocity direction change.
+    c) Because it covers equal displacement in equal time.
+    d) Because it is under gravitational influence.
+    Answer: b) Because its position and thus velocity direction change.
+
+38. In circular motion, the acceleration which is always directed towards the center of the circle is called:
+    a) Tangential acceleration
+    b) Centripetal acceleration
+    c) Gravitational acceleration
+    d) Linear acceleration
+    Answer: b) Centripetal acceleration
+
+---
+
+EQUATIONS OF MOTION
+
+39. In the equation $v = u + at$, what does 'u' represent?
+    a) Final velocity
+    b) Initial velocity
+    c) Acceleration
+    d) Time
+    Answer: b) Initial velocity
+
+40. In the equation $v^2 = u^2 + 2as$, what does 's' represent?
+    a) Speed
+    b) Elapsed time
+    c) Acceleration
+    d) Distance/displacement covered
+    Answer: d) Distance/displacement covered
+
+41. What is the mean value of acceleration due to gravity ('g')?
+    a) 9.8 m/s
+    b) 9.8 km/s$^2$
+    c) 9.8 m/s$^2$
+    d) 9.8 km/s
+    Answer: c) 9.8 m/s$^2$
+
+42. If a body travels downwards, what is the sign of 'g'?
+    a) Negative
+    b) Zero
+    c) Positive
+    d) Variable
+    Answer: c) Positive
+
+43. If a body is projected vertically upwards, what is the sign of 'g'?
+    a) Positive
+    b) Negative
+    c) Zero
+    d) Constant
+    Answer: b) Negative
+
+---
+
+LAWS OF MOTION
+
+44. Newton’s First Law of Motion is also called the:
+    a) Law of acceleration
+    b) Law of action and reaction
+    c) Law of Inertia
+    d) Law of conservation of momentum
+    Answer: c) Law of Inertia
+
+45. According to Newton's Second Law of Motion, the rate of change of momentum is directly proportional to:
+    a) Applied displacement.
+    b) Applied velocity.
+    c) Applied force.
+    d) Applied acceleration.
+    Answer: c) Applied force.
+
+46. Newton's Second Law of Motion can also be termed as the:
+    a) Law of Inertia
+    b) Law of acceleration
+    c) Law of conservation of energy
+    d) Law of reaction
+    Answer: b) Law of acceleration
+
+47. Newton's Third Law of Motion states that:
+    a) Every body continues in a state of rest or uniform motion.
+    b) The rate of change of momentum is proportional to applied force.
+    c) For every action, there is an equal and opposite reaction.
+    d) Force equals mass times acceleration.
+    Answer: c) For every action, there is an equal and opposite reaction.
+
+48. According to Newton's Third Law, on how many different bodies do the forces act?
+    a) One
+    b) Two
+    c) Three
+    d) Four
+    Answer: b) Two
+
+---
+
+FORCE AND INERTIA
+
+49. What is a force defined as?
+    a) Only a pull.
+    b) Only a push.
+    c) A pull or push that changes or tends to change the state of motion or shape of a body.
+    d) The mass of an object.
+    Answer: c) A pull or push that changes or tends to change the state of motion or shape of a body.
+
+50. The tendency of a body to remain in the same state (either stationary or moving) is called its:
+    a) Momentum
+    b) Acceleration
+    c) Inertia
+    d) Weight
+    Answer: c) Inertia
+
+51. What is the relationship between mass and inertia?
+    a) Less mass means greater inertia.
+    b) Mass and inertia are unrelated.
+    c) The more the mass of the objects, the greater is their inertia.
+    d) Inertia is only dependent on velocity.
+    Answer: c) The more the mass of the objects, the greater is their inertia.
+
+52. The force (F) which causes an acceleration (a) in a moving object of mass (m) is given by:
+    a) F = m/a
+    b) F = a/m
+    c) F = ma
+    d) F = m + a
+    Answer: c) F = ma
+
+53. What is the SI unit of force?
+    a) Joule
+    b) Watt
+    c) Newton
+    d) Pascal
+    Answer: c) Newton (kg.ms$^{-2}$)
+
+---
+
+BANKING OF TRACKS
+
+54. Why are roads on large highways generally banked at curved paths?
+    a) To increase friction.
+    b) To reduce the speed of vehicles.
+    c) To supply the necessary centripetal force for circular motion.
+    d) To make the road flatter.
+    Answer: c) To supply the necessary centripetal force required for circular motion.
+
+---
+
+MOMENTUM
+
+55. The force which a body possesses due to the combined effect of its mass and velocity is called:
+    a) Impulse
+    b) Acceleration
+    c) Momentum
+    d) Inertia
+    Answer: c) Momentum
+
+56. According to the law of conservation of momentum, in a colliding system, the total momentum:
+    a) Increases
+    b) Decreases
+    c) Remains conserved
+    d) Becomes zero
+    Answer: c) Remains conserved.
+
+57. When a force of very large magnitude is applied on a body for a very short interval of time, the collective effect of force and time is called:
+    a) Momentum
+    b) Work
+    c) Power
+    d) Impulse
+    Answer: d) Impulse
+
+---
+
+GRAVITY
+
+58. What is the force that pulls all bodies towards the center of the earth and keeps planets revolving around the sun?
+    a) Magnetic force
+    b) Frictional force
+    c) Gravitational force
+    d) Centripetal force
+    Answer: c) Gravitational force
+
+59. What happens to the value of acceleration due to gravity ('g') with both height and depth?
+    a) It increases.
+    b) It decreases.
+    c) It remains constant.
+    d) It first increases then decreases.
+    Answer: b) It decreases.
+
+60. Why is 'g' less at the equator than at the poles?
+    a) Because the earth spins faster at the equator.
+    b) Because the radius of the earth is slightly more at the equator than at the poles.
+    c) Because there is less mass at the equator.
+    d) Because of higher temperature at the equator.
+    Answer: b) Because the radius of the earth is slightly more at the equator than at the poles.
+
+61. Why are artificial satellites often launched from places near or on the equator?
+    a) To avoid bad weather conditions.
+    b) Because 'g' is less at the equator.
+    c) To take advantage of higher wind speeds.
+    d) To use less fuel.
+    Answer: b) Because 'g' is less at the equator.
+
+---
+
+ESCAPE VELOCITY
+
+62. What is escape velocity?
+    a) The maximum velocity a body can achieve on Earth.
+    b) The velocity needed to enter orbit.
+    c) The minimum velocity with which a body must be projected away from the Earth's surface such that it never returns.
+    d) The velocity at which a satellite falls back to Earth.
+    Answer: c) The minimum velocity with which a body must be projected away from the Earth's surface such that it never returns.
+
+63. What is the escape velocity for Earth?
+    a) 2.4 km/sec
+    b) 9.8 km/sec
+    c) 11.2 km/sec
+    d) 16.7 km/sec
+    Answer: c) 11.2 km/sec
+
+64. What is the escape velocity for the Moon?
+    a) 11.2 km/sec
+    b) 2.4 km/sec
+    c) 9.8 km/sec
+    d) 1.6 km/sec
+    Answer: b) 2.4 km/sec
+
+---
+
+MASS AND WEIGHT
+
+65. What is mass a measure of?
+    a) The force of attraction towards Earth.
+    b) The acceleration of an object.
+    c) The atoms contained in an object.
+    d) The volume occupied by an object.
+    Answer: c) The atoms contained in an object.
+
+66. How is mass described as a property of matter?
+    a) Changing and extrinsic.
+    b) Intrinsic and unchanging.
+    c) Dependent on location.
+    d) Dependent on gravitational force.
+    Answer: b) Intrinsic and unchanging.
+
+67. The force with which a body is attracted towards Earth is called its:
+    a) Mass
+    b) Inertia
+    c) Weight
+    d) Momentum
+    Answer: c) Weight
+
+68. The formula for weight (W) is:
+    a) W = m/g
+    b) W = m + g
+    c) W = mg
+    d) W = m - g
+    Answer: c) W = mg
+
+69. Which instrument is used to measure mass?
+    a) Spring balance
+    b) Newtonmeter
+    c) Physical (beam) balance
+    d) Weighing scale (digital)
+    Answer: c) Physical (beam) balance
+
+70. What is the unit of weight?
+    a) Kilogram (kg)
+    b) Joule (J)
+    c) Newton (N)
+    d) Watt (W)
+    Answer: c) Newton (N)
+
+---
+
+CHANGES IN APPARENT WEIGHT IN ELEVATOR
+
+71. When an elevator is accelerating upward, how does one feel?
+    a) Lighter
+    b) Heavier
+    c) Weightless
+    d) Unchanged
+    Answer: b) Heavier
+
+72. When an elevator is accelerating downward, how does one feel?
+    a) Heavier
+    b) Lighter
+    c) Weightless
+    d) Unchanged
+    Answer: b) Lighter
+
+73. If an elevator's cable breaks, one would feel weightlessness because:
+    a) The elevator stops completely.
+    b) Both elevator and the person accelerate downwards at the same rate.
+    c) The person is pushed against the ceiling.
+    d) The force of gravity becomes zero.
+    Answer: b) Both elevator and the person would accelerate downwards at the same rate.
+
+---
+
+FRICTION
+
+74. Friction is a kind of force that:
+    a) Promotes motion.
+    b) Opposes relative motion.
+    c) Acts only on smooth surfaces.
+    d) Depends on the area of contact.
+    Answer: b) Opposes relative motion.
+
+75. Force of friction does NOT depend on:
+    a) The area of contact.
+    b) The weight of the bodies.
+    c) The roughness of the surfaces.
+    d) The nature of surfaces in contact.
+    Answer: a) The area of contact.
+
+76. Frictional force increases with:
+    a) Temperature
+    b) Speed
+    c) Weight
+    d) Smoothness
+    Answer: c) Weight
+
+77. On rough surfaces, frictional force is:
+    a) Less than on smooth surfaces.
+    b) The same as on smooth surfaces.
+    c) More than on smooth surfaces.
+    d) Zero.
+    Answer: c) More than on smooth surfaces.
+
+78. Which type of friction is less than static friction, meaning less force is needed to maintain motion than to initiate it?
+    a) Rolling friction
+    b) Kinetic friction
+    c) Fluid friction
+    d) Air resistance
+    Answer: b) Kinetic friction
+
+79. Why are vehicles provided with wheels and axles supported with ball bearings?
+    a) To increase static friction.
+    b) Because rolling friction is much less than sliding friction.
+    c) To make the vehicle heavier.
+    d) To reduce kinetic energy.
+    Answer: b) Because the rolling friction is much less than the sliding friction.
+
+80. Why is friction considered a "necessary evil"?
+    a) Because it always hinders motion.
+    b) Because it is only present in some situations.
+    c) Because it is necessary for operations like brakes and for things like nails to stay fixed, but also opposes motion.
+    d) Because it generates heat.
+    Answer: c) Because it is necessary for operations like brakes and for things like nails to stay fixed, but also opposes motion.
+
+---
+
+WORK, POWER AND ENERGY
+
+81. Work is said to be done only when a force or its component causes:
+    a) Change in temperature.
+    b) Displacement in its own direction, stops a body, or changes its shape.
+    c) Increase in mass.
+    d) Decrease in velocity.
+    Answer: b) Displacement in its own direction, stops a body, or changes its shape.
+
+82. What is the SI unit of work?
+    a) Watt
+    b) Newton
+    c) Joule
+    d) Pascal
+    Answer: c) Joule (kg m$^2$s$^{-2}$)
+
+83. The formula for work (W) is:
+    a) W = F + d
+    b) W = F / d
+    c) W = F × d
+    d) W = F - d
+    Answer: c) W = F × d
+
+84. What is the rate of doing work called?
+    a) Energy
+    b) Force
+    c) Momentum
+    d) Power
+    Answer: d) Power
+
+85. Power (P) can be defined as the product of:
+    a) Mass and acceleration.
+    b) Force and displacement.
+    c) Force and velocity.
+    d) Work and time.
+    Answer: c) Force and velocity.
+
+86. What is the SI unit of power?
+    a) Joule/second or Watt
+    b) Newton
+    c) Pascal
+    d) Kilogram
+    Answer: a) Joule/second (JS$^{-1}$) or Watt
+
+87. What is the capacity of a body to do work called?
+    a) Power
+    b) Force
+    c) Energy
+    d) Momentum
+    Answer: c) Energy
+
+88. The unit of energy is the same as that of:
+    a) Power
+    b) Force
+    c) Work
+    d) Pressure
+    Answer: c) Work (Joule)
+
+89. When a body does work by virtue of its motion, it is said to have:
+    a) Potential energy
+    b) Chemical energy
+    c) Kinetic energy
+    d) Thermal energy
+    Answer: c) Kinetic energy
+
+90. The formula for Kinetic Energy (K.E.) of a body with mass 'm' and velocity 'v' is:
+    a) K.E. = mv
+    b) K.E. = mgh
+    c) K.E. = 1/2 mv$^2$
+    d) K.E. = mv$^2$
+    Answer: c) K.E. = 1/2 mv$^2$
+
+91. If a body of mass 'm' is raised vertically through a height 'h' against acceleration due to gravity 'g', its Potential Energy (P.E.) is given by:
+    a) P.E. = 1/2 mv$^2$
+    b) P.E. = mg/h
+    c) P.E. = mgh
+    d) P.E. = gh/m
+    Answer: c) P.E. = mgh
+
+92. When a body is on the surface of Earth, the potential energy between the system of the body and the Earth is:
+    a) Maximum
+    b) Minimum
+    c) Zero
+    d) Dependent on its mass
+    Answer: c) Zero
+
+93. Telecommunication satellites, also called geostationary satellites, are placed at what approximate height from the Earth's surface?
+    a) 800 km
+    b) 3,600 km
+    c) 36,000 km
+    d) 80,000 km
+    Answer: c) 36,000 km
+
+---
+
+KEPLER’S LAWS OF PLANETARY MOTION
+
+94. According to Kepler's first law, all planets are revolving in which type of orbit?
+    a) Circular orbit
+    b) Parabolic orbit
+    c) Hyperbolic orbit
+    d) Elliptical orbit
+    Answer: d) Elliptical orbit
+
+95. Kepler's second law states that all planets sweep equal area in equal intervals of time when revolving around the sun. This is also known as the law of:
+    a) Orbits
+    b) Areas
+    c) Periods
+    d) Inertia
+    Answer: b) Areas
+
+96. Kepler's third law states that the square of the time period of a planet around the sun is proportional to the cube of the:
+    a) Radius of the circle.
+    b) Semi-minor axis of the ellipse.
+    c) Semi-major axis of the ellipse.
+    d) Eccentricity of the ellipse.
+    Answer: c) Semi-major axis of the ellipse.
+
+---
+
+INTERCONVERSION OF ENERGY
+
+97. When hands are rubbed, what energy transformation occurs?
+    a) Heat energy to mechanical energy.
+    b) Mechanical energy to heat energy.
+    c) Potential energy to kinetic energy.
+    d) Chemical energy to light energy.
+    Answer: b) Mechanical energy to heat energy.
+
+98. When an arrow is stretched in a bow, what energy transformation takes place?
+    a) Kinetic energy to potential energy.
+    b) Potential energy to kinetic energy.
+    c) Mechanical energy to potential energy.
+    d) Chemical energy to mechanical energy.
+    Answer: c) Mechanical energy to potential energy.
+
+99. When a torch is switched on, the chemical energy changes to electric energy. What happens next?
+    a) Electric energy changes to heat and light energy.
+    b) Electric energy changes directly to light energy.
+    c) Electric energy changes to mechanical energy.
+    d) Chemical energy directly changes to light energy.
+    Answer: a) Electric energy on flowing through filament of bulb changes to heat and light energy.
+
+---
+
+FLUID PRESSURE
+
+100. Pressure (P) is defined as thrust acting per unit area of the surface of contact, i.e., P = F/A. What does 'F' represent?
+    a) Area
+    b) Pressure
+    c) Thrust
+    d) Velocity
+    Answer: c) Thrust
+
+101. What is the SI unit of pressure?
+    a) Joule
+    b) Newton
+    c) Pascal (Nm$^{-2}$)
+    d) Watt
+    Answer: c) Pascal (Nm$^{-2}$)
+
+102. According to Pascal's law, a change in pressure applied to an enclosed fluid is transmitted:
+    a) Only to the bottom of the container.
+    b) Only to the top of the container.
+    c) Undiminished to every point of the fluid and walls of the containing vessel.
+    d) Only to the surface of the fluid.
+    Answer: c) Undiminished to every point of the fluid and walls of the containing vessel.
+
+103. Hydraulic brakes and the flying of an airplane are based on which principles?
+    a) Newton's laws of motion.
+    b) Pressure and Bernoulli's principle.
+    c) Conservation of momentum.
+    d) Laws of magnetism.
+    Answer: b) Pressure and Bernaullies principle.
+
+104. Archimedes' Principle states that when a body is immersed in a liquid fully or partially, it suffers an upthrust equal to:
+    a) The volume of the body.
+    b) The weight of the liquid displaced by the immersed part of it.
+    c) The density of the liquid.
+    d) The pressure exerted by the liquid.
+    Answer: b) The weight of liquid displaced by the immersed part of it.
+
+105. A body weighs more in:
+    a) Water
+    b) Air
+    c) Any liquid
+    d) Under vacuum
+    Answer: b) Air
+
+---
+
+SURFACE TENSION
+
+106. Surface Tension is defined as the property of the surface of a liquid by which it tends to:
+    a) Expand and occupy maximum surface area.
+    b) Contract and occupy the minimum possible surface area.
+    c) Become more viscous.
+    d) Change its temperature.
+    Answer: b) Contract and occupy the minimum possible surface area.
+
+107. With a rise in temperature, the surface tension of a liquid generally:
+    a) Increases.
+    b) Decreases.
+    c) Remains constant.
+    d) First increases then decreases.
+    Answer: b) Decreases.
+
+108. The addition of which type of impurity would decrease surface tension if it is sparingly soluble in water?
+    a) Common salt
+    b) Sugar
+    c) Soap
+    d) Alcohol
+    Answer: c) Soap
+
+109. The addition of which type of impurity would increase surface tension if it is soluble in water?
+    a) Soap
+    b) Detergent
+    c) Common salt or sugar
+    d) Alcohol
+    Answer: c) Common salt or sugar
+
+110. The surface tension of liquid metals like mercury is:
+    a) Very low.
+    b) Moderate.
+    c) Very high.
+    d) Zero.
+    Answer: c) Very high.
+
+111. Why does an egg sometimes float in water, acting as if placed on a stretched membrane?
+    a) Due to buoyancy.
+    b) Due to density difference.
+    c) Due to surface tension.
+    d) Due to gravity.
+    Answer: c) Due to surface tension.
+
+---
+
+CAPILLARITY
+
+112. Capillarity refers to the:
+    a) Horizontal movement of liquid.
+    b) Rise or depression of a liquid in a capillary tube.
+    c) Expansion of liquid on heating.
+    d) Pressure exerted by a liquid.
+    Answer: b) Rise or depression of a liquid in a capillary tube.
+
+113. Which of the following is an application of capillarity?
+    a) Flying of an airplane.
+    b) Hydraulic brakes.
+    c) Rising of oil/molten wax through a wick in a candle.
+    d) Boats floating on water.
+    Answer: c) Rising of oil/molten wax through wick in a candle.
+
+---
+
+HYDRODYNAMICS
+
+114. Hydrodynamics is the science of:
+    a) Fluids at rest.
+    b) Fluids in motion.
+    c) Properties of solids.
+    d) Heat transfer.
+    Answer: b) Fluids in motion.
+
+115. According to the Principle of Continuity, for a steady flow of incompressible and non-viscous fluid through a tube of non-uniform cross-section, what remains constant?
+    a) Velocity of flow.
+    b) Area of cross-section.
+    c) Product of area of cross-section and velocity of flow (AV).
+    d) Pressure of the fluid.
+    Answer: c) Product of area of cross section and velocity of flow (AV).
+
+116. In the principle of continuity, if the area of cross-section decreases, the velocity of flow:
+    a) Decreases.
+    b) Increases.
+    c) Remains constant.
+    d) Becomes zero.
+    Answer: b) Increases.
+
+---
+
+VISCOSITY
+
+117. Viscosity is the property of a fluid because of which it opposes:
+    a) Its own flow.
+    b) External forces.
+    c) The relative motion between different layers.
+    d) Changes in temperature.
+    Answer: c) The relative motion between different layers.
+
+118. Viscous force depends on:
+    a) Area of contact.
+    b) Nature of fluid.
+    c) Volume of fluid.
+    d) Pressure.
+    Answer: b) Nature of fluid.
+
+119. Which of the following statements about viscosity is true?
+    a) Viscosity of gases > viscosity of liquids.
+    b) Viscosity increases with rise in temperature for liquids.
+    c) Viscosity of liquids > viscosity of gases.
+    d) Viscosity decreases with increasing pressure of liquid.
+    Answer: c) viscosity of liquids > viscosity of gases.
+
+120. With a rise in temperature, viscosity for liquids:
+    a) Increases.
+    b) Decreases.
+    c) Remains constant.
+    d) First increases then decreases.
+    Answer: b) Decreases.
+
+121. With increasing pressure of liquid, its viscosity:
+    a) Increases.
+    b) Decreases.
+    c) Remains constant.
+    d) First decreases then increases.
+    Answer: a) Increases.
+
+---
+
+HEAT AND THERMODYNAMICS
+
+122. Heat is a form of energy that flows from one body to another due to:
+    a) Density difference.
+    b) Pressure difference.
+    c) Temperature difference.
+    d) Mass difference.
+    Answer: c) Temperature difference.
+
+123. Temperature is a measure of:
+    a) The total energy of molecules.
+    b) How fast molecules are moving.
+    c) The number of molecules.
+    d) The volume of a body.
+    Answer: b) How fast these molecules are moving.
+
+124. When two bodies are at the same temperature, they are said to be in:
+    a) Chemical equilibrium.
+    b) Mechanical equilibrium.
+    c) Thermal Equilibrium.
+    d) Dynamic equilibrium.
+    Answer: c) Thermal Equilibrium.
+
+125. What is the anomalous behavior of water when cooled?
+    a) It contracts with increasing density.
+    b) It expands with reducing density.
+    c) It solidifies at 10°C.
+    d) It becomes more viscous.
+    Answer: b) It expands on cooking with reducing density.
+
+126. Why can aquatic animals survive when water in lakes or rivers freezes?
+    a) Because ice is a good conductor of heat.
+    b) Because of the anomalous expansion of water.
+    c) Because the surface tension of water increases.
+    d) Because the density of water increases upon freezing.
+    Answer: b) It is this property of water that allows aquatic animals to survive on freezing of water in lakes or rivers.
+
+127. Which surfaces are good absorbers and emitters of heat?
+    a) White or bright, shiny surfaces.
+    b) Black or dark bodies.
+    c) Transparent surfaces.
+    d) Polished metal surfaces.
+    Answer: b) Black or dark bodies.
+
+128. What is the SI unit of temperature?
+    a) Celsius
+    b) Fahrenheit
+    c) Kelvin
+    d) Rankine
+    Answer: c) Kelvin
+
+---
+
+TRANSMISSION OF HEAT
+
+129. The process of net energy transfer through a substance without movement of the substance itself is called:
+    a) Convection
+    b) Radiation
+    c) Conduction
+    d) Absorption
+    Answer: c) Conduction
+
+130. What is "Specific heat"?
+    a) The heat required to melt a substance.
+    b) The amount of heat required to change the temperature of a body.
+    c) The heat lost during a chemical reaction.
+    d) The rate of heat transfer.
+    Answer: b) The amount of heat required to change the temperature of a body.
+
+131. What is "Thermal Capacity"?
+    a) The amount of heat required to change the phase of a body.
+    b) The quantity of heat energy required to raise the temperature of a body by unit.
+    c) The rate of heat absorption.
+    d) The maximum heat a body can hold.
+    Answer: b) The quantity of heat energy required to raise the temperature of body by unit.
+
+132. Thermal capacity is defined as:
+    a) Temperature change / Heat absorbed
+    b) Mass of body × specific heat
+    c) Heat absorbed × time
+    d) Force × displacement
+    Answer: b) Mass of body × specific heat
+
+133. What is "Water equivalent"?
+    a) The volume of water a body displaces.
+    b) The amount of water that absorbs or gives out the same amount of heat as is done by a body when heated by 1°C.
+    c) The mass of water required to melt ice.
+    d) The specific heat of water.
+    Answer: b) It refers to amount of water that absorbs or gives out the same amount of heat as is done by body when heated by 1°C.
+
+134. Latent heat refers to the amount of heat energy gained or lost when a body undergoes a change in its:
+    a) Temperature.
+    b) Velocity.
+    c) Phase (solid to liquid to gas or vice versa).
+    d) Volume.
+    Answer: c) Phase from solid to liquid to gas or viceversa.
+
+135. Which of the following is a process of heat transmission?
+    a) Reflection
+    b) Refraction
+    c) Convection
+    d) Diffraction
+    Answer: c) Convection
+
+136. The process of transfer of heat energy within the heated medium by the movement of the substance within itself is known as:
+    a) Conduction
+    b) Radiation
+    c) Convection
+    d) Insulation
+    Answer: c) Convection
+
+137. The process of transfer of heat from one body to another without requiring any medium is called:
+    a) Conduction
+    b) Convection
+    c) Radiation
+    d) Absorption
+    Answer: c) Radiation
+
+138. Very poor conductors of heat, such as glass and plastics, are called:
+    a) Conductors
+    b) Semiconductors
+    c) Insulators
+    d) Superconductors
+    Answer: c) Insulators
+
+139. Newton's Law of Cooling states that the rate of cooling of a hot body is directly proportional to:
+    a) Its mass.
+    b) Its specific heat capacity.
+    c) The temperature difference between the body and its surroundings.
+    d) The surface area of the body.
+    Answer: c) temperature difference between the body and its surrounding.
+
+140. A perfect black body is defined as a body that:
+    a) Reflects all radiations incident on its surface.
+    b) Absorbs all the radiations incident on its surface.
+    c) Emits only visible light.
+    d) Is always cold.
+    Answer: b) absorbs all the radiations incident on its surface.
+
+---
+
+MAGNETISM
+
+141. What is magnetism?
+    a) The branch of science concerned with electrical phenomenon.
+    b) The branch of physics concerned with magnetic phenomenon.
+    c) The study of heat transfer.
+    d) The study of motion.
+    Answer: b) The branch of physics concerned with magnetic phenomenon.
+
+142. How many categories are materials broadly divided into based on their magnetic properties?
+    a) Two
+    b) Three
+    c) Four
+    d) Five
+    Answer: b) Three
+
+143. Which type of substances are repelled by a magnet?
+    a) Paramagnetic substances
+    b) Ferromagnetic substances
+    c) Diamagnetic substances
+    d) Electromagnets
+    Answer: c) Diamagnetic substances
+
+144. Which of the following is an example of a diamagnetic substance?
+    a) Iron
+    b) Oxygen
+    c) Copper
+    d) Aluminium
+    Answer: c) Copper
+
+145. Which type of substances are attracted by a magnet very feebly?
+    a) Diamagnetic substances
+    b) Ferromagnetic substances
+    c) Paramagnetic substances
+    d) Superconductors
+    Answer: c) Paramagnetic substances
+
+146. Which of the following is an example of a paramagnetic substance?
+    a) Iron
+    b) Cobalt
+    c) Oxygen
+    d) Nickel
+    Answer: c) Oxygen
+
+147. Which type of substances are attracted by magnets and can also be magnetized?
+    a) Diamagnetic substances
+    b) Paramagnetic substances
+    c) Ferromagnetic substances
+    d) Non-magnetic substances
+    Answer: c) Ferromagnetic substances
+
+148. Which of the following is an example of a ferromagnetic substance?
+    a) Gold
+    b) Tin
+    c) Chromium
+    d) Iron
+    Answer: d) Iron
+
+149. The area around a magnet in which one magnetic strength of a magnet is experienced, is called:
+    a) Magnetic pole
+    b) Magnetic equator
+    c) Magnetic field
+    d) Magnetic line
+    Answer: c) Magnetic field.
+
+150. In a bar magnet, where is the magnetic strength maximum?
+    a) In the middle of the magnet.
+    b) At the corner rejoins called poles.
+    c) Uniformly distributed throughout.
+    d) Only at one end.
+    Answer: b) At the corner rejoins called poles.
+
+---
+
+SOME IMPORTANT FACTS ABOUT MAGNETISM
+
+151. The regions of strongest magnetisation near the ends of a magnet are called:
+    a) Magnetic field lines
+    b) Magnetic equator
+    c) Poles of the magnet
+    d) Magnetic axis
+    Answer: c) poles of the magnet.
+
+152. The distance between the two poles of a magnet is known as its:
+    a) Magnetic field.
+    b) Magnetic equator.
+    c) Effective length of the magnet.
+    d) Magnetic moment.
+    Answer: c) effective length of the magnet.
+
+153. An imaginary line bisecting the effective length of the magnet, at right angles to it, is called the:
+    a) Magnetic axis.
+    b) Magnetic field line.
+    c) Magnetic equator of the magnet.
+    d) Magnetic pole.
+    Answer: c) magnetic equator of the magnet.
+
+154. What type of induced magnetism is acquired by soft iron?
+    a) Permanent
+    b) Temporary
+    c) Highly retentive
+    d) Coercive
+    Answer: b) temporary.
+
+155. Compared to iron, steel has:
+    a) Lower retentivity and lower coercivity.
+    b) Lower retentivity and higher coercivity.
+    c) Greater retentivity and lower coercivity.
+    d) Greater retentivity and higher coercivity.
+    Answer: d) greater retentivity and it has higher coercivity.
+
+156. Magnetic materials which retain magnetism for a considerable time are known as:
+    a) Soft materials
+    b) Temporary materials
+    c) Hard materials
+    d) Diamagnetic materials
+    Answer: c) hard materials.
+
+157. Which of the following is an example of a soft magnetic material?
+    a) Steel
+    b) Cobalt
+    c) Iron
+    d) Nickel
+    Answer: c) Iron
+
+158. What is considered the surest test for polarity of a magnet?
+    a) Attraction
+    b) Repulsion
+    c) Heating
+    d) Conductivity
+    Answer: b) Repulsion.
+
+159. What is a solenoid?
+    a) A type of permanent magnet.
+    b) An insulated copper wire wounded on a cylindrical tube that behaves like a magnet when current flows through it.
+    c) A diamagnetic material.
+    d) A device to measure magnetic field.
+    Answer: b) An insulated copper wire wounded on some cylindrical card board or plastic tube, such that its length is greater than its diameter and it behaves like a magnet when current is made to flow through is a solenoid.
+
+160. What does "Curie temperature" refer to?
+    a) The temperature at which a substance becomes a superconductor.
+    b) The temperature at which a substance changes its magnetic property (e.g., from ferromagnetic to paramagnetic).
+    c) The temperature at which a substance loses all magnetism.
+    d) The temperature at which a substance starts to melt.
+    Answer: b) the temperature at which a given substance changes its magnetic property for example form ferromagnetic to paramagnetic etc.
+
+161. Which of the following is a function of a galvanometer?
+    a) Generating electric current.
+    b) Detecting the flow of current in an electric circuit.
+    c) Storing electric charge.
+    d) Measuring resistance.
+    Answer: b) detecting the flow of current in an electric circuit.
+
+162. A galvanometer can be used for:
+    a) Measuring voltage only.
+    b) Measuring current strength, finding direction of flow, and detecting current.
+    c) Only detecting static charge.
+    d) Only generating magnetic fields.
+    Answer: b) finding the direction of flow of current, (iii) measuring the strength of current, (iv) making measuring devices, such as voltmeter and ammeter.
+
+
+
+ELECTRICITY
+
+1.  Electricity is the phenomenon associated with stationary or moving:
+    a) Protons only
+    b) Neutrons only
+    c) Electrons, ions, or other charged particles
+    d) Atoms only
+    Answer: c) Electrons, ions, or other charged particles
+
+2.  What is the electricity produced by friction called?
+    a) Current electricity
+    b) Dynamic electricity
+    c) Frictional electricity
+    d) Magnetic electricity
+    Answer: c) Frictional electricity
+
+3.  If the charges in a body do not move, frictional electricity is known as:
+    a) Current electricity
+    b) Static electricity
+    c) Dynamic electricity
+    d) Chemical electricity
+    Answer: b) Static electricity
+
+4.  The study of charges at rest is known as:
+    a) Electrodynamics
+    b) Magnetostatics
+    c) Current electricity
+    d) Static electricity
+    Answer: d) Static electricity
+
+5.  What is the electricity (charges) that travels along wires called?
+    a) Static electricity
+    b) Frictional electricity
+    c) Current electricity
+    d) Thermal electricity
+    Answer: c) Current electricity
+
+6.  An electric current is defined as an electric charge in:
+    a) Rest
+    b) Motion
+    c) Equilibrium
+    d) Storage
+    Answer: b) Motion
+
+7.  What is the unit of electric current?
+    a) Volt
+    b) Ohm
+    c) Ampere
+    d) Watt
+    Answer: c) Ampere
+
+8.  Which instrument is used to measure electric current?
+    a) Voltmeter
+    b) Ohmmeter
+    c) Ammeter
+    d) Galvanometer
+    Answer: c) Ammeter
+
+9.  What is the opposition or obstruction offered by a conductor to the passage of drifting electrons called?
+    a) Electric current
+    b) Electric potential
+    c) Electric resistance
+    d) Electric power
+    Answer: c) Electric resistance
+
+10. What is the unit of electric resistance?
+    a) Volt
+    b) Ampere
+    c) Ohm
+    d) Joule
+    Answer: c) Ohm
+
+11. Resistance of a conductor is directly proportional to its:
+    a) Area of cross-section
+    b) Temperature
+    c) Length
+    d) Density
+    Answer: c) Length
+
+12. Resistance of a conductor is inversely proportional to its:
+    a) Length
+    b) Area of cross-section
+    c) Temperature
+    d) Nature of material
+    Answer: b) Area of cross-section
+
+13. How does the resistance of pure metals change with a rise in temperature?
+    a) Decreases
+    b) Remains constant
+    c) Increases
+    d) Becomes zero
+    Answer: c) Increases
+
+---
+
+FACTS TO REMEMBER (ELECTRICITY)
+
+14. A fuse is a safety device in an electrical circuit that melts and breaks the circuit when it gets:
+    a) Underloaded
+    b) Due to low voltage
+    c) Overloaded due to large withdrawal of current
+    d) Due to constant current
+    Answer: c) overloaded due to large withdrawal of current
+
+15. Which of the following is a reason for a fuse to melt and break an electric circuit?
+    a) Stable current flow
+    b) Short-circuiting in the electric circuit
+    c) Decreased power supply
+    d) Normal operation
+    Answer: b) short-circuiting in the electric circuit
+
+16. Fuse wire has what characteristics?
+    a) High melting point, low resistance
+    b) Low melting point, low resistance
+    c) Low melting point, high resistance
+    d) High melting point, high resistance
+    Answer: c) low melting point, and high resistance.
+
+17. Earthing protects the user from:
+    a) Overheating of the appliance
+    b) Electric shock
+    c) Power fluctuations
+    d) Short circuits
+    Answer: b) electric shock
+
+18. Household distribution of electricity is done in parallel so that:
+    a) All appliances receive the same current.
+    b) If one circuit overloads, other circuits are unaffected.
+    c) The total resistance of the circuit increases.
+    d) Less power is consumed.
+    Answer: b) if there is short-circuit or overloading in one particular circuit, then only the fuse of that circuit will melt, but the power supply to other circuits remains unaffected.
+
+19. Switches are always placed in which wire?
+    a) Neutral wire
+    b) Earth wire
+    c) Live wire
+    d) Any wire
+    Answer: c) live wire
+
+20. According to the new international convention, what color is used for the live wire?
+    a) Light blue or black
+    b) Green or yellow
+    c) Red or brown
+    d) White
+    Answer: c) Red or brown
+
+21. According to the new international convention, what color is used for the neutral wire?
+    a) Red or brown
+    b) Green or yellow
+    c) Light blue or black
+    d) White
+    Answer: c) light blue or black
+
+22. According to the new international convention, what color is used for the earth wire?
+    a) Red or brown
+    b) Light blue or black
+    c) Green or yellow
+    d) White
+    Answer: c) green or yellow
+
+23. Which common alloys are used for making heating elements of electric appliances?
+    a) Copper and Aluminum
+    b) Tungsten and Platinum
+    c) Nichrome and Manganin
+    d) Silver and Gold
+    Answer: c) Nichrome and Manganin
+
+24. Why are Nichrome and Manganin used for heating elements?
+    a) They are cheap.
+    b) They have good resistivity, high melting point, low thermal expansion, and do not get oxidized till 1000°C.
+    c) They are good conductors.
+    d) They are lightweight.
+    Answer: b) because they have good resistivity, high melting point, low thermal expansion and do not get oxidised till 1000°C.
+
+25. The filament of an electric bulb is made up of:
+    a) Copper
+    b) Aluminum
+    c) Nichrome
+    d) Tungsten
+    Answer: d) tungsten
+
+26. What gases are filled in an electric bulb at very low pressure?
+    a) Oxygen and Carbon Dioxide
+    b) Hydrogen and Helium
+    c) Nitrogen and Argon
+    d) Methane and Ethane
+    Answer: c) nitrogen and argon
+
+---
+
+DIRECT CURRENT AND ALTERNATIVE CURRENT
+
+27. What characteristic defines Direct Current (DC)?
+    a) Its magnitude varies continuously.
+    b) Its direction varies periodically.
+    c) Its magnitude remains constant as a function of time.
+    d) It is generated by power stations.
+    Answer: c) whose magnitude remains constant as a function of time.
+
+28. An Alternating Current (AC) is characterized by:
+    a) Constant magnitude and direction.
+    b) Constant magnitude but varying direction.
+    c) Continuously varying magnitude and periodically varying direction.
+    d) Only varying direction.
+    Answer: c) which varies in magnitude continuously and whose direction varies periodically.
+
+29. Which of the following is a source of Direct Current (DC)?
+    a) Generator
+    b) Power station
+    c) Dry cells or batteries
+    d) Transformer
+    Answer: c) Dry cells or batteries
+
+30. Which of the following is a source of Alternating Current (AC)?
+    a) Dry cell
+    b) Battery
+    c) Generator or power station
+    d) Solar panel
+    Answer: c) generator or power station
+
+---
+
+ELECTRIC MOTOR
+
+31. An electric motor works on the principle that when a current-carrying rectangular conductor is placed in a magnetic field at right angles to it:
+    a) It experiences no force.
+    b) It experiences forces that cause linear motion.
+    c) The forces acting on the two parallel lengths are equal and opposite, constituting a couple, causing rotation.
+    d) It generates electricity.
+    Answer: c) the forces acting on the two parallel lengths will be equal and opposite thus constituting a couple.
+
+32. The rotation of a conductor in an electric motor is governed by which rule?
+    a) Fleming's Right Hand rule
+    b) Fleming's Left Hand rule
+    c) Newton's Law
+    d) Ohm's Law
+    Answer: b) Flemings left hand rule.
+
+---
+
+DYNAMO
+
+33. A dynamo works on the reverse principle of a motor, which is:
+    a) Electrostatics
+    b) Electromagnetism
+    c) Electro-magnetic induction
+    d) Piezoelectric effect
+    Answer: c) Electro-magnetic induction
+
+34. The e.m.f. induced in a coil rotated between opposite poles of two strong magnets, in a dynamo, is based on:
+    a) Fleming's Left Hand rule
+    b) Fleming's Right Hand rule
+    c) Coulomb's Law
+    d) Pascal's Law
+    Answer: b) Fleming's Right Hand rule.
+
+---
+
+TRANSFORMER
+
+35. What is the function of a transformer?
+    a) To convert AC to DC.
+    b) To convert DC to AC.
+    c) To increase or decrease the e.m.f. of an alternating current.
+    d) To generate electricity.
+    Answer: c) by which the e.m.f. of an alternating current can be increased or decreased as per need of a particular situation.
+
+---
+
+COULOMB’S LAW
+
+36. According to Coulomb's Law, the force of attraction or repulsion between two point charges is:
+    a) Inversely proportional to the product of charges.
+    b) Directly proportional to the square of the distance between them.
+    c) Directly proportional to the product of the magnitude of charges and inversely proportional to the square of the distance between them.
+    d) Independent of the distance between them.
+    Answer: c) directly proportional to the product of the magnitude of charges and inversely proportional to the square of the distance between them.
+
+---
+
+INTENSITY OF ELECTRIC FIELD
+
+37. The force experienced by a point charge of 1 coulomb in any electric field is called the:
+    a) Electric potential
+    b) Electric current
+    c) Intensity of the electric field
+    d) Electric resistance
+    Answer: c) intensity of the–electric field at that point.
+
+38. Intensity of electric field is a:
+    a) Scalar quantity
+    b) Vector quantity
+    c) Dimensionless quantity
+    d) Pure number
+    Answer: b) Vector quantity
+
+39. What is the unit of intensity of electric field?
+    a) N/C (NC$^{-1}$)
+    b) Joule
+    c) Watt
+    d) Ampere
+    Answer: a) N/C (NC$^{-1}$)
+
+---
+
+ELECTRIC POTENTIAL (V)
+
+40. Electric potential (V) is defined as the amount of work done (W) in bringing a unit positive charge (q) from infinity to:
+    a) Any magnetic field.
+    b) Any gravitational field.
+    c) Any electric field.
+    d) The center of a conductor.
+    Answer: c) any electric field.
+
+---
+
+POTENTIAL DIFFERENCE
+
+41. The amount of work required in moving a charge of 1 Coulomb from one point to another is called the:
+    a) Electric current
+    b) Electric potential
+    c) Potential difference
+    d) Electric resistance
+    Answer: c) potential difference between those points.
+
+---
+
+OHM’S LAW
+
+42. Ohm’s Law states that the amount of electric current passing through any conductor is directly proportional to the:
+    a) Resistance of the conductor.
+    b) Length of the conductor.
+    c) Potential difference between its both ends.
+    d) Area of cross-section of the conductor.
+    Answer: c) potential difference between its both ends
+
+43. According to Ohm's Law, at any given temperature, which of the following relationships holds true?
+    a) V = I/R
+    b) V = R/I
+    c) V = IR
+    d) V = I + R
+    Answer: c) V = IR
+
+---
+
+ATOMIC AND NUCLEAR PHYSICS
+
+44. Who first invented the nucleus?
+    a) Niels Bohr
+    b) Ernest Rutherford
+    c) J.J. Thomson
+    d) James Chadwick
+    Answer: b) Rutherford
+
+45. X-rays are produced when high-speed electrons fall on:
+    a) Copper
+    b) Aluminum
+    c) Tungsten
+    d) Lead
+    Answer: c) tungsten
+
+46. Who discovered radioactivity?
+    a) Marie Curie
+    b) Pierre Curie
+    c) Henry Becquerel
+    d) Ernest Rutherford
+    Answer: c) ‘Henry Becquerel.’
+
+---
+
+COMPARISON OF ALPHA (α), BETA (β) AND GAMMA (γ) PARTICLES
+
+47. What is the symbol for Beta (β) particles?
+    a) $^2$He$^4$
+    b) Y
+    c) P
+    d) $\beta$ (The table uses P, which is likely a typo for the beta symbol or electron e-)
+    Answer: c) P (Based on the given table. Note that the conventional symbol is $\beta$ or $e^-$)
+
+48. What is the charge of Alpha (α) particles?
+    a) -1
+    b) +2
+    c) 0
+    d) +1
+    Answer: b) +2
+
+49. What is the mass of Gamma (γ) particles?
+    a) 4
+    b) 1/2000
+    c) 0
+    d) 1
+    Answer: c) 0
+
+50. Which type of particle has a speed equal to the velocity of light?
+    a) Alpha particles
+    b) Beta particles
+    c) Gamma particles
+    d) Neutrons
+    Answer: c) $\gamma$ particles
+
+51. Which type of particle has the highest ionizing ability?
+    a) Alpha particles
+    b) Beta particles
+    c) Gamma particles
+    d) Neutrons
+    Answer: a) $\alpha$ particles
+
+52. Which type of particle has the highest penetrating power?
+    a) Alpha particles
+    b) Beta particles
+    c) Gamma particles
+    d) Protons
+    Answer: c) $\gamma$ particles
+
+53. Which material can stop Gamma (γ) particles?
+    a) Paper
+    b) Aluminum
+    c) Lead
+    d) Wood
+    Answer: c) lead
+
+54. What is the magnitude of charge for Beta (β) particles?
+    a) 3.3x10$^{-19}$C
+    b) 1.6x10$^{-19}$C
+    c) Zero
+    d) -1.6x10$^{-19}$C
+    Answer: b) 1.6x10$^{-19}$C
+
+55. Which type of particle is NOT deflected by electric and magnetic fields?
+    a) Alpha particles
+    b) Beta particles
+    c) Gamma particles
+    d) Protons
+    Answer: c) $\gamma$ particles
+
+---
+
+NUCLEAR REACTIONS AND RADIOACTIVITY
+
+56. What is the phenomenon of emission of electrons from a metal surface when light of suitable frequency becomes incident on it called?
+    a) Photoelectric effect
+    b) Compton effect
+    c) Zeeman effect
+    d) Doppler effect
+    Answer: a) Photo electric effect
+
+57. The process by which a heavy radioactive nucleus is broken into lighter nuclei by the bombardment of slow-moving neutrons, liberating energy and more neutrons, is called:
+    a) Nuclear fusion
+    b) Nuclear fission
+    c) Alpha decay
+    d) Beta decay
+    Answer: b) nuclear fission
+
+58. What is the phenomenon in which neutrons liberated during fission lead to further fission of atoms, releasing a large amount of energy?
+    a) Nuclear fusion
+    b) Radioactive decay
+    c) Chain reaction
+    d) Beta decay
+    Answer: c) Chain reaction
+
+59. In nuclear power stations, how is the energy released during fission utilized?
+    a) Directly converted to electricity.
+    b) Used to produce steam, which runs turbines to generate electricity.
+    c) Used to heat water for residential purposes.
+    d) Stored as potential energy.
+    Answer: b) utilised in producing steam which can be further used in running turbines to generate electricity.
+
+60. What are the control rods in a nuclear reactor made of to absorb neutrons?
+    a) Uranium and Plutonium
+    b) Graphite and heavy water
+    c) Graphite and boron
+    d) Cadmium and boron
+    Answer: d) graphite and boron (The earlier bullet point states graphite and boron, later states cadmium and boron. We'll prioritize the one specifically for control rods.)
+    Correction based on text consistency: The specific bullet point for 'Control rods' lists "Cadmium and boron rods". The earlier point mentions 'graphite and boron' for absorbing neutrons in controlled conditions, which could refer to the moderator's role or a general control mechanism. For MCQs, the most specific answer is preferred.
+    Revised Answer: d) Cadmium and boron
+
+61. The process of combining lighter nuclei (atomic weight less than 20) into heavier nuclei is called:
+    a) Nuclear fission
+    b) Nuclear fusion
+    c) Radioactive decay
+    d) Chain reaction
+    Answer: b) nuclear fusion
+
+62. What are nuclear fusion reactions sometimes called due to the high temperatures required?
+    a) Cold reactions
+    b) Endothermic reactions
+    c) Thermonuclear reactions
+    d) Fission reactions
+    Answer: c) thermonuclear reaction.
+
+63. The principle of nuclear fusion is used in:
+    a) Atom bomb
+    b) Nuclear reactor
+    c) Hydrogen bomb and energy irradiated by sun and stars
+    d) X-ray machines
+    Answer: c) Hydrogen bomb and energy irradiated by sun and stars.
+
+64. Which instrument is used for measuring radioactivity?
+    a) Ammeter
+    b) Voltmeter
+    c) Geiger counter
+    d) Spectrometer
+    Answer: c) Geiger counter
+
+65. What are the radiations called which are omnipresent on Earth because of radioactive substances and cosmic ray particles?
+    a) Artificial radiations
+    b) Background radiation
+    c) Nuclear fallout
+    d) X-rays
+    Answer: b) background radiation.
+
+66. Which radioactive property is used in carbon-14 dating to determine the age of fossils?
+    a) Its short half-life.
+    b) Its stable decay product.
+    c) Its radioactive property.
+    d) Its high energy emission.
+    Answer: c) Radioactive property of carbon.
+
+---
+
+USES OF RADIO ISOTOPES
+
+67. Which radioisotope is used for the treatment of skin diseases, leukemia, and blood cancer?
+    a) J-134
+    b) Na-24
+    c) Co-60
+    d) P-32
+    Answer: d) P-32
+
+68. Which radioisotope is used for the treatment of the thyroid gland?
+    a) P-32
+    b) J-134
+    c) Na-24
+    d) Co-60
+    Answer: b) J-134
+
+69. Which radioisotope is used for the treatment of defects in blood circulation?
+    a) P-32
+    b) J-134
+    c) Na-24
+    d) Co-60
+    Answer: c) Na-24
+
+70. Which radioisotope is used for the treatment of Cancer?
+    a) P-32
+    b) J-134
+    c) Na-24
+    d) Co-60
+    Answer: d) Co-60
+
+---
+
+HALF LIFE
+
+71. What is "Half life" in the context of radioactive elements?
+    a) The time it takes for an element to become stable.
+    b) The time after which the amount of radioactive element becomes half of the initial mass after releasing radiations.
+    c) The time it takes for an element to double its mass.
+    d) The time it takes for all radiations to stop.
+    Answer: b) It is the time after which the amount of radioactive element becomes half of the initial mass after releasing radiations.
+
+72. The concept of half-life is based on the principle of:
+    a) $E=mc$
+    b) $E=m^2c$
+    c) $E=mc^2$
+    d) $E=m/c^2$
+    Answer: c) E = mc$^2$
+
+---
+
+NUCLEAR REACTOR
+
+73. Which of the following cannot be directly used as fuel obtained from the earth's crust and needs to be enriched?
+    a) Thorium
+    b) Plutonium
+    c) Uranium
+    d) Deuterium
+    Answer: c) Uranium
+
+74. Besides uranium, which elements can also be used as nuclear fuels in nuclear reactors?
+    a) Lead or Copper
+    b) Thorium or Polonium
+    c) Gold or Silver
+    d) Iron or Aluminum
+    Answer: b) thorium or polonium
+
+75. What is the purpose of a Moderator in a nuclear reactor?
+    a) To initiate fission reactions.
+    b) To remove excessive heat.
+    c) To slow down the emitted neutrons.
+    d) To absorb all neutrons.
+    Answer: c) Used to slow down the emitted neutrons.
+
+76. Which of the following are commonly used as moderators in nuclear reactors?
+    a) Water and Steam
+    b) Graphite, heavy water, beryllium, beryllium oxide, and some organic liquids
+    c) Helium and CO$_2$
+    d) Cadmium and Boron
+    Answer: b) graphite, heavy water, beryllium, beryllium oxide and some organic liquids.
+
+77. What is the function of a Coolant in a nuclear reactor?
+    a) To slow down neutrons.
+    b) To initiate fission reactions.
+    c) To remove excessive heat developed inside the reactor core.
+    d) To control the chain reaction.
+    Answer: c) Used to remove excessive heat developed inside the reactor core.
+
+78. What is the purpose of Control rods in a nuclear reactor?
+    a) To provide fuel for the reaction.
+    b) To cool the reactor.
+    c) To initiate or stop the nuclear fission reactions.
+    d) To reflect neutrons.
+    Answer: c) Used to initiate or stop the nuclear fission reactions of the nuclear reactor.
+
+79. What are the main components of a nuclear reactor, as listed?
+    a) Fuel, Moderator, Coolant, Control rods
+    b) Fuel, Turbine, Generator, Transformer
+    c) Fuel, Pump, Heat Exchanger, Condenser
+    d) Reactor vessel, Shielding, Control room, Waste storage
+    Answer: a) Fuel, Moderator, Coolant, Control rods
+
+80. Atom Bomb and nuclear bomb work on which principle?
+    a) Nuclear fusion
+    b) Controlled chain reaction
+    c) Nuclear fission
+    d) Radioactivity
+    Answer: c) nuclear fission.
+
+81. Hydrogen bomb works on the principle of:
+    a) Nuclear fission
+    b) Nuclear fusion
+    c) Radioactive decay
+    d) Controlled chain reaction
+    Answer: b) nuclear fusion.
+
+82. What is the source of Solar energy?
+    a) Nuclear fission
+    b) Nuclear fusion
+    c) Chemical reactions
+    d) Gravitational collapse
+    Answer: b) Nuclear fusion
+
+83. Which element is a good absorber of neutrons and used as a controller in atomic reactions?
+    a) Uranium
+    b) Thorium
+    c) Cadmium
+    d) Plutonium
+    Answer: c) Cadmium
+
+84. A nuclear reactor is based on:
+    a) Uncontrolled chain reaction.
+    b) Controlled chain reaction.
+    c) Nuclear fusion.
+    d) Chemical reactions.
+    Answer: b) controlled chain reaction.
+
+---
+
+SPECIFIC HEAT OF WATER
+
+85. Which substance has the highest specific latent heat?
+    a) Water
+    b) Steam
+    c) Ice
+    d) Aluminum
+    Answer: c) Ice
+
+86. Why do water bodies in cold countries not freeze suddenly?
+    a) Due to low atmospheric pressure.
+    b) Because ice has the highest specific latent heat, requiring more energy for melting/freezing.
+    c) Due to high salt content in water.
+    d) Due to continuous water flow.
+    Answer: b) Ice has the highest specific latent heat.
+
+87. Why do soft drinks get cooled by ice rather than iced cold water?
+    a) Ice has a higher specific heat capacity than water.
+    b) Ice provides latent heat absorption, leading to more efficient cooling.
+    c) Ice is less dense than water.
+    d) Iced cold water melts faster.
+    Answer: b) Soft drinks are cooled by ice rather than iced cold water.
+
+88. What happens to the boiling point of a liquid with the presence of dissolved impurities?
+    a) It decreases.
+    b) It remains unchanged.
+    c) It rises.
+    d) It becomes constant.
+    Answer: c) rises.
+
+89. Why is salt sometimes added to slow down the melting of ice?
+    a) To increase the density of ice.
+    b) To decrease the boiling point of water.
+    c) To raise the boiling point of the liquid formed and thus lower the freezing point of water.
+    d) To make the ice harder.
+    Answer: c) Therefore sometimes salt is added to slow down the melting of ice.
+
+90. What is evaporation?
+    a) The process of a liquid changing into solid.
+    b) The phenomenon where a liquid changes into its vapor state at any temperature, without external heat.
+    c) The boiling of a liquid.
+    d) The process of condensation.
+    Answer: b) The phenomenon due to which, a liquid changes into its vapour state at any temperature, without the aid of any external source of heat is called evaporation.
+
+91. What effect does evaporation produce?
+    a) Heating effect
+    b) Cooling effect
+    c) Pressure effect
+    d) Expansion effect
+    Answer: b) cooking effect.
+
+---
+
+OPTICS
+
+92. What is light in the context of human perception?
+    a) A form of sound.
+    b) A physical cause which produces sensation of sight and makes surrounding objects visible.
+    c) A chemical reaction.
+    d) A magnetic field.
+    Answer: b) the physical cause which produces sensation of sight and makes the surrounding objects visible to us.
+
+93. Bodies which themselves emit light are called:
+    a) Opaque objects
+    b) Transparent objects
+    c) Luminous objects
+    d) Non-luminous objects
+    Answer: c) luminous objects.
+
+94. Which of the following is an example of a cold luminous object?
+    a) The Sun
+    b) Stars
+    c) Firefly
+    d) A burning candle
+    Answer: c) fire fly
+
+95. What is Reflection?
+    a) The bending of light as it passes through a medium.
+    b) The phenomenon whereby light, on striking an opaque surface, is thrown back into the same medium.
+    c) The absorption of light by a surface.
+    d) The scattering of light in all directions.
+    Answer: b) the phenomenon whereby light, on striking an opaque surface is thrown back into the same medium.
+
+96. For reflection to occur, the angle of incidence must be equal to:
+    a) The angle of refraction.
+    b) The critical angle.
+    c) The angle of reflection.
+    d) The angle of deviation.
+    Answer: c) angle of reflection.
+
+97. What does an opaque body primarily do with the light that falls on it?
+    a) Transmits all of it.
+    b) Absorbs and transmits some, but majorly reflects the remaining.
+    c) Reflects all of it.
+    d) Creates its own light.
+    Answer: b) absorbs and transmit some of the light that falls on it but majorly reflects the remaining light.
+
+98. A transparent body like glass or water primarily does what with light?
+    a) Reflects almost all of it.
+    b) Absorbs almost all of it.
+    c) Transmits almost all the light that passes through it.
+    d) Scatters all of it.
+    Answer: c) transmits almost all the light that passes through it.
+
+---
+
+MIRRORS
+
+99. The image formed by a plane mirror is always:
+    a) Real and inverted.
+    b) Virtual and magnified.
+    c) Erect, laterally inverted, and virtual.
+    d) Real and diminished.
+    Answer: c) erect, laterally inverted and virtual.
+
+100. If a person approaches a plane mirror at a speed of 1m/s, at what speed does the image approach the person?
+    a) 0.5 m/s
+    b) 1 m/s
+    c) 2 m/s
+    d) 4 m/s
+    Answer: c) 2m/s.
+
+101. For a man to see the whole of his body in a plane mirror, the minimum size of the mirror must be:
+    a) Equal to his height.
+    b) Double his height.
+    c) Half of his own height.
+    d) One-fourth of his height.
+    Answer: c) minimum half of his own height.
+
+102. A set of two parallel mirrors theoretically produces how many images?
+    a) One
+    b) Two
+    c) A limited number
+    d) An infinite number
+    Answer: d) an infinite number.
+
+103. The portion of the mirror from where reflection actually takes place is known as:
+    a) Focal point
+    b) Center of curvature
+    c) Aperture
+    d) Principal axis
+    Answer: c) aperture.
+
+104. In a concave mirror, when is the image always real?
+    a) When the object is at the pole.
+    b) When the object is within the focal length.
+    c) Always, except when the object is within the focal length.
+    d) When the object is at infinity.
+    Answer: c) always real except when the object is within the focal length.
+
+105. When the object is within the focal length of a concave mirror, the image formed is:
+    a) Real, inverted, and diminished.
+    b) Virtual, erect, and magnified.
+    c) Real, erect, and magnified.
+    d) Virtual, inverted, and diminished.
+    Answer: b) virtual, erect and magnified.
+
+106. In a convex mirror, irrespective of the position of the object, the image is always:
+    a) Real and inverted.
+    b) Virtual, small size, and behind the mirror.
+    c) Real and magnified.
+    d) Virtual and at the focal point.
+    Answer: b) always behind the mirror. It is always virtual, small size and the image distance from the mirror is always less than the object’s distance.
+
+107. Which type of mirror always forms a diminished image?
+    a) Concave mirror
+    b) Plane mirror
+    c) Convex mirror
+    d) Cylindrical mirror
+    Answer: c) convex mirror.
+
+---
+
+IMAGE FORMATION BY CONCAVE MIRROR
+
+108. If an object is placed at the focus of a concave mirror, where is the image formed?
+    a) At the center of curvature.
+    b) At infinity.
+    c) Between the pole and focus.
+    d) Behind the mirror.
+    Answer: b) Highly enlarged at infinity.
+
+109. If an object is placed between the pole of a concave mirror and its focus, the nature of the image is:
+    a) Real and inverted.
+    b) Virtual and erect.
+    c) Real and enlarged.
+    d) Virtual and diminished.
+    Answer: b) virtual and erect.
+
+110. For a concave mirror, if the object is at the center of curvature, the image size is:
+    a) Highly enlarged.
+    b) Diminished.
+    c) Equal size as object.
+    d) Enlarged.
+    Answer: c) Equal size as object at centre of curvature.
+
+111. Which of the following is a use of a concave mirror?
+    a) Driving mirror
+    b) Anti-theft mirror in malls
+    c) Shaving mirror
+    d) Street lamp reflector
+    Answer: c) shaving mirror
+
+112. Which of the following is a use of a convex mirror?
+    a) Doctor's reflector
+    b) Reflectors of search light
+    c) Driving mirror
+    d) Terrestrial telescope
+    Answer: c) driving mirror
+
+---
+
+FACTS TO REMEMBER (REFRACTION)
+
+113. The phenomenon due to which a ray of light deviates from its original path while traveling from one optical medium to another of different density is called:
+    a) Reflection
+    b) Diffraction
+    c) Refraction
+    d) Interference
+    Answer: c) refraction.
+
+114. When a ray of light travels from an optically rarer medium to an optically denser medium, it always bends:
+    a) Away from the normal.
+    b) Towards the normal.
+    c) Parallel to the normal.
+    d) Without any deviation.
+    Answer: b) towards normal.
+
+115. When an incident ray strikes at right angles at the point of incidence, what happens?
+    a) It undergoes total internal reflection.
+    b) It bends towards the normal.
+    c) It suffers no refraction.
+    d) It splits into multiple colors.
+    Answer: c) it suffers no refraction.
+
+116. The perpendicular shift in the path of an incident ray while emerging out from an optical slab is called:
+    a) Angular deviation
+    b) Normal shift
+    c) Lateral displacement
+    d) Refractive index
+    Answer: c) lateral displacement.
+
+117. Which of the following phenomena is a result of refraction?
+    a) Sparkling of diamonds.
+    b) Formation of mirage.
+    c) A stick appearing bent and short when immersed obliquely in water.
+    d) Seeing one's reflection in a mirror.
+    Answer: c) A stick appears bent and short when immersed obliquely in water.
+
+118. Why do stars twinkle?
+    a) Due to their internal light fluctuations.
+    b) Due to total internal reflection.
+    c) Due to atmospheric refraction.
+    d) Due to interference of light.
+    Answer: c) Stars twinkle and appear higher in horizon than their actual positon.
+
+119. Atmospheric refraction is responsible for increasing the length of the day by approximately:
+    a) One minute
+    b) Two minutes
+    c) Four minutes
+    d) Ten minutes
+    Answer: c) four minutes.
+
+---
+
+TOTAL INTERNAL REFLECTION (TIR)
+
+120. Total internal reflection (TIR) occurs when a ray of light, while traveling from an optically denser medium to an optically rarer medium, gets:
+    a) Refracted into the rarer medium.
+    b) Absorbed by the surface.
+    c) Reflected into the same denser medium at the surface of separation.
+    d) Scattered in all directions.
+    Answer: c) gets reflected into the same medium at the surface of separation.
+
+121. For total internal reflection to take place, the angle of incidence in the optically denser medium must be:
+    a) Less than the critical angle.
+    b) Equal to the critical angle.
+    c) Greater than the critical angle.
+    d) Equal to 0 degrees.
+    Answer: c) greater than critical angle.
+
+122. What is "Critical Angle"?
+    a) The angle of refraction in a rarer medium.
+    b) The angle of incidence in a denser medium for which the angle of refraction in a rarer medium is 90°.
+    c) The angle at which light is completely absorbed.
+    d) The angle of deviation.
+    Answer: b) Angle of incidence in a denser medium for which angle of refraction in rarer medium is 90° is called Critical Angle.
+
+123. Which of the following phenomena takes place due to total internal reflection?
+    a) Rainbow formation.
+    b) Dispersion of light.
+    c) Sparkling of diamonds.
+    d) Blue color of the sky.
+    Answer: c) Sparkling of diamonds.
+
+124. Total internal reflection is used in optical fibers for:
+    a) Magnification
+    b) Endoscopy or communication
+    c) Heating
+    d) Illumination
+    Answer: b) endoscopy or in communication.
+
+---
+
+LENSES
+
+125. A concave lens can be used for:
+    a) Correcting long sightedness.
+    b) Used as a magnifying glass.
+    c) Correcting short sightedness.
+    d) Burning glass.
+    Answer: c) correcting short sightedness.
+
+126. A convex lens always forms real and inverted images, except when the object is:
+    a) At infinity.
+    b) At 2f.
+    c) Between optical center and principal focus.
+    d) Beyond 2f.
+    Answer: c) between optical centre and principal focus.
+
+127. When a convex lens forms a virtual, magnified, and erect image, it is used as a:
+    a) Camera lens.
+    b) Projector lens.
+    c) Magnifying lens.
+    d) Eyepiece of a telescope.
+    Answer: c) magnifying lens.
+
+---
+
+IMAGE FORMATION BY CONVEX LENS
+
+128. If an object is placed at the focus of a convex lens, where is the image formed?
+    a) At 2f.
+    b) At infinity.
+    c) Between f and 2f.
+    d) On the same side as the object.
+    Answer: b) At infinity and highly enlarged.
+
+129. If an object is placed between the focus and optical center of a convex lens, the nature of the image is:
+    a) Real and inverted.
+    b) Virtual and erect.
+    c) Real and diminished.
+    d) Virtual and inverted.
+    Answer: b) Virtual and erect.
+
+130. For a convex lens, if the object is at 2f, the image size is:
+    a) Enlarged.
+    b) Diminished.
+    c) Same size as object.
+    d) Highly enlarged.
+    Answer: c) Same size as object at 2f only.
+
+131. Which of the following is a use of a convex lens?
+    a) Correcting short sightedness.
+    b) Used as an eye lens for Galileo telescope.
+    c) Used as a burning glass.
+    d) Used as an anti-theft mirror.
+    Answer: c) burning glass.
+
+132. What type of image does a concave lens always form?
+    a) Real, inverted, and magnified.
+    b) Virtual, erect, and diminished.
+    c) Real, erect, and magnified.
+    d) Virtual, inverted, and diminished.
+    Answer: b) virtual, erect and diminished image.
+
+133. The power of a lens is the measure of:
+    a) Its focal length.
+    b) Its magnification.
+    c) Convergence or divergence produced by it.
+    d) Its refractive index.
+    Answer: c) convergence or divergence produced by it.
+
+134. What is the unit of power of a lens?
+    a) Meter
+    b) Centimeter
+    c) Dioptres (D)
+    d) Kilogram
+    Answer: c) dioptres (D).
+
+135. If two or more lenses of power P1, P2, etc., are placed in contact, the power 'P' of the combination is:
+    a) $P = P1 - P2$
+    b) $P = P1  P2$
+    c) $P = P1 + P2 + .....$ (algebraic sum)
+    d) $P = P1 / P2$
+    Answer: c) P = P1 + P2 + ..... algebraic sum
+
+---
+
+HUMAN EYE
+
+136. In the human eye, what acts as a window to the world and causes maximum refraction of light?
+    a) Iris
+    b) Pupil
+    c) Cornea
+    d) Retina
+    Answer: c) cornea
+
+137. Which part of the human eye darkens the eye from inside and prevents internal reflection?
+    a) Retina
+    b) Cornea
+    c) Choroid
+    d) Iris
+    Answer: c) choroid
+
+138. The function of the retina, consisting of rod and cone cells, is to:
+    a) Control the amount of light entering the eye.
+    b) Alter the focal length of the crystalline lens.
+    c) Receive the optical image and convert it into optical pulses sent to the brain.
+    d) Impart color to the eye.
+    Answer: c) receive the optical image of an object and then convert it into optical pulses which are finally sent to brain through optic nerve.
+
+139. What is the property of the eye lens to focus images on the retina called?
+    a) Visual acuity
+    b) Power of accommodation
+    c) Depth perception
+    d) Color vision
+    Answer: b) power of accomodation.
+
+140. Which part of the eye controls the amount of light entering it and imparts color to the eye?
+    a) Pupil
+    b) Retina
+    c) Ciliary muscles
+    d) Iris
+    Answer: d) Iris
+
+141. What is the "Blind spot" in the human eye?
+    a) An area where light cannot enter.
+    b) The area on the retina from where the optic nerve originates and leaves the eye, and no image is formed if focused on it.
+    c) An area of the eye that is always dark.
+    d) A defect causing blurry vision.
+    Answer: b) the area on retina from where optic nerve originates and leave the eye. No image is formed if focused on it and the person behave as blind person.
+
+142. What acts as the shutter in front of a camera to restrict light in the human eye?
+    a) Cornea
+    b) Iris
+    c) Eye-lids
+    d) Pupil
+    Answer: c) Eye-lids
+
+---
+
+EYE DEFECTS
+
+143. Short sightedness is also known as:
+    a) Hypermetropia
+    b) Presbyopia
+    c) Astigmatism
+    d) Myopia
+    Answer: d) Myopia
+
+144. In Myopia, where is the image formed?
+    a) Behind the retina.
+    b) In front of the retina.
+    c) Directly on the retina.
+    d) At the focal point.
+    Answer: b) In front of retina.
+
+145. Myopia is corrected by using which type of lens?
+    a) Convex lens
+    b) Cylindrical lens
+    c) Concave lens
+    d) Plano-convex lens
+    Answer: c) concave lens.
+
+146. Long sightedness is also known as:
+    a) Myopia
+    b) Presbyopia
+    c) Hypermetropia
+    d) Astigmatism
+    Answer: c) Hypermetropia
+
+147. In Hypermetropia, where is the image formed?
+    a) In front of the retina.
+    b) Behind the retina.
+    c) Directly on the retina.
+    d) At the blind spot.
+    Answer: b) Behind retina.
+
+148. Hypermetropia is corrected by using which type of lens?
+    a) Concave lens
+    b) Cylindrical lens
+    c) Convex lens
+    d) Plano-concave lens
+    Answer: c) convex lens.
+
+149. Old age hypermetropia is also called:
+    a) Myopia
+    b) Astigmatism
+    c) Presbyopia
+    d) Glaucoma
+    Answer: c) presbyopia
+
+150. Astigmatism, caused by roughening of the cornea, is corrected by which type of lenses?
+    a) Convex lenses
+    b) Concave lenses
+    c) Cylindrical lenses
+    d) Bifocal lenses
+    Answer: c) cylindrical lenses.
+
+151. A convex lens of short focal length is used as a:
+    a) Compound microscope.
+    b) Simple microscope (magnifying glass).
+    c) Astronomical telescope objective.
+    d) Concave mirror.
+    Answer: b) magnifying glass or simple microscope.
+
+152. A compound microscope uses an objective lens of:
+    a) Large aperture and large focal length.
+    b) Short aperture and small focal length.
+    c) Large aperture and small focal length.
+    d) Short aperture and large focal length.
+    Answer: b) short aperture and small focal length as objective lens.
+
+153. An astronomical telescope uses an objective lens of:
+    a) Small aperture and small focal length.
+    b) Large aperture and small focal length.
+    c) Large aperture and large focal length.
+    d) Small aperture and large focal length.
+    Answer: c) large aperture and large focal length.
+
+154. A binocular consists of a pair of:
+    a) Compound microscopes.
+    b) Astronomical telescopes whose tube length is reduced using a prism.
+    c) Simple microscopes.
+    d) Concave and convex lenses.
+    Answer: b) astronomical telescope whose tube length is reduced using prism.
+
+---
+
+INTERFERENCE, DIFFRACTION, POLARISATION
+
+155. What is Interference of light?
+    a) The bending of light around corners.
+    b) The phenomenon of non-uniform distribution of energy in a medium due to superposition of two light waves from a coherent source.
+    c) The splitting of light into its constituent colors.
+    d) The reflection of light from a surface.
+    Answer: b) the phenomenon of non-uniform distribution of energy in a medium because of superposition of two light waves from a coherent source placed closed to each other.
+
+156. Interference of light is explained by:
+    a) Newton's Law of Cooling.
+    b) Coulomb's Law.
+    c) Young's Double Slit experiment.
+    d) Fleming's Rule.
+    Answer: c) Young's Double Slit experiment.
+
+157. What is Diffraction?
+    a) The reflection of light from a rough surface.
+    b) The bending of light around sharp corners before spreading into the region, provided the size of the hole is comparable to the wavelength of light.
+    c) The passage of light through a transparent medium.
+    d) The phenomenon of two light waves cancelling each other out.
+    Answer: b) the bending of light round the sharp corners before spreading into the region provided that the size of hole is comparable to wave length of light.
+
+158. The observation of a colored spectrum of light when watching across a muslin cloth is because of:
+    a) Reflection.
+    b) Refraction.
+    c) Diffraction.
+    d) Interference.
+    Answer: c) diffraction.
+
+159. Polarisation of light refers to the:
+    a) Change in speed of light.
+    b) Bending of light around obstacles.
+    c) Restriction of the vibrations of light in one plane.
+    d) Splitting of light into colors.
+    Answer: c) restriction of the vibrations of light in one plane.
+
+160. Polarisation of light is obtained by passing light through:
+    a) A prism or a lens.
+    b) A mirror or a glass slab.
+    c) Nicol’s prism or tourmaline crystal.
+    d) A filter or a grating.
+    Answer: c) Nicol’s prism or tourmaline crystal.
+
+161. Polaroids are used in making:
+    a) Magnifying glasses.
+    b) Good sun glasses than colored glasses.
+    c) Concave mirrors.
+    d) Heating elements.
+    Answer: b) good sun glasses than coloured glasses.
+
+162. Ordinary light from a source is described as:
+    a) Longitudinal polarized light.
+    b) Transverse unpolarized light.
+    c) Circularly polarized light.
+    d) Linearly polarized light.
+    Answer: b) transverse unpolarised light.
+
+
+
+SOUND AND WAVE MOTION
+
+1.  Sound is classified as which type of wave?
+    a) Transverse wave
+    b) Electromagnetic wave
+    c) Longitudinal wave
+    d) Standing wave
+    Answer: c) Longitudinal wave
+
+2.  What does sound require for its transmission and propagation?
+    a) A vacuum
+    b) A material medium
+    c) Electromagnetic fields
+    d) Light waves
+    Answer: b) a material medium
+
+3.  In a transverse wave, how does the motion of individual particles of the medium take place relative to the direction of wave propagation?
+    a) In the same direction
+    b) In the opposite direction
+    c) At right angles
+    d) In a circular motion
+    Answer: c) at right angles
+
+4.  Transverse waves can be generated in which states of matter?
+    a) Only gases
+    b) Only liquids
+    c) Solids and liquids
+    d) Solids, liquids, and gases
+    Answer: c) solids and liquids
+
+5.  In a longitudinal wave, how does the motion of individual particles of the medium take place relative to the direction of wave propagation?
+    a) At right angles
+    b) In a circular motion
+    c) In the direction of propagation
+    d) Oppositely
+    Answer: c) in the direction of propagation
+
+6.  What is formed as a result of the motion of particles in a longitudinal wave?
+    a) Crests and troughs
+    b) Alternate compressions and rarefactions
+    c) Nodes and antinodes
+    d) Spirals
+    Answer: b) alternate compressions and rarefactions
+
+7.  Longitudinal waves can be produced in which states of matter?
+    a) Only solids
+    b) Only liquids
+    c) Only gases
+    d) Solids, liquids, and gases
+    Answer: d) solids, liquids and gases
+
+8.  Light waves are ____________ in nature, while sound waves are ____________.
+    a) longitudinal, transverse
+    b) transverse, longitudinal
+    c) electromagnetic, mechanical
+    d) mechanical, electromagnetic
+    Answer: b) transverse, longitudinal
+
+9.  The speed of sound is independent of which characteristic, provided the amplitude is not very large?
+    a) Frequency
+    b) Wavelength
+    c) Loudness
+    d) Temperature
+    Answer: c) loudness
+
+10. The velocity of sound is independent of which factor?
+    a) Temperature
+    b) Humidity
+    c) Pressure
+    d) Medium
+    Answer: c) pressure
+
+11. How does sound travel in warm air compared to cold air?
+    a) Slower
+    b) Faster
+    c) At the same speed
+    d) Only when it's humid
+    Answer: b) faster
+
+12. If the wind is blowing in the direction of sound wave propagation, what happens to the velocity of sound?
+    a) It decreases.
+    b) It remains constant.
+    c) It increases.
+    d) It becomes zero.
+    Answer: c) increases
+
+13. Sounds of all frequencies travel with:
+    a) Different speeds.
+    b) The same speed.
+    c) Speeds dependent on amplitude.
+    d) Speeds dependent on pressure.
+    Answer: b) the same speed.
+
+14. How does the speed of sound compare in water, air, and solids like steel?
+    a) V_air > V_water > V_steel
+    b) V_water > V_air > V_steel
+    c) V_steel > V_water > V_air
+    d) V_air = V_water = V_steel
+    Answer: c) Speed of sound is more in water than in air and still more in solids like steel.
+
+15. What is the phenomenon called when a repetition of sound is heard after reflection from a distant object (like a building or hillock)?
+    a) Refraction
+    b) Resonance
+    c) Echo
+    d) Diffraction
+    Answer: c) ‘Echo’.
+
+16. SONAR (Sound Navigation and Ranging) is based on the reflection of sound that causes:
+    a) Refraction
+    b) Interference
+    c) Echo
+    d) Resonance
+    Answer: c) echo.
+
+17. The reflection of ultrasound technique is widely used in medical sciences to diagnose:
+    a) Bone fractures
+    b) Presence of tumor or health of foetus, or presence of a stone in a body organ.
+    c) Blood pressure
+    d) Eye defects
+    Answer: b) the presence of tumour or health of foetus in a mother or presence of a stone in a body organ.
+
+18. What is Resonance defined as?
+    a) When the frequency of an applied force is less than the natural frequency of a body.
+    b) When the frequency of an applied external force is equal to the natural frequency of the body, causing increased amplitude of vibrations.
+    c) The damping of vibrations.
+    d) The reflection of sound waves.
+    Answer: b) a phenomenon when the frequency of applied external force is equal to the natural frequency of the body on which force is applied, such that it readily takes up the vibrations and begins to vibrate with an increased amplitude.
+
+19. Which characteristic of musical sound enables us to differentiate between two sounds of equal loudness but different frequencies?
+    a) Intensity
+    b) Loudness
+    c) Pitch
+    d) Quality
+    Answer: c) Pitch
+
+20. The higher the frequency of a note, the higher is its:
+    a) Loudness
+    b) Intensity
+    c) Pitch
+    d) Amplitude
+    Answer: c) pitch
+
+21. Among humans, whose sound typically has a higher pitch?
+    a) A male member
+    b) A female member
+    c) Both have the same pitch
+    d) It varies randomly
+    Answer: b) a female's sound is higher than that of a male member.
+
+---
+
+WAVES AND FREQUENCIES
+
+22. What is the audible range of frequency for humans?
+    a) Below 20 Hz
+    b) Above 20,000 Hz
+    c) 20 Hz – 20,000 Hz
+    d) 200 Hz – 2,000 Hz
+    Answer: c) 20Hz – 20,000 Hz
+
+23. Infrasonic waves have a frequency:
+    a) Above 20,000 KHz
+    b) Between 20 Hz and 20,000 Hz
+    c) Below 20 Hz
+    d) Only at 0 Hz
+    Answer: c) Below 20Hz
+
+24. Which of the following can produce infrasonic waves?
+    a) High frequency quartz crystals
+    b) Vocal cords
+    c) Earthquakes
+    d) Mosquitoes
+    Answer: c) earth quakes.
+
+25. Ultrasonic waves have a frequency:
+    a) Below 20 Hz
+    b) Between 20 Hz and 20,000 Hz
+    c) Above 20,000 KHz
+    d) At exactly 20,000 Hz
+    Answer: c) Above 20,000 KHz
+
+26. Which of the following can produce ultrasonic waves?
+    a) Volcanic eruptions
+    b) Ocean waves
+    c) High frequency quartz crystals
+    d) Human vocal cords
+    Answer: c) high frequency quartz crystals
+
+27. For velocity of sound (V), which inequality correctly represents its speed in steel, water, and air?
+    a) V_steel < V_water < V_air
+    b) V_air < V_water < V_steel
+    c) V_water < V_steel < V_air
+    d) V_steel = V_water = V_air
+    Answer: b) V_steel > V_water > V_air.
+
+28. How does the velocity of sound change with an increase in air temperature?
+    a) It decreases.
+    b) It remains constant.
+    c) It increases.
+    d) It fluctuates.
+    Answer: c) velocity of sound also increases.
+
+29. RADAR is a system for locating distant objects using:
+    a) Reflected sound waves.
+    b) Reflected light waves.
+    c) Reflected radio waves, usually of microwave frequency.
+    d) Reflected infrared rays.
+    Answer: c) System of locating distant objects by means of the reflected radio waves usually of micro wave frequency.
+
+30. What is the rate of flow of sound energy per unit area and its effect on the ear collectively called?
+    a) Intensity of sound
+    b) Pitch of sound
+    c) Loudness of sound
+    d) Quality of sound
+    Answer: c) loudness of sound.
+
+31. Light waves are classified as:
+    a) Longitudinal mechanical waves.
+    b) Transverse mechanical waves.
+    c) Transverse electromagnetic waves.
+    d) Longitudinal electromagnetic waves.
+    Answer: c) transverse electromagnetic waves.
+
+---
+
+ELECTROMAGNETIC SPECTRUM
+
+32. Which of the following is NOT a major part of the electromagnetic spectrum mentioned in the text?
+    a) Radio waves
+    b) Sound waves
+    c) X-rays
+    d) Visible light
+    Answer: b) Sound waves
+
+33. In the order of decreasing wavelength (or increasing frequency), which of the following is the correct sequence of electromagnetic waves mentioned?
+    a) Gamma rays, X-rays, UV, Visible, IR, Microwaves, TV, Radio
+    b) Radio, TV, Microwaves, IR, Visible, UV, X-rays, Gamma rays
+    c) Visible, UV, X-rays, Gamma rays, Radio, TV, Microwaves, IR
+    d) Microwaves, Radio, TV, UV, Visible, IR, X-rays, Gamma rays
+    Answer: b) Radio waves, television waves, microwaves, infra–red rays, visible light, ultra–violet rays, x-rays and gamma rays are major parts of electromagnetic spectrum in the order of decreasing wavelength or increasing frequency.
+
+34. Radio waves, TV-waves, and microwaves are produced by:
+    a) Nuclear reactions.
+    b) Excitation of outer electronic shells.
+    c) Oscillating circuits in special vacuum tubes.
+    d) Sudden destruction of high energy free electrons.
+    Answer: c) oscillating circuits in special vacuum tubes.
+
+35. Infra-red rays, visible radiation, and ultra-violet rays are produced by the:
+    a) Nucleus of an atom.
+    b) Excitation of outer electronic shell.
+    c) Destruction of high energy free electrons.
+    d) Quartz crystals.
+    Answer: b) excitation of outer electronic shell in increasing order.
+
+36. X-rays are produced by:
+    a) Volcanic eruptions.
+    b) The excitation of inner electrons of an atom and sudden destruction of high energy free electrons.
+    c) Vibrating bodies.
+    d) Oscillating circuits.
+    Answer: b) the excitation of inner electrons of an atom and sudden destruction of high energy free electrons.
+
+37. Gamma radiations are produced by:
+    a) High frequency quartz crystals.
+    b) The excitation of outer electronic shell.
+    c) The nucleus of an atom, by the sudden destructions of high energy particles.
+    d) Human vocal cords.
+    Answer: c) the nucleus of an atom, by the sudden destructions of high energy particles.
+
+38. Gamma radiations find use in the cure of cancer, similar to the one released by:
+    a) P-32
+    b) J-134
+    c) Na-24
+    d) Co-60
+    Answer: d) Co-60.
+
+completed
