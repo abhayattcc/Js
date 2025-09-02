@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>gk by Abhayattcc</title>
+    <style>
+        /* Global Styles & Variables for a New Kids-Friendly Theme */
+        :root {
+            --primary-color: #87CEEB; /* Sky Blue - for main header/accents */
+            --secondary-color: #A2D9CE; /* Mint Green - for list items */
+            --tertiary-color: #FFFACD; /* Lemon Chiffon - warm background for dictionary */
+            --background-color: #F8F8F8; /* Light Gray - main body background */
+            --text-color: #4682B4; /* Steel Blue - dark readable text */
+            --border-color: #ADD8E6; /* Light Blue - soft borders */
+            --highlight-color: #FFD700; /* Gold - cheerful button/focus accent */
+            --font-family-ui: 'Quicksand', sans-serif; /* Playful UI font */
+            --font-family-body: 'Open Sans', sans-serif; /* Readable body font */
+            --border-radius-xl: 25px; /* Extra large for main container */
+            --border-radius-lg: 15px; /* Large for sections */
+            --border-radius-md: 10px; /* Medium for inputs/buttons */
+            --shadow-soft: 0 10px 20px rgba(0, 0, 0, 0.08); /* Soft, diffused shadow */
+            --shadow-pop: 0 15px 30px rgba(0, 0, 0, 0.15); /* More pronounced pop shadow */
+        }
+
+        /* Google Fonts Import for playful UI font and readable body font */
+        /* For a truly offline solution from first load, these fonts would need to be bundled locally. */
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
+
+        /* Base styles for all elements */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-body);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-y: auto; /* Prevents body scroll when content is larger */
+        }
+
+        /* Main application container - acts as a playful "book" or "tablet" */
+        .app-container {
+            width: 95vw; /* Responsive width */
+            max-width: 960px; /* Max width for larger screens */
+            height: 95vh; /* Responsive height */
+            max-height: 800px; /* Max height for larger screens */
+            background-color: #fff;
+            border-radius: var(--border-radius-xl);
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 6px solid var(--border-color); /* Soft, thick border */
+            transition: border-color 0.5s ease; /* Smooth border transition */
+        }
+
+        /* Header styling - for the main title */
+        header {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 1.5rem 1.5rem; /* Increased padding */
+            text-align: center;
+            font-family: var(--font-family-ui);
+            font-size: clamp(1.8rem, 4vw, 2.8rem); /* Responsive font size */
+            font-weight: 700;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+            border-bottom: 3px solid var(--border-color);
+            transition: all 0.4s ease-in-out; /* Smooth transition for header collapse */
+            overflow: hidden; /* Hide overflowing content during collapse */
+        }
+
+        /* Completely hide header when reader screen is active */
+        .app-container.reader-active header {
+            padding-top: 0;
+            padding-bottom: 0;
+            height: 0;
+            opacity: 0;
+            pointer-events: none; /* Prevent interaction when hidden */
+            border-bottom: none; /* No border when collapsed */
+        }
+
+        header h1 {
+            margin: 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1); /* Subtle text shadow */
+        }
+
+        /* Main screen for file selection */
+        .main-screen {
+            flex-grow: 1;
+            padding: clamp(1.5rem, 5vw, 3rem); /* Responsive padding */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transform: translateX(0); /* Initial state */
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth, playful transition */
+        }
+
+        .main-screen.hidden {
+            transform: translateX(-100%); /* Slide out */
+        }
+
+        .main-screen h2 {
+            margin-bottom: clamp(1rem, 3vw, 2rem); /* Responsive margin */
+            color: var(--primary-color);
+            font-family: var(--font-family-ui);
+            font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .file-list {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            max-width: 700px; /* Adjusted max-width for grid */
+            display: grid; /* Make it a grid container */
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive columns */
+            gap: clamp(0.8rem, 2vw, 1.5rem); /* Gap between grid items */
+            justify-content: center; /* Center items in the grid */
+            align-items: stretch; /* Make items stretch to equal height */
+        }
+
+        .file-list li {
+            background-color: var(--secondary-color);
+            /* Removed margin-bottom as gap handles spacing now */
+            padding: clamp(0.8rem, 3vw, 1.2rem) clamp(1rem, 4vw, 2rem); /* Responsive padding */
+            border-radius: var(--border-radius-lg); /* More rounded */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: var(--shadow-soft);
+            font-family: var(--font-family-ui);
+            font-weight: 700;
+            color: #fff;
+            font-size: clamp(1.1rem, 3vw, 1.4rem); /* Responsive font size */
+            letter-spacing: 0.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100px; /* Larger tap target for kids, adjusted for grid */
+            border: 2px solid var(--border-color); /* Soft border for list items */
+            text-align: center; /* Center text within each grid item */
+        }
+
+        .file-list li:hover {
+            background-color: #B0E0E6; /* Lighter blue on hover */
+            transform: translateY(-5px) scale(1.02); /* Pop effect */
+            box-shadow: var(--shadow-pop);
+        }
+
+        .file-list li:active {
+            transform: translateY(0) scale(1);
+            box-shadow: var(--shadow-soft);
+            background-color: #ADD8E6; /* Even lighter on click */
+        }
+
+        .upload-section {
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .upload-button {
+            background-color: var(--highlight-color);
+            color: var(--text-color);
+            border: none;
+            padding: clamp(0.8rem, 3vw, 1.2rem) clamp(1rem, 4vw, 2rem);
+            border-radius: var(--border-radius-lg);
+            cursor: pointer;
+            font-family: var(--font-family-ui);
+            font-weight: 700;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            box-shadow: var(--shadow-soft);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .upload-button:hover {
+            background-color: #FFEB3B;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-pop);
+        }
+
+        .upload-button:active {
+            transform: translateY(0);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .upload-button input[type="file"] {
+            display: none;
+        }
+
+
+        /* Reader screen for text and dictionary */
+        .reader-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            transform: translateX(100%); /* Initial state: off-screen to the right */
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth, playful transition */
+            padding-top: clamp(10px, 2vw, 20px); /* Small top padding, back button handles spacing */
+        }
+
+        .reader-screen.active {
+            transform: translateX(0); /* Slide in */
+        }
+
+        .back-button {
+            position: sticky; /* Make it sticky within its container */
+            top: clamp(10px, 2vw, 20px); /* Responsive top position */
+            left: clamp(10px, 2vw, 20px); /* Responsive left position */
+            margin-left: clamp(10px, 2vw, 20px); /* Margin to push it from the left edge */
+            margin-bottom: clamp(10px, 2vw, 20px); /* Margin below the button */
+            background-color: var(--highlight-color);
+            color: var(--text-color);
+            border: none;
+            padding: clamp(0.6rem, 2vw, 1rem) clamp(1rem, 3vw, 1.8rem); /* Responsive padding */
+            border-radius: var(--border-radius-md); /* Rounded corners */
+            cursor: pointer;
+            font-family: var(--font-family-ui);
+            font-size: clamp(1rem, 2.8vw, 1.2rem); /* Responsive font size */
+            font-weight: 700;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15); /* More prominent shadow */
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            z-index: 20;
+            min-height: 50px; /* Larger tap target */
+            display: inline-flex; /* To allow padding to affect size */
+            align-items: center;
+            justify-content: center;
+            text-decoration: none; /* Ensure no underline if it were a link */
+        }
+
+        .back-button:hover {
+            background-color: #FFEB3B; /* Lighter gold on hover */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Dictionary section */
+        .dictionary-section {
+            padding: clamp(1rem, 3vw, 1.8rem); /* Responsive padding */
+            background-color: var(--tertiary-color); /* Creamy yellow background */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            flex-shrink: 0;
+            border-radius: var(--border-radius-lg); /* Rounded corners */
+            margin: clamp(0.5rem, 2vw, 1.5rem); /* Margin around the section */
+            border: 2px solid var(--highlight-color); /* Accent border */
+        }
+
+        .dictionary-section h3 {
+            margin-bottom: clamp(0.5rem, 1.5vw, 1rem); /* Responsive margin */
+            color: var(--text-color);
+            font-family: var(--font-family-ui);
+            font-size: clamp(1.2rem, 3.5vw, 1.6rem); /* Responsive font size */
+            text-align: center;
+        }
+
+        .dictionary-input-container {
+            display: flex;
+            margin-bottom: clamp(0.0rem, 1.5vw, 0.5rem); /* Responsive margin */
+        }
+
+        .dictionary-input {
+            flex-grow: 1;
+            padding: clamp(0.7rem, 2vw, 1rem) clamp(1rem, 2.5vw, 1.5rem); /* Responsive padding */
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            font-size: clamp(1rem, 2.8vw, 1.2rem); /* Responsive font size */
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            font-family: var(--font-family-body);
+            color: var(--text-color);
+        }
+
+        .dictionary-input::placeholder {
+            color: rgba(70, 130, 180, 0.6); /* Lighter placeholder text */
+        }
+
+        .dictionary-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(135, 206, 235, 0.3); /* Soft focus glow */
+        }
+
+        .dictionary-result {
+            min-height: clamp(50px, 10vw, 70px); /* Responsive min-height */
+            padding: clamp(0.8rem, 2.5vw, 1.2rem) clamp(1.2rem, 3vw, 1.8rem); /* Responsive padding */
+            background-color: #E6F7FF; /* Very light blue */
+            border: 2px solid #B0E0E6; /* Soft blue border */
+            border-radius: var(--border-radius-md);
+            font-size: clamp(1.1rem, 3vw, 1.3rem); /* Responsive font size */
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-family-body); /* Using generic body font now */
+            text-align: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dictionary-result.empty {
+            color: rgba(70, 130, 180, 0.7); /* Lighter text for empty state */
+            font-style: italic;
+            font-family: var(--font-family-body); /* Use body font for "empty" message */
+        }
+
+        .dictionary-result.loading {
+            background-color: #FFFACD; /* Lemon Chiffon - soft loading color */
+            color: #DAA520; /* Goldenrod - for loading text */
+            font-style: italic;
+            font-family: var(--font-family-body); /* Use body font for "loading" message */
+        }
+
+        /* Text reader section */
+        .text-reader-section {
+            flex-grow: 1; /* Takes remaining space */
+            overflow-y: auto; /* Enables scrolling for content */
+            padding: clamp(1rem, 4vw, 2rem); /* Responsive padding */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            background-color: #fff; /* White background for text */
+            border-radius: var(--border-radius-lg); /* Rounded corners */
+            margin: clamp(0.5rem, 2vw, 1.5rem); /* Margin around the section */
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05); /* Subtle inner shadow */
+            border: 2px solid var(--border-color); /* Soft border */
+        }
+
+        .text-reader-content {
+            white-space: pre-wrap; /* Preserves whitespace and wraps text */
+            word-wrap: break-word; /* Breaks long words */
+            font-family: var(--font-family-body); /* Use body font for text content */
+            font-size: clamp(1rem, 3vw, 1.2rem); /* Responsive font size */
+            line-height: 1.8; /* Increased line height for readability */
+            color: var(--text-color);
+            user-select: text; /* Allows text selection */
+            min-height: 100%; /* Ensures content takes full height for selection */
+            padding-bottom: 20px; /* Small padding at bottom for readability */
+        }
+
+        /* Pagination controls */
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5rem; /* Reduced padding for smaller height */
+            gap: 0.5rem; /* Space between elements */
+            flex-shrink: 0; /* Prevent it from shrinking */
+            background-color: var(--background-color);
+            border-top: 2px solid var(--border-color);
+            border-bottom-left-radius: var(--border-radius-xl);
+            border-bottom-right-radius: var(--border-radius-xl);
+            position: absolute; /* Fixed position at the bottom */
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: auto; /* Adjust height based on content */
+            min-height: 50px; /* Minimum height for better touch target */
+            box-sizing: border-box; /* Include padding in height calculation */
+        }
+
+        .pagination-button {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 0.4rem 0.8rem; /* Reduced padding for smaller height */
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            font-family: var(--font-family-ui);
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Slightly smaller font */
+            font-weight: 700;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            min-height: 35px; /* Ensure a decent tap target */
+        }
+
+        .pagination-button:hover:not(:disabled) {
+            background-color: #6CB6D8; /* Slightly darker blue on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .pagination-button:active:not(:disabled) {
+            transform: translateY(0);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .pagination-button:disabled {
+            background-color: #B0C4DE; /* Light steel blue for disabled */
+            cursor: not-allowed;
+            opacity: 0.7;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .page-info {
+            font-family: var(--font-family-ui);
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Slightly smaller font */
+            color: var(--text-color);
+            font-weight: 600;
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+
+        .page-go-container {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem; /* Reduced space between input and button */
+            flex-basis: auto; /* Allow items to size naturally */
+            justify-content: center;
+            margin-top: 0; /* Remove top margin for single line */
+        }
+
+        .page-go-input {
+            width: clamp(50px, 12vw, 70px); /* Responsive width, slightly smaller */
+            padding: 0.4rem 0.5rem; /* Reduced padding */
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Slightly smaller font */
+            text-align: center;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            font-family: var(--font-family-body);
+            color: var(--text-color);
+            min-height: 35px; /* Match button height */
+        }
+
+        .page-go-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(135, 206, 235, 0.3);
+        }
+
+        .page-go-button {
+            background-color: var(--highlight-color);
+            color: var(--text-color);
+            border: none;
+            padding: 0.4rem 0.8rem; /* Reduced padding */
+            border-radius: var(--border-radius-md);
+            cursor: pointer;
+            font-family: var(--font-family-ui);
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Slightly smaller font */
+            font-weight: 700;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            min-height: 35px; /* Ensure a decent tap target */
+        }
+
+        .page-go-button:hover:not(:disabled) {
+            background-color: #FFEB3B;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .page-go-button:active:not(:disabled) {
+            transform: translateY(0);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-go-button:disabled {
+            background-color: #B0C4DE;
+            cursor: not-allowed;
+            opacity: 0.7;
+            box-shadow: none;
+            transform: none;
+        }
+
+        /* Adjust reader screen padding to account for fixed pagination controls */
+        .reader-screen.active {
+            padding-bottom: 60px; /* Add padding at the bottom equal to pagination height */
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .app-container {
+                width: 100vw;
+                height: 100vh;
+                border-radius: 0; /* No rounded corners on full screen mobile */
+                border: none; /* No border on full screen mobile */
+            }
+
+            header {
+                padding: 1rem;
+                font-size: clamp(1.2rem, 5vw, 1.8rem);
+            }
+
+            .main-screen {
+                padding: 1rem;
+            }
+
+            .main-screen h2 {
+                font-size: clamp(1.5rem, 6vw, 2.2rem);
+                margin-bottom: 1rem;
+            }
+
+            .file-list {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjust columns for smaller screens */
+                gap: clamp(0.6rem, 2vw, 1rem); /* Adjust gap for smaller screens */
+            }
+
+            .file-list li {
+                padding: 0.8rem 1rem;
+                font-size: clamp(0.9rem, 4vw, 1.1rem);
+                min-height: 80px; /* Adjusted min-height for smaller screens */
+            }
+
+            .upload-section {
+                margin-top: 1.5rem;
+                gap: 0.8rem;
+            }
+
+            .upload-button {
+                padding: clamp(0.8rem, 3vw, 1rem) clamp(1rem, 4vw, 1.5rem);
+                font-size: clamp(0.9rem, 4vw, 1.1rem);
+            }
+
+            .reader-screen {
+                padding-top: clamp(5px, 1vw, 10px); /* Less top padding as header is gone */
+            }
+
+            .back-button {
+                padding: 0.5rem 0.8rem;
+                font-size: clamp(0.8rem, 3vw, 1rem);
+                min-height: 40px;
+                margin-left: clamp(5px, 1vw, 10px);
+                margin-bottom: clamp(5px, 1vw, 10px);
+            }
+
+            .dictionary-section {
+                padding: 0.7rem 1rem;
+                margin: clamp(0.3rem, 1.5vw, 0.8rem);
+            }
+
+            .dictionary-section h3 {
+                font-size: clamp(1rem, 4vw, 1.3rem);
+                margin-bottom: 0.5rem;
+            }
+
+            .dictionary-input {
+                padding: 0.5rem 0.8rem;
+                font-size: clamp(0.8rem, 3.5vw, 1rem);
+            }
+
+            .dictionary-result {
+                min-height: clamp(35px, 8vw, 50px);
+                padding: 0.6rem 0.8rem;
+                font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+            }
+
+            .text-reader-section {
+                padding: 0.8rem;
+                margin: clamp(0.3rem, 1.5vw, 0.8rem);
+            }
+
+            .text-reader-content {
+                font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+            }
+
+            .pagination-controls {
+                padding: 0.4rem; /* Further reduced padding for mobile */
+                gap: 0.3rem; /* Further reduced gap for mobile */
+                min-height: 45px; /* Adjusted min-height for mobile */
+            }
+
+            .pagination-button {
+                padding: 0.3rem 0.6rem; /* Further reduced padding */
+                font-size: clamp(0.7rem, 2.8vw, 0.9rem);
+                min-height: 30px; /* Adjusted min-height for mobile */
+            }
+
+            .page-info {
+                font-size: clamp(0.7rem, 2.8vw, 0.9rem);
+            }
+
+            .page-go-input {
+                width: clamp(40px, 15vw, 60px); /* Adjusted width for mobile */
+                padding: 0.3rem 0.4rem;
+                font-size: clamp(0.8rem, 3vw, 1rem);
+                min-height: 30px; /* Adjusted min-height for mobile */
+            }
+
+            .page-go-button {
+                padding: 0.3rem 0.6rem;
+                font-size: clamp(0.8rem, 3vw, 1rem);
+                min-height: 30px; /* Adjusted min-height for mobile */
+            }
+
+            .reader-screen.active {
+                padding-bottom: 50px; /* Adjusted padding for mobile pagination height */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container" id="appContainer">
+        <header>
+            <h1>Gk Complete By Abhayattcc</h1>
+        </header>
+
+        <div class="main-screen" id="mainScreen">
+            <h2>Select a Chapter</h2>
+            <ul class="file-list" id="fileList">
+                </ul>
+
+            </div>
+
+        <div class="reader-screen" id="readerScreen">
+        <button class="back-button" id="backButton">HOME</button>
+            <div class="dictionary-section">
+                <h3>English to Odia Dictionary</h3>
+                <div class="dictionary-input-container">
+                    <input type="text" id="englishWordInput" class="dictionary-input" placeholder="Type a word or copy from story">
+                </div>
+                <div id="dictionaryResult" class="dictionary-result loading">
+                    Loading your dictionary...
+                </div>
+            </div>
+
+            <div class="text-reader-section">
+                <pre id="textReaderContent" class="text-reader-content"></pre>
+            </div>
+
+            <div class="pagination-controls" id="paginationControls">
+                <button class="pagination-button" id="prevPageButton" disabled>BACK</button>
+                <span class="page-info" id="pageInfo"></span>
+                <button class="pagination-button" id="nextPageButton" disabled>NEXT</button>
+                <div class="page-go-container">
+                    <input type="number" id="pageGoInput" class="page-go-input" min="1" placeholder="Page">
+                    <button class="page-go-button" id="pageGoButton">GO</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="sql-wasm.js"></script>
+    <script>
+        // --- DOM Elements ---
+        const appContainer = document.getElementById('appContainer');
+        const mainScreen = document.getElementById('mainScreen');
+        const readerScreen = document.getElementById('readerScreen');
+        const fileList = document.getElementById('fileList');
+        const backButton = document.getElementById('backButton');
+        const englishWordInput = document.getElementById('englishWordInput');
+        const dictionaryResult = document.getElementById('dictionaryResult');
+        const textReaderContent = document.getElementById('textReaderContent');
+        const paginationControls = document.getElementById('paginationControls');
+        const prevPageButton = document.getElementById('prevPageButton');
+        const nextPageButton = document.getElementById('nextPageButton');
+        const pageInfo = document.getElementById('pageInfo');
+        const pageGoInput = document.getElementById('pageGoInput');
+        const pageGoButton = document.getElementById('pageGoButton');
+        // Removed textFileInput and pdfFileInput as they are no longer needed
+
+        // --- Configuration ---
+        const historyFiles = ['Content.txt', 'GkTheory.txt', 'History.txt', 'Polity.txt', 'Geography.txt', 'Economics.txt', 'Physics.txt', 'Chemistry.txt', 'Biology.txt', 'StatikGk.txt'];
+        const DB_NAME = 'DictionaryDB';
+        const DB_VERSION = 1;
+        const STORE_NAME = 'files';
+        const DICT_FILE_KEY = 'dict.db';
+        const CHAR_LIMIT_PER_PAGE = 5000; // Character limit for each page
+
+        // --- Global Variables ---
+        let DB = null; // SQLite database instance
+        let textPages = []; // Array to store split text pages
+        let currentPage = 0; // Current page index (0-based)
+
+        // Removed PDF.js worker setup: pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.min.js';
+
+        // --- Helper Functions ---
+
+        /**
+         * Updates the dictionary result display.
+         * @param {string} message The message to display.
+         * @param {boolean} isEmpty Whether the result is empty/not found.
+         * @param {boolean} isLoading Whether the dictionary is currently loading.
+         */
+        function updateDictionaryResult(message, isEmpty = false, isLoading = false) {
+            dictionaryResult.textContent = message;
+            dictionaryResult.classList.toggle('empty', isEmpty);
+            dictionaryResult.classList.toggle('loading', isLoading);
+        }
+
+        /**
+         * Fetches the dict.db file from the network.
+         * @returns {Promise<Uint8Array>} A promise that resolves with the database as Uint8Array.
+         */
+        function fetchDictionaryFile() {
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', DICT_FILE_KEY, true);
+                xhr.responseType = 'arraybuffer';
+                xhr.onload = () => {
+                    if (xhr.status === 200) {
+                        resolve(new Uint8Array(xhr.response));
+                    } else {
+                        reject(new Error(`Failed to fetch dict.db: Status ${xhr.status} ${xhr.statusText}`));
+                    }
+                };
+                xhr.onerror = () => reject(new Error('Network error fetching dict.db.'));
+                xhr.send();
+            });
+        }
+
+        /**
+         * Initializes SQL.js and loads the dictionary database,
+         * prioritizing IndexedDB cache, then falling back to network fetch.
+         */
+        async function initSqlJsAndLoadDictionary() {
+            updateDictionaryResult('Loading word helper...', false, true);
+
+            try {
+                const SQL = await initSqlJs({ locateFile: file => `sql-wasm.wasm` });
+
+                const request = indexedDB.open(DB_NAME, DB_VERSION);
+
+                request.onupgradeneeded = event => {
+                    event.target.result.createObjectStore(STORE_NAME, { keyPath: 'name' });
+                    console.log('IndexedDB upgraded/created.');
+                };
+
+                request.onsuccess = async event => {
+                    const db = event.target.result;
+                    const transaction = db.transaction([STORE_NAME], 'readonly');
+                    const objectStore = transaction.objectStore(STORE_NAME);
+                    const getRequest = objectStore.get(DICT_FILE_KEY);
+
+                    getRequest.onsuccess = async () => {
+                        if (getRequest.result) {
+                            console.log('Loading dict.db from IndexedDB cache.');
+                            try {
+                                DB = new SQL.Database(getRequest.result.data);
+                                updateDictionaryResult('Odia meaning will appear here.', true, false);
+                                console.log('Database loaded successfully from cache.');
+                            } catch (sqlErr) {
+                                console.error('Error initializing SQL.js with cached data:', sqlErr);
+                                updateDictionaryResult('Oops! Problem with saved words. Trying again...', true, false);
+                                // If cached data is corrupt, try fetching from network
+                                await loadFromNetworkAndCache(SQL, db);
+                            }
+                        } else {
+                            console.log('dict.db not in cache. Fetching from network...');
+                            await loadFromNetworkAndCache(SQL, db);
+                        }
+                    };
+
+                    getRequest.onerror = e => {
+                        console.error('Error getting dict.db from IndexedDB:', e.target.error);
+                        updateDictionaryResult('Oops! Problem with saved words. Trying again...', true, false);
+                        loadFromNetworkAndCache(SQL, db); // Fallback to direct fetch
+                    };
+                };
+
+                request.onerror = event => {
+                    console.error('IndexedDB error:', event.target.error);
+                    // Using a custom message box instead of alert()
+                    showMessageBox('Your browser might not support local storage for words. Trying to load directly.');
+                    updateDictionaryResult('Loading word helper directly...', true, false);
+                    loadFromNetworkAndCache(SQL, null); // Fallback without caching
+                };
+
+            } catch (err) {
+                console.error('Error initializing SQL.js:', err);
+                // Using a custom message box instead of alert()
+                showMessageBox('Oops! Something went wrong starting the word helper. Make sure all files are there!');
+                updateDictionaryResult('Word helper not working.', true, false);
+            }
+        }
+
+        /**
+         * Fetches dict.db from the network and stores it in IndexedDB if available.
+         * @param {object} SQL The SQL.js instance.
+         * @param {IDBDatabase|null} dbInstance The IndexedDB database instance, or null if not available.
+         */
+        async function loadFromNetworkAndCache(SQL, dbInstance) {
+            try {
+                const data = await fetchDictionaryFile();
+                DB = new SQL.Database(data);
+                console.log('Database loaded successfully from network.');
+
+                if (dbInstance) {
+                    const writeTransaction = dbInstance.transaction([STORE_NAME], 'readwrite');
+                    const objectStore = writeTransaction.objectStore(STORE_NAME);
+                    objectStore.put({ name: DICT_FILE_KEY, data: data });
+                    writeTransaction.oncomplete = () => console.log('dict.db cached in IndexedDB.');
+                    writeTransaction.onerror = (e) => console.error('Error caching dict.db:', e.target.error);
+                }
+                updateDictionaryResult('Odia meaning will appear here.', true, false);
+            } catch (err) {
+                console.error('Failed to load dictionary database:', err);
+                // Using a custom message box instead of alert()
+                showMessageBox(`Oops! Couldn't find the word helper file. Make sure 'dict.db' is in the same folder! Error: ${err.message}`);
+                updateDictionaryResult('Word helper not found.', true, false);
+            }
+        }
+
+        /**
+         * Searches the dictionary for the given English word and displays the Odia meaning.
+         * @param {string} word The English word to search for.
+         */
+        function searchDictionary(word) {
+            if (!DB) {
+                updateDictionaryResult('Word helper is still loading. Please wait.', true, true);
+                return;
+            }
+            const trimmedWord = word.trim();
+            if (!trimmedWord) {
+                updateDictionaryResult('Odia meaning will appear here.', true, false);
+                return;
+            }
+
+            try {
+                const stmt = DB.prepare("SELECT meaning FROM Dictionary WHERE word = :inputWord COLLATE NOCASE");
+                const result = stmt.getAsObject({ ':inputWord': trimmedWord });
+
+                if (result.meaning) {
+                    updateDictionaryResult(result.meaning, false, false);
+                } else {
+                    updateDictionaryResult(`No meaning found for "${trimmedWord}".`, true, false);
+                }
+                stmt.free(); // Release the statement
+            } catch (err) {
+                console.error('Error searching dictionary:', err);
+                updateDictionaryResult('Oops! Error searching for that word.', true, false);
+            }
+        }
+
+        /**
+         * Populates the file list on the main screen.
+         */
+        function populateFileList() {
+            fileList.innerHTML = '';
+            historyFiles.forEach(file => {
+                const li = document.createElement('li');
+                li.textContent = file.replace('.txt', ''); // Display without .txt extension
+                li.dataset.filename = file; // Store full filename for later use
+                fileList.appendChild(li);
+            });
+        }
+
+        /**
+         * Splits a given text into pages based on CHAR_LIMIT_PER_PAGE.
+         * Attempts to split at the last newline or space before the limit.
+         * @param {string} text The full text content.
+         * @returns {string[]} An array of text pages.
+         */
+        function splitTextIntoPages(text) {
+            const pages = [];
+            let startIndex = 0;
+
+            while (startIndex < text.length) {
+                let endIndex = Math.min(startIndex + CHAR_LIMIT_PER_PAGE, text.length);
+                let pageContent = text.substring(startIndex, endIndex);
+
+                // If we're not at the end of the text and the page ends mid-word,
+                // try to find a natural break point (last space or newline)
+                if (endIndex < text.length) {
+                    let lastSpace = pageContent.lastIndexOf(' ');
+                    let lastNewline = pageContent.lastIndexOf('\n');
+                    let splitPoint = Math.max(lastSpace, lastNewline);
+
+                    // Adjust split point only if it's a reasonable distance from the end of the current segment
+                    // This prevents very short last pages due to an early split point
+                    if (splitPoint > -1 && (endIndex - (startIndex + splitPoint)) < (CHAR_LIMIT_PER_PAGE * 0.2)) {
+                        endIndex = startIndex + splitPoint + 1; // +1 to include the space/newline
+                        pageContent = text.substring(startIndex, endIndex);
+                    }
+                }
+                pages.push(pageContent); // Removed .trim() to ensure continuity
+                startIndex = endIndex;
+            }
+            return pages;
+        }
+
+        /**
+         * Displays the content of a specific page and updates pagination controls.
+         * @param {number} pageIndex The 0-based index of the page to display.
+         */
+        function displayPage(pageIndex) {
+            if (textPages.length === 0) {
+                textReaderContent.textContent = 'No content to display.';
+                pageInfo.textContent = '';
+                prevPageButton.disabled = true;
+                nextPageButton.disabled = true;
+                pageGoInput.disabled = true; // Disable direct page input
+                pageGoButton.disabled = true; // Disable direct page button
+                paginationControls.style.display = 'none'; // Hide controls if no pages
+                return;
+            }
+
+            currentPage = pageIndex;
+            textReaderContent.textContent = textPages[currentPage];
+            pageInfo.textContent = `Page ${currentPage + 1} of ${textPages.length}`;
+            pageGoInput.value = currentPage + 1; // Update direct page input
+
+            prevPageButton.disabled = (currentPage === 0);
+            nextPageButton.disabled = (currentPage === textPages.length - 1);
+            pageGoInput.disabled = false; // Enable direct page input
+            pageGoButton.disabled = false; // Enable direct page button
+            paginationControls.style.display = (textPages.length > 1) ? 'flex' : 'none'; // Show controls only if more than 1 page
+        }
+
+        /**
+         * Shows a custom message box instead of alert().
+         * @param {string} message The message to display.
+         */
+        function showMessageBox(message) {
+            const messageBox = document.createElement('div');
+            messageBox.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: var(--primary-color);
+                color: #fff;
+                padding: 20px;
+                border-radius: var(--border-radius-lg);
+                box-shadow: var(--shadow-pop);
+                font-family: var(--font-family-ui);
+                font-size: 1.2rem;
+                text-align: center;
+                z-index: 1000;
+                max-width: 80vw;
+                word-wrap: break-word;
+            `;
+            messageBox.textContent = message;
+            document.body.appendChild(messageBox);
+
+            setTimeout(() => {
+                messageBox.remove();
+            }, 3000); // Remove after 3 seconds
+        }
+
+        /**
+         * Handles displaying content in the reader screen.
+         * @param {string} content The full text content to display.
+         */
+        function displayContentInReader(content) {
+            if (content.length > CHAR_LIMIT_PER_PAGE) {
+                textPages = splitTextIntoPages(content);
+            } else {
+                textPages = [content];
+            }
+            displayPage(0);
+
+            mainScreen.classList.add('hidden');
+            readerScreen.classList.add('active');
+            appContainer.classList.add('reader-active');
+        }
+
+        // Removed extractTextFromPdf function
+
+        // --- Event Listeners ---
+
+        // Handle clicks on file list items to open the reader
+        fileList.addEventListener('click', async (event) => {
+            if (event.target.tagName === 'LI') {
+                const filename = event.target.dataset.filename;
+                try {
+                    const response = await fetch(filename);
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    const fullText = await response.text();
+                    displayContentInReader(fullText);
+                } catch (error) {
+                    console.error('Error reading file:', error);
+                    showMessageBox(`Oops! Couldn't open '${filename}'. Make sure it's in the same folder!`);
+                }
+            }
+        });
+
+        // Removed textFileInput.addEventListener
+        // Removed pdfFileInput.addEventListener
+
+        // Handle back button click to return to main screen
+        backButton.addEventListener('click', () => {
+            readerScreen.classList.remove('active'); // Hide reader screen
+            mainScreen.classList.remove('hidden'); // Show main screen
+            appContainer.classList.remove('reader-active'); // Remove reader active signal for header reveal
+            englishWordInput.value = ''; // Clear dictionary input
+            updateDictionaryResult('Odia meaning will appear here.', true, false); // Reset dictionary result
+            textReaderContent.textContent = ''; // Clear reader content
+            textPages = []; // Clear pages
+            currentPage = 0; // Reset current page
+            displayPage(currentPage); // Reset pagination controls state
+            // Removed clearing of file inputs
+        });
+
+        // Listen for user typing in the English word input
+        englishWordInput.addEventListener('keyup', (event) => {
+            searchDictionary(event.target.value);
+        });
+
+        // Listen for text selection/copy event in the reader
+        textReaderContent.addEventListener('copy', (event) => {
+            const selectedText = window.getSelection().toString().trim();
+            if (selectedText) {
+                englishWordInput.value = selectedText; // Update input field
+                searchDictionary(selectedText); // Search for selected text
+            }
+        });
+
+        // Pagination button event listeners
+        prevPageButton.addEventListener('click', () => {
+            if (currentPage > 0) {
+                currentPage--;
+                displayPage(currentPage);
+            }
+        });
+
+        nextPageButton.addEventListener('click', () => {
+            if (currentPage < textPages.length - 1) {
+                currentPage++;
+                displayPage(currentPage);
+            }
+        });
+
+        // New: Direct page "Go" button event listener
+        pageGoButton.addEventListener('click', () => {
+            const pageNumber = parseInt(pageGoInput.value, 10);
+            if (isNaN(pageNumber) || pageNumber < 1 || pageNumber > textPages.length) {
+                showMessageBox(`Please enter a valid page number between 1 and ${textPages.length}.`);
+                pageGoInput.value = currentPage + 1; // Reset input to current page
+                return;
+            }
+            displayPage(pageNumber - 1); // Convert to 0-based index
+        });
+
+        // Allow pressing Enter in the input field to go to page
+        pageGoInput.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                pageGoButton.click(); // Trigger the click event of the Go button
+            }
+        });
+
+        // --- Initialization on Page Load ---
+        document.addEventListener('DOMContentLoaded', () => {
+            populateFileList();
+            initSqlJsAndLoadDictionary();
+            displayPage(0); // Initialize pagination controls visibility
+        });
+    </script>
+</body>
+</html>
