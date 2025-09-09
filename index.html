@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ଓଡ଼ିଆ GK - Kids Edition</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+    <style>
+        @font-face {
+            font-family: 'Noto Sans';
+            font-weight: bold;
+            src: url('https://cdn.jsdelivr.net/npm/@fontsource/noto-sans@5.0.22/files/noto-sans-all-700-normal.woff') format('woff');
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans', sans-serif;
+            font-weight: bold;
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #1a237e;
+        }
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+        }
+        .toggle-container {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #e91e63;
+            transition: 0.4s;
+            border-radius: 34px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #2196f3;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .toggle-label {
+            font-size: 20px;
+            color: #d81b60;
+            margin: 0 10px;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section-title {
+            color: #d81b60;
+            font-size: 36px;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        .chapter-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+        }
+        .chapter-item {
+            background: #ffd54f;
+            color: #1a237e;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            width: 200px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, background 0.3s;
+            border: 3px solid #e91e63;
+            text-align: center;
+        }
+        .chapter-item:hover {
+            transform: scale(1.1);
+            background: #ffeb3b;
+        }
+        .content {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #d4fc79, #96e6a1);
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            z-index: 10;
+        }
+        .content.active {
+            display: block;
+        }
+        .content-inner {
+            font-size: 20px;
+            color: #1a237e;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #d81b60;
+            max-width: 90%;
+            margin: 20px auto 120px auto;
+            word-wrap: break-word;
+            min-height: 50%;
+            overflow-y: auto;
+            max-height: calc(100vh - 160px);
+        }
+        .content-text {
+            font-family: 'Noto Sans', sans-serif;
+            font-weight: bold;
+            white-space: pre-wrap;
+        }
+        .content-inner span {
+            display: inline;
+            cursor: pointer;
+        }
+        .content-inner .highlight {
+            background: #fff59d;
+            border-radius: 6px;
+            padding: 3px 5px;
+            animation: highlightGlow 1.2s ease-in-out infinite;
+        }
+        .content-inner img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 10px 0;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+        @keyframes highlightGlow {
+            0% { background: #fff59d; }
+            50% { background: #ffeb3b; }
+            100% { background: #fff59d; }
+        }
+        .home-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #e91e63;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+            z-index: 20;
+            border: none;
+        }
+        .home-button:hover {
+            transform: translateX(-50%) scale(1.1);
+            background: #c2185b;
+        }
+        .voice-controls {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 20;
+        }
+        .voice-button, .stop-button {
+            background: #2196f3;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+            border: none;
+        }
+        .stop-button {
+            background: #f44336;
+        }
+        .voice-button:hover, .stop-button:hover {
+            transform: scale(1.1);
+        }
+        .stop-button:hover {
+            background: #d32f2f;
+        }
+        .voice-button:disabled, .stop-button:disabled {
+            background: #90caf9;
+            cursor: not-allowed;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: #f3e7f9;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            max-width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+        .popup.visible {
+            display: block;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .popup-content {
+            margin-bottom: 15px;
+        }
+        .popup-content div {
+            padding: 12px;
+            border-bottom: 2px dashed #b3e5fc;
+            font-size: 18px;
+            color: #1a237e;
+            background: #e1f5fe;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            transition: transform 0.3s ease;
+        }
+        .popup-content div:hover {
+            transform: scale(1.02);
+        }
+        .popup-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        .popup-content ul {
+            list-style: none;
+            padding: 0;
+        }
+        .popup-content li {
+            padding: 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #c8e6c9;
+            font-size: 18px;
+            color: #1a237e;
+            background: #ffffff;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            transition: background 0.3s ease;
+        }
+        .popup-content li:hover {
+            background: #c8e6c9;
+        }
+        .popup-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .popup-close {
+            padding: 8px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+            background: #f44336;
+            transition: transform 0.2s ease;
+        }
+        .popup-close:hover {
+            transform: scale(1.1);
+        }
+        .dictionary-section {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+        }
+        .dictionary-section.hidden {
+            display: none;
+        }
+        #sections.hidden {
+            display: none;
+        }
+        .dictionary-search {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            border: 2px solid #d81b60;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            outline: none;
+            font-family: 'Noto Sans', sans-serif;
+            font-weight: bold;
+        }
+        .dictionary-results {
+            min-height: 100px;
+            padding: 10px;
+            border-radius: 10px;
+            background: #e1f5fe;
+        }
+        .dictionary-results div {
+            padding: 12px;
+            border-bottom: 2px dashed #b3e5fc;
+            font-size: 18px;
+            color: #1a237e;
+            background: #e1f5fe;
+            border-radius: 10px;
+            margin-bottom: 8px;
+        }
+        .dictionary-results img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+        .dictionary-suggestions {
+            margin-top: 10px;
+        }
+        .dictionary-suggestions ul {
+            list-style: none;
+            padding: 0;
+        }
+        .dictionary-suggestions li {
+            padding: 12px;
+            cursor: pointer;
+            border-bottom: 1px solid #c8e6c9;
+            font-size: 18px;
+            color: #1a237e;
+            background: #ffffff;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            transition: background 0.3s ease;
+        }
+        .dictionary-suggestions li:hover {
+            background: #c8e6c9;
+        }
+        .speak-button {
+            background: #2196f3;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+            border: none;
+            margin-top: 10px;
+        }
+        .speak-button:hover {
+            transform: scale(1.1);
+        }
+        .speak-button:disabled {
+            background: #90caf9;
+            cursor: not-allowed;
+        }
+        .image-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 5px;
+        }
+        .delete-button, .restore-button {
+            padding: 8px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+            transition: transform 0.2s ease;
+        }
+        .delete-button {
+            background: #f44336;
+        }
+        .restore-button {
+            background: #4caf50;
+        }
+        .delete-button:hover, .restore-button:hover {
+            transform: scale(1.1);
+        }
+        .file-upload {
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .file-upload input {
+            font-size: 16px;
+        }
+        .dictionary-form {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e1f5fe;
+            border-radius: 10px;
+        }
+        .dictionary-form input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 2px solid #d81b60;
+            border-radius: 5px;
+            font-family: 'Noto Sans', sans-serif;
+            font-weight: bold;
+        }
+        .dictionary-form button {
+            background: #2196f3;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .dictionary-form button:hover {
+            background: #1976d2;
+        }
+        .container::before, .content::before, .popup::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50"><path d="M25 5l5 15h15l-12 9 5 15-13-9-13 9 5-15-12-9h15z" fill="%23ffffff30"/></svg>') repeat;
+            opacity: 0.2;
+            z-index: -1;
+        }
+        .hidden {
+            display: none !important;
+        }
+        #progress-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 600px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            text-align: center;
+            display: none;
+        }
+        #progress-container.visible {
+            display: block;
+        }
+        #progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        #progress-fill {
+            height: 100%;
+            background: #4caf50;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        #progress-text {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #d81b60;
+        }
+        #processing-status {
+            font-size: 16px;
+            color: #d81b60;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="chapterContainer">
+        <div class="toggle-container">
+            <span class="toggle-label">Dictionary</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="sectionToggle">
+                <span class="slider"></span>
+            </label>
+            <span class="toggle-label">Chapters</span>
+        </div>
+        <div class="dictionary-section" id="dictionarySection">
+            <h1 class="section-title">Dictionary</h1>
+            <input type="text" class="dictionary-search" id="dictionarySearch" placeholder="Search word...">
+            <div class="dictionary-results" id="dictionaryResults"></div>
+            <div class="dictionary-suggestions" id="dictionarySuggestions"></div>
+            <button class="speak-button" id="dictionarySpeakButton" title="Speak Results" disabled>🗣️</button>
+            <div class="dictionary-form">
+                <h3>Add New Word</h3>
+                <input type="text" id="newEnglish" placeholder="English">
+                <input type="text" id="newOdia" placeholder="Odia">
+                <input type="text" id="newHindi" placeholder="Hindi">
+                <button id="saveWordButton">Save Word</button>
+            </div>
+        </div>
+        <div id="sections"></div>
+    </div>
+    <div class="content" id="contentArea">
+        <button class="home-button" id="homeButton">Home</button>
+        <div class="voice-controls">
+            <button class="voice-button" id="voiceButton" title="Play/Pause">🗣️</button>
+            <button class="stop-button" id="stopButton" title="Stop" disabled>🛑</button>
+        </div>
+        <div class="file-upload">
+            <input type="file" id="fileUpload" accept=".pdf,.txt,.html" multiple>
+        </div>
+        <div id="contentInner" class="content-inner"></div>
+        <div id="processing-status"></div>
+    </div>
+    <div class="popup" id="popup">
+        <div class="popup-content" id="popupContent"></div>
+        <div class="popup-buttons">
+            <button class="popup-close" id="popupClose">🛑 Close</button>
+        </div>
+    </div>
+    <div id="progress-container">
+        <div id="progress-bar"><div id="progress-fill"></div></div>
+        <div id="progress-text">Loading...</div>
+    </div>
+<script>
+const CACHE_NAME = 'odia-gk-app-v8';
+const dbFiles = {
+    english_odia: 'https://raw.githubusercontent.com/abhayattcc/Best-odia-dictionary/refs/heads/main/data/english_odia.db.gz',
+    english_hindi: 'https://raw.githubusercontent.com/abhayattcc/Best-odia-dictionary/refs/heads/main/data/english_hindi.db.gz'
+};
+const sections = [
+    {
+        title: "ଓଡ଼ିଆ GK",
+        chapters: [
+            { name: "Content", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/Content.txt" },
+            { name: "ଜୀବ ବିଜ୍ଞାନ", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/biology(1).txt" },
+            { name: "ରସାୟନ ବିଜ୍ଞାନ", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/chemistry(1).txt" },
+            { name: "ଅର୍ଥନୀତି", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/economics(1).txt" },
+            { name: "ଇତିହାସ", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/history(1).txt" },
+            { name: "ଭୌତିକ ବିଜ୍ଞାନ", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/physics(1).txt" },
+            { name: "ରାଜନୀତି ବିଜ୍ଞାନ", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/polity(1).txt" },
+            { name: "Statik Gk ଓଡିଆ", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/statikgk(1).txt" },
+            { name: "ଓଡ଼ିଆ GK Theory", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/gk theory(1).txt" }
+        ]
+    },
+    {
+        title: "English GK",
+        chapters: [
+            { name: "Content", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/Content.txt" },
+            { name: "Biology", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/Biology.txt" },
+            { name: "Chemistry", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/Chemistry.txt" },
+            { name: "Economics", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/Economics.txt" },
+            { name: "History", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/History.txt" },
+            { name: "Physics", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/Physics.txt" },
+            { name: "Polity", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/Polity.txt" },
+            { name: "Statik Gk", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/StatikGk.txt" },
+            { name: "GK Theory", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/GkTheory.txt" }
+        ]
+    },
+    {
+        title: "ଓଡ଼ିଆ ବ୍ୟାକରଣ",
+        chapters: [
+            { name: "ଭାଷା", type: "html", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/1.html" },
+            { name: "ଶବ୍ଦ ଗଠନ", type: "html", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/2.html" },
+            { name: "ବାକ୍ୟ", type: "html", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/3.html" },
+            { name: "ସନ୍ଧି", type: "html", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/4.html" },
+            { name: "ପ୍ରତ୍ୟୟ", type: "html", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/5.html" },
+            { name: "ରୁଢ଼ି ଓ ଲୋକବାଣୀ", type: "html", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/6.html" },
+            { name: "ସମାସ", type: "html", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/7.html" },
+            { name: "କାରକ ଓ ବିଭକ୍ତି", type: "html", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/8.html" },
+            { name: "ଣତ୍ବ ବିଧି ଷତ୍ବ ବିଧି", type: "html", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/9.html" },
+            { name: "ଛନ୍ଦ", type: "html", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/10.html" },
+            { name: "ଅଳଙ୍କାର", type: "html", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/11.html" },
+            { name: "ବିଶେଷ୍ୟ ବିଶେଷଣ", type: "html", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/12.html" },
+            { name: "ଅବ୍ୟୟ", type: "html", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/13.html" }
+        ]
+    },
+    {
+        title: "English Grammar",
+        chapters: [
+            { name: "English Grammar", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/EnglishGrammar.txt" }
+        ]
+    },
+    {
+        title: "Computer",
+        chapters: [
+            { name: "Computer", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/computer.txt" }
+        ]
+    }
+];
+
+const chapterUrls = [...new Set(sections.flatMap(section => 
+    section.chapters.map(chapter => chapter.url)
+))];
+
+const STATIC_ASSETS = [
+    '/',
+    'https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.wasm',
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js',
+    'https://cdn.jsdelivr.net/npm/@fontsource/noto-sans@5.0.22/files/noto-sans-all-700-normal.woff',
+    ...Object.values(dbFiles),
+    ...chapterUrls
+];
+
+let dbEnglishOdia, dbEnglishHindi;
+let defaultEnglishVoice, defaultHindiVoice, defaultOdiaVoice;
+let speechUtterances = [];
+let currentSentenceIndex = -1;
+let sentences = [];
+let isReadingAloud = false;
+let isPaused = false;
+let activeUtterances = 0;
+let lastTappedSentenceIndex = -1;
+let lastTappedFile = null;
+let currentSectionIndex = null;
+let currentChapterIndex = null;
+let voices = [];
+let isTTSSupported = 'speechSynthesis' in window;
+let dictionaryTimeout = null;
+let isDictionaryReading = false;
+let db;
+
+function showProgress(message, percentage) {
+    const progressContainer = document.getElementById('progress-container');
+    const progressFill = document.getElementById('progress-fill');
+    const progressText = document.getElementById('progress-text');
+    progressContainer.classList.add('visible');
+    progressFill.style.width = `${percentage}%`;
+    progressText.textContent = `${message} (${percentage}%)`;
+    if (percentage === 100) {
+        setTimeout(() => {
+            progressContainer.classList.remove('visible');
+        }, 1000);
+    }
+}
+
+function hideProgress() {
+    document.getElementById('progress-container').classList.remove('visible');
+}
+
+async function cacheFiles() {
+    try {
+        const cache = await caches.open(CACHE_NAME);
+        const cachedRequests = await cache.keys();
+        const cachedUrls = cachedRequests.map(req => req.url);
+        const filesToFetch = STATIC_ASSETS.filter(url => !cachedUrls.includes(url));
+
+        if (filesToFetch.length > 0) {
+            showProgress('Caching resources', 0);
+            const totalFiles = filesToFetch.length;
+            let loadedFiles = 0;
+
+            for (const file of filesToFetch) {
+                try {
+                    const response = await fetch(file, { cache: 'no-cache' });
+                    if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+                    await cache.put(file, response.clone());
+                    loadedFiles++;
+                    showProgress('Caching resources', Math.round((loadedFiles / totalFiles) * 100));
+                } catch (error) {
+                    console.error(`Error caching ${file}:`, error);
+                }
+            }
+            hideProgress();
+            localStorage.setItem('cachePopulated', 'true');
+        }
+
+        // Cache images from dictionaries
+        await cacheDictionaryImages();
+    } catch (error) {
+        console.error('Error opening cache:', error);
+        hideProgress();
+    }
+}
+
+async function cacheDictionaryImages() {
+    try {
+        const cache = await caches.open(CACHE_NAME);
+        const imageUrls = [];
+        const stmt = dbEnglishHindi.prepare("SELECT image FROM dictionary WHERE image IS NOT NULL");
+        while (stmt.step()) {
+            const row = stmt.getAsObject();
+            if (row.image && row.image.endsWith('.webp')) {
+                imageUrls.push(row.image);
+            }
+        }
+        stmt.free();
+
+        const cachedRequests = await cache.keys();
+        const cachedUrls = cachedRequests.map(req => req.url);
+        const imagesToFetch = imageUrls.filter(url => !cachedUrls.includes(url));
+
+        if (imagesToFetch.length > 0) {
+            showProgress('Caching dictionary images', 0);
+            const totalImages = imagesToFetch.length;
+            let loadedImages = 0;
+
+            for (const imageUrl of imagesToFetch) {
+                try {
+                    const response = await fetch(imageUrl, { cache: 'no-cache' });
+                    if (!response.ok) throw new Error(`Failed to fetch image ${imageUrl}`);
+                    const arrayBuffer = await response.arrayBuffer();
+                    await cache.put(imageUrl, new Response(arrayBuffer, {
+                        headers: { 'Content-Type': 'image/webp' }
+                    }));
+                    // Save to IndexedDB for permanent offline storage
+                    await saveImageToIndexedDB(imageUrl, arrayBuffer);
+                    loadedImages++;
+                    showProgress('Caching dictionary images', Math.round((loadedImages / totalImages) * 100));
+                } catch (error) {
+                    console.error(`Error caching image ${imageUrl}:`, error);
+                }
+            }
+            hideProgress();
+        }
+    } catch (error) {
+        console.error('Error caching dictionary images:', error);
+        hideProgress();
+    }
+}
+
+async function saveImageToIndexedDB(url, arrayBuffer) {
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(['images'], 'readwrite');
+        const store = transaction.objectStore('images');
+        const request = store.put({ url, data: arrayBuffer });
+        request.onsuccess = () => resolve();
+        request.onerror = () => reject(request.error);
+    });
+}
+
+async function getImageFromIndexedDB(url) {
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(['images'], 'readonly');
+        const store = transaction.objectStore('images');
+        const request = store.get(url);
+        request.onsuccess = () => {
+            if (request.result) {
+                const blob = new Blob([request.result.data], { type: 'image/webp' });
+                resolve(URL.createObjectURL(blob));
+            } else {
+                resolve(null);
+            }
+        };
+        request.onerror = () => reject(request.error);
+    });
+}
+
+async function loadResource(url, bypassCache = false) {
+    try {
+        const cache = await caches.open(CACHE_NAME);
+        const cachedResponse = await cache.match(url);
+        if (cachedResponse && !bypassCache) {
+            const isImage = /\.(?:jpg|jpeg|png|gif|webp)$/i.test(url);
+            if (isImage) {
+                const arrayBuffer = await cachedResponse.arrayBuffer();
+                await saveImageToIndexedDB(url, arrayBuffer); // Ensure image is saved to IndexedDB
+                const blob = new Blob([arrayBuffer], { type: 'image/webp' });
+                return URL.createObjectURL(blob);
+            }
+            return cachedResponse;
+        }
+        const indexedDBImage = await getImageFromIndexedDB(url);
+        if (indexedDBImage) {
+            return indexedDBImage;
+        }
+        const response = await fetch(url, { cache: 'no-cache' });
+        if (!response.ok) throw new Error(`Failed to fetch ${url}`);
+        await cache.put(url, response.clone());
+        if (url.endsWith('.webp')) {
+            const arrayBuffer = await response.arrayBuffer();
+            await saveImageToIndexedDB(url, arrayBuffer); // Save to IndexedDB
+            const blob = new Blob([arrayBuffer], { type: 'image/webp' });
+            return URL.createObjectURL(blob);
+        }
+        return response;
+    } catch (error) {
+        console.error(`Error loading ${url}:`, error);
+        document.getElementById('contentInner').innerHTML = '<p>Offline mode: Resource not available. Please connect to the internet to cache resources.</p>';
+        return null;
+    }
+}
+
+async function initDatabases() {
+    try {
+        const SQL = await initSqlJs({
+            locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${file}`
+        });
+
+        const loadDatabase = async (url) => {
+            const response = await loadResource(url);
+            if (!response) throw new Error(`Failed to load ${url}`);
+            const arrayBuffer = await response.arrayBuffer();
+            const decompressed = pako.ungzip(new Uint8Array(arrayBuffer));
+            return new SQL.Database(decompressed);
+        };
+
+        showProgress('Loading dictionaries', 0);
+        dbEnglishOdia = await loadDatabase(dbFiles.english_odia);
+        showProgress('Loading dictionaries', 50);
+        dbEnglishHindi = await loadDatabase(dbFiles.english_hindi);
+        showProgress('Loading dictionaries', 100);
+        hideProgress();
+    } catch (error) {
+        console.error('Error loading databases:', error);
+        document.getElementById('contentInner').innerHTML = '<p>Offline mode: Dictionaries not available. Please connect to the internet to cache dictionaries.</p>';
+        hideProgress();
+    }
+}
+
+async function initIndexedDB() {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open('OdiaGKFiles', 2); // Updated version for images store
+        request.onupgradeneeded = (event) => {
+            db = event.target.result;
+            if (!db.objectStoreNames.contains('files')) {
+                db.createObjectStore('files', { keyPath: 'id' });
+            }
+            if (!db.objectStoreNames.contains('images')) {
+                db.createObjectStore('images', { keyPath: 'url' });
+            }
+        };
+        request.onsuccess = (event) => {
+            db = event.target.result;
+            resolve();
+        };
+        request.onerror = (event) => {
+            console.error('IndexedDB error:', event);
+            reject(event);
+        };
+    });
+}
+
+async function saveFileToIndexedDB(id, content) {
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(['files'], 'readwrite');
+        const store = transaction.objectStore('files');
+        const request = store.put({ id, content });
+        request.onsuccess = () => resolve();
+        request.onerror = () => reject(request.error);
+    });
+}
+
+async function getFileFromIndexedDB(id) {
+    return new Promise((resolve, reject) => {
+        const transaction = db.transaction(['files'], 'readonly');
+        const store = transaction.objectStore('files');
+        const request = store.get(id);
+        request.onsuccess = () => resolve(request.result ? request.result.content : null);
+        request.onerror = () => reject(request.error);
+    });
+}
+
+function trimInput(input) {
+    return input.trim().toLowerCase();
+}
+
+function filterTextByLanguage(text, lang) {
+    if (typeof text !== 'string' || typeof lang !== 'string') {
+        return '';
+    }
+    const languagePatterns = {
+        or: /[\u0B00-\u0B7F\.":;!?() ]+/g,
+        hi: /[\u0900-\u097F\A-Za-z0-9]+/g,
+        en: /[]+/g
+    };
+    const langKey = lang.toLowerCase().slice(0, 2);
+    if (!languagePatterns[langKey]) {
+        return '';
+    }
+    const matches = text.match(languagePatterns[langKey]) || [];
+    return matches.join(' ').trim();
+}
+
+function getDeletedImages() {
+    return JSON.parse(localStorage.getItem('deletedImages') || '[]');
+}
+
+function saveDeletedImage(imageUrl) {
+    const deletedImages = getDeletedImages();
+    if (!deletedImages.includes(imageUrl)) {
+        deletedImages.push(imageUrl);
+        localStorage.setItem('deletedImages', JSON.stringify(deletedImages));
+    }
+}
+
+function removeDeletedImage(imageUrl) {
+    const deletedImages = getDeletedImages();
+    const updatedImages = deletedImages.filter(url => url !== imageUrl);
+    localStorage.setItem('deletedImages', JSON.stringify(updatedImages));
+}
+
+async function searchWord(word, targetElement, suggestionsElement = null, isDictionary = false) {
+    const trimmedWord = trimInput(word);
+    if (!trimmedWord) {
+        targetElement.innerHTML = '';
+        if (suggestionsElement) suggestionsElement.innerHTML = '';
+        if (isDictionary) {
+            document.getElementById('dictionarySpeakButton').disabled = true;
+        }
+        return;
+    }
+    let results = [];
+    let suggestions = [];
+    const deletedImages = getDeletedImages();
+
+    // Check custom words
+    const customWords = JSON.parse(localStorage.getItem('customWords') || '[]');
+    const customMatches = customWords.filter(w => 
+        w.English.toLowerCase() === trimmedWord || 
+        (w.odia && w.odia.toLowerCase() === trimmedWord) || 
+        (w.hindi && w.hindi.toLowerCase() === trimmedWord)
+    );
+    results.push(...customMatches);
+
+    try {
+        // Search English-Odia
+        const stmtEnglishOdia = dbEnglishOdia.prepare("SELECT English, odia FROM dictionary WHERE English LIKE ? OR odia LIKE ?");
+        stmtEnglishOdia.bind([trimmedWord, trimmedWord]);
+        while (stmtEnglishOdia.step()) {
+            const row = stmtEnglishOdia.getAsObject();
+            results.push({ English: row.English, odia: row.odia });
+        }
+        stmtEnglishOdia.free();
+
+        // Search English-Hindi with image
+        const stmtEnglishHindi = dbEnglishHindi.prepare("SELECT English, hindi, image FROM dictionary WHERE English LIKE ? OR hindi LIKE ?");
+        stmtEnglishHindi.bind([trimmedWord, trimmedWord]);
+        while (stmtEnglishHindi.step()) {
+            const row = stmtEnglishHindi.getAsObject();
+            results.push({ English: row.English, hindi: row.hindi, image: row.image });
+        }
+        stmtEnglishHindi.free();
+
+        // Suggestions
+        if (suggestionsElement) {
+            const suggestionStmtEnglishOdia = dbEnglishOdia.prepare("SELECT English, odia FROM dictionary WHERE English LIKE ? OR odia LIKE ? LIMIT 5");
+            suggestionStmtEnglishOdia.bind([`${trimmedWord}%`, `${trimmedWord}%`]);
+            while (suggestionStmtEnglishOdia.step()) {
+                const row = suggestionStmtEnglishOdia.getAsObject();
+                suggestions.push({ English: row.English, odia: row.odia });
+            }
+            suggestionStmtEnglishOdia.free();
+
+            const suggestionStmtEnglishHindi = dbEnglishHindi.prepare("SELECT English, hindi, image FROM dictionary WHERE English LIKE ? OR hindi LIKE ? LIMIT 5");
+            suggestionStmtEnglishHindi.bind([`${trimmedWord}%`, `${trimmedWord}%`]);
+            while (suggestionStmtEnglishHindi.step()) {
+                const row = suggestionStmtEnglishHindi.getAsObject();
+                suggestions.push({ English: row.English, hindi: row.hindi, image: row.image });
+            }
+            suggestionStmtEnglishHindi.free();
+
+            suggestions.push(...customWords.filter(w => 
+                w.English.toLowerCase().startsWith(trimmedWord) || 
+                (w.odia && w.odia.toLowerCase().startsWith(trimmedWord)) || 
+                (w.hindi && w.hindi.toLowerCase().startsWith(trimmedWord))
+            ));
+
+            suggestions = [...new Set(suggestions.map(JSON.stringify))].map(JSON.parse);
+        }
+
+        targetElement.className = 'dictionary-results';
+        if (results.length > 0) {
+            targetElement.innerHTML = await Promise.all(results.map(async result => {
+                let resultText = `<div><strong>English:</strong> ${result.English}`;
+                if (result.odia) resultText += `<br><strong>Odia:</strong> ${result.odia}`;
+                if (result.hindi) resultText += `<br><strong>Hindi:</strong> ${result.hindi}`;
+                if (result.image) {
+                    const isDeleted = deletedImages.includes(result.image);
+                    resultText += `<br><div class="image-container" data-image="${result.image}" data-word="${result.English}">`;
+                    if (!isDeleted) {
+                        const imageSrc = await loadResource(result.image);
+                        resultText += `<img src="${imageSrc}" alt="Dictionary image for ${result.English}" loading="lazy">`;
+                    } else {
+                        resultText += `<p>Image hidden</p>`;
+                    }
+                    resultText += `<div class="image-controls">`;
+                    resultText += `<button class="delete-button" data-image="${result.image}" data-word="${result.English}">${isDeleted ? 'Hidden' : 'Delete'}</button>`;
+                    resultText += `<button class="restore-button" data-image="${result.image}" data-word="${result.English}" ${isDeleted ? '' : 'disabled'}>Restore</button>`;
+                    resultText += `</div></div>`;
+                }
+                resultText += `</div>`;
+                return resultText;
+            })).then(results => results.join(''));
+            if (isDictionary) {
+                document.getElementById('dictionarySpeakButton').disabled = !isTTSSupported;
+            }
+        } else {
+            targetElement.innerHTML = '<div>No exact match found. Add it below.</div>';
+            if (isDictionary) {
+                document.getElementById('dictionarySpeakButton').disabled = true;
+            }
+        }
+
+        if (suggestionsElement) {
+            suggestionsElement.className = 'dictionary-suggestions';
+            if (suggestions.length > 0) {
+                suggestionsElement.innerHTML = '<div style="font-weight: bold;">Suggestions:</div><ul>' + await Promise.all(suggestions.map(async suggestion => {
+                    let suggestionText = `<li data-english="${suggestion.English}"`;
+                    if (suggestion.odia) suggestionText += ` data-odia="${suggestion.odia}"`;
+                    if (suggestion.hindi) suggestionText += ` data-hindi="${suggestion.hindi}"`;
+                    if (suggestion.image) suggestionText += ` data-image="${suggestion.image}"`;
+                    suggestionText += `>${suggestion.English}`;
+                    if (suggestion.odia) suggestionText += ` / ${suggestion.odia}`;
+                    if (suggestion.hindi) suggestionText += ` / ${suggestion.hindi}`;
+                    if (suggestion.image && !deletedImages.includes(suggestion.image)) {
+                        const imageSrc = await loadResource(suggestion.image);
+                        suggestionText += ` <img src="${imageSrc}" alt="Suggestion image for ${suggestion.English}" style="max-width: 50px; vertical-align: middle;">`;
+                    }
+                    suggestionText += `</li>`;
+                    return suggestionText;
+                })).then(suggestions => suggestions.join('')) + '</ul>';
+            } else {
+                suggestionsElement.innerHTML = '';
+            }
+        }
+
+        targetElement.querySelectorAll('.delete-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const imageUrl = button.getAttribute('data-image');
+                saveDeletedImage(imageUrl);
+                const container = button.closest('.image-container');
+                container.querySelector('img')?.remove();
+                container.querySelector('p')?.remove();
+                container.insertBefore(document.createElement('p'), container.querySelector('.image-controls')).textContent = 'Image hidden';
+                button.textContent = 'Hidden';
+                button.disabled = true;
+                container.querySelector('.restore-button').disabled = false;
+            });
+        });
+
+        targetElement.querySelectorAll('.restore-button').forEach(button => {
+            button.addEventListener('click', async () => {
+                const imageUrl = button.getAttribute('data-image');
+                const word = button.getAttribute('data-word');
+                const password = prompt('Enter the word to restore the image:');
+                if (password && password.toLowerCase() === word.toLowerCase()) {
+                    removeDeletedImage(imageUrl);
+                    const container = button.closest('.image-container');
+                    container.querySelector('p')?.remove();
+                    const img = document.createElement('img');
+                    img.src = await loadResource(imageUrl);
+                    img.alt = `Restored image for ${word}`;
+                    img.loading = 'lazy';
+                    container.insertBefore(img, container.querySelector('.image-controls'));
+                    button.disabled = true;
+                    container.querySelector('.delete-button').disabled = false;
+                    container.querySelector('.delete-button').textContent = 'Delete';
+                } else {
+                    alert('Incorrect password. Please enter the correct word.');
+                }
+            });
+        });
+    } catch (error) {
+        console.error('Error searching word:', error);
+        targetElement.innerHTML = '<div>Offline mode: Dictionary not available.</div>';
+        if (suggestionsElement) suggestionsElement.innerHTML = '';
+        if (isDictionary) {
+            document.getElementById('dictionarySpeakButton').disabled = true;
+        }
+    }
+}
+
+async function getFirstOdiaWord() {
+    try {
+        const stmt = dbEnglishOdia.prepare("SELECT odia FROM dictionary ORDER BY odia ASC LIMIT 1");
+        if (stmt.step()) {
+            const row = stmt.getAsObject();
+            stmt.free();
+            return row.odia;
+        }
+        stmt.free();
+        return null;
+    } catch (error) {
+        console.error('Error fetching first Odia word:', error);
+        return null;
+    }
+}
+
+function saveCustomWord(english, odia, hindi) {
+    const customWords = JSON.parse(localStorage.getItem('customWords') || '[]');
+    const newWord = { English: english, odia, hindi };
+    if (!customWords.some(w => w.English.toLowerCase() === english.toLowerCase())) {
+        customWords.push(newWord);
+        localStorage.setItem('customWords', JSON.stringify(customWords));
+    }
+}
+
+async function handleFileUpload(event) {
+    const files = Array.from(event.target.files);
+    if (!files.length) return;
+    const contentInner = document.getElementById('contentInner');
+    const chapterContainer = document.getElementById('chapterContainer');
+    const contentArea = document.getElementById('contentArea');
+    const processingStatus = document.getElementById('processing-status');
+
+    stopSpeech();
+    contentInner.innerHTML = '';
+    lastTappedFile = files[0].name;
+    lastTappedSentenceIndex = -1;
+
+    const pdfFiles = files.filter(f => f.name.endsWith('.pdf'));
+    const textFiles = files.filter(f => f.name.endsWith('.txt') || f.name.endsWith('.html'));
+
+    try {
+        if (pdfFiles.length > 0) {
+            showProgress('Processing PDF files', 0);
+            let totalText = '';
+            for (let i = 0; i < pdfFiles.length; i++) {
+                const file = pdfFiles[i];
+                const arrayBuffer = await file.arrayBuffer();
+                const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                let text = '';
+                for (let j = 1; j <= pdf.numPages; j++) {
+                    const page = await pdf.getPage(j);
+                    const textContent = await page.getTextContent();
+                    text += textContent.items.map(item => item.str).join(' ') + '\n';
+                    showProgress('Processing PDF files', Math.round(((j / pdf.numPages) * (100 / pdfFiles.length)) + (i * (100 / pdfFiles.length))));
+                }
+                totalText += text;
+                await saveFileToIndexedDB(file.name, text);
+            }
+            sentences = totalText.split(/\r?\n/).filter(line => line.trim() !== '');
+            contentInner.innerHTML = sentences.map((line, index) => 
+                `<span data-sentence-index="${index}">${line.trim()}</span>`
+            ).join('<br>');
+            contentInner.classList.add('content-text');
+            hideProgress();
+        }
+        if (textFiles.length > 0) {
+            showProgress('Processing text/html files', 0);
+            for (let i = 0; i < textFiles.length; i++) {
+                const file = textFiles[i];
+                if (file.name.endsWith('.txt')) {
+                    const text = await file.text();
+                    await saveFileToIndexedDB(file.name, text);
+                    sentences = text.split(/\r?\n/).filter(line => line.trim() !== '');
+                    contentInner.innerHTML = sentences.map((line, index) => 
+                        `<span data-sentence-index="${index}">${line.trim()}</span>`
+                    ).join('<br>');
+                    contentInner.classList.add('content-text');
+                } else if (file.name.endsWith('.html')) {
+                    const text = await file.text();
+                    await saveFileToIndexedDB(file.name, text);
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = text;
+                    const processNode = (node) => {
+                        if (node.nodeType === 3) {
+                            const words = node.textContent.split(/(\s+)/);
+                            const fragment = document.createDocumentFragment();
+                            let sentenceIndex = 0;
+                            let currentSentence = '';
+                            words.forEach(word => {
+                                if (word.match(/\s+/)) {
+                                    currentSentence += word;
+                                    fragment.appendChild(document.createTextNode(word));
+                                } else if (word.match(/[A-Za-z\u0B00-\u0B7F]/)) {
+                                    const span = document.createElement('span');
+                                    const cleanWord = word.replace(/[^A-Za-z\u0B00-\u0B7F]/g, '');
+                                    span.setAttribute('data-word', cleanWord);
+                                    span.setAttribute('data-sentence-index', sentenceIndex);
+                                    span.textContent = word;
+                                    currentSentence += word;
+                                    if (word.match(/[.!?]/)) {
+                                        sentenceIndex++;
+                                        currentSentence = '';
+                                    }
+                                    fragment.appendChild(span);
+                                } else {
+                                    currentSentence += word;
+                                    fragment.appendChild(document.createTextNode(word));
+                                }
+                            });
+                            sentences.push(currentSentence.trim());
+                            node.parentNode.replaceChild(fragment, node);
+                        } else if (node.nodeType === 1) {
+                            node.childNodes.forEach(processNode);
+                        }
+                    };
+                    tempDiv.childNodes.forEach(processNode);
+                    sentences = sentences.filter(s => s.trim() !== '');
+                    contentInner.appendChild(tempDiv);
+                    contentInner.classList.remove('content-text');
+                }
+                showProgress('Processing text/html files', Math.round(((i + 1) / textFiles.length) * 100));
+            }
+            hideProgress();
+        }
+
+        contentArea.classList.add('active');
+        chapterContainer.classList.add('hidden');
+        processingStatus.textContent = '';
+
+        setupInteractionListeners();
+        document.getElementById('voiceButton').style.display = isTTSSupported ? 'inline-block' : 'none';
+        document.getElementById('stopButton').style.display = isTTSSupported ? 'inline-block' : 'none';
+        document.getElementById('voiceButton').disabled = !isTTSSupported || sentences.length === 0;
+        document.getElementById('stopButton').disabled = true;
+        if (!isTTSSupported) {
+            processingStatus.textContent = 'Text-to-speech is not supported in this browser.';
+        }
+    } catch (error) {
+        console.error('Error processing files:', error);
+        contentInner.innerHTML = '<p>Error: Failed to process files.</p>';
+        hideProgress();
+        processingStatus.textContent = 'Error processing files.';
+    }
+}
+
+async function loadContent(sectionIndex, chapterIndex) {
+    const chapter = sections[sectionIndex].chapters[chapterIndex];
+    const contentArea = document.getElementById('contentArea');
+    const contentInner = document.getElementById('contentInner');
+    const chapterContainer = document.getElementById('chapterContainer');
+    const processingStatus = document.getElementById('processing-status');
+
+    contentInner.innerHTML = '';
+    lastTappedFile = chapter.url;
+    lastTappedSentenceIndex = -1;
+
+    const cachedContent = await getFileFromIndexedDB(chapter.url);
+    let textContent;
+    if (cachedContent) {
+        textContent = cachedContent;
+    } else {
+        const content = await loadResource(chapter.url);
+        if (!content) {
+            contentInner.innerHTML = '<p>Offline mode: Content not available. Please connect to the internet to cache content.</p>';
+            return;
+        }
+        textContent = await content.text();
+        await saveFileToIndexedDB(chapter.url, textContent);
+    }
+
+    const tempDiv = document.createElement('div');
+    tempDiv.style.whiteSpace = 'pre-wrap';
+    
+    if (chapter.type === 'html') {
+        tempDiv.innerHTML = textContent;
+        const processNode = (node) => {
+            if (node.nodeType === 3) {
+                const words = node.textContent.split(/(\s+)/);
+                const fragment = document.createDocumentFragment();
+                let sentenceIndex = 0;
+                let currentSentence = '';
+                words.forEach(word => {
+                    if (word.match(/\s+/)) {
+                        currentSentence += word;
+                    } else if (word.match(/[A-Za-z\u0B00-\u0B7F]/)) {
+                        const span = document.createElement('span');
+                        const cleanWord = word.replace(/[^A-Za-z\u0B00-\u0B7F]/g, '');
+                        span.setAttribute('data-word', cleanWord);
+                        span.setAttribute('data-sentence-index', sentenceIndex);
+                        span.textContent = word;
+                        currentSentence += word;
+                        if (word.match(/[.!?]/)) {
+                            sentenceIndex++;
+                            currentSentence = '';
+                        }
+                        fragment.appendChild(span);
+                    } else {
+                        currentSentence += word;
+                        fragment.appendChild(document.createTextNode(word));
+                    }
+                });
+                node.parentNode.replaceChild(fragment, node);
+            } else if (node.nodeType === 1) {
+                node.childNodes.forEach(processNode);
+            }
+        };
+        tempDiv.childNodes.forEach(processNode);
+        contentInner.appendChild(tempDiv);
+        contentInner.classList.remove('content-text');
+    } else if (chapter.type === 'text') {
+        sentences = textContent.split(/\r?\n/).filter(line => line.trim() !== '');
+        contentInner.innerHTML = sentences.map((line, index) => 
+            `<span data-sentence-index="${index}">${line.trim()}</span>`
+        ).join('<br>');
+        contentInner.classList.add('content-text');
+    }
+
+    contentArea.classList.add('active');
+    chapterContainer.classList.add('hidden');
+    processingStatus.textContent = '';
+
+    const savedPosition = loadLastTappedPosition(chapter.url);
+    currentSentenceIndex = savedPosition ? savedPosition.sentenceIndex : -1;
+    lastTappedSentenceIndex = currentSentenceIndex;
+
+    setupInteractionListeners();
+    document.getElementById('voiceButton').style.display = isTTSSupported ? 'inline-block' : 'none';
+    document.getElementById('stopButton').style.display = isTTSSupported ? 'inline-block' : 'none';
+    document.getElementById('voiceButton').disabled = !isTTSSupported || sentences.length === 0;
+    document.getElementById('stopButton').disabled = true;
+    if (!isTTSSupported) {
+        processingStatus.textContent = 'Text-to-speech is not supported in this browser.';
+    }
+}
+
+function saveLastTappedPosition(fileKey, sentenceIndex, pageIndex) {
+    const positions = JSON.parse(localStorage.getItem('lastTappedPositions') || '{}');
+    positions[fileKey] = { sentenceIndex, pageIndex };
+    localStorage.setItem('lastTappedPositions', JSON.stringify(positions));
+}
+
+function loadLastTappedPosition(fileKey) {
+    const positions = JSON.parse(localStorage.getItem('lastTappedPositions') || '{}');
+    return positions[fileKey];
+}
+
+function clearLastTappedPosition(fileKey) {
+    const positions = JSON.parse(localStorage.getItem('lastTappedPositions') || '{}');
+    delete positions[fileKey];
+    localStorage.setItem('lastTappedPositions', JSON.stringify(positions));
+}
+
+function setupInteractionListeners() {
+    const contentInner = document.getElementById('contentInner');
+    let lastTapTime = 0;
+    const doubleTapDelay = 300;
+
+    contentInner.addEventListener('touchend', (event) => {
+        const currentTime = new Date().getTime();
+        const tapInterval = currentTime - lastTapTime;
+
+        if (tapInterval < doubleTapDelay && tapInterval > 0) {
+            event.preventDefault();
+            handleDoubleTap(event);
+        }
+        lastTapTime = currentTime;
+    });
+
+    document.addEventListener('copy', handleCopy);
+}
+
+function handleCopy(event) {
+    const selection = window.getSelection();
+    const selectedText = selection.toString().trim();
+    if (selectedText && document.getElementById('contentArea').classList.contains('active')) {
+        event.preventDefault();
+        navigator.clipboard.writeText(selectedText).then(() => {
+            showPopup(selectedText);
+        });
+    }
+}
+
+function handleDoubleTap(event) {
+    if (!document.getElementById('contentArea').classList.contains('active')) return;
+
+    const contentInner = document.getElementById('contentInner');
+    const touch = event.changedTouches[0];
+    const element = document.elementFromPoint(touch.clientX, touch.clientY);
+
+    if (element && element.tagName === 'SPAN' && element.hasAttribute('data-sentence-index')) {
+        const sentenceIndex = parseInt(element.getAttribute('data-sentence-index'), 10);
+        lastTappedSentenceIndex = sentenceIndex;
+        if (lastTappedFile) {
+            saveLastTappedPosition(lastTappedFile, lastTappedSentenceIndex, 0);
+        }
+
+        const range = document.createRange();
+        range.selectNodeContents(element);
+        const rects = range.getClientRects();
+        let word = null;
+        const touchX = touch.clientX;
+        const touchY = touch.clientY;
+
+        for (let i = 0; i < rects.length; i++) {
+            const rect = rects[i];
+            if (touchX >= rect.left && touchX <= rect.right && touchY >= rect.top && touchY <= rect.bottom) {
+                const text = element.textContent;
+                const words = text.split(/\s+/).filter(w => w.trim());
+                const charIndex = Math.round((touchX - rect.left) / rect.width * text.length);
+                let currentPos = 0;
+                for (const w of words) {
+                    const wordStart = text.indexOf(w, currentPos);
+                    const wordEnd = wordStart + w.length;
+                    if (charIndex >= wordStart && charIndex <= wordEnd) {
+                        word = w.replace(/[^A-Za-z\u0B00-\u0B7F]/g, '').trim();
+                        break;
+                    }
+                    currentPos = wordEnd;
+                }
+                break;
+            }
+        }
+
+        showPopup(word || element.textContent.trim());
+    }
+}
+
+async function showPopup(word = null) {
+    const popup = document.getElementById('popup');
+    const popupContent = document.getElementById('popupContent');
+    popupContent.innerHTML = '';
+    popup.style.display = 'block';
+
+    setTimeout(async () => {
+        popup.classList.add('visible');
+        
+        if (!word) {
+            const firstOdiaWord = await getFirstOdiaWord();
+            if (firstOdiaWord) {
+                word = firstOdiaWord;
+            } else {
+                popupContent.innerHTML = '<div>No Odia words found in dictionary.</div>';
+                return;
+            }
+        }
+
+        const searchInput = document.createElement('input');
+        searchInput.type = 'text';
+        searchInput.className = 'dictionary-search';
+        searchInput.placeholder = 'Search word...';
+        searchInput.value = word;
+        popupContent.appendChild(searchInput);
+
+        const resultsElement = document.createElement('div');
+        resultsElement.className = 'dictionary-results';
+        resultsElement.id = 'popupResults';
+        popupContent.appendChild(resultsElement);
+
+        const suggestionsElement = document.createElement('div');
+        suggestionsElement.className = 'dictionary-suggestions';
+        suggestionsElement.id = 'popupSuggestions';
+        popupContent.appendChild(suggestionsElement);
+
+        const speakButton = document.createElement('button');
+        speakButton.className = 'speak-button';
+        speakButton.id = 'popupSpeakButton';
+        speakButton.title = 'Speak Results';
+        speakButton.textContent = '🗣️';
+        speakButton.disabled = !isTTSSupported;
+        speakButton.style.display = isTTSSupported ? 'inline-block' : 'none';
+        popupContent.appendChild(speakButton);
+
+        const dictionaryForm = document.createElement('div');
+        dictionaryForm.className = 'dictionary-form';
+        dictionaryForm.innerHTML = `
+            <h3>Add New Word</h3>
+            <input type="text" id="popupNewEnglish" placeholder="English">
+            <input type="text" id="popupNewOdia" placeholder="Odia">
+            <input type="text" id="popupNewHindi" placeholder="Hindi">
+            <button id="popupSaveWordButton">Save Word</button>
+        `;
+        popupContent.appendChild(dictionaryForm);
+
+        searchInput.addEventListener('input', () => {
+            clearTimeout(dictionaryTimeout);
+            resultsElement.innerHTML = '';
+            suggestionsElement.innerHTML = '';
+            speakButton.disabled = !isTTSSupported;
+
+            const searchWordVal = searchInput.value;
+            if (searchWordVal.trim()) {
+                dictionaryTimeout = setTimeout(async () => {
+                    await searchWord(searchWordVal, resultsElement, suggestionsElement, true);
+                    setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton);
+                }, 700);
+            }
+        });
+
+        document.getElementById('popupSaveWordButton').addEventListener('click', () => {
+            const english = document.getElementById('popupNewEnglish').value.trim();
+            const odia = document.getElementById('popupNewOdia').value.trim();
+            const hindi = document.getElementById('popupNewHindi').value.trim();
+            if (english || odia || hindi) {
+                saveCustomWord(english || '', odia || '', hindi || '');
+                document.getElementById('popupNewEnglish').value = '';
+                document.getElementById('popupNewOdia').value = '';
+                document.getElementById('popupNewHindi').value = '';
+                searchInput.value = english || odia || hindi;
+                searchWord(searchInput.value, resultsElement, suggestionsElement, true);
+                setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton);
+            }
+        });
+
+        if (isTTSSupported) {
+            speakButton.addEventListener('click', () => {
+                if (isDictionaryReading) {
+                    window.speechSynthesis.cancel();
+                    isDictionaryReading = false;
+                    speakButton.textContent = '🗣️';
+                    return;
+                }
+
+                const textNodes = [];
+                const walker = document.createTreeWalker(resultsElement, Node.TEXT_NODE, null, false);
+                let node;
+                while (node = walker.nextNode()) {
+                    if (node.textContent.trim()) {
+                        textNodes.push(node.textContent.trim());
+                    }
+                }
+                const textToSpeak = textNodes.join(' ');
+                if (!textToSpeak) {
+                    return;
+                }
+
+                stopSpeech();
+                isDictionaryReading = true;
+                speakButton.textContent = '⏸️';
+                const voiceMap = {
+                    'hi': defaultHindiVoice,
+                    'or': defaultOdiaVoice,
+                    'en': defaultEnglishVoice
+                };
+                speechUtterances = [];
+                activeUtterances = 0;
+                let usedVoicesCount = 0;
+                ['hi', 'or', 'en'].forEach(langPrefix => {
+                    const filteredText = filterTextByLanguage(textToSpeak, langPrefix);
+                    if (filteredText) {
+                        const voice = voiceMap[langPrefix];
+                        if (voice) {
+                            const utterance = new SpeechSynthesisUtterance(filteredText);
+                            utterance.voice = voice;
+                            utterance.lang = voice.lang;
+                            utterance.rate = 0.7;
+                            utterance.pitch = 1.0;
+                            utterance.volume = 4.0;
+                            utterance.onend = () => {
+                                activeUtterances--;
+                                if (activeUtterances === 0) {
+                                    isDictionaryReading = false;
+                                    speakButton.textContent = '🗣️';
+                                }
+                            };
+                            speechUtterances.push(utterance);
+                            activeUtterances++;
+                            usedVoicesCount++;
+                        }
+                    }
+                });
+                if (activeUtterances > 0) {
+                    speechUtterances.forEach(utterance => window.speechSynthesis.speak(utterance));
+                } else {
+                    isDictionaryReading = false;
+                    speakButton.textContent = '🗣️';
+                }
+            });
+        }
+
+        await searchWord(word, resultsElement, suggestionsElement, true);
+        speakButton.disabled = !isTTSSupported || resultsElement.innerHTML === '';
+        setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton);
+    }, 0);
+}
+
+function setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton) {
+    suggestionsElement.querySelectorAll('li').forEach(li => {
+        li.addEventListener('click', async () => {
+            const english = li.getAttribute('data-english');
+            const odia = li.getAttribute('data-odia');
+            const hindi = li.getAttribute('data-hindi');
+            const selectedWord = english || odia || hindi;
+            if (selectedWord) {
+                searchInput.value = selectedWord;
+                suggestionsElement.innerHTML = '';
+                await searchWord(selectedWord, resultsElement, suggestionsElement, true);
+                speakButton.disabled = !isTTSSupported || resultsElement.innerHTML === '';
+                setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton);
+            }
+        });
+    });
+}
+
+const sectionsContainer = document.getElementById('sections');
+sections.forEach((section, sectionIndex) => {
+    const sectionDiv = document.createElement('div');
+    sectionDiv.className = 'section';
+    sectionDiv.id = `section-${sectionIndex}`;
+    const sectionTitle = document.createElement('h1');
+    sectionTitle.className = 'section-title';
+    sectionTitle.textContent = section.title;
+    sectionDiv.appendChild(sectionTitle);
+    const chapterList = document.createElement('ul');
+    chapterList.className = 'chapter-list';
+    section.chapters.forEach((chapter, chapterIndex) => {
+        const li = document.createElement('li');
+        li.className = 'chapter-item';
+        li.id = `chapter-${sectionIndex}-${chapterIndex}`;
+        li.textContent = chapter.name;
+        li.addEventListener('click', () => {
+            currentSectionIndex = sectionIndex;
+            currentChapterIndex = chapterIndex;
+            loadContent(sectionIndex, chapterIndex);
+        });
+        chapterList.appendChild(li);
+    });
+    sectionDiv.appendChild(chapterList);
+    sectionsContainer.appendChild(sectionDiv);
+});
+
+function populateVoiceList() {
+    if (!isTTSSupported) {
+        document.getElementById('voiceButton').style.display = 'none';
+        document.getElementById('stopButton').style.display = 'none';
+        document.getElementById('dictionarySpeakButton').style.display = 'none';
+        return;
+    }
+    voices = window.speechSynthesis.getVoices();
+    defaultEnglishVoice = voices.find(v => v.lang.startsWith('en') && v.name.includes('Google')) || voices.find(v => v.lang.startsWith('en'));
+    defaultHindiVoice = voices.find(v => v.lang.startsWith('hi') && v.name.includes('Google')) || voices.find(v => v.lang.startsWith('hi'));
+    defaultOdiaVoice = voices.find(v => v.lang.startsWith('or') && v.name.includes('Google')) || voices.find(v => v.lang.startsWith('or'));
+}
+
+function playSpeech() {
+    if (!isTTSSupported) {
+        document.getElementById('processing-status').textContent = 'Text-to-speech is not supported in this browser.';
+        return;
+    }
+    if (!sentences.length) {
+        document.getElementById('processing-status').textContent = 'No text to read';
+        return;
+    }
+    if (isReadingAloud && isPaused) {
+        window.speechSynthesis.resume();
+        isPaused = false;
+        document.getElementById('voiceButton').textContent = '⏸️';
+        document.getElementById('processing-status').textContent = 'Resuming reading...';
+        return;
+    } else if (isReadingAloud) {
+        window.speechSynthesis.pause();
+        isPaused = true;
+        document.getElementById('voiceButton').textContent = '▶️';
+        document.getElementById('processing-status').textContent = 'Paused reading';
+        return;
+    }
+
+    stopSpeech();
+    isReadingAloud = true;
+    isPaused = false;
+    currentSentenceIndex = lastTappedSentenceIndex >= 0 ? lastTappedSentenceIndex : (currentSentenceIndex >= sentences.length - 1 ? 0 : currentSentenceIndex + 1);
+    document.getElementById('voiceButton').textContent = '⏸️';
+    document.getElementById('processing-status').textContent = 'Reading...';
+    readNextSentence();
+}
+
+function readNextSentence() {
+    if (!isTTSSupported) {
+        document.getElementById('processing-status').textContent = 'Text-to-speech is not supported in this browser.';
+        return;
+    }
+    if (currentSentenceIndex >= sentences.length || !isReadingAloud) {
+        stopSpeech();
+        if (currentSentenceIndex >= sentences.length && lastTappedFile) {
+            clearLastTappedPosition(lastTappedFile);
+            lastTappedSentenceIndex = -1;
+        }
+        return;
+    }
+    const sentenceSpans = document.getElementById('contentInner').querySelectorAll('span[data-sentence-index]');
+    sentenceSpans.forEach(span => span.classList.remove('highlight'));
+    if (sentenceSpans[currentSentenceIndex]) {
+        sentenceSpans[currentSentenceIndex].classList.add('highlight');
+        const contentInner = document.getElementById('contentInner');
+        const currentSpan = sentenceSpans[currentSentenceIndex];
+        const spanRect = currentSpan.getBoundingClientRect();
+        const containerRect = contentInner.getBoundingClientRect();
+        contentInner.scrollTop += spanRect.top - containerRect.top - (containerRect.height / 2) + (spanRect.height / 2);
+    }
+    const text = sentences[currentSentenceIndex];
+    const voiceMap = { 
+        'hi': defaultHindiVoice,
+        'or': defaultOdiaVoice,
+        'en': defaultEnglishVoice
+    };
+    speechUtterances = [];
+    activeUtterances = 0;
+    let usedVoicesCount = 0;
+    ['hi', 'or', 'en'].forEach(langPrefix => {
+        const filteredText = filterTextByLanguage(text, langPrefix);
+        if (filteredText) {
+            const voice = voiceMap[langPrefix];
+            if (voice) {
+                const utterance = new SpeechSynthesisUtterance(filteredText);
+                utterance.voice = voice;
+                utterance.lang = voice.lang;
+                utterance.rate = 0.7;
+                utterance.pitch = 1.0;
+                utterance.volume = 4.0;
+                utterance.onend = () => {
+                    activeUtterances--;
+                    if (activeUtterances === 0 && isReadingAloud) {
+                        if (currentSentenceIndex < sentences.length - 1) {
+                            currentSentenceIndex++;
+                            if (lastTappedFile) {
+                                saveLastTappedPosition(lastTappedFile, currentSentenceIndex, 0);
+                            }
+                            readNextSentence();
+                        } else {
+                            stopSpeech();
+                            document.getElementById('processing-status').textContent = 'Finished reading';
+                            if (lastTappedFile) {
+                                clearLastTappedPosition(lastTappedFile);
+                                lastTappedSentenceIndex = -1;
+                            }
+                        }
+                    }
+                };
+                speechUtterances.push(utterance);
+                activeUtterances++;
+                usedVoicesCount++;
+            }
+        }
+    });
+    if (activeUtterances > 0) {
+        speechUtterances.forEach(utterance => window.speechSynthesis.speak(utterance));
+        document.getElementById('voiceButton').disabled = false;
+        document.getElementById('stopButton').disabled = false;
+        document.getElementById('processing-status').textContent = `Reading with ${usedVoicesCount} voice${usedVoicesCount > 1 ? 's' : ''}...`;
+    } else {
+        stopSpeech();
+        document.getElementById('processing-status').textContent = 'No text available for reading';
+    }
+}
+
+function stopSpeech() {
+    if (isTTSSupported) {
+        window.speechSynthesis.cancel();
+    }
+    speechUtterances = [];
+    activeUtterances = 0;
+    isReadingAloud = false;
+    isPaused = false;
+    isDictionaryReading = false;
+    document.getElementById('voiceButton').textContent = '🗣️';
+    document.getElementById('voiceButton').disabled = !isTTSSupported || sentences.length === 0;
+    document.getElementById('stopButton').disabled = true;
+    document.getElementById('dictionarySpeakButton').textContent = '🗣️';
+    document.getElementById('dictionarySpeakButton').disabled = !isTTSSupported || document.getElementById('dictionaryResults').innerHTML === '';
+    const sentenceSpans = document.getElementById('contentInner').querySelectorAll('span[data-sentence-index]');
+    sentenceSpans.forEach(span => {
+        span.classList.remove('highlight');
+        span.style.display = 'inline';
+    });
+    document.getElementById('processing-status').textContent = isTTSSupported ? '' : 'Text-to-speech is not supported in this browser.';
+}
+
+function speakDictionaryResults() {
+    if (!isTTSSupported) {
+        document.getElementById('processing-status').textContent = 'Text-to-speech is not supported in this browser.';
+        return;
+    }
+    if (isDictionaryReading) {
+        window.speechSynthesis.cancel();
+        isDictionaryReading = false;
+        document.getElementById('dictionarySpeakButton').textContent = '🗣️';
+        return;
+    }
+
+    const results = document.getElementById('dictionaryResults');
+    const textNodes = [];
+    const walker = document.createTreeWalker(results, Node.TEXT_NODE, null, false);
+    let node;
+    while (node = walker.nextNode()) {
+        if (node.textContent.trim()) {
+            textNodes.push(node.textContent.trim());
+        }
+    }
+    const textToSpeak = textNodes.join(' ');
+    if (!textToSpeak) {
+        document.getElementById('processing-status').textContent = 'No text to read';
+        return;
+    }
+
+    stopSpeech();
+    isDictionaryReading = true;
+    document.getElementById('dictionarySpeakButton').textContent = '⏸️';
+    const voiceMap = {
+        'hi': defaultHindiVoice,
+        'or': defaultOdiaVoice,
+        'en': defaultEnglishVoice
+    };
+    speechUtterances = [];
+    activeUtterances = 0;
+    let usedVoicesCount = 0;
+    ['hi', 'or', 'en'].forEach(langPrefix => {
+        const filteredText = filterTextByLanguage(textToSpeak, langPrefix);
+        if (filteredText) {
+            const voice = voiceMap[langPrefix];
+            if (voice) {
+                const utterance = new SpeechSynthesisUtterance(filteredText);
+                utterance.voice = voice;
+                utterance.lang = voice.lang;
+                utterance.rate = 0.7;
+                utterance.pitch = 1.0;
+                utterance.volume = 4.0;
+                utterance.onend = () => {
+                    activeUtterances--;
+                    if (activeUtterances === 0) {
+                        isDictionaryReading = false;
+                        document.getElementById('dictionarySpeakButton').textContent = '🗣️';
+                        document.getElementById('processing-status').textContent = 'Finished reading';
+                    }
+                };
+                speechUtterances.push(utterance);
+                activeUtterances++;
+                usedVoicesCount++;
+            }
+        }
+    });
+    if (activeUtterances > 0) {
+        speechUtterances.forEach(utterance => window.speechSynthesis.speak(utterance));
+        document.getElementById('processing-status').textContent = `Reading with ${usedVoicesCount} voice${usedVoicesCount > 1 ? 's' : ''}...`;
+    } else {
+        isDictionaryReading = false;
+        document.getElementById('dictionarySpeakButton').textContent = '🗣️';
+        document.getElementById('processing-status').textContent = 'No text available for reading';
+    }
+}
+
+function setupDictionarySearch() {
+    const searchInput = document.getElementById('dictionarySearch');
+    const resultsElement = document.getElementById('dictionaryResults');
+    const suggestionsElement = document.getElementById('dictionarySuggestions');
+
+    searchInput.addEventListener('click', () => {
+        searchInput.value = '';
+        resultsElement.innerHTML = '';
+        suggestionsElement.innerHTML = '';
+        document.getElementById('dictionarySpeakButton').disabled = true;
+    });
+
+    searchInput.addEventListener('input', () => {
+        clearTimeout(dictionaryTimeout);
+        resultsElement.innerHTML = '';
+        suggestionsElement.innerHTML = '';
+        document.getElementById('dictionarySpeakButton').disabled = true;
+
+        const word = searchInput.value;
+        if (word.trim()) {
+            dictionaryTimeout = setTimeout(() => {
+                searchWord(word, resultsElement, suggestionsElement, true);
+                suggestionsElement.querySelectorAll('li').forEach(li => {
+                    li.addEventListener('click', () => {
+                        const english = li.getAttribute('data-english');
+                        const odia = li.getAttribute('data-odia');
+                        const hindi = li.getAttribute('data-hindi');
+                        const selectedWord = english || odia || hindi;
+                        if (selectedWord) {
+                            suggestionsElement.innerHTML = '';
+                            searchWord(selectedWord, resultsElement, null, true);
+                        }
+                    });
+                });
+            }, 700);
+        }
+    });
+
+    document.getElementById('saveWordButton').addEventListener('click', () => {
+        const english = document.getElementById('newEnglish').value.trim();
+        const odia = document.getElementById('newOdia').value.trim();
+        const hindi = document.getElementById('newHindi').value.trim();
+        if (english || odia || hindi) {
+            saveCustomWord(english || '', odia || '', hindi || '');
+            document.getElementById('newEnglish').value = '';
+            document.getElementById('newOdia').value = '';
+            document.getElementById('newHindi').value = '';
+            searchWord(english || odia || hindi, resultsElement, suggestionsElement, true);
+        }
+    });
+}
+
+function setupFileUpload() {
+    const fileInput = document.getElementById('fileUpload');
+    fileInput.addEventListener('change', handleFileUpload);
+}
+
+function setupToggleSwitch() {
+    const toggleSwitch = document.getElementById('sectionToggle');
+    const dictionarySection = document.getElementById('dictionarySection');
+    const sectionsContainer = document.getElementById('sections');
+
+    toggleSwitch.addEventListener('change', () => {
+        if (toggleSwitch.checked) {
+            dictionarySection.classList.add('hidden');
+            sectionsContainer.classList.remove('hidden');
+        } else {
+            dictionarySection.classList.remove('hidden');
+            sectionsContainer.classList.add('hidden');
+        }
+    });
+
+    dictionarySection.classList.remove('hidden');
+    sectionsContainer.classList.add('hidden');
+}
+
+async function init() {
+    showProgress('Initializing application', 0);
+    await cacheFiles();
+    showProgress('Initializing databases', 33);
+    await initDatabases();
+    showProgress('Setting up IndexedDB', 66);
+    await initIndexedDB();
+    showProgress('Loading voices', 80);
+    populateVoiceList();
+    if (isTTSSupported) {
+        window.speechSynthesis.onvoiceschanged = populateVoiceList;
+    }
+    showProgress('Setting up UI', 90);
+    setupDictionarySearch();
+    setupFileUpload();
+    setupToggleSwitch();
+    showProgress('Ready', 100);
+
+    const firstOdiaWord = await getFirstOdiaWord();
+    if (firstOdiaWord) {
+        document.getElementById('dictionarySearch').value = firstOdiaWord;
+        searchWord(firstOdiaWord, document.getElementById('dictionaryResults'), document.getElementById('dictionarySuggestions'), true);
+    }
+
+    document.getElementById('homeButton').addEventListener('click', () => {
+        stopSpeech();
+        document.getElementById('contentArea').classList.remove('active');
+        document.getElementById('chapterContainer').classList.remove('hidden');
+        document.getElementById('contentInner').innerHTML = '';
+        document.getElementById('fileUpload').value = '';
+        sentences = [];
+        currentSentenceIndex = -1;
+        lastTappedSentenceIndex = -1;
+        lastTappedFile = null;
+        document.getElementById('voiceButton').disabled = !isTTSSupported;
+        document.getElementById('stopButton').disabled = true;
+        document.getElementById('processing-status').textContent = isTTSSupported ? '' : 'Text-to-speech is not supported in this browser.';
+    });
+
+    document.getElementById('popupClose').addEventListener('click', () => {
+        const popup = document.getElementById('popup');
+        popup.classList.remove('visible');
+        setTimeout(() => {
+            popup.style.display = 'none';
+            document.getElementById('popupContent').innerHTML = '';
+        }, 400);
+    });
+
+    if (isTTSSupported) {
+        document.getElementById('voiceButton').addEventListener('click', playSpeech);
+        document.getElementById('stopButton').addEventListener('click', stopSpeech);
+        document.getElementById('dictionarySpeakButton').addEventListener('click', speakDictionaryResults);
+    }
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js').then(registration => {
+            console.log('Service Worker registered with scope:', registration.scope);
+        }).catch(error => {
+            console.error('Service Worker registration failed:', error);
+        });
+    }
+}
+
+window.addEventListener('load', init);
+</script>
+</body>
+<html>
