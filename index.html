@@ -521,54 +521,55 @@
 </head>
 <body>
     <div class="container" id="chapterContainer">
-        <div class="toggle-container">
-            <span class="toggle-label">Dictionary</span>
-            <label class="toggle-switch">
-                <input type="checkbox" id="sectionToggle">
-                <span class="slider"></span>
-            </label>
-            <span class="toggle-label">Chapters</span>
-        </div>
-        <div class="dictionary-section" id="dictionarySection">
-            <h1 class="section-title">Dictionary</h1>
-            <input type="text" class="dictionary-search" id="dictionarySearch" placeholder="Search word...">
-            <div class="dictionary-results" id="dictionaryResults"></div>
-            <div class="dictionary-suggestions" id="dictionarySuggestions"></div>
-            <button class="speak-button" id="dictionarySpeakButton" title="Speak Results" disabled>🗣️</button>
-            <div class="dictionary-form">
-                <h3>Add New Word</h3>
-                <input type="text" id="newEnglish" placeholder="English">
-                <input type="text" id="newOdia" placeholder="Odia">
-                <input type="text" id="newHindi" placeholder="Hindi">
-                <button id="saveWordButton">Save Word</button>
-            </div>
-        </div>
-        <div id="sections"></div>
+    <div class="toggle-container">
+        <span class="toggle-label">Dictionary</span>
+        <label class="toggle-switch">
+            <input type="checkbox" id="sectionToggle">
+            <span class="slider"></span>
+        </label>
+        <span class="toggle-label">Chapters</span>
     </div>
-    <div class="content" id="contentArea">
-        <button class="home-button" id="homeButton">Home</button>
-        <div class="voice-controls">
-            <button class="voice-button" id="voiceButton" title="Play/Pause">🗣️</button>
-            <button class="stop-button" id="stopButton" title="Stop" disabled>🛑</button>
-        </div>
-        <div class="file-upload">
-            <input type="file" id="fileUpload" accept=".pdf,.txt,.html" multiple>
-        </div>
-        <div id="contentInner" class="content-inner"></div>
-        <div id="processing-status"></div>
-    </div>
-    <div class="popup" id="popup">
-        <div class="popup-content" id="popupContent"></div>
-        <div class="popup-buttons">
-            <button class="popup-close" id="popupClose">🛑 Close</button>
+    <div class="dictionary-section" id="dictionarySection">
+        <h1 class="section-title">Dictionary</h1>
+        <input type="text" class="dictionary-search" id="dictionarySearch" placeholder="Search word...">
+        <div class="dictionary-results" id="dictionaryResults"></div>
+        <div class="dictionary-suggestions" id="dictionarySuggestions"></div>
+        <button class="speak-button" id="dictionarySpeakButton" title="Speak Results" disabled>🗣️</button>
+        <div class="dictionary-form">
+            <h3>Add New Word</h3>
+            <input type="text" id="newEnglish" placeholder="English">
+            <input type="text" id="newOdia" placeholder="Odia">
+            <input type="text" id="newHindi" placeholder="Hindi">
+            <input type="text" id="newImage" placeholder="Image URL (jpg, jpeg, png, webp)">
+            <button id="saveWordButton">Save Word</button>
         </div>
     </div>
-    <div id="progress-container">
-        <div id="progress-bar"><div id="progress-fill"></div></div>
-        <div id="progress-text">Loading...</div>
+    <div id="sections"></div>
+</div>
+<div class="content" id="contentArea">
+    <button class="home-button" id="homeButton">Home</button>
+    <div class="voice-controls">
+        <button class="voice-button" id="voiceButton" title="Play/Pause">🗣️</button>
+        <button class="stop-button" id="stopButton" title="Stop" disabled>🛑</button>
     </div>
+    <div class="file-upload">
+        <input type="file" id="fileUpload" accept=".pdf,.txt,.html" multiple>
+    </div>
+    <div id="contentInner" class="content-inner"></div>
+    <div id="processing-status"></div>
+</div>
+<div class="popup" id="popup">
+    <div class="popup-content" id="popupContent"></div>
+    <div class="popup-buttons">
+        <button class="popup-close" id="popupClose">🛑 Close</button>
+    </div>
+</div>
+<div id="progress-container">
+    <div id="progress-bar"><div id="progress-fill"></div></div>
+    <div id="progress-text">Loading...</div>
+</div>
 <script>
-   const CACHE_NAME = 'odia-gk-app-v8';
+const CACHE_NAME = 'odia-gk-app-v9';
 const dbFiles = {
     english_odia: 'https://raw.githubusercontent.com/abhayattcc/Best-odia-dictionary/refs/heads/main/data/english_odia.db.gz',
     english_hindi: 'https://raw.githubusercontent.com/abhayattcc/Best-odia-dictionary/refs/heads/main/data/english_hindi.db.gz'
@@ -666,7 +667,6 @@ let voices = [];
 let isTTSSupported = 'speechSynthesis' in window;
 let dictionaryTimeout = null;
 let isDictionaryReading = false;
-let db;
 
 function showProgress(message, percentage) {
     const progressContainer = document.getElementById('progress-container');
@@ -724,10 +724,16 @@ async function cacheDictionaryImages() {
     try {
         const cache = await caches.open(CACHE_NAME);
         const imageUrls = [];
+        const customWords = JSON.parse(localStorage.getItem('customWords') || '[]');
+        customWords.forEach(word => {
+            if (word.image && word.image.match(/\.(jpg|jpeg|png|webp)$/i)) {
+                imageUrls.push(word.image);
+            }
+        });
         const stmt = dbEnglishHindi.prepare("SELECT image FROM dictionary WHERE image IS NOT NULL");
         while (stmt.step()) {
             const row = stmt.getAsObject();
-            if (row.image && row.image.endsWith('.webp')) {
+            if (row.image && row.image.match(/\.(jpg|jpeg|png|webp)$/i)) {
                 imageUrls.push(row.image);
             }
         }
@@ -735,7 +741,7 @@ async function cacheDictionaryImages() {
 
         const cachedRequests = await cache.keys();
         const cachedUrls = cachedRequests.map(req => req.url);
-        const imagesToFetch = imageUrls.filter(url => !cachedUrls.includes(url));
+        const imagesToFetch = [...new Set(imageUrls)].filter(url => !cachedUrls.includes(url));
 
         if (imagesToFetch.length > 0) {
             showProgress('Caching dictionary images', 0);
@@ -779,6 +785,30 @@ async function loadResource(url, bypassCache = false) {
     }
 }
 
+async function loadImage(url) {
+    try {
+        const cache = await caches.open(CACHE_NAME);
+        const cachedResponse = await cache.match(url);
+        if (cachedResponse) {
+            const blob = await cachedResponse.blob();
+            return URL.createObjectURL(blob);
+        }
+        try {
+            const response = await fetch(url, { cache: 'no-cache' });
+            if (!response.ok) throw new Error(`Failed to fetch image ${url}`);
+            await cache.put(url, response.clone());
+            const blob = await response.blob();
+            return URL.createObjectURL(blob);
+        } catch (fetchError) {
+            console.error(`Error fetching image ${url}:`, fetchError);
+            return null;
+        }
+    } catch (error) {
+        console.error(`Error loading image ${url}:`, error);
+        return null;
+    }
+}
+
 async function initDatabases() {
     try {
         const SQL = await initSqlJs({
@@ -804,46 +834,6 @@ async function initDatabases() {
         document.getElementById('contentInner').innerHTML = '<p>Offline mode: Dictionaries not available. Please connect to the internet to cache dictionaries.</p>';
         hideProgress();
     }
-}
-
-async function initIndexedDB() {
-    return new Promise((resolve, reject) => {
-        const request = indexedDB.open('OdiaGKFiles', 2);
-        request.onupgradeneeded = (event) => {
-            db = event.target.result;
-            if (!db.objectStoreNames.contains('files')) {
-                db.createObjectStore('files', { keyPath: 'id' });
-            }
-        };
-        request.onsuccess = (event) => {
-            db = event.target.result;
-            resolve();
-        };
-        request.onerror = (event) => {
-            console.error('IndexedDB error:', event);
-            reject(event);
-        };
-    });
-}
-
-async function saveFileToIndexedDB(id, content) {
-    return new Promise((resolve, reject) => {
-        const transaction = db.transaction(['files'], 'readwrite');
-        const store = transaction.objectStore('files');
-        const request = store.put({ id, content });
-        request.onsuccess = () => resolve();
-        request.onerror = () => reject(request.error);
-    });
-}
-
-async function getFileFromIndexedDB(id) {
-    return new Promise((resolve, reject) => {
-        const transaction = db.transaction(['files'], 'readonly');
-        const store = transaction.objectStore('files');
-        const request = store.get(id);
-        request.onsuccess = () => resolve(request.result ? request.result.content : null);
-        request.onerror = () => reject(request.error);
-    });
 }
 
 function trimInput(input) {
@@ -883,6 +873,30 @@ function removeDeletedImage(imageUrl) {
     const deletedImages = getDeletedImages();
     const updatedImages = deletedImages.filter(url => url !== imageUrl);
     localStorage.setItem('deletedImages', JSON.stringify(updatedImages));
+}
+
+async function validateImageUrl(url) {
+    if (!url) return false;
+    try {
+        const response = await fetch(url, { method: 'HEAD' });
+        return response.ok && url.match(/\.(jpg|jpeg|png|webp)$/i);
+    } catch (error) {
+        console.error('Error validating image URL:', error);
+        return false;
+    }
+}
+
+async function cacheImageUrl(imageUrl) {
+    try {
+        const cache = await caches.open(CACHE_NAME);
+        const response = await fetch(imageUrl, { cache: 'no-cache' });
+        if (!response.ok) throw new Error(`Failed to fetch image ${imageUrl}`);
+        await cache.put(imageUrl, response.clone());
+        return true;
+    } catch (error) {
+        console.error(`Error caching image ${imageUrl}:`, error);
+        return false;
+    }
 }
 
 function searchWord(word, targetElement, suggestionsElement = null, isDictionary = false) {
@@ -952,7 +966,7 @@ function searchWord(word, targetElement, suggestionsElement = null, isDictionary
 
         targetElement.className = 'dictionary-results';
         if (results.length > 0) {
-            targetElement.innerHTML = results.map(result => {
+            Promise.all(results.map(async result => {
                 let resultText = `<div><strong>English:</strong> ${result.English}`;
                 if (result.odia) resultText += `<br><strong>Odia:</strong> ${result.odia}`;
                 if (result.hindi) resultText += `<br><strong>Hindi:</strong> ${result.hindi}`;
@@ -960,8 +974,12 @@ function searchWord(word, targetElement, suggestionsElement = null, isDictionary
                     const isDeleted = deletedImages.includes(result.image);
                     resultText += `<br><div class="image-container" data-image="${result.image}" data-word="${result.English}">`;
                     if (!isDeleted) {
-                        const imageSrc = result.image;
-                        resultText += `<img src="${imageSrc}" alt="Dictionary image for ${result.English}" loading="lazy">`;
+                        const imageSrc = await loadImage(result.image);
+                        if (imageSrc) {
+                            resultText += `<img src="${imageSrc}" alt="Dictionary image for ${result.English}" loading="lazy">`;
+                        } else {
+                            resultText += `<p>Image not available</p>`;
+                        }
                     } else {
                         resultText += `<p>Image hidden</p>`;
                     }
@@ -972,10 +990,13 @@ function searchWord(word, targetElement, suggestionsElement = null, isDictionary
                 }
                 resultText += `</div>`;
                 return resultText;
-            }).join('');
-            if (isDictionary) {
-                document.getElementById('dictionarySpeakButton').disabled = !isTTSSupported;
-            }
+            })).then(resultsHtml => {
+                targetElement.innerHTML = resultsHtml.join('');
+                if (isDictionary) {
+                    document.getElementById('dictionarySpeakButton').disabled = !isTTSSupported;
+                }
+                setupImageControlListeners(targetElement);
+            });
         } else {
             targetElement.innerHTML = '<div>No exact match found. Add it below.</div>';
             if (isDictionary) {
@@ -986,7 +1007,7 @@ function searchWord(word, targetElement, suggestionsElement = null, isDictionary
         if (suggestionsElement) {
             suggestionsElement.className = 'dictionary-suggestions';
             if (suggestions.length > 0) {
-                suggestionsElement.innerHTML = '<div style="font-weight: bold;">Suggestions:</div><ul>' + suggestions.map(suggestion => {
+                Promise.all(suggestions.map(async suggestion => {
                     let suggestionText = `<li data-english="${suggestion.English}"`;
                     if (suggestion.odia) suggestionText += ` data-odia="${suggestion.odia}"`;
                     if (suggestion.hindi) suggestionText += ` data-hindi="${suggestion.hindi}"`;
@@ -995,52 +1016,21 @@ function searchWord(word, targetElement, suggestionsElement = null, isDictionary
                     if (suggestion.odia) suggestionText += ` / ${suggestion.odia}`;
                     if (suggestion.hindi) suggestionText += ` / ${suggestion.hindi}`;
                     if (suggestion.image && !deletedImages.includes(suggestion.image)) {
-                        suggestionText += ` <img src="${suggestion.image}" alt="Suggestion image for ${suggestion.English}" style="max-width: 50px; vertical-align: middle;">`;
+                        const imageSrc = await loadImage(suggestion.image);
+                        if (imageSrc) {
+                            suggestionText += ` <img src="${imageSrc}" alt="Suggestion image for ${suggestion.English}" style="max-width: 50px; vertical-align: middle;">`;
+                        }
                     }
                     suggestionText += `</li>`;
                     return suggestionText;
-                }).join('') + '</ul>';
+                })).then(suggestionsHtml => {
+                    suggestionsElement.innerHTML = '<div style="font-weight: bold;">Suggestions:</div><ul>' + suggestionsHtml.join('') + '</ul>';
+                    setupSuggestionListeners(suggestionsElement, document.getElementById('dictionarySearch'), targetElement, document.getElementById('dictionarySpeakButton'));
+                });
             } else {
                 suggestionsElement.innerHTML = '';
             }
         }
-
-        targetElement.querySelectorAll('.delete-button').forEach(button => {
-            button.addEventListener('click', () => {
-                const imageUrl = button.getAttribute('data-image');
-                saveDeletedImage(imageUrl);
-                const container = button.closest('.image-container');
-                container.querySelector('img')?.remove();
-                container.querySelector('p')?.remove();
-                container.insertBefore(document.createElement('p'), container.querySelector('.image-controls')).textContent = 'Image hidden';
-                button.textContent = 'Hidden';
-                button.disabled = true;
-                container.querySelector('.restore-button').disabled = false;
-            });
-        });
-
-        targetElement.querySelectorAll('.restore-button').forEach(button => {
-            button.addEventListener('click', async () => {
-                const imageUrl = button.getAttribute('data-image');
-                const word = button.getAttribute('data-word');
-                const password = prompt('Enter the word to restore the image:');
-                if (password && password.toLowerCase() === word.toLowerCase()) {
-                    removeDeletedImage(imageUrl);
-                    const container = button.closest('.image-container');
-                    container.querySelector('p')?.remove();
-                    const img = document.createElement('img');
-                    img.src = imageUrl;
-                    img.alt = `Restored image for ${word}`;
-                    img.loading = 'lazy';
-                    container.insertBefore(img, container.querySelector('.image-controls'));
-                    button.disabled = true;
-                    container.querySelector('.delete-button').disabled = false;
-                    container.querySelector('.delete-button').textContent = 'Delete';
-                } else {
-                    alert('Incorrect password. Please enter the correct word.');
-                }
-            });
-        });
     } catch (error) {
         console.error('Error searching word:', error);
         targetElement.innerHTML = '<div>Offline mode: Dictionary not available.</div>';
@@ -1049,6 +1039,50 @@ function searchWord(word, targetElement, suggestionsElement = null, isDictionary
             document.getElementById('dictionarySpeakButton').disabled = true;
         }
     }
+}
+
+function setupImageControlListeners(targetElement) {
+    targetElement.querySelectorAll('.delete-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const imageUrl = button.getAttribute('data-image');
+            saveDeletedImage(imageUrl);
+            const container = button.closest('.image-container');
+            container.querySelector('img')?.remove();
+            container.querySelector('p')?.remove();
+            container.insertBefore(document.createElement('p'), container.querySelector('.image-controls')).textContent = 'Image hidden';
+            button.textContent = 'Hidden';
+            button.disabled = true;
+            container.querySelector('.restore-button').disabled = false;
+        });
+    });
+
+    targetElement.querySelectorAll('.restore-button').forEach(button => {
+        button.addEventListener('click', async () => {
+            const imageUrl = button.getAttribute('data-image');
+            const word = button.getAttribute('data-word');
+            const password = prompt('Enter the word to restore the image:');
+            if (password && password.toLowerCase() === word.toLowerCase()) {
+                removeDeletedImage(imageUrl);
+                const container = button.closest('.image-container');
+                container.querySelector('p')?.remove();
+                const imageSrc = await loadImage(imageUrl);
+                if (imageSrc) {
+                    const img = document.createElement('img');
+                    img.src = imageSrc;
+                    img.alt = `Restored image for ${word}`;
+                    img.loading = 'lazy';
+                    container.insertBefore(img, container.querySelector('.image-controls'));
+                    button.disabled = true;
+                    container.querySelector('.delete-button').disabled = false;
+                    container.querySelector('.delete-button').textContent = 'Delete';
+                } else {
+                    alert('Image not available offline.');
+                }
+            } else {
+                alert('Incorrect password. Please enter the correct word.');
+            }
+        });
+    });
 }
 
 function getFirstOdiaWord() {
@@ -1067,13 +1101,23 @@ function getFirstOdiaWord() {
     }
 }
 
-function saveCustomWord(english, odia, hindi) {
+async function saveCustomWord(english, odia, hindi, image) {
     const customWords = JSON.parse(localStorage.getItem('customWords') || '[]');
-    const newWord = { English: english, odia, hindi };
+    const newWord = { English: english, odia, hindi, image };
     if (!customWords.some(w => w.English.toLowerCase() === english.toLowerCase())) {
+        if (image) {
+            const isValidImage = await validateImageUrl(image);
+            if (!isValidImage) {
+                alert('Invalid image URL. Please provide a valid image URL (jpg, jpeg, png, or webp).');
+                return false;
+            }
+            await cacheImageUrl(image);
+        }
         customWords.push(newWord);
         localStorage.setItem('customWords', JSON.stringify(customWords));
+        return true;
     }
+    return false;
 }
 
 async function handleFileUpload(event) {
@@ -1108,7 +1152,8 @@ async function handleFileUpload(event) {
                     showProgress('Processing PDF files', Math.round(((j / pdf.numPages) * (100 / pdfFiles.length)) + (i * (100 / pdfFiles.length))));
                 }
                 totalText += text;
-                await saveFileToIndexedDB(file.name, text);
+                const cache = await caches.open(CACHE_NAME);
+                await cache.put(file.name, new Response(totalText));
             }
             sentences = totalText.split(/\r?\n/).filter(line => line.trim() !== '');
             contentInner.innerHTML = sentences.map((line, index) => 
@@ -1123,7 +1168,8 @@ async function handleFileUpload(event) {
                 const file = textFiles[i];
                 if (file.name.endsWith('.txt')) {
                     const text = await file.text();
-                    await saveFileToIndexedDB(file.name, text);
+                    const cache = await caches.open(CACHE_NAME);
+                    await cache.put(file.name, new Response(text));
                     sentences = text.split(/\r?\n/).filter(line => line.trim() !== '');
                     contentInner.innerHTML = sentences.map((line, index) => 
                         `<span data-sentence-index="${index}">${line.trim()}</span>`
@@ -1131,7 +1177,8 @@ async function handleFileUpload(event) {
                     contentInner.classList.add('content-text');
                 } else if (file.name.endsWith('.html')) {
                     const text = await file.text();
-                    await saveFileToIndexedDB(file.name, text);
+                    const cache = await caches.open(CACHE_NAME);
+                    await cache.put(file.name, new Response(text));
                     const tempDiv = document.createElement('div');
                     tempDiv.innerHTML = text;
                     const processNode = (node) => {
@@ -1208,19 +1255,12 @@ async function loadContent(sectionIndex, chapterIndex) {
     lastTappedFile = chapter.url;
     lastTappedSentenceIndex = -1;
 
-    const cachedContent = await getFileFromIndexedDB(chapter.url);
-    let textContent;
-    if (cachedContent) {
-        textContent = cachedContent;
-    } else {
-        const content = await loadResource(chapter.url);
-        if (!content) {
-            contentInner.innerHTML = '<p>Offline mode: Content not available. Please connect to the internet to cache content.</p>';
-            return;
-        }
-        textContent = await content.text();
-        await saveFileToIndexedDB(chapter.url, textContent);
+    const content = await loadResource(chapter.url);
+    if (!content) {
+        contentInner.innerHTML = '<p>Offline mode: Content not available. Please connect to the internet to cache content.</p>';
+        return;
     }
+    const textContent = await content.text();
 
     const tempDiv = document.createElement('div');
     tempDiv.style.whiteSpace = 'pre-wrap';
@@ -1389,6 +1429,7 @@ async function showPopup(word = null) {
             <input type="text" id="popupNewEnglish" placeholder="English">
             <input type="text" id="popupNewOdia" placeholder="Odia">
             <input type="text" id="popupNewHindi" placeholder="Hindi">
+            <input type="text" id="popupNewImage" placeholder="Image URL (jpg, jpeg, png, webp)">
             <button id="popupSaveWordButton">Save Word</button>
         `;
         popupContent.appendChild(dictionaryForm);
@@ -1408,18 +1449,22 @@ async function showPopup(word = null) {
             }
         });
 
-        document.getElementById('popupSaveWordButton').addEventListener('click', () => {
+        document.getElementById('popupSaveWordButton').addEventListener('click', async () => {
             const english = document.getElementById('popupNewEnglish').value.trim();
             const odia = document.getElementById('popupNewOdia').value.trim();
             const hindi = document.getElementById('popupNewHindi').value.trim();
+            const image = document.getElementById('popupNewImage').value.trim();
             if (english || odia || hindi) {
-                saveCustomWord(english || '', odia || '', hindi || '');
-                document.getElementById('popupNewEnglish').value = '';
-                document.getElementById('popupNewOdia').value = '';
-                document.getElementById('popupNewHindi').value = '';
-                searchInput.value = english || odia || hindi;
-                searchWord(searchInput.value, resultsElement, suggestionsElement, true);
-                setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton);
+                const saved = await saveCustomWord(english || '', odia || '', hindi || '', image || '');
+                if (saved) {
+                    document.getElementById('popupNewEnglish').value = '';
+                    document.getElementById('popupNewOdia').value = '';
+                    document.getElementById('popupNewHindi').value = '';
+                    document.getElementById('popupNewImage').value = '';
+                    searchInput.value = english || odia || hindi;
+                    searchWord(searchInput.value, resultsElement, suggestionsElement, true);
+                    setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton);
+                }
             }
         });
 
@@ -1497,7 +1542,7 @@ async function showPopup(word = null) {
 
 function setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton) {
     suggestionsElement.querySelectorAll('li').forEach(li => {
-        li.addEventListener('click', () => {
+        li.addEventListener('click', async () => {
             const english = li.getAttribute('data-english');
             const odia = li.getAttribute('data-odia');
             const hindi = li.getAttribute('data-hindi');
@@ -1505,7 +1550,7 @@ function setupSuggestionListeners(suggestionsElement, searchInput, resultsElemen
             if (selectedWord) {
                 searchInput.value = selectedWord;
                 suggestionsElement.innerHTML = '';
-                searchWord(selectedWord, resultsElement, suggestionsElement, true);
+                await searchWord(selectedWord, resultsElement, suggestionsElement, true);
                 speakButton.disabled = !isTTSSupported || resultsElement.innerHTML === '';
                 setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton);
             }
@@ -1781,32 +1826,24 @@ function setupDictionarySearch() {
         if (word.trim()) {
             dictionaryTimeout = setTimeout(() => {
                 searchWord(word, resultsElement, suggestionsElement, true);
-                suggestionsElement.querySelectorAll('li').forEach(li => {
-                    li.addEventListener('click', () => {
-                        const english = li.getAttribute('data-english');
-                        const odia = li.getAttribute('data-odia');
-                        const hindi = li.getAttribute('data-hindi');
-                        const selectedWord = english || odia || hindi;
-                        if (selectedWord) {
-                            suggestionsElement.innerHTML = '';
-                            searchWord(selectedWord, resultsElement, null, true);
-                        }
-                    });
-                });
             }, 700);
         }
     });
 
-    document.getElementById('saveWordButton').addEventListener('click', () => {
+    document.getElementById('saveWordButton').addEventListener('click', async () => {
         const english = document.getElementById('newEnglish').value.trim();
         const odia = document.getElementById('newOdia').value.trim();
         const hindi = document.getElementById('newHindi').value.trim();
+        const image = document.getElementById('newImage').value.trim();
         if (english || odia || hindi) {
-            saveCustomWord(english || '', odia || '', hindi || '');
-            document.getElementById('newEnglish').value = '';
-            document.getElementById('newOdia').value = '';
-            document.getElementById('newHindi').value = '';
-            searchWord(english || odia || hindi, resultsElement, suggestionsElement, true);
+            const saved = await saveCustomWord(english || '', odia || '', hindi || '', image || '');
+            if (saved) {
+                document.getElementById('newEnglish').value = '';
+                document.getElementById('newOdia').value = '';
+                document.getElementById('newHindi').value = '';
+                document.getElementById('newImage').value = '';
+                searchWord(english || odia || hindi, resultsElement, suggestionsElement, true);
+            }
         }
     });
 }
@@ -1838,16 +1875,13 @@ function setupToggleSwitch() {
 async function init() {
     showProgress('Initializing application', 0);
     await cacheFiles();
-    showProgress('Initializing databases', 33);
+    showProgress('Initializing databases', 50);
     await initDatabases();
-    showProgress('Setting up IndexedDB', 66);
-    await initIndexedDB();
-    showProgress('Loading voices', 80);
+    showProgress('Setting up UI', 75);
     populateVoiceList();
     if (isTTSSupported) {
         window.speechSynthesis.onvoiceschanged = populateVoiceList;
     }
-    showProgress('Setting up UI', 90);
     setupDictionarySearch();
     setupFileUpload();
     setupToggleSwitch();
