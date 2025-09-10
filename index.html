@@ -568,7 +568,7 @@
         <div id="progress-text">Loading...</div>
     </div>
 <script>
-const CACHE_NAME = 'odia-gk-app-v8';
+   const CACHE_NAME = 'odia-gk-app-v8';
 const dbFiles = {
     english_odia: 'https://raw.githubusercontent.com/abhayattcc/Best-odia-dictionary/refs/heads/main/data/english_odia.db.gz',
     english_hindi: 'https://raw.githubusercontent.com/abhayattcc/Best-odia-dictionary/refs/heads/main/data/english_hindi.db.gz'
@@ -746,11 +746,7 @@ async function cacheDictionaryImages() {
                 try {
                     const response = await fetch(imageUrl, { cache: 'no-cache' });
                     if (!response.ok) throw new Error(`Failed to fetch image ${imageUrl}`);
-                    const arrayBuffer = await response.arrayBuffer();
-                    await cache.put(imageUrl, new Response(arrayBuffer, {
-                        headers: { 'Content-Type': 'image/webp' }
-                    }));
-                    await saveImageToIndexedDB(imageUrl, arrayBuffer);
+                    await cache.put(imageUrl, response.clone());
                     loadedImages++;
                     showProgress('Caching dictionary images', Math.round((loadedImages / totalImages) * 100));
                 } catch (error) {
@@ -765,60 +761,16 @@ async function cacheDictionaryImages() {
     }
 }
 
-async function saveImageToIndexedDB(url, arrayBuffer) {
-    return new Promise((resolve, reject) => {
-        const transaction = db.transaction(['images'], 'readwrite');
-        const store = transaction.objectStore('images');
-        const request = store.put({ url, data: arrayBuffer });
-        request.onsuccess = () => resolve();
-        request.onerror = () => reject(request.error);
-    });
-}
-
-async function getImageFromIndexedDB(url) {
-    return new Promise((resolve, reject) => {
-        const transaction = db.transaction(['images'], 'readonly');
-        const store = transaction.objectStore('images');
-        const request = store.get(url);
-        request.onsuccess = () => {
-            if (request.result) {
-                const blob = new Blob([request.result.data], { type: 'image/webp' });
-                resolve(URL.createObjectURL(blob));
-            } else {
-                resolve(null);
-            }
-        };
-        request.onerror = () => reject(request.error);
-    });
-}
-
 async function loadResource(url, bypassCache = false) {
     try {
         const cache = await caches.open(CACHE_NAME);
         const cachedResponse = await cache.match(url);
         if (cachedResponse && !bypassCache) {
-            const isImage = /\.(?:jpg|jpeg|png|gif|webp)$/i.test(url);
-            if (isImage) {
-                const arrayBuffer = await cachedResponse.arrayBuffer();
-                await saveImageToIndexedDB(url, arrayBuffer);
-                const blob = new Blob([arrayBuffer], { type: 'image/webp' });
-                return URL.createObjectURL(blob);
-            }
             return cachedResponse;
-        }
-        const indexedDBImage = await getImageFromIndexedDB(url);
-        if (indexedDBImage) {
-            return indexedDBImage;
         }
         const response = await fetch(url, { cache: 'no-cache' });
         if (!response.ok) throw new Error(`Failed to fetch ${url}`);
         await cache.put(url, response.clone());
-        if (url.endsWith('.webp')) {
-            const arrayBuffer = await response.arrayBuffer();
-            await saveImageToIndexedDB(url, arrayBuffer);
-            const blob = new Blob([arrayBuffer], { type: 'image/webp' });
-            return URL.createObjectURL(blob);
-        }
         return response;
     } catch (error) {
         console.error(`Error loading ${url}:`, error);
@@ -861,9 +813,6 @@ async function initIndexedDB() {
             db = event.target.result;
             if (!db.objectStoreNames.contains('files')) {
                 db.createObjectStore('files', { keyPath: 'id' });
-            }
-            if (!db.objectStoreNames.contains('images')) {
-                db.createObjectStore('images', { keyPath: 'url' });
             }
         };
         request.onsuccess = (event) => {
@@ -936,7 +885,7 @@ function removeDeletedImage(imageUrl) {
     localStorage.setItem('deletedImages', JSON.stringify(updatedImages));
 }
 
-async function searchWord(word, targetElement, suggestionsElement = null, isDictionary = false) {
+function searchWord(word, targetElement, suggestionsElement = null, isDictionary = false) {
     const trimmedWord = trimInput(word);
     if (!trimmedWord) {
         targetElement.innerHTML = '';
@@ -1003,7 +952,7 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
 
         targetElement.className = 'dictionary-results';
         if (results.length > 0) {
-            targetElement.innerHTML = await Promise.all(results.map(async result => {
+            targetElement.innerHTML = results.map(result => {
                 let resultText = `<div><strong>English:</strong> ${result.English}`;
                 if (result.odia) resultText += `<br><strong>Odia:</strong> ${result.odia}`;
                 if (result.hindi) resultText += `<br><strong>Hindi:</strong> ${result.hindi}`;
@@ -1011,7 +960,7 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
                     const isDeleted = deletedImages.includes(result.image);
                     resultText += `<br><div class="image-container" data-image="${result.image}" data-word="${result.English}">`;
                     if (!isDeleted) {
-                        const imageSrc = await loadResource(result.image);
+                        const imageSrc = result.image;
                         resultText += `<img src="${imageSrc}" alt="Dictionary image for ${result.English}" loading="lazy">`;
                     } else {
                         resultText += `<p>Image hidden</p>`;
@@ -1023,7 +972,7 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
                 }
                 resultText += `</div>`;
                 return resultText;
-            })).then(results => results.join(''));
+            }).join('');
             if (isDictionary) {
                 document.getElementById('dictionarySpeakButton').disabled = !isTTSSupported;
             }
@@ -1037,7 +986,7 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
         if (suggestionsElement) {
             suggestionsElement.className = 'dictionary-suggestions';
             if (suggestions.length > 0) {
-                suggestionsElement.innerHTML = '<div style="font-weight: bold;">Suggestions:</div><ul>' + await Promise.all(suggestions.map(async suggestion => {
+                suggestionsElement.innerHTML = '<div style="font-weight: bold;">Suggestions:</div><ul>' + suggestions.map(suggestion => {
                     let suggestionText = `<li data-english="${suggestion.English}"`;
                     if (suggestion.odia) suggestionText += ` data-odia="${suggestion.odia}"`;
                     if (suggestion.hindi) suggestionText += ` data-hindi="${suggestion.hindi}"`;
@@ -1046,12 +995,11 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
                     if (suggestion.odia) suggestionText += ` / ${suggestion.odia}`;
                     if (suggestion.hindi) suggestionText += ` / ${suggestion.hindi}`;
                     if (suggestion.image && !deletedImages.includes(suggestion.image)) {
-                        const imageSrc = await loadResource(suggestion.image);
-                        suggestionText += ` <img src="${imageSrc}" alt="Suggestion image for ${suggestion.English}" style="max-width: 50px; vertical-align: middle;">`;
+                        suggestionText += ` <img src="${suggestion.image}" alt="Suggestion image for ${suggestion.English}" style="max-width: 50px; vertical-align: middle;">`;
                     }
                     suggestionText += `</li>`;
                     return suggestionText;
-                })).then(suggestions => suggestions.join('')) + '</ul>';
+                }).join('') + '</ul>';
             } else {
                 suggestionsElement.innerHTML = '';
             }
@@ -1081,7 +1029,7 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
                     const container = button.closest('.image-container');
                     container.querySelector('p')?.remove();
                     const img = document.createElement('img');
-                    img.src = await loadResource(imageUrl);
+                    img.src = imageUrl;
                     img.alt = `Restored image for ${word}`;
                     img.loading = 'lazy';
                     container.insertBefore(img, container.querySelector('.image-controls'));
@@ -1103,7 +1051,7 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
     }
 }
 
-async function getFirstOdiaWord() {
+function getFirstOdiaWord() {
     try {
         const stmt = dbEnglishOdia.prepare("SELECT odia FROM dictionary ORDER BY odia ASC LIMIT 1");
         if (stmt.step()) {
@@ -1453,8 +1401,8 @@ async function showPopup(word = null) {
 
             const searchWordVal = searchInput.value;
             if (searchWordVal.trim()) {
-                dictionaryTimeout = setTimeout(async () => {
-                    await searchWord(searchWordVal, resultsElement, suggestionsElement, true);
+                dictionaryTimeout = setTimeout(() => {
+                    searchWord(searchWordVal, resultsElement, suggestionsElement, true);
                     setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton);
                 }, 700);
             }
@@ -1541,7 +1489,7 @@ async function showPopup(word = null) {
             });
         }
 
-        await searchWord(word, resultsElement, suggestionsElement, true);
+        searchWord(word, resultsElement, suggestionsElement, true);
         speakButton.disabled = !isTTSSupported || resultsElement.innerHTML === '';
         setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton);
     }, 0);
@@ -1549,7 +1497,7 @@ async function showPopup(word = null) {
 
 function setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton) {
     suggestionsElement.querySelectorAll('li').forEach(li => {
-        li.addEventListener('click', async () => {
+        li.addEventListener('click', () => {
             const english = li.getAttribute('data-english');
             const odia = li.getAttribute('data-odia');
             const hindi = li.getAttribute('data-hindi');
@@ -1557,7 +1505,7 @@ function setupSuggestionListeners(suggestionsElement, searchInput, resultsElemen
             if (selectedWord) {
                 searchInput.value = selectedWord;
                 suggestionsElement.innerHTML = '';
-                await searchWord(selectedWord, resultsElement, suggestionsElement, true);
+                searchWord(selectedWord, resultsElement, suggestionsElement, true);
                 speakButton.disabled = !isTTSSupported || resultsElement.innerHTML === '';
                 setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton);
             }
