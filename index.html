@@ -713,7 +713,6 @@ async function cacheFiles() {
             localStorage.setItem('cachePopulated', 'true');
         }
 
-        // Cache images from dictionaries
         await cacheDictionaryImages();
     } catch (error) {
         console.error('Error opening cache:', error);
@@ -751,7 +750,6 @@ async function cacheDictionaryImages() {
                     await cache.put(imageUrl, new Response(arrayBuffer, {
                         headers: { 'Content-Type': 'image/webp' }
                     }));
-                    // Save to IndexedDB for permanent offline storage
                     await saveImageToIndexedDB(imageUrl, arrayBuffer);
                     loadedImages++;
                     showProgress('Caching dictionary images', Math.round((loadedImages / totalImages) * 100));
@@ -802,7 +800,7 @@ async function loadResource(url, bypassCache = false) {
             const isImage = /\.(?:jpg|jpeg|png|gif|webp)$/i.test(url);
             if (isImage) {
                 const arrayBuffer = await cachedResponse.arrayBuffer();
-                await saveImageToIndexedDB(url, arrayBuffer); // Ensure image is saved to IndexedDB
+                await saveImageToIndexedDB(url, arrayBuffer);
                 const blob = new Blob([arrayBuffer], { type: 'image/webp' });
                 return URL.createObjectURL(blob);
             }
@@ -817,7 +815,7 @@ async function loadResource(url, bypassCache = false) {
         await cache.put(url, response.clone());
         if (url.endsWith('.webp')) {
             const arrayBuffer = await response.arrayBuffer();
-            await saveImageToIndexedDB(url, arrayBuffer); // Save to IndexedDB
+            await saveImageToIndexedDB(url, arrayBuffer);
             const blob = new Blob([arrayBuffer], { type: 'image/webp' });
             return URL.createObjectURL(blob);
         }
@@ -858,7 +856,7 @@ async function initDatabases() {
 
 async function initIndexedDB() {
     return new Promise((resolve, reject) => {
-        const request = indexedDB.open('OdiaGKFiles', 2); // Updated version for images store
+        const request = indexedDB.open('OdiaGKFiles', 2);
         request.onupgradeneeded = (event) => {
             db = event.target.result;
             if (!db.objectStoreNames.contains('files')) {
@@ -952,7 +950,6 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
     let suggestions = [];
     const deletedImages = getDeletedImages();
 
-    // Check custom words
     const customWords = JSON.parse(localStorage.getItem('customWords') || '[]');
     const customMatches = customWords.filter(w => 
         w.English.toLowerCase() === trimmedWord || 
@@ -962,7 +959,6 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
     results.push(...customMatches);
 
     try {
-        // Search English-Odia
         const stmtEnglishOdia = dbEnglishOdia.prepare("SELECT English, odia FROM dictionary WHERE English LIKE ? OR odia LIKE ?");
         stmtEnglishOdia.bind([trimmedWord, trimmedWord]);
         while (stmtEnglishOdia.step()) {
@@ -971,7 +967,6 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
         }
         stmtEnglishOdia.free();
 
-        // Search English-Hindi with image
         const stmtEnglishHindi = dbEnglishHindi.prepare("SELECT English, hindi, image FROM dictionary WHERE English LIKE ? OR hindi LIKE ?");
         stmtEnglishHindi.bind([trimmedWord, trimmedWord]);
         while (stmtEnglishHindi.step()) {
@@ -980,7 +975,6 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
         }
         stmtEnglishHindi.free();
 
-        // Suggestions
         if (suggestionsElement) {
             const suggestionStmtEnglishOdia = dbEnglishOdia.prepare("SELECT English, odia FROM dictionary WHERE English LIKE ? OR odia LIKE ? LIMIT 5");
             suggestionStmtEnglishOdia.bind([`${trimmedWord}%`, `${trimmedWord}%`]);
@@ -1364,76 +1358,34 @@ function clearLastTappedPosition(fileKey) {
 
 function setupInteractionListeners() {
     const contentInner = document.getElementById('contentInner');
-    let lastTapTime = 0;
-    const doubleTapDelay = 300;
 
-    contentInner.addEventListener('touchend', (event) => {
-        const currentTime = new Date().getTime();
-        const tapInterval = currentTime - lastTapTime;
-
-        if (tapInterval < doubleTapDelay && tapInterval > 0) {
-            event.preventDefault();
-            handleDoubleTap(event);
-        }
-        lastTapTime = currentTime;
-    });
-
-    document.addEventListener('copy', handleCopy);
+    contentInner.addEventListener('mouseup', handleTextSelection);
+    contentInner.addEventListener('touchend', handleTextSelection);
 }
 
-function handleCopy(event) {
-    const selection = window.getSelection();
-    const selectedText = selection.toString().trim();
-    if (selectedText && document.getElementById('contentArea').classList.contains('active')) {
-        event.preventDefault();
-        navigator.clipboard.writeText(selectedText).then(() => {
-            showPopup(selectedText);
-        });
-    }
-}
-
-function handleDoubleTap(event) {
+function handleTextSelection(event) {
     if (!document.getElementById('contentArea').classList.contains('active')) return;
 
-    const contentInner = document.getElementById('contentInner');
-    const touch = event.changedTouches[0];
-    const element = document.elementFromPoint(touch.clientX, touch.clientY);
+    const selection = window.getSelection();
+    const selectedText = selection.toString().trim();
 
-    if (element && element.tagName === 'SPAN' && element.hasAttribute('data-sentence-index')) {
-        const sentenceIndex = parseInt(element.getAttribute('data-sentence-index'), 10);
-        lastTappedSentenceIndex = sentenceIndex;
-        if (lastTappedFile) {
-            saveLastTappedPosition(lastTappedFile, lastTappedSentenceIndex, 0);
-        }
-
-        const range = document.createRange();
-        range.selectNodeContents(element);
-        const rects = range.getClientRects();
-        let word = null;
-        const touchX = touch.clientX;
-        const touchY = touch.clientY;
-
-        for (let i = 0; i < rects.length; i++) {
-            const rect = rects[i];
-            if (touchX >= rect.left && touchX <= rect.right && touchY >= rect.top && touchY <= rect.bottom) {
-                const text = element.textContent;
-                const words = text.split(/\s+/).filter(w => w.trim());
-                const charIndex = Math.round((touchX - rect.left) / rect.width * text.length);
-                let currentPos = 0;
-                for (const w of words) {
-                    const wordStart = text.indexOf(w, currentPos);
-                    const wordEnd = wordStart + w.length;
-                    if (charIndex >= wordStart && charIndex <= wordEnd) {
-                        word = w.replace(/[^A-Za-z\u0B00-\u0B7F]/g, '').trim();
-                        break;
-                    }
-                    currentPos = wordEnd;
-                }
-                break;
+    if (selectedText) {
+        const range = selection.getRangeAt(0);
+        const element = range.startContainer.parentElement.closest('span[data-sentence-index]');
+        if (element && element.hasAttribute('data-sentence-index')) {
+            const sentenceIndex = parseInt(element.getAttribute('data-sentence-index'), 10);
+            lastTappedSentenceIndex = sentenceIndex;
+            if (lastTappedFile) {
+                saveLastTappedPosition(lastTappedFile, lastTappedSentenceIndex, 0);
             }
         }
 
-        showPopup(word || element.textContent.trim());
+        const words = selectedText.split(/\s+/).filter(word => word.match(/[A-Za-z\u0B00-\u0B7F]/));
+        if (words.length > 0) {
+            const word = words[0].replace(/[^A-Za-z\u0B00-\u0B7F]/g, '').trim();
+            showPopup(word);
+        }
+        selection.removeAllRanges();
     }
 }
 
