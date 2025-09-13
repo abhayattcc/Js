@@ -222,6 +222,12 @@
             padding: 3px 5px;
             animation: highlightGlow 1.2s ease-in-out infinite;
         }
+        .answer-highlight {
+            background: #ffeb3b;
+            border-radius: 6px;
+            padding: 2px 4px;
+            font-weight: bolder;
+        }
         .content-inner img {
             max-width: 100%;
             height: auto;
@@ -659,6 +665,7 @@ const dbFiles = {
 const sections = [
     {
         title: "ଓଡ଼ିଆ GK",
+        language: "odia",
         chapters: [
             { name: "Content", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/Content.txt" },
             { name: "ଜୀବ ବିଜ୍ଞାନ", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/biology(1).txt" },
@@ -673,6 +680,7 @@ const sections = [
     },
     {
         title: "English GK",
+        language: "english",
         chapters: [
             { name: "Content", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/Content.txt" },
             { name: "Biology", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/Biology.txt" },
@@ -687,6 +695,7 @@ const sections = [
     },
     {
         title: "ଓଡ଼ିଆ ବ୍ୟାକରଣ",
+        language: "odia",
         chapters: [
             { name: "ଭାଷା", type: "html", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/1.html" },
             { name: "ଶବ୍ଦ ଗଠନ", type: "html", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/2.html" },
@@ -705,12 +714,14 @@ const sections = [
     },
     {
         title: "English Grammar",
+        language: "english",
         chapters: [
             { name: "English Grammar", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/EnglishGrammar.txt" }
         ]
     },
     {
         title: "Computer",
+        language: "english",
         chapters: [
             { name: "Computer", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/computer.txt" }
         ]
@@ -1326,6 +1337,19 @@ async function handleFileUpload(event) {
     }
 }
 
+async function highlightAnswers(sectionIndex, contentInner) {
+    const section = sections[sectionIndex];
+    const language = section.language;
+    const answerPattern = language === 'english' ? /^Answer:/ : /^ଉତ୍ତର:/;
+    const spans = contentInner.querySelectorAll('span[data-sentence-index]');
+    spans.forEach(span => {
+        const text = span.textContent.trim();
+        if (answerPattern.test(text)) {
+            span.classList.add('answer-highlight');
+        }
+    });
+}
+
 async function loadContent(sectionIndex, chapterIndex) {
     const chapter = sections[sectionIndex].chapters[chapterIndex];
     const contentArea = document.getElementById('contentArea');
@@ -1394,6 +1418,8 @@ async function loadContent(sectionIndex, chapterIndex) {
     contentArea.classList.add('active');
     chapterContainer.classList.add('hidden');
     processingStatus.textContent = '';
+
+    await highlightAnswers(sectionIndex, contentInner);
 
     const savedPosition = loadLastTappedPosition(chapter.url);
     currentSentenceIndex = savedPosition ? savedPosition.sentenceIndex : -1;
@@ -2020,5 +2046,4 @@ document.getElementById('refreshButton').addEventListener('click', () => {
 
 window.addEventListener('load', init);
 </script>
-</body>
-<html>
+</html>
