@@ -43,25 +43,6 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
             margin-bottom: 20px;
         }
-        .refresh-button {
-            flex: 1;
-            background: #2196f3;
-            color: white;
-            padding: 12px;
-            border-radius: 15px;
-            font-size: 18px;
-            font-family: 'Noto Sans', sans-serif;
-            font-weight: bold;
-            cursor: pointer;
-            border: none;
-            text-align: center;
-            min-width: 100px;
-            transition: transform 0.3s, background 0.3s;
-        }
-        .refresh-button:hover {
-            transform: scale(1.05);
-            background: #1976d2;
-        }
         .button {
             flex: 1;
             padding: 12px;
@@ -606,7 +587,6 @@
 <body>
     <div class="container" id="chapterContainer">
         <div class="header">
-            <button class="refresh-button" id="refreshButton">🔄 Refresh</button>
             <div class="toggle-container">
                 <span class="toggle-label">Dictionary</span>
                 <label class="toggle-switch">
@@ -2038,10 +2018,6 @@ async function init() {
         });
     }
 }
-
-document.getElementById('refreshButton').addEventListener('click', () => {
-        window.location.reload();
-    });
 
 window.addEventListener('load', init);
 </script>
