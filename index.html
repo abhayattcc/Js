@@ -971,6 +971,18 @@ async function cacheImageUrl(imageUrl) {
     }
 }
 
+function getDictionaryTextToSpeak(resultsElement) {
+    const tempDiv = document.createElement('div');
+    resultsElement.querySelectorAll('.result-item').forEach(item => {
+        const textDiv = item.querySelector('.result-text');
+        if (textDiv) {
+            const clone = textDiv.cloneNode(true);
+            tempDiv.appendChild(clone);
+        }
+    });
+    return tempDiv.textContent.trim();
+}
+
 function searchWord(word, targetElement, suggestionsElement = null, isDictionary = false) {
     const trimmedWord = trimInput(word);
     if (!trimmedWord) {
@@ -1039,12 +1051,16 @@ function searchWord(word, targetElement, suggestionsElement = null, isDictionary
         targetElement.className = 'dictionary-results';
         if (results.length > 0) {
             Promise.all(results.map(async result => {
-                let resultText = `<div><strong>English:</strong> ${result.English}`;
-                if (result.odia) resultText += `<br><strong>Odia:</strong> ${result.odia}`;
-                if (result.hindi) resultText += `<br><strong>Hindi:</strong> ${result.hindi}`;
+                let resultText = `<div class="result-item">`;
+                resultText += `<div class="result-text">`;
+                resultText += `<strong></strong> ${result.English}`;
+                if (result.odia) resultText += `<br><strong></strong> ${result.odia}`;
+                if (result.hindi) resultText += `<br><strong></strong> ${result.hindi}`;
+                resultText += `</div>`;
                 if (result.image) {
                     const isDeleted = deletedImages.includes(result.image);
-                    resultText += `<br><div class="image-container" data-image="${result.image}" data-word="${result.English}">`;
+                    resultText += `<div class="result-image">`;
+                    resultText += `<div class="image-container" data-image="${result.image}" data-word="${result.English}">`;
                     if (!isDeleted) {
                         const imageSrc = await loadImage(result.image);
                         if (imageSrc) {
@@ -1055,10 +1071,12 @@ function searchWord(word, targetElement, suggestionsElement = null, isDictionary
                     } else {
                         resultText += `<p>Image hidden</p>`;
                     }
+                    resultText += `</div>`;
                     resultText += `<div class="image-controls">`;
                     resultText += `<button class="delete-button" data-image="${result.image}" data-word="${result.English}">${isDeleted ? 'Hidden' : 'Delete'}</button>`;
                     resultText += `<button class="restore-button" data-image="${result.image}" data-word="${result.English}" ${isDeleted ? '' : 'disabled'}>Restore</button>`;
-                    resultText += `</div></div>`;
+                    resultText += `</div>`;
+                    resultText += `</div>`;
                 }
                 resultText += `</div>`;
                 return resultText;
@@ -1070,7 +1088,7 @@ function searchWord(word, targetElement, suggestionsElement = null, isDictionary
                 setupImageControlListeners(targetElement);
             });
         } else {
-            targetElement.innerHTML = '<div>No exact match found. Add it below.</div>';
+            targetElement.innerHTML = '<div class="result-item"><div class="result-text">No exact match found. Add it below.</div></div>';
             if (isDictionary) {
                 document.getElementById('dictionarySpeakButton').disabled = true;
             }
@@ -1105,7 +1123,7 @@ function searchWord(word, targetElement, suggestionsElement = null, isDictionary
         }
     } catch (error) {
         console.error('Error searching word:', error);
-        targetElement.innerHTML = '<div>Offline mode: Dictionary not available.</div>';
+        targetElement.innerHTML = '<div class="result-item"><div class="result-text">Offline mode: Dictionary not available.</div></div>';
         if (suggestionsElement) suggestionsElement.innerHTML = '';
         if (isDictionary) {
             document.getElementById('dictionarySpeakButton').disabled = true;
@@ -1478,7 +1496,7 @@ async function showPopup(word = null) {
             if (firstOdiaWord) {
                 word = firstOdiaWord;
             } else {
-                popupContent.innerHTML = '<div>No Odia words found in dictionary.</div>';
+                popupContent.innerHTML = '<div class="result-item"><div class="result-text">No Odia words found in dictionary.</div></div>';
                 return;
             }
         }
@@ -1564,15 +1582,7 @@ async function showPopup(word = null) {
                     return;
                 }
 
-                const textNodes = [];
-                const walker = document.createTreeWalker(resultsElement, Node.TEXT_NODE, null, false);
-                let node;
-                while (node = walker.nextNode()) {
-                    if (node.textContent.trim()) {
-                        textNodes.push(node.textContent.trim());
-                    }
-                }
-                const textToSpeak = textNodes.join(' ');
+                const textToSpeak = getDictionaryTextToSpeak(resultsElement);
                 if (!textToSpeak) {
                     return;
                 }
@@ -1831,15 +1841,7 @@ function speakDictionaryResults() {
     }
 
     const results = document.getElementById('dictionaryResults');
-    const textNodes = [];
-    const walker = document.createTreeWalker(results, Node.TEXT_NODE, null, false);
-    let node;
-    while (node = walker.nextNode()) {
-        if (node.textContent.trim()) {
-            textNodes.push(node.textContent.trim());
-        }
-    }
-    const textToSpeak = textNodes.join(' ');
+    const textToSpeak = getDictionaryTextToSpeak(results);
     if (!textToSpeak) {
         document.getElementById('processing-status').textContent = 'No text to read';
         return;
@@ -2021,4 +2023,5 @@ async function init() {
 
 window.addEventListener('load', init);
 </script>
+</body>
 </html>
