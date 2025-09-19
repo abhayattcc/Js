@@ -654,7 +654,7 @@ const sections = [
             { name: "ଭୌତିକ ବିଜ୍ଞାନ", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/physics(1).txt" },
             { name: "ରାଜନୀତି ବିଜ୍ଞାନ", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/polity(1).txt" },
             { name: "Statik Gk ଓଡିଆ", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/statikgk(1).txt" },
-            { name: "ଓଡ଼ିଆ GK Theory", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/gktheory(1).txt" }
+            { name: "ଓଡ଼ିଆ GK Theory", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/gk theory(1).txt" }
         ]
     },
     {
@@ -798,14 +798,14 @@ async function cacheDictionaryImages() {
         const imageUrls = [];
         const customWords = JSON.parse(localStorage.getItem('customWords') || '[]');
         customWords.forEach(word => {
-            if (word.image && word.image.match(/\.(jpg|jpeg|png|webp)$/i)) {
+            if (word.image) {
                 imageUrls.push(word.image);
             }
         });
         const stmt = dbEnglishHindi.prepare("SELECT image FROM dictionary WHERE image IS NOT NULL");
         while (stmt.step()) {
             const row = stmt.getAsObject();
-            if (row.image && row.image.match(/\.(jpg|jpeg|png|webp)$/i)) {
+            if (row.image) {
                 imageUrls.push(row.image);
             }
         }
@@ -951,7 +951,8 @@ async function validateImageUrl(url) {
     if (!url) return false;
     try {
         const response = await fetch(url, { method: 'HEAD' });
-        return response.ok && url.match(/\.(jpg|jpeg|png|webp)$/i);
+        const contentType = response.headers.get('content-type');
+        return response.ok && contentType && contentType.startsWith('image/');
     } catch (error) {
         console.error('Error validating image URL:', error);
         return false;
@@ -1156,14 +1157,20 @@ function setupImageControlListeners(targetElement) {
     targetElement.querySelectorAll('.delete-button').forEach(button => {
         button.addEventListener('click', () => {
             const imageUrl = button.getAttribute('data-image');
+            const word = button.getAttribute('data-word');
+            const controls = button.closest('.image-controls');
+            const container = controls.previousElementSibling;
             saveDeletedImage(imageUrl);
-            const container = button.closest('.image-container');
             container.querySelector('img')?.remove();
-            container.querySelector('p')?.remove();
-            container.insertBefore(document.createElement('p'), container.querySelector('.image-controls')).textContent = 'Image hidden';
+            let p = container.querySelector('p');
+            if (!p) {
+                p = document.createElement('p');
+                container.appendChild(p);
+            }
+            p.textContent = 'Image hidden';
             button.textContent = 'Hidden';
             button.disabled = true;
-            container.querySelector('.restore-button').disabled = false;
+            controls.querySelector('.restore-button').disabled = false;
         });
     });
 
@@ -1174,7 +1181,8 @@ function setupImageControlListeners(targetElement) {
             const password = prompt('Enter the word to restore the image:');
             if (password && password.toLowerCase() === word.toLowerCase()) {
                 removeDeletedImage(imageUrl);
-                const container = button.closest('.image-container');
+                const controls = button.closest('.image-controls');
+                const container = controls.previousElementSibling;
                 container.querySelector('p')?.remove();
                 const imageSrc = await loadImage(imageUrl);
                 if (imageSrc) {
@@ -1182,10 +1190,10 @@ function setupImageControlListeners(targetElement) {
                     img.src = imageSrc;
                     img.alt = `Restored image for ${word}`;
                     img.loading = 'lazy';
-                    container.insertBefore(img, container.querySelector('.image-controls'));
-                    button.disabled = true;
-                    container.querySelector('.delete-button').disabled = false;
-                    container.querySelector('.delete-button').textContent = 'Delete';
+                    container.appendChild(img);
+                    controls.querySelector('.restore-button').disabled = true;
+                    controls.querySelector('.delete-button').disabled = false;
+                    controls.querySelector('.delete-button').textContent = 'Delete';
                 } else {
                     alert('Image not available offline.');
                 }
@@ -1219,7 +1227,7 @@ async function saveCustomWord(english, odia, hindi, image) {
         if (image) {
             const isValidImage = await validateImageUrl(image);
             if (!isValidImage) {
-                alert('Invalid image URL. Please provide a valid image URL (jpg, jpeg, png, or webp).');
+                alert('Invalid image URL. Please provide a valid image URL.');
                 return false;
             }
             await cacheImageUrl(image);
@@ -1555,7 +1563,7 @@ async function showPopup(word = null) {
             <input type="text" id="popupNewEnglish" placeholder="English">
             <input type="text" id="popupNewOdia" placeholder="Odia">
             <input type="text" id="popupNewHindi" placeholder="Hindi">
-            <input type="text" id="popupNewImage" placeholder="Image URL (jpg, jpeg, png, webp)">
+            <input type="text" id="popupNewImage" placeholder="Image URL">
             <button id="popupSaveWordButton">Save Word</button>
         `;
         popupContent.appendChild(dictionaryForm);
