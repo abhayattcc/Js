@@ -983,6 +983,24 @@ function getDictionaryTextToSpeak(resultsElement) {
     return tempDiv.textContent.trim();
 }
 
+function mergeResults(results) {
+    const merged = [];
+    const seen = new Map();
+    results.forEach(result => {
+        const key = (result.English || '').toLowerCase().trim();
+        if (!seen.has(key)) {
+            seen.set(key, { ...result });
+            merged.push(seen.get(key));
+        } else {
+            const existing = seen.get(key);
+            if (!existing.odia && result.odia) existing.odia = result.odia;
+            if (!existing.hindi && result.hindi) existing.hindi = result.hindi;
+            if (!existing.image && result.image) existing.image = result.image;
+        }
+    });
+    return merged;
+}
+
 function searchWord(word, targetElement, suggestionsElement = null, isDictionary = false) {
     const trimmedWord = trimInput(word);
     if (!trimmedWord) {
@@ -1022,6 +1040,8 @@ function searchWord(word, targetElement, suggestionsElement = null, isDictionary
         }
         stmtEnglishHindi.free();
 
+        const mergedResults = mergeResults(results);
+
         if (suggestionsElement) {
             const suggestionStmtEnglishOdia = dbEnglishOdia.prepare("SELECT English, odia FROM dictionary WHERE English LIKE ? OR odia LIKE ? LIMIT 5");
             suggestionStmtEnglishOdia.bind([`${trimmedWord}%`, `${trimmedWord}%`]);
@@ -1045,17 +1065,18 @@ function searchWord(word, targetElement, suggestionsElement = null, isDictionary
                 (w.hindi && w.hindi.toLowerCase().startsWith(trimmedWord))
             ));
 
-            suggestions = [...new Set(suggestions.map(JSON.stringify))].map(JSON.parse);
+            const mergedSuggestions = mergeResults(suggestions);
+            suggestions = mergedSuggestions;
         }
 
         targetElement.className = 'dictionary-results';
-        if (results.length > 0) {
-            Promise.all(results.map(async result => {
+        if (mergedResults.length > 0) {
+            Promise.all(mergedResults.map(async result => {
                 let resultText = `<div class="result-item">`;
                 resultText += `<div class="result-text">`;
-                resultText += `<strong></strong> ${result.English}`;
-                if (result.odia) resultText += `<br><strong></strong> ${result.odia}`;
-                if (result.hindi) resultText += `<br><strong></strong> ${result.hindi}`;
+                resultText += `${result.English}`;
+                if (result.hindi) resultText += `, ${result.hindi}`;
+                if (result.odia) resultText += `, ${result.odia}`;
                 resultText += `</div>`;
                 if (result.image) {
                     const isDeleted = deletedImages.includes(result.image);
@@ -1103,8 +1124,8 @@ function searchWord(word, targetElement, suggestionsElement = null, isDictionary
                     if (suggestion.hindi) suggestionText += ` data-hindi="${suggestion.hindi}"`;
                     if (suggestion.image) suggestionText += ` data-image="${suggestion.image}"`;
                     suggestionText += `>${suggestion.English}`;
-                    if (suggestion.odia) suggestionText += ` / ${suggestion.odia}`;
-                    if (suggestion.hindi) suggestionText += ` / ${suggestion.hindi}`;
+                    if (suggestion.hindi) suggestionText += `, ${suggestion.hindi}`;
+                    if (suggestion.odia) suggestionText += `, ${suggestion.odia}`;
                     if (suggestion.image && !deletedImages.includes(suggestion.image)) {
                         const imageSrc = await loadImage(suggestion.image);
                         if (imageSrc) {
