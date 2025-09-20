@@ -178,10 +178,10 @@
             font-size: 20px;
             color: #1a237e;
             background: #fff;
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
             border: 2px solid #d81b60;
-            max-width: 90%;
+            max-width: 100%;
             margin: 20px auto 120px auto;
             word-wrap: break-word;
             min-height: 50%;
@@ -654,7 +654,7 @@ const sections = [
             { name: "ଭୌତିକ ବିଜ୍ଞାନ", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/physics(1).txt" },
             { name: "ରାଜନୀତି ବିଜ୍ଞାନ", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/polity(1).txt" },
             { name: "Statik Gk ଓଡିଆ", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/statikgk(1).txt" },
-            { name: "ଓଡ଼ିଆ GK Theory", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/gk theory(1).txt" }
+            { name: "ଓଡ଼ିଆ GK Theory", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/gktheory(1).txt" }
         ]
     },
     {
@@ -798,7 +798,7 @@ async function cacheDictionaryImages() {
         const imageUrls = [];
         const customWords = JSON.parse(localStorage.getItem('customWords') || '[]');
         customWords.forEach(word => {
-            if (word.image) {
+            if (word.image && !word.image.startsWith('data:')) {
                 imageUrls.push(word.image);
             }
         });
@@ -947,31 +947,6 @@ function removeDeletedImage(imageUrl) {
     localStorage.setItem('deletedImages', JSON.stringify(updatedImages));
 }
 
-async function validateImageUrl(url) {
-    if (!url) return false;
-    try {
-        const response = await fetch(url, { method: 'HEAD' });
-        const contentType = response.headers.get('content-type');
-        return response.ok && contentType && contentType.startsWith('image/');
-    } catch (error) {
-        console.error('Error validating image URL:', error);
-        return false;
-    }
-}
-
-async function cacheImageUrl(imageUrl) {
-    try {
-        const cache = await caches.open(CACHE_NAME);
-        const response = await fetch(imageUrl, { cache: 'no-cache' });
-        if (!response.ok) throw new Error(`Failed to fetch image ${imageUrl}`);
-        await cache.put(imageUrl, response.clone());
-        return true;
-    } catch (error) {
-        console.error(`Error caching image ${imageUrl}:`, error);
-        return false;
-    }
-}
-
 function getDictionaryTextToSpeak(resultsElement) {
     const tempDiv = document.createElement('div');
     resultsElement.querySelectorAll('.result-item').forEach(item => {
@@ -1002,7 +977,7 @@ function mergeResults(results) {
     return merged;
 }
 
-function searchWord(word, targetElement, suggestionsElement = null, isDictionary = false) {
+async function searchWord(word, targetElement, suggestionsElement = null, isDictionary = false) {
     const trimmedWord = trimInput(word);
     if (!trimmedWord) {
         targetElement.innerHTML = '';
@@ -1072,7 +1047,7 @@ function searchWord(word, targetElement, suggestionsElement = null, isDictionary
 
         targetElement.className = 'dictionary-results';
         if (mergedResults.length > 0) {
-            Promise.all(mergedResults.map(async result => {
+            const resultsHtml = await Promise.all(mergedResults.map(async result => {
                 let resultText = `<div class="result-item">`;
                 resultText += `<div class="result-text">`;
                 resultText += `${result.English}`;
@@ -1084,7 +1059,12 @@ function searchWord(word, targetElement, suggestionsElement = null, isDictionary
                     resultText += `<div class="result-image">`;
                     resultText += `<div class="image-container" data-image="${result.image}" data-word="${result.English}">`;
                     if (!isDeleted) {
-                        const imageSrc = await loadImage(result.image);
+                        let imageSrc;
+                        if (result.image.startsWith('data:')) {
+                            imageSrc = result.image;
+                        } else {
+                            imageSrc = await loadImage(result.image);
+                        }
                         if (imageSrc) {
                             resultText += `<img src="${imageSrc}" alt="Dictionary image for ${result.English}" loading="lazy">`;
                         } else {
@@ -1102,24 +1082,17 @@ function searchWord(word, targetElement, suggestionsElement = null, isDictionary
                 }
                 resultText += `</div>`;
                 return resultText;
-            })).then(resultsHtml => {
-                targetElement.innerHTML = resultsHtml.join('');
-                if (isDictionary) {
-                    document.getElementById('dictionarySpeakButton').disabled = !isTTSSupported;
-                }
-                setupImageControlListeners(targetElement);
-            });
+            }));
+            targetElement.innerHTML = resultsHtml.join('');
+            setupImageControlListeners(targetElement);
         } else {
             targetElement.innerHTML = '<div class="result-item"><div class="result-text">No exact match found. Add it below.</div></div>';
-            if (isDictionary) {
-                document.getElementById('dictionarySpeakButton').disabled = true;
-            }
         }
 
         if (suggestionsElement) {
             suggestionsElement.className = 'dictionary-suggestions';
             if (suggestions.length > 0) {
-                Promise.all(suggestions.map(async suggestion => {
+                const suggestionsHtml = await Promise.all(suggestions.map(async suggestion => {
                     let suggestionText = `<li data-english="${suggestion.English}"`;
                     if (suggestion.odia) suggestionText += ` data-odia="${suggestion.odia}"`;
                     if (suggestion.hindi) suggestionText += ` data-hindi="${suggestion.hindi}"`;
@@ -1128,17 +1101,20 @@ function searchWord(word, targetElement, suggestionsElement = null, isDictionary
                     if (suggestion.hindi) suggestionText += `, ${suggestion.hindi}`;
                     if (suggestion.odia) suggestionText += `, ${suggestion.odia}`;
                     if (suggestion.image && !deletedImages.includes(suggestion.image)) {
-                        const imageSrc = await loadImage(suggestion.image);
+                        let imageSrc;
+                        if (suggestion.image.startsWith('data:')) {
+                            imageSrc = suggestion.image;
+                        } else {
+                            imageSrc = await loadImage(suggestion.image);
+                        }
                         if (imageSrc) {
                             suggestionText += ` <img src="${imageSrc}" alt="Suggestion image for ${suggestion.English}" style="max-width: 50px; vertical-align: middle;">`;
                         }
                     }
                     suggestionText += `</li>`;
                     return suggestionText;
-                })).then(suggestionsHtml => {
-                    suggestionsElement.innerHTML = '<div style="font-weight: bold;">Suggestions:</div><ul>' + suggestionsHtml.join('') + '</ul>';
-                    setupSuggestionListeners(suggestionsElement, document.getElementById('dictionarySearch'), targetElement, document.getElementById('dictionarySpeakButton'));
-                });
+                }));
+                suggestionsElement.innerHTML = '<div style="font-weight: bold;">Suggestions:</div><ul>' + suggestionsHtml.join('') + '</ul>';
             } else {
                 suggestionsElement.innerHTML = '';
             }
@@ -1184,7 +1160,12 @@ function setupImageControlListeners(targetElement) {
                 const controls = button.closest('.image-controls');
                 const container = controls.previousElementSibling;
                 container.querySelector('p')?.remove();
-                const imageSrc = await loadImage(imageUrl);
+                let imageSrc;
+                if (imageUrl.startsWith('data:')) {
+                    imageSrc = imageUrl;
+                } else {
+                    imageSrc = await loadImage(imageUrl);
+                }
                 if (imageSrc) {
                     const img = document.createElement('img');
                     img.src = imageSrc;
@@ -1220,23 +1201,33 @@ function getFirstOdiaWord() {
     }
 }
 
-async function saveCustomWord(english, odia, hindi, image) {
+async function saveCustomWord(english, odia, hindi, imageFile) {
     const customWords = JSON.parse(localStorage.getItem('customWords') || '[]');
-    const newWord = { English: english, odia, hindi, image };
-    if (!customWords.some(w => w.English.toLowerCase() === english.toLowerCase())) {
-        if (image) {
-            const isValidImage = await validateImageUrl(image);
-            if (!isValidImage) {
-                alert('Invalid image URL. Please provide a valid image URL.');
-                return false;
-            }
-            await cacheImageUrl(image);
+    const newWord = { English: english, odia, hindi };
+    if (imageFile) {
+        const reader = new FileReader();
+        return new Promise((resolve) => {
+            reader.onload = (e) => {
+                newWord.image = e.target.result;
+                if (!customWords.some(w => w.English.toLowerCase() === english.toLowerCase())) {
+                    customWords.push(newWord);
+                    localStorage.setItem('customWords', JSON.stringify(customWords));
+                    resolve(true);
+                } else {
+                    resolve(false);
+                }
+            };
+            reader.onerror = () => resolve(false);
+            reader.readAsDataURL(imageFile);
+        });
+    } else {
+        if (!customWords.some(w => w.English.toLowerCase() === english.toLowerCase())) {
+            customWords.push(newWord);
+            localStorage.setItem('customWords', JSON.stringify(customWords));
+            return true;
         }
-        customWords.push(newWord);
-        localStorage.setItem('customWords', JSON.stringify(customWords));
-        return true;
+        return false;
     }
-    return false;
 }
 
 async function handleFileUpload(event) {
@@ -1271,8 +1262,6 @@ async function handleFileUpload(event) {
                     showProgress('Processing PDF files', Math.round(((j / pdf.numPages) * (100 / pdfFiles.length)) + (i * (100 / pdfFiles.length))));
                 }
                 totalText += text;
-                const cache = await caches.open(CACHE_NAME);
-                await cache.put(file.name, new Response(totalText));
             }
             sentences = totalText.split(/\r?\n/).filter(line => line.trim() !== '');
             contentInner.innerHTML = sentences.map((line, index) => 
@@ -1287,8 +1276,6 @@ async function handleFileUpload(event) {
                 const file = textFiles[i];
                 if (file.name.endsWith('.txt')) {
                     const text = await file.text();
-                    const cache = await caches.open(CACHE_NAME);
-                    await cache.put(file.name, new Response(text));
                     sentences = text.split(/\r?\n/).filter(line => line.trim() !== '');
                     contentInner.innerHTML = sentences.map((line, index) => 
                         `<span data-sentence-index="${index}">${line.trim()}</span>`
@@ -1296,8 +1283,6 @@ async function handleFileUpload(event) {
                     contentInner.classList.add('content-text');
                 } else if (file.name.endsWith('.html')) {
                     const text = await file.text();
-                    const cache = await caches.open(CACHE_NAME);
-                    await cache.put(file.name, new Response(text));
                     const tempDiv = document.createElement('div');
                     tempDiv.innerHTML = text;
                     const processNode = (node) => {
@@ -1542,11 +1527,6 @@ async function showPopup(word = null) {
         resultsElement.id = 'popupResults';
         popupContent.appendChild(resultsElement);
 
-        const suggestionsElement = document.createElement('div');
-        suggestionsElement.className = 'dictionary-suggestions';
-        suggestionsElement.id = 'popupSuggestions';
-        popupContent.appendChild(suggestionsElement);
-
         const speakButton = document.createElement('button');
         speakButton.className = 'speak-button';
         speakButton.id = 'popupSpeakButton';
@@ -1556,6 +1536,11 @@ async function showPopup(word = null) {
         speakButton.style.display = isTTSSupported ? 'inline-block' : 'none';
         popupContent.appendChild(speakButton);
 
+        const suggestionsElement = document.createElement('div');
+        suggestionsElement.className = 'dictionary-suggestions';
+        suggestionsElement.id = 'popupSuggestions';
+        popupContent.appendChild(suggestionsElement);
+
         const dictionaryForm = document.createElement('div');
         dictionaryForm.className = 'dictionary-form';
         dictionaryForm.innerHTML = `
@@ -1563,7 +1548,7 @@ async function showPopup(word = null) {
             <input type="text" id="popupNewEnglish" placeholder="English">
             <input type="text" id="popupNewOdia" placeholder="Odia">
             <input type="text" id="popupNewHindi" placeholder="Hindi">
-            <input type="text" id="popupNewImage" placeholder="Image URL">
+            <input type="file" id="popupNewImage" accept="image/*">
             <button id="popupSaveWordButton">Save Word</button>
         `;
         popupContent.appendChild(dictionaryForm);
@@ -1572,14 +1557,15 @@ async function showPopup(word = null) {
             clearTimeout(dictionaryTimeout);
             resultsElement.innerHTML = '';
             suggestionsElement.innerHTML = '';
-            speakButton.disabled = !isTTSSupported;
+            speakButton.disabled = true;
 
             const searchWordVal = searchInput.value;
             if (searchWordVal.trim()) {
-                dictionaryTimeout = setTimeout(() => {
-                    searchWord(searchWordVal, resultsElement, suggestionsElement, true);
+                dictionaryTimeout = setTimeout(async () => {
+                    await searchWord(searchWordVal, resultsElement, suggestionsElement, true);
                     setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton);
-                }, 700);
+                    speakButton.disabled = !isTTSSupported || resultsElement.innerHTML === '';
+                }, 300);
             }
         });
 
@@ -1587,17 +1573,18 @@ async function showPopup(word = null) {
             const english = document.getElementById('popupNewEnglish').value.trim();
             const odia = document.getElementById('popupNewOdia').value.trim();
             const hindi = document.getElementById('popupNewHindi').value.trim();
-            const image = document.getElementById('popupNewImage').value.trim();
+            const imageFile = document.getElementById('popupNewImage').files[0];
             if (english || odia || hindi) {
-                const saved = await saveCustomWord(english || '', odia || '', hindi || '', image || '');
+                const saved = await saveCustomWord(english || '', odia || '', hindi || '', imageFile);
                 if (saved) {
                     document.getElementById('popupNewEnglish').value = '';
                     document.getElementById('popupNewOdia').value = '';
                     document.getElementById('popupNewHindi').value = '';
                     document.getElementById('popupNewImage').value = '';
                     searchInput.value = english || odia || hindi;
-                    searchWord(searchInput.value, resultsElement, suggestionsElement, true);
+                    await searchWord(searchInput.value, resultsElement, suggestionsElement, true);
                     setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton);
+                    speakButton.disabled = !isTTSSupported || resultsElement.innerHTML === '';
                 }
             }
         });
@@ -1660,7 +1647,7 @@ async function showPopup(word = null) {
             });
         }
 
-        searchWord(word, resultsElement, suggestionsElement, true);
+        await searchWord(word, resultsElement, suggestionsElement, true);
         speakButton.disabled = !isTTSSupported || resultsElement.innerHTML === '';
         setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton);
     }, 0);
@@ -1857,7 +1844,7 @@ function stopSpeech() {
     document.getElementById('processing-status').textContent = isTTSSupported ? '' : 'Text-to-speech is not supported in this browser.';
 }
 
-function speakDictionaryResults() {
+function speakDictionaryResults(resultsId = 'dictionaryResults', speakButtonId = 'dictionarySpeakButton') {
     if (!isTTSSupported) {
         document.getElementById('processing-status').textContent = 'Text-to-speech is not supported in this browser.';
         return;
@@ -1865,11 +1852,11 @@ function speakDictionaryResults() {
     if (isDictionaryReading) {
         window.speechSynthesis.cancel();
         isDictionaryReading = false;
-        document.getElementById('dictionarySpeakButton').textContent = '🗣️';
+        document.getElementById(speakButtonId).textContent = '🗣️';
         return;
     }
 
-    const results = document.getElementById('dictionaryResults');
+    const results = document.getElementById(resultsId);
     const textToSpeak = getDictionaryTextToSpeak(results);
     if (!textToSpeak) {
         document.getElementById('processing-status').textContent = 'No text to read';
@@ -1878,7 +1865,7 @@ function speakDictionaryResults() {
 
     stopSpeech();
     isDictionaryReading = true;
-    document.getElementById('dictionarySpeakButton').textContent = '⏸️';
+    document.getElementById(speakButtonId).textContent = '⏸️';
     const voiceMap = {
         'hi': defaultHindiVoice,
         'or': defaultOdiaVoice,
@@ -1902,7 +1889,7 @@ function speakDictionaryResults() {
                     activeUtterances--;
                     if (activeUtterances === 0) {
                         isDictionaryReading = false;
-                        document.getElementById('dictionarySpeakButton').textContent = '🗣️';
+                        document.getElementById(speakButtonId).textContent = '🗣️';
                         document.getElementById('processing-status').textContent = 'Finished reading';
                     }
                 };
@@ -1917,7 +1904,7 @@ function speakDictionaryResults() {
         document.getElementById('processing-status').textContent = `Reading with ${usedVoicesCount} voice${usedVoicesCount > 1 ? 's' : ''}...`;
     } else {
         isDictionaryReading = false;
-        document.getElementById('dictionarySpeakButton').textContent = '🗣️';
+        document.getElementById(speakButtonId).textContent = '🗣️';
         document.getElementById('processing-status').textContent = 'No text available for reading';
     }
 }
@@ -1942,9 +1929,11 @@ function setupDictionarySearch() {
 
         const word = searchInput.value;
         if (word.trim()) {
-            dictionaryTimeout = setTimeout(() => {
-                searchWord(word, resultsElement, suggestionsElement, true);
-            }, 700);
+            dictionaryTimeout = setTimeout(async () => {
+                await searchWord(word, resultsElement, suggestionsElement, true);
+                setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, document.getElementById('dictionarySpeakButton'));
+                document.getElementById('dictionarySpeakButton').disabled = !isTTSSupported || resultsElement.innerHTML === '';
+            }, 300);
         }
     });
 
@@ -1952,15 +1941,17 @@ function setupDictionarySearch() {
         const english = document.getElementById('newEnglish').value.trim();
         const odia = document.getElementById('newOdia').value.trim();
         const hindi = document.getElementById('newHindi').value.trim();
-        const image = document.getElementById('newImage').value.trim();
+        const imageFile = document.getElementById('newImage').files[0];
         if (english || odia || hindi) {
-            const saved = await saveCustomWord(english || '', odia || '', hindi || '', image || '');
+            const saved = await saveCustomWord(english || '', odia || '', hindi || '', imageFile);
             if (saved) {
                 document.getElementById('newEnglish').value = '';
                 document.getElementById('newOdia').value = '';
                 document.getElementById('newHindi').value = '';
                 document.getElementById('newImage').value = '';
-                searchWord(english || odia || hindi, resultsElement, suggestionsElement, true);
+                await searchWord(english || odia || hindi, resultsElement, suggestionsElement, true);
+                setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, document.getElementById('dictionarySpeakButton'));
+                document.getElementById('dictionarySpeakButton').disabled = !isTTSSupported || resultsElement.innerHTML === '';
             }
         }
     });
@@ -2000,6 +1991,12 @@ async function init() {
     if (isTTSSupported) {
         window.speechSynthesis.onvoiceschanged = populateVoiceList;
     }
+    const newImageInput = document.getElementById('newImage');
+    if (newImageInput) {
+        newImageInput.type = 'file';
+        newImageInput.accept = 'image/*';
+        newImageInput.removeAttribute('placeholder');
+    }
     setupDictionarySearch();
     setupFileUpload();
     setupToggleSwitch();
@@ -2008,7 +2005,8 @@ async function init() {
     const firstOdiaWord = await getFirstOdiaWord();
     if (firstOdiaWord) {
         document.getElementById('dictionarySearch').value = firstOdiaWord;
-        searchWord(firstOdiaWord, document.getElementById('dictionaryResults'), document.getElementById('dictionarySuggestions'), true);
+        await searchWord(firstOdiaWord, document.getElementById('dictionaryResults'), document.getElementById('dictionarySuggestions'), true);
+        document.getElementById('dictionarySpeakButton').disabled = !isTTSSupported || document.getElementById('dictionaryResults').innerHTML === '';
     }
 
     document.getElementById('homeButton').addEventListener('click', () => {
@@ -2024,6 +2022,19 @@ async function init() {
         document.getElementById('voiceButton').disabled = !isTTSSupported;
         document.getElementById('stopButton').disabled = true;
         document.getElementById('processing-status').textContent = isTTSSupported ? '' : 'Text-to-speech is not supported in this browser.';
+
+        // Scroll to the last selected chapter if available
+        if (currentSectionIndex !== null && currentChapterIndex !== null) {
+            const sectionElement = document.getElementById(`section-${currentSectionIndex}`);
+            const chapterElement = document.getElementById(`chapter-${currentSectionIndex}-${currentChapterIndex}`);
+            if (sectionElement && chapterElement) {
+                sectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                chapterElement.classList.add('highlight');
+                setTimeout(() => {
+                    chapterElement.classList.remove('highlight');
+                }, 2000);
+            }
+        }
     });
 
     document.getElementById('popupClose').addEventListener('click', () => {
@@ -2032,13 +2043,13 @@ async function init() {
         setTimeout(() => {
             popup.style.display = 'none';
             document.getElementById('popupContent').innerHTML = '';
-        }, 400);
+        }, 200);
     });
 
     if (isTTSSupported) {
         document.getElementById('voiceButton').addEventListener('click', playSpeech);
         document.getElementById('stopButton').addEventListener('click', stopSpeech);
-        document.getElementById('dictionarySpeakButton').addEventListener('click', speakDictionaryResults);
+        document.getElementById('dictionarySpeakButton').addEventListener('click', () => speakDictionaryResults('dictionaryResults', 'dictionarySpeakButton'));
     }
 
     if ('serviceWorker' in navigator) {
