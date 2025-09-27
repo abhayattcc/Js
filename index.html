@@ -739,6 +739,14 @@ let isDictionaryReading = false;
 let currentSubjectsMap = null;
 let currentChapterName = '';
 let currentSubjectName = '';
+let currentBatch = 0;
+let totalBatches = 0;
+let currentScore = 0;
+let currentAttempted = 0;
+let currentBatchSize = 0;
+let currentSectionIdx = null;
+let currentChapterIdx = null;
+let currentSubject = '';
 
 function escapeHtml(text) {
     const div = document.createElement('div');
@@ -914,12 +922,86 @@ function parseMCQs(allLines, lang) {
     return { questions, remainingLines };
 }
 
-function loadSubjectMCQs(sectionIndex, chapterIndex, subjectName) {
-    currentSubjectName = subjectName;
+function showResultsPopUp() {
+    stopSpeech();
+    const popup = document.getElementById('popup');
+    const popupContent = document.getElementById('popupContent');
+    const percentage = Math.round((currentScore / currentBatchSize) * 100);
+    popupContent.innerHTML = `
+        <h2>Results for Set ${currentBatch + 1}</h2>
+        <p>Score: ${currentScore} out of ${currentBatchSize}</p>
+        <p>Percentage: ${percentage}%</p>
+    `;
+    const buttonsDiv = popup.querySelector('.popup-buttons');
+    buttonsDiv.innerHTML = '<button class="popup-close" id="closeResults">Close</button>';
+    if (currentBatch + 1 < totalBatches) {
+        buttonsDiv.innerHTML += '<button id="nextSetBtn" class="button">Next Set</button>';
+        document.getElementById('nextSetBtn').addEventListener('click', () => {
+            loadSubjectMCQs(currentSectionIdx, currentChapterIdx, currentSubject, currentBatch + 1);
+            popup.classList.remove('visible');
+            setTimeout(() => { popup.style.display = 'none'; }, 400);
+        });
+    } else {
+        buttonsDiv.innerHTML += '<button id="finishBtn" class="button">Finish Subject</button>';
+        document.getElementById('finishBtn').addEventListener('click', () => {
+            loadSubjectSets(currentSectionIdx, currentChapterIdx, currentSubject);
+            popup.classList.remove('visible');
+            setTimeout(() => { popup.style.display = 'none'; }, 400);
+        });
+    }
+    document.getElementById('closeResults').addEventListener('click', () => {
+        popup.classList.remove('visible');
+        setTimeout(() => { popup.style.display = 'none'; }, 400);
+    });
+    popup.style.display = 'block';
+    setTimeout(() => { popup.classList.add('visible'); }, 10);
+}
+
+function loadSubjectSets(sectionIndex, chapterIndex, subjectName) {
+    currentSectionIdx = sectionIndex;
+    currentChapterIdx = chapterIndex;
+    currentSubject = subjectName;
     const mcqs = currentSubjectsMap.get(subjectName);
+    totalBatches = Math.ceil(mcqs.length / 10);
+    let html = `<div class="section"><h1 class="section-title">${escapeHtml(subjectName)} - Question Sets</h1>`;
+    html += '<ul class="chapter-list">';
+    for (let b = 0; b < totalBatches; b++) {
+        html += `<li class="chapter-item" data-batch="${b}">${escapeHtml(`Set ${b + 1} of ${totalBatches}`)}</li>`;
+    }
+    html += '</ul>';
+    html += `<button class="home-button back-to-chapter" id="backToChapter" style="position: relative; bottom: auto; margin: 20px auto; display: block;">Back to Subjects</button></div>`;
+    const contentInner = document.getElementById('contentInner');
+    contentInner.innerHTML = html;
+    contentInner.classList.add('content-text');
+    contentInner.querySelectorAll('.chapter-item').forEach(li => {
+        li.addEventListener('click', (e) => {
+            const batch = parseInt(e.target.dataset.batch);
+            loadSubjectMCQs(sectionIndex, chapterIndex, subjectName, batch);
+        });
+    });
+    document.getElementById('backToChapter').addEventListener('click', () => {
+        loadContent(sectionIndex, chapterIndex);
+    });
+    sentences = [];
+    updateTTSVisibility();
+}
+
+function loadSubjectMCQs(sectionIndex, chapterIndex, subjectName, batch = 0) {
+    currentSectionIdx = sectionIndex;
+    currentChapterIdx = chapterIndex;
+    currentSubject = subjectName;
+    currentBatch = batch;
+    const mcqs = currentSubjectsMap.get(subjectName);
+    const batchSize = 10;
+    const start = batch * batchSize;
+    const end = Math.min(start + batchSize, mcqs.length);
+    currentBatchSize = end - start;
+    const mcqsBatch = mcqs.slice(start, end);
     const language = sections[sectionIndex].language;
-    let html = `<div class="section"><h1 class="section-title">${escapeHtml(subjectName)}</h1>`;
-    mcqs.forEach(q => {
+    currentScore = 0;
+    currentAttempted = 0;
+    let html = `<div class="section"><h1 class="section-title">${escapeHtml(subjectName)} - Set ${batch + 1} of ${Math.ceil(mcqs.length / 10)}</h1>`;
+    mcqsBatch.forEach(q => {
         html += `<div class="mcq" data-answer="${escapeHtml(q.answer.replace(/"/g, '&quot;'))}">`;
         html += `<div class="question-text">${escapeHtml(q.question).replace(/\n/g, '<br>')}</div>`;
         html += '<div class="options">';
@@ -931,14 +1013,15 @@ function loadSubjectMCQs(sectionIndex, chapterIndex, subjectName) {
         html += `<div class="feedback" style="display:none;"></div>`;
         html += '</div><hr style="margin:20px 0;">';
     });
-    html += `<button class="home-button back-to-subjects" id="backToSubjects" style="position: relative; bottom: auto; margin: 20px auto; display: block;">Back to Subjects</button></div>`;
+    html += `<div id="progress" style="text-align:center; margin:20px 0; font-size:18px; font-weight:bold;">Attempted: <span id="attempted-count">0</span> / ${currentBatchSize} | Score: <span id="score-count">0</span></div>`;
+    html += `<button class="home-button back-to-sets" id="backToSets" style="position: relative; bottom: auto; margin: 20px auto; display: block;">Back to Sets</button></div>`;
     const contentInner = document.getElementById('contentInner');
     contentInner.innerHTML = html;
     contentInner.classList.add('content-text');
     setupMCQListeners(language);
     sentences = [];
-    document.getElementById('backToSubjects').addEventListener('click', () => {
-        loadContent(sectionIndex, chapterIndex);
+    document.getElementById('backToSets').addEventListener('click', () => {
+        loadSubjectSets(sectionIndex, chapterIndex, subjectName);
     });
     updateTTSVisibility();
 }
@@ -1490,6 +1573,7 @@ function setupMCQListeners(lang) {
             const myIdx = parseInt(this.dataset.oidx);
             let msg, myColor, correctColor = '#4caf50';
             if (myIdx === correctIdx) {
+                currentScore++;
                 msg = 'yah, correct';
                 myColor = '#4caf50';
             } else {
@@ -1508,6 +1592,12 @@ function setupMCQListeners(lang) {
             feedbackDiv.style.cssText = 'font-weight: bold; color: #d32f2f; margin: 10px 0; padding: 5px;';
             answerDiv.style.display = 'block';
             speakFeedback(msg);
+            currentAttempted++;
+            document.getElementById('attempted-count').textContent = currentAttempted;
+            document.getElementById('score-count').textContent = currentScore;
+            if (currentAttempted === currentBatchSize) {
+                setTimeout(() => showResultsPopUp(), 1000);
+            }
         });
     });
 }
@@ -1537,6 +1627,7 @@ async function handleFileUpload(event) {
     contentInner.innerHTML = '';
     lastTappedFile = files[0].name;
     lastTappedSentenceIndex = -1;
+    sentences = [];
 
     const pdfFiles = files.filter(f => f.name.endsWith('.pdf'));
     const textFiles = files.filter(f => f.name.endsWith('.txt') || f.name.endsWith('.html'));
@@ -1575,21 +1666,20 @@ async function handleFileUpload(event) {
                 html += `<div class="feedback" style="display:none;"></div>`;
                 html += '</div><hr style="margin:20px 0;">';
             });
-            if (questions.length === 0) {
-                remainingLines.forEach((line, idx) => {
+            remainingLines.forEach((line, idx) => {
+                if (questions.length > 0) {
+                    html += `<span>${escapeHtml(line)}</span><br>`;
+                } else {
                     html += `<span data-sentence-index="${idx}">${escapeHtml(line)}</span><br>`;
-                });
-            } else {
-                remainingLines.forEach((line, idx) => {
-                    html += `<span data-sentence-index="${idx}">${escapeHtml(line)}</span><br>`;
-                });
-            }
+                }
+            });
             contentInner.innerHTML += html;
             contentInner.classList.add('content-text');
             if (questions.length > 0) {
                 setupMCQListeners(language);
+            } else {
+                sentences = remainingLines;
             }
-            sentences = allLines;
             hideProgress();
         }
         if (textFiles.length > 0) {
@@ -1617,10 +1707,11 @@ async function handleFileUpload(event) {
                         contentInner.querySelectorAll('.chapter-item').forEach(li => {
                             li.addEventListener('click', (e) => {
                                 const subject = e.target.dataset.subject;
-                                loadSubjectMCQs(0, 0, subject);
+                                loadSubjectSets(0, 0, subject);
                             });
                         });
                         contentInner.classList.add('content-text');
+                        sentences = [];
                     } else {
                         const {questions, remainingLines} = parseMCQs(allLines, language);
                         if (questions.length > 0) {
@@ -1636,32 +1727,32 @@ async function handleFileUpload(event) {
                                 fileHtml += `<div class="feedback" style="display:none;"></div>`;
                                 fileHtml += '</div><hr style="margin:20px 0;">';
                             });
-                            remainingLines.forEach((line, idx) => {
-                                fileHtml += `<span data-sentence-index="${sentences.length + idx}">${escapeHtml(line)}</span><br>`;
+                            remainingLines.forEach((line) => {
+                                fileHtml += `<span>${escapeHtml(line)}</span><br>`;
                             });
                             setupMCQListeners(language);
+                            sentences = [];
                         } else {
                             remainingLines.forEach((line, idx) => {
                                 fileHtml += `<span data-sentence-index="${sentences.length + idx}">${escapeHtml(line)}</span><br>`;
                             });
+                            sentences = sentences.concat(remainingLines);
                         }
                         contentInner.innerHTML += fileHtml;
                         contentInner.classList.add('content-text');
                     }
-                    sentences = sentences.concat(allLines);
                 } else if (file.name.endsWith('.html')) {
                     const text = await file.text();
                     const tempDiv = document.createElement('div');
                     tempDiv.innerHTML = text;
                     const processNode = (node) => {
                         if (node.nodeType === 3) {
-                            const words = node.textContent.split(/(\s+)/);
+                            const textContent = node.textContent;
+                            const words = textContent.split(/(\s+)/);
                             const fragment = document.createDocumentFragment();
-                            let sentenceIndex = 0;
-                            let currentSentence = '';
+                            const sentenceIndex = sentences.length;
                             words.forEach(word => {
                                 if (word.match(/\s+/)) {
-                                    currentSentence += word;
                                     fragment.appendChild(document.createTextNode(word));
                                 } else if (word.match(/[A-Za-z\u0B00-\u0B7F]/)) {
                                     const span = document.createElement('span');
@@ -1669,25 +1760,18 @@ async function handleFileUpload(event) {
                                     span.setAttribute('data-word', cleanWord);
                                     span.setAttribute('data-sentence-index', sentenceIndex);
                                     span.textContent = word;
-                                    currentSentence += word;
-                                    if (word.match(/[.!?]/)) {
-                                        sentenceIndex++;
-                                        currentSentence = '';
-                                    }
                                     fragment.appendChild(span);
                                 } else {
-                                    currentSentence += word;
                                     fragment.appendChild(document.createTextNode(word));
                                 }
                             });
-                            sentences.push(currentSentence.trim());
+                            sentences.push(textContent.trim());
                             node.parentNode.replaceChild(fragment, node);
                         } else if (node.nodeType === 1) {
                             node.childNodes.forEach(processNode);
                         }
                     };
                     tempDiv.childNodes.forEach(processNode);
-                    sentences = sentences.filter(s => s.trim() !== '');
                     contentInner.appendChild(tempDiv);
                     contentInner.classList.remove('content-text');
                 }
@@ -1744,13 +1828,12 @@ async function loadContent(sectionIndex, chapterIndex) {
         tempDiv.innerHTML = textContent;
         const processNode = (node) => {
             if (node.nodeType === 3) {
-                const words = node.textContent.split(/(\s+)/);
+                const textContentNode = node.textContent;
+                const words = textContentNode.split(/(\s+)/);
                 const fragment = document.createDocumentFragment();
-                let sentenceIndex = 0;
-                let currentSentence = '';
+                const sentenceIndex = sentences.length;
                 words.forEach(word => {
                     if (word.match(/\s+/)) {
-                        currentSentence += word;
                         fragment.appendChild(document.createTextNode(word));
                     } else if (word.match(/[A-Za-z\u0B00-\u0B7F]/)) {
                         const span = document.createElement('span');
@@ -1758,17 +1841,12 @@ async function loadContent(sectionIndex, chapterIndex) {
                         span.setAttribute('data-word', cleanWord);
                         span.setAttribute('data-sentence-index', sentenceIndex);
                         span.textContent = word;
-                        currentSentence += word;
-                        if (word.match(/[.!?]/)) {
-                            sentenceIndex++;
-                            currentSentence = '';
-                        }
                         fragment.appendChild(span);
                     } else {
-                        currentSentence += word;
                         fragment.appendChild(document.createTextNode(word));
                     }
                 });
+                sentences.push(textContentNode.trim());
                 node.parentNode.replaceChild(fragment, node);
             } else if (node.nodeType === 1) {
                 node.childNodes.forEach(processNode);
@@ -1777,7 +1855,6 @@ async function loadContent(sectionIndex, chapterIndex) {
         tempDiv.childNodes.forEach(processNode);
         contentInner.appendChild(tempDiv);
         contentInner.classList.remove('content-text');
-        sentences = textContent.split(/\r?\n/).filter(line => line.trim() !== '');
     } else if (chapter.type === 'text') {
         const allLines = textContent.split(/\r?\n/);
         const language = sections[sectionIndex].language;
@@ -1800,7 +1877,7 @@ async function loadContent(sectionIndex, chapterIndex) {
             contentInner.querySelectorAll('.chapter-item').forEach(li => {
                 li.addEventListener('click', (e) => {
                     const subject = e.target.dataset.subject;
-                    loadSubjectMCQs(sectionIndex, chapterIndex, subject);
+                    loadSubjectSets(sectionIndex, chapterIndex, subject);
                 });
             });
             if (currentSubjectName) {
@@ -1828,14 +1905,23 @@ async function loadContent(sectionIndex, chapterIndex) {
                 mcqHtml += `<div class="feedback" style="display:none;"></div>`;
                 mcqHtml += '</div><hr style="margin:20px 0;">';
             });
-            let remainingHtml = remainingLines.map((line, idx) => `<span data-sentence-index="${idx}">${escapeHtml(line)}</span><br>`).join('');
+            let remainingHtml = '';
+            remainingLines.forEach((line, idx) => {
+                if (questions.length > 0) {
+                    remainingHtml += `<span>${escapeHtml(line)}</span><br>`;
+                } else {
+                    remainingHtml += `<span data-sentence-index="${idx}">${escapeHtml(line)}</span><br>`;
+                }
+            });
             html = mcqHtml + remainingHtml;
             contentInner.innerHTML = html;
             contentInner.classList.add('content-text');
             if (questions.length > 0) {
                 setupMCQListeners(language);
+                sentences = [];
+            } else {
+                sentences = remainingLines;
             }
-            sentences = allLines;
         }
     }
 
@@ -2136,7 +2222,7 @@ function readNextSentence() {
     const text = sentences[currentSentenceIndex];
     const sentenceSpans = document.getElementById('contentInner').querySelectorAll('span[data-sentence-index]');
     sentenceSpans.forEach(span => span.classList.remove('highlight'));
-    const currentSpan = sentenceSpans[currentSentenceIndex];
+    const currentSpan = Array.from(sentenceSpans).find(span => parseInt(span.getAttribute('data-sentence-index')) === currentSentenceIndex);
     if (currentSpan) {
         currentSpan.classList.add('highlight');
         const contentInner = document.getElementById('contentInner');
