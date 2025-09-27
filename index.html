@@ -619,9 +619,6 @@
             <button class="voice-button" id="voiceButton" title="Play/Pause">🗣️</button>
             <button class="stop-button" id="stopButton" title="Stop" disabled>🛑</button>
         </div>
-        <div class="file-upload">
-            <input type="file" id="fileUpload" accept=".pdf,.txt,.html" multiple>
-        </div>
         <div id="contentInner" class="content-inner"></div>
         <div id="processing-status"></div>
     </div>
@@ -739,6 +736,212 @@ let voices = [];
 let isTTSSupported = 'speechSynthesis' in window;
 let dictionaryTimeout = null;
 let isDictionaryReading = false;
+let currentSubjectsMap = null;
+let currentChapterName = '';
+let currentSubjectName = '';
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function parseChapterToSubjects(lines, lang) {
+    const subjects = new Map();
+    let currentSubject = null;
+    let currentMcqs = [];
+    let i = 0;
+    const numRe = /^[0-9\u0B66-\u0B6F]+\.\s*/;
+    const oneRe = /^1\.\s*/;
+    const odiaOneRe = /^୧\.\s*/;
+    const optRe = lang === 'english' ? /^[a-d]\)\s*/i : /^[କ-ଘ]\)\s*/;
+    const ansRe = lang === 'english' ? /^Answer:\s*[a-d]\)/i : /^ଉତ୍ତର:\s*[କ-ଘ]\)/;
+    while (i < lines.length) {
+        while (i < lines.length && !lines[i].trim()) i++;
+        if (i >= lines.length) break;
+        const line = lines[i].trim();
+        const isNumbered = numRe.test(line);
+        const isOne = oneRe.test(line) || odiaOneRe.test(line);
+        if (!isNumbered) {
+            let j = i + 1;
+            while (j < lines.length && !lines[j].trim()) j++;
+            if (j < lines.length) {
+                const nextLine = lines[j].trim();
+                if (oneRe.test(nextLine) || odiaOneRe.test(nextLine)) {
+                    if (currentSubject && currentMcqs.length > 0) {
+                        subjects.set(currentSubject, [...currentMcqs]);
+                        currentMcqs = [];
+                    }
+                    currentSubject = line;
+                    i = j;
+                    continue;
+                }
+            }
+            i++;
+            continue;
+        } else {
+            if (isOne && currentSubject) {
+            } else if (!currentSubject) {
+                currentSubject = 'General';
+            }
+            let questionLines = [lines[i]];
+            i++;
+            while (i < lines.length) {
+                while (i < lines.length && !lines[i].trim()) i++;
+                if (i >= lines.length) break;
+                const nextTrim = lines[i].trim();
+                if (optRe.test(nextTrim)) break;
+                questionLines.push(lines[i]);
+                i++;
+            }
+            let opts = [];
+            while (i < lines.length && opts.length < 4) {
+                while (i < lines.length && !lines[i].trim()) i++;
+                if (i >= lines.length) break;
+                const optLine = lines[i].trim();
+                if (optRe.test(optLine)) {
+                    opts.push(lines[i]);
+                    i++;
+                } else {
+                    break;
+                }
+            }
+            let ans = null;
+            while (i < lines.length && !lines[i].trim()) i++;
+            if (i < lines.length) {
+                const ansLine = lines[i].trim();
+                if (ansRe.test(ansLine)) {
+                    ans = lines[i];
+                    i++;
+                }
+            }
+            if (opts.length === 4 && ans && currentSubject) {
+                currentMcqs.push({
+                    question: questionLines.join('\n'),
+                    options: opts,
+                    answer: ans
+                });
+            }
+        }
+    }
+    if (currentSubject && currentMcqs.length > 0) {
+        subjects.set(currentSubject, currentMcqs);
+    }
+    return subjects;
+}
+
+function parseMCQs(allLines, lang) {
+    const questions = [];
+    const remainingLines = [];
+    let i = 0;
+    const numLines = allLines.length;
+    const optPrefixEng = /^[a-d]\)\s*/i;
+    const optPrefixOdia = /^[କ-ଘ]\)\s*/;
+    const ansPrefixEng = /^Answer:\s*[a-d]\)/i;
+    const ansPrefixOdia = /^ଉତ୍ତର:\s*[କ-ଘ]\)/;
+    while (i < numLines) {
+        while (i < numLines && !allLines[i].trim()) i++;
+        if (i >= numLines) break;
+        const line = allLines[i].trim();
+        const isOptEng = optPrefixEng.test(line);
+        const isOptOdia = optPrefixOdia.test(line);
+        const isAnsEng = ansPrefixEng.test(line);
+        const isAnsOdia = ansPrefixOdia.test(line);
+        let question = [];
+        while (i < numLines) {
+            const l = allLines[i].trim();
+            const isOptEng2 = optPrefixEng.test(l);
+            const isOptOdia2 = optPrefixOdia.test(l);
+            const isAnsEng2 = ansPrefixEng.test(l);
+            const isAnsOdia2 = ansPrefixOdia.test(l);
+            if ((lang === 'english' && (isOptEng2 || isAnsEng2)) || (lang === 'odia' && (isOptOdia2 || isAnsOdia2))) {
+                break;
+            }
+            question.push(allLines[i]);
+            i++;
+        }
+        if (question.length === 0) {
+            remainingLines.push(allLines[i]);
+            i++;
+            continue;
+        }
+        let optStart = i;
+        let opts = [];
+        while (i < numLines && opts.length < 4) {
+            while (i < numLines && !allLines[i].trim()) i++;
+            if (i >= numLines) break;
+            const l = allLines[i].trim();
+            const isOptEng3 = optPrefixEng.test(l);
+            const isOptOdia3 = optPrefixOdia.test(l);
+            if ((lang === 'english' && isOptEng3) || (lang === 'odia' && isOptOdia3)) {
+                opts.push(allLines[i]);
+                i++;
+            } else {
+                break;
+            }
+        }
+        if (opts.length !== 4) {
+            remainingLines.push(...question);
+            remainingLines.push(...allLines.slice(optStart, i));
+            continue;
+        }
+        let ans = null;
+        while (i < numLines && !allLines[i].trim()) i++;
+        if (i < numLines) {
+            const l = allLines[i].trim();
+            const isAnsEng4 = ansPrefixEng.test(l);
+            const isAnsOdia4 = ansPrefixOdia.test(l);
+            if ((lang === 'english' && isAnsEng4) || (lang === 'odia' && isAnsOdia4)) {
+                ans = allLines[i];
+                i++;
+            } else {
+                remainingLines.push(...question);
+                remainingLines.push(...opts);
+                continue;
+            }
+        } else {
+            remainingLines.push(...question);
+            remainingLines.push(...opts);
+            continue;
+        }
+        questions.push({
+            question: question.join('\n'),
+            options: opts,
+            answer: ans
+        });
+    }
+    remainingLines.push(...allLines.slice(i));
+    return { questions, remainingLines };
+}
+
+function loadSubjectMCQs(sectionIndex, chapterIndex, subjectName) {
+    currentSubjectName = subjectName;
+    const mcqs = currentSubjectsMap.get(subjectName);
+    const language = sections[sectionIndex].language;
+    let html = `<div class="section"><h1 class="section-title">${escapeHtml(subjectName)}</h1>`;
+    mcqs.forEach(q => {
+        html += `<div class="mcq" data-answer="${escapeHtml(q.answer.replace(/"/g, '&quot;'))}">`;
+        html += `<div class="question-text">${escapeHtml(q.question).replace(/\n/g, '<br>')}</div>`;
+        html += '<div class="options">';
+        q.options.forEach((opt, oidx) => {
+            html += `<button class="option-btn" data-oidx="${oidx}">${escapeHtml(opt)}</button><br>`;
+        });
+        html += '</div>';
+        html += `<div class="answer" style="display:none;background:#e3f2fd;padding:10px;margin:10px 0;border-left:4px solid #2196f3;">${escapeHtml(q.answer)}</div>`;
+        html += `<div class="feedback" style="display:none;"></div>`;
+        html += '</div><hr style="margin:20px 0;">';
+    });
+    html += `<button class="home-button back-to-subjects" id="backToSubjects" style="position: relative; bottom: auto; margin: 20px auto; display: block;">Back to Subjects</button></div>`;
+    const contentInner = document.getElementById('contentInner');
+    contentInner.innerHTML = html;
+    contentInner.classList.add('content-text');
+    setupMCQListeners(language);
+    sentences = [];
+    document.getElementById('backToSubjects').addEventListener('click', () => {
+        loadContent(sectionIndex, chapterIndex);
+    });
+    updateTTSVisibility();
+}
 
 function showProgress(message, percentage) {
     const progressContainer = document.getElementById('progress-container');
@@ -802,14 +1005,16 @@ async function cacheDictionaryImages() {
                 imageUrls.push(word.image);
             }
         });
-        const stmt = dbEnglishHindi.prepare("SELECT image FROM dictionary WHERE image IS NOT NULL");
-        while (stmt.step()) {
-            const row = stmt.getAsObject();
-            if (row.image) {
-                imageUrls.push(row.image);
+        if (dbEnglishHindi) {
+            const stmt = dbEnglishHindi.prepare("SELECT image FROM dictionary WHERE image IS NOT NULL");
+            while (stmt.step()) {
+                const row = stmt.getAsObject();
+                if (row.image) {
+                    imageUrls.push(row.image);
+                }
             }
+            stmt.free();
         }
-        stmt.free();
 
         const cachedRequests = await cache.keys();
         const cachedUrls = cachedRequests.map(req => req.url);
@@ -984,6 +1189,7 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
         if (suggestionsElement) suggestionsElement.innerHTML = '';
         if (isDictionary) {
             document.getElementById('dictionarySpeakButton').disabled = true;
+            document.querySelector('.dictionary-form').style.display = 'none';
         }
         return;
     }
@@ -1000,40 +1206,48 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
     results.push(...customMatches);
 
     try {
-        const stmtEnglishOdia = dbEnglishOdia.prepare("SELECT English, odia FROM dictionary WHERE English LIKE ? OR odia LIKE ?");
-        stmtEnglishOdia.bind([trimmedWord, trimmedWord]);
-        while (stmtEnglishOdia.step()) {
-            const row = stmtEnglishOdia.getAsObject();
-            results.push({ English: row.English, odia: row.odia });
+        if (dbEnglishOdia) {
+            const stmtEnglishOdia = dbEnglishOdia.prepare("SELECT English, odia FROM dictionary WHERE English LIKE ? OR odia LIKE ?");
+            stmtEnglishOdia.bind([trimmedWord, trimmedWord]);
+            while (stmtEnglishOdia.step()) {
+                const row = stmtEnglishOdia.getAsObject();
+                results.push({ English: row.English, odia: row.odia });
+            }
+            stmtEnglishOdia.free();
         }
-        stmtEnglishOdia.free();
 
-        const stmtEnglishHindi = dbEnglishHindi.prepare("SELECT English, hindi, image FROM dictionary WHERE English LIKE ? OR hindi LIKE ?");
-        stmtEnglishHindi.bind([trimmedWord, trimmedWord]);
-        while (stmtEnglishHindi.step()) {
-            const row = stmtEnglishHindi.getAsObject();
-            results.push({ English: row.English, hindi: row.hindi, image: row.image });
+        if (dbEnglishHindi) {
+            const stmtEnglishHindi = dbEnglishHindi.prepare("SELECT English, hindi, image FROM dictionary WHERE English LIKE ? OR hindi LIKE ?");
+            stmtEnglishHindi.bind([trimmedWord, trimmedWord]);
+            while (stmtEnglishHindi.step()) {
+                const row = stmtEnglishHindi.getAsObject();
+                results.push({ English: row.English, hindi: row.hindi, image: row.image });
+            }
+            stmtEnglishHindi.free();
         }
-        stmtEnglishHindi.free();
 
         const mergedResults = mergeResults(results);
 
         if (suggestionsElement) {
-            const suggestionStmtEnglishOdia = dbEnglishOdia.prepare("SELECT English, odia FROM dictionary WHERE English LIKE ? OR odia LIKE ? LIMIT 5");
-            suggestionStmtEnglishOdia.bind([`${trimmedWord}%`, `${trimmedWord}%`]);
-            while (suggestionStmtEnglishOdia.step()) {
-                const row = suggestionStmtEnglishOdia.getAsObject();
-                suggestions.push({ English: row.English, odia: row.odia });
+            if (dbEnglishOdia) {
+                const suggestionStmtEnglishOdia = dbEnglishOdia.prepare("SELECT English, odia FROM dictionary WHERE English LIKE ? OR odia LIKE ? LIMIT 5");
+                suggestionStmtEnglishOdia.bind([`${trimmedWord}%`, `${trimmedWord}%`]);
+                while (suggestionStmtEnglishOdia.step()) {
+                    const row = suggestionStmtEnglishOdia.getAsObject();
+                    suggestions.push({ English: row.English, odia: row.odia });
+                }
+                suggestionStmtEnglishOdia.free();
             }
-            suggestionStmtEnglishOdia.free();
 
-            const suggestionStmtEnglishHindi = dbEnglishHindi.prepare("SELECT English, hindi, image FROM dictionary WHERE English LIKE ? OR hindi LIKE ? LIMIT 5");
-            suggestionStmtEnglishHindi.bind([`${trimmedWord}%`, `${trimmedWord}%`]);
-            while (suggestionStmtEnglishHindi.step()) {
-                const row = suggestionStmtEnglishHindi.getAsObject();
-                suggestions.push({ English: row.English, hindi: row.hindi, image: row.image });
+            if (dbEnglishHindi) {
+                const suggestionStmtEnglishHindi = dbEnglishHindi.prepare("SELECT English, hindi, image FROM dictionary WHERE English LIKE ? OR hindi LIKE ? LIMIT 5");
+                suggestionStmtEnglishHindi.bind([`${trimmedWord}%`, `${trimmedWord}%`]);
+                while (suggestionStmtEnglishHindi.step()) {
+                    const row = suggestionStmtEnglishHindi.getAsObject();
+                    suggestions.push({ English: row.English, hindi: row.hindi, image: row.image });
+                }
+                suggestionStmtEnglishHindi.free();
             }
-            suggestionStmtEnglishHindi.free();
 
             suggestions.push(...customWords.filter(w => 
                 w.English.toLowerCase().startsWith(trimmedWord) || 
@@ -1050,9 +1264,9 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
             const resultsHtml = await Promise.all(mergedResults.map(async result => {
                 let resultText = `<div class="result-item">`;
                 resultText += `<div class="result-text">`;
-                resultText += `${result.English}`;
-                if (result.hindi) resultText += `, ${result.hindi}`;
-                if (result.odia) resultText += `, ${result.odia}`;
+                resultText += `${escapeHtml(result.English)}`;
+                if (result.hindi) resultText += `, ${escapeHtml(result.hindi)}`;
+                if (result.odia) resultText += `, ${escapeHtml(result.odia)}`;
                 resultText += `</div>`;
                 if (result.image) {
                     const isDeleted = deletedImages.includes(result.image);
@@ -1085,8 +1299,14 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
             }));
             targetElement.innerHTML = resultsHtml.join('');
             setupImageControlListeners(targetElement);
+            if (isDictionary) {
+                document.querySelector('.dictionary-form').style.display = 'none';
+            }
         } else {
             targetElement.innerHTML = '<div class="result-item"><div class="result-text">No exact match found. Add it below.</div></div>';
+            if (isDictionary) {
+                document.querySelector('.dictionary-form').style.display = 'block';
+            }
         }
 
         if (suggestionsElement) {
@@ -1097,9 +1317,9 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
                     if (suggestion.odia) suggestionText += ` data-odia="${suggestion.odia}"`;
                     if (suggestion.hindi) suggestionText += ` data-hindi="${suggestion.hindi}"`;
                     if (suggestion.image) suggestionText += ` data-image="${suggestion.image}"`;
-                    suggestionText += `>${suggestion.English}`;
-                    if (suggestion.hindi) suggestionText += `, ${suggestion.hindi}`;
-                    if (suggestion.odia) suggestionText += `, ${suggestion.odia}`;
+                    suggestionText += `>${escapeHtml(suggestion.English)}`;
+                    if (suggestion.hindi) suggestionText += `, ${escapeHtml(suggestion.hindi)}`;
+                    if (suggestion.odia) suggestionText += `, ${escapeHtml(suggestion.odia)}`;
                     if (suggestion.image && !deletedImages.includes(suggestion.image)) {
                         let imageSrc;
                         if (suggestion.image.startsWith('data:')) {
@@ -1125,6 +1345,7 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
         if (suggestionsElement) suggestionsElement.innerHTML = '';
         if (isDictionary) {
             document.getElementById('dictionarySpeakButton').disabled = true;
+            document.querySelector('.dictionary-form').style.display = 'none';
         }
     }
 }
@@ -1187,6 +1408,7 @@ function setupImageControlListeners(targetElement) {
 
 function getFirstOdiaWord() {
     try {
+        if (!dbEnglishOdia) return null;
         const stmt = dbEnglishOdia.prepare("SELECT odia FROM dictionary ORDER BY odia ASC LIMIT 1");
         if (stmt.step()) {
             const row = stmt.getAsObject();
@@ -1230,6 +1452,79 @@ async function saveCustomWord(english, odia, hindi, imageFile) {
     }
 }
 
+function extractCorrect(answerStr, lang) {
+    if (lang === 'english') {
+        const match = answerStr.match(/Answer:\s*([a-d])\)/i);
+        return match ? match[1].toLowerCase() : null;
+    } else {
+        const match = answerStr.match(/ଉତ୍ତର:\s*([କ-ଘ])\)/);
+        return match ? match[1] : null;
+    }
+}
+
+function speakFeedback(msg) {
+    if (!isTTSSupported || !defaultEnglishVoice) return;
+    const utterance = new SpeechSynthesisUtterance(msg);
+    utterance.voice = defaultEnglishVoice;
+    utterance.lang = 'en-US';
+    utterance.rate = 0.8;
+    utterance.pitch = 1.0;
+    utterance.volume = 1.0;
+    window.speechSynthesis.speak(utterance);
+}
+
+function setupMCQListeners(lang) {
+    document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.style.cssText = 'display: block; width: 100%; margin: 5px 0; padding: 10px; background: #f0f0f0; border: none; border-radius: 5px; cursor: pointer; text-align: left;';
+        btn.addEventListener('click', function() {
+            const mcqDiv = this.closest('.mcq');
+            const options = mcqDiv.querySelectorAll('.option-btn');
+            const answerDiv = mcqDiv.querySelector('.answer');
+            const feedbackDiv = mcqDiv.querySelector('.feedback');
+            options.forEach(b => b.disabled = true);
+            const ansStr = mcqDiv.dataset.answer;
+            const correctChar = extractCorrect(ansStr, lang);
+            if (!correctChar) return;
+            const labelStr = lang === 'english' ? 'abcd' : 'କଖଗଘ';
+            const correctIdx = labelStr.indexOf(correctChar);
+            const myIdx = parseInt(this.dataset.oidx);
+            let msg, myColor, correctColor = '#4caf50';
+            if (myIdx === correctIdx) {
+                msg = 'yah, correct';
+                myColor = '#4caf50';
+            } else {
+                msg = 'sorry, it\'s wrong';
+                myColor = '#f44336';
+                const correctBtn = Array.from(options)[correctIdx];
+                if (correctBtn) {
+                    correctBtn.style.backgroundColor = correctColor;
+                    correctBtn.style.color = 'white';
+                }
+            }
+            this.style.backgroundColor = myColor;
+            this.style.color = 'white';
+            feedbackDiv.textContent = msg;
+            feedbackDiv.style.display = 'block';
+            feedbackDiv.style.cssText = 'font-weight: bold; color: #d32f2f; margin: 10px 0; padding: 5px;';
+            answerDiv.style.display = 'block';
+            speakFeedback(msg);
+        });
+    });
+}
+
+function isMCQContent() {
+    return document.getElementById('contentInner').querySelector('.mcq') !== null;
+}
+
+function updateTTSVisibility() {
+    const showTTS = isTTSSupported && !isMCQContent() && sentences.length > 0;
+    document.getElementById('voiceButton').style.display = showTTS ? 'inline-block' : 'none';
+    document.getElementById('stopButton').style.display = showTTS ? 'inline-block' : 'none';
+    document.getElementById('voiceButton').disabled = !showTTS;
+    document.getElementById('stopButton').disabled = !showTTS;
+    document.getElementById('processing-status').textContent = showTTS ? '' : (isMCQContent() ? 'TTS disabled for MCQ content' : (sentences.length === 0 ? 'No text to read' : 'Text-to-speech is not supported in this browser.'));
+}
+
 async function handleFileUpload(event) {
     const files = Array.from(event.target.files);
     if (!files.length) return;
@@ -1246,6 +1541,7 @@ async function handleFileUpload(event) {
     const pdfFiles = files.filter(f => f.name.endsWith('.pdf'));
     const textFiles = files.filter(f => f.name.endsWith('.txt') || f.name.endsWith('.html'));
 
+    let allText = '';
     try {
         if (pdfFiles.length > 0) {
             showProgress('Processing PDF files', 0);
@@ -1261,26 +1557,98 @@ async function handleFileUpload(event) {
                     text += textContent.items.map(item => item.str).join(' ') + '\n';
                     showProgress('Processing PDF files', Math.round(((j / pdf.numPages) * (100 / pdfFiles.length)) + (i * (100 / pdfFiles.length))));
                 }
-                totalText += text;
+                totalText += text + '\n';
             }
-            sentences = totalText.split(/\r?\n/).filter(line => line.trim() !== '');
-            contentInner.innerHTML = sentences.map((line, index) => 
-                `<span data-sentence-index="${index}">${line.trim()}</span>`
-            ).join('<br>');
+            const allLines = totalText.split(/\r?\n/);
+            const language = 'english';
+            const {questions, remainingLines} = parseMCQs(allLines, language);
+            let html = '';
+            questions.forEach(q => {
+                html += `<div class="mcq" data-answer="${q.answer.replace(/"/g, '&quot;')}">`;
+                html += `<div class="question-text">${q.question.replace(/\n/g, '<br>')}</div>`;
+                html += '<div class="options">';
+                q.options.forEach((opt, oidx) => {
+                    html += `<button class="option-btn" data-oidx="${oidx}">${opt}</button><br>`;
+                });
+                html += '</div>';
+                html += `<div class="answer" style="display:none;background:#e3f2fd;padding:10px;margin:10px 0;border-left:4px solid #2196f3;">${q.answer}</div>`;
+                html += `<div class="feedback" style="display:none;"></div>`;
+                html += '</div><hr style="margin:20px 0;">';
+            });
+            if (questions.length === 0) {
+                remainingLines.forEach((line, idx) => {
+                    html += `<span data-sentence-index="${idx}">${escapeHtml(line)}</span><br>`;
+                });
+            } else {
+                remainingLines.forEach((line, idx) => {
+                    html += `<span data-sentence-index="${idx}">${escapeHtml(line)}</span><br>`;
+                });
+            }
+            contentInner.innerHTML += html;
             contentInner.classList.add('content-text');
+            if (questions.length > 0) {
+                setupMCQListeners(language);
+            }
+            sentences = allLines;
             hideProgress();
         }
         if (textFiles.length > 0) {
             showProgress('Processing text/html files', 0);
             for (let i = 0; i < textFiles.length; i++) {
                 const file = textFiles[i];
+                let fileHtml = '';
                 if (file.name.endsWith('.txt')) {
                     const text = await file.text();
-                    sentences = text.split(/\r?\n/).filter(line => line.trim() !== '');
-                    contentInner.innerHTML = sentences.map((line, index) => 
-                        `<span data-sentence-index="${index}">${line.trim()}</span>`
-                    ).join('<br>');
-                    contentInner.classList.add('content-text');
+                    allText += text + '\n';
+                    const allLines = text.split(/\r?\n/);
+                    const language = 'english';
+                    const subjects = parseChapterToSubjects(allLines, language);
+                    if (subjects.size > 0) {
+                        currentSubjectsMap = subjects;
+                        fileHtml += `<div class="section"><h1 class="section-title">Subjects</h1>`;
+                        fileHtml += '<ul class="chapter-list">';
+                        for (let [subjectName, mcqsList] of subjects) {
+                            if (mcqsList.length > 0) {
+                                fileHtml += `<li class="chapter-item" data-subject="${escapeHtml(subjectName)}">${escapeHtml(subjectName)}</li>`;
+                            }
+                        }
+                        fileHtml += '</ul></div>';
+                        contentInner.innerHTML += fileHtml;
+                        contentInner.querySelectorAll('.chapter-item').forEach(li => {
+                            li.addEventListener('click', (e) => {
+                                const subject = e.target.dataset.subject;
+                                loadSubjectMCQs(0, 0, subject);
+                            });
+                        });
+                        contentInner.classList.add('content-text');
+                    } else {
+                        const {questions, remainingLines} = parseMCQs(allLines, language);
+                        if (questions.length > 0) {
+                            questions.forEach(q => {
+                                fileHtml += `<div class="mcq" data-answer="${q.answer.replace(/"/g, '&quot;')}">`;
+                                fileHtml += `<div class="question-text">${q.question.replace(/\n/g, '<br>')}</div>`;
+                                fileHtml += '<div class="options">';
+                                q.options.forEach((opt, oidx) => {
+                                    fileHtml += `<button class="option-btn" data-oidx="${oidx}">${opt}</button><br>`;
+                                });
+                                fileHtml += '</div>';
+                                fileHtml += `<div class="answer" style="display:none;background:#e3f2fd;padding:10px;margin:10px 0;border-left:4px solid #2196f3;">${q.answer}</div>`;
+                                fileHtml += `<div class="feedback" style="display:none;"></div>`;
+                                fileHtml += '</div><hr style="margin:20px 0;">';
+                            });
+                            remainingLines.forEach((line, idx) => {
+                                fileHtml += `<span data-sentence-index="${sentences.length + idx}">${escapeHtml(line)}</span><br>`;
+                            });
+                            setupMCQListeners(language);
+                        } else {
+                            remainingLines.forEach((line, idx) => {
+                                fileHtml += `<span data-sentence-index="${sentences.length + idx}">${escapeHtml(line)}</span><br>`;
+                            });
+                        }
+                        contentInner.innerHTML += fileHtml;
+                        contentInner.classList.add('content-text');
+                    }
+                    sentences = sentences.concat(allLines);
                 } else if (file.name.endsWith('.html')) {
                     const text = await file.text();
                     const tempDiv = document.createElement('div');
@@ -1328,37 +1696,23 @@ async function handleFileUpload(event) {
             hideProgress();
         }
 
+        const savedPosition = loadLastTappedPosition(lastTappedFile);
+        currentSentenceIndex = savedPosition ? savedPosition.sentenceIndex : -1;
+        lastTappedSentenceIndex = currentSentenceIndex;
+
         contentArea.classList.add('active');
         chapterContainer.classList.add('hidden');
         processingStatus.textContent = '';
 
         setupInteractionListeners();
-        document.getElementById('voiceButton').style.display = isTTSSupported ? 'inline-block' : 'none';
-        document.getElementById('stopButton').style.display = isTTSSupported ? 'inline-block' : 'none';
-        document.getElementById('voiceButton').disabled = !isTTSSupported || sentences.length === 0;
-        document.getElementById('stopButton').disabled = true;
-        if (!isTTSSupported) {
-            processingStatus.textContent = 'Text-to-speech is not supported in this browser.';
-        }
+        updateTTSVisibility();
     } catch (error) {
         console.error('Error processing files:', error);
         contentInner.innerHTML = '<p>Error: Failed to process files.</p>';
         hideProgress();
         processingStatus.textContent = 'Error processing files.';
+        updateTTSVisibility();
     }
-}
-
-async function highlightAnswers(sectionIndex, contentInner) {
-    const section = sections[sectionIndex];
-    const language = section.language;
-    const answerPattern = language === 'english' ? /^Answer:/ : /^ଉତ୍ତର:/;
-    const spans = contentInner.querySelectorAll('span[data-sentence-index]');
-    spans.forEach(span => {
-        const text = span.textContent.trim();
-        if (answerPattern.test(text)) {
-            span.classList.add('answer-highlight');
-        }
-    });
 }
 
 async function loadContent(sectionIndex, chapterIndex) {
@@ -1380,7 +1734,6 @@ async function loadContent(sectionIndex, chapterIndex) {
     const textContent = await content.text();
 
     const tempDiv = document.createElement('div');
-    // Apply white-space: pre only for Odia Grammar section (sectionIndex === 2)
     if (sectionIndex === 2) {
         tempDiv.style.whiteSpace = 'pre';
     } else {
@@ -1398,6 +1751,7 @@ async function loadContent(sectionIndex, chapterIndex) {
                 words.forEach(word => {
                     if (word.match(/\s+/)) {
                         currentSentence += word;
+                        fragment.appendChild(document.createTextNode(word));
                     } else if (word.match(/[A-Za-z\u0B00-\u0B7F]/)) {
                         const span = document.createElement('span');
                         const cleanWord = word.replace(/[^A-Za-z\u0B00-\u0B7F]/g, '');
@@ -1423,32 +1777,78 @@ async function loadContent(sectionIndex, chapterIndex) {
         tempDiv.childNodes.forEach(processNode);
         contentInner.appendChild(tempDiv);
         contentInner.classList.remove('content-text');
-    } else if (chapter.type === 'text') {
         sentences = textContent.split(/\r?\n/).filter(line => line.trim() !== '');
-        contentInner.innerHTML = sentences.map((line, index) => 
-            `<span data-sentence-index="${index}">${line.trim()}</span>`
-        ).join('<br>');
-        contentInner.classList.add('content-text');
+    } else if (chapter.type === 'text') {
+        const allLines = textContent.split(/\r?\n/);
+        const language = sections[sectionIndex].language;
+        const subjects = parseChapterToSubjects(allLines, language);
+        currentSubjectsMap = subjects;
+        currentChapterName = chapter.name;
+        let html = `<div class="section"><h1 class="section-title">${escapeHtml(chapter.name)} - Subjects</h1>`;
+        html += '<ul class="chapter-list">';
+        let hasSubjects = false;
+        for (let [subjectName, mcqsList] of subjects) {
+            if (mcqsList.length > 0) {
+                html += `<li class="chapter-item" data-subject="${escapeHtml(subjectName)}">${escapeHtml(subjectName)}</li>`;
+                hasSubjects = true;
+            }
+        }
+        if (hasSubjects) {
+            html += '</ul></div>';
+            contentInner.innerHTML = html;
+            contentInner.classList.add('content-text');
+            contentInner.querySelectorAll('.chapter-item').forEach(li => {
+                li.addEventListener('click', (e) => {
+                    const subject = e.target.dataset.subject;
+                    loadSubjectMCQs(sectionIndex, chapterIndex, subject);
+                });
+            });
+            if (currentSubjectName) {
+                const subjectLi = contentInner.querySelector(`[data-subject="${escapeHtml(currentSubjectName)}"]`);
+                if (subjectLi) {
+                    subjectLi.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    subjectLi.classList.add('highlight');
+                    setTimeout(() => subjectLi.classList.remove('highlight'), 2000);
+                }
+                currentSubjectName = '';
+            }
+            sentences = [];
+        } else {
+            const {questions, remainingLines} = parseMCQs(allLines, language);
+            let mcqHtml = '';
+            questions.forEach(q => {
+                mcqHtml += `<div class="mcq" data-answer="${escapeHtml(q.answer.replace(/"/g, '&quot;'))}">`;
+                mcqHtml += `<div class="question-text">${escapeHtml(q.question).replace(/\n/g, '<br>')}</div>`;
+                mcqHtml += '<div class="options">';
+                q.options.forEach((opt, oidx) => {
+                    mcqHtml += `<button class="option-btn" data-oidx="${oidx}">${escapeHtml(opt)}</button><br>`;
+                });
+                mcqHtml += '</div>';
+                mcqHtml += `<div class="answer" style="display:none;background:#e3f2fd;padding:10px;margin:10px 0;border-left:4px solid #2196f3;">${escapeHtml(q.answer)}</div>`;
+                mcqHtml += `<div class="feedback" style="display:none;"></div>`;
+                mcqHtml += '</div><hr style="margin:20px 0;">';
+            });
+            let remainingHtml = remainingLines.map((line, idx) => `<span data-sentence-index="${idx}">${escapeHtml(line)}</span><br>`).join('');
+            html = mcqHtml + remainingHtml;
+            contentInner.innerHTML = html;
+            contentInner.classList.add('content-text');
+            if (questions.length > 0) {
+                setupMCQListeners(language);
+            }
+            sentences = allLines;
+        }
     }
 
     contentArea.classList.add('active');
     chapterContainer.classList.add('hidden');
     processingStatus.textContent = '';
 
-    await highlightAnswers(sectionIndex, contentInner);
-
     const savedPosition = loadLastTappedPosition(chapter.url);
     currentSentenceIndex = savedPosition ? savedPosition.sentenceIndex : -1;
     lastTappedSentenceIndex = currentSentenceIndex;
 
     setupInteractionListeners();
-    document.getElementById('voiceButton').style.display = isTTSSupported ? 'inline-block' : 'none';
-    document.getElementById('stopButton').style.display = isTTSSupported ? 'inline-block' : 'none';
-    document.getElementById('voiceButton').disabled = !isTTSSupported || sentences.length === 0;
-    document.getElementById('stopButton').disabled = true;
-    if (!isTTSSupported) {
-        processingStatus.textContent = 'Text-to-speech is not supported in this browser.';
-    }
+    updateTTSVisibility();
 }
 
 function saveLastTappedPosition(fileKey, sentenceIndex, pageIndex) {
@@ -1546,18 +1946,6 @@ async function showPopup(word = null) {
         suggestionsElement.id = 'popupSuggestions';
         popupContent.appendChild(suggestionsElement);
 
-        const dictionaryForm = document.createElement('div');
-        dictionaryForm.className = 'dictionary-form';
-        dictionaryForm.innerHTML = `
-            <h3>Add New Word</h3>
-            <input type="text" id="popupNewEnglish" placeholder="English">
-            <input type="text" id="popupNewOdia" placeholder="Odia">
-            <input type="text" id="popupNewHindi" placeholder="Hindi">
-            <input type="file" id="popupNewImage" accept="image/*">
-            <button id="popupSaveWordButton">Save Word</button>
-        `;
-        popupContent.appendChild(dictionaryForm);
-
         searchInput.addEventListener('input', () => {
             clearTimeout(dictionaryTimeout);
             resultsElement.innerHTML = '';
@@ -1567,30 +1955,10 @@ async function showPopup(word = null) {
             const searchWordVal = searchInput.value;
             if (searchWordVal.trim()) {
                 dictionaryTimeout = setTimeout(async () => {
-                    await searchWord(searchWordVal, resultsElement, suggestionsElement, true);
+                    await searchWord(searchWordVal, resultsElement, suggestionsElement, false);
                     setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton);
                     speakButton.disabled = !isTTSSupported || resultsElement.innerHTML === '';
                 }, 300);
-            }
-        });
-
-        document.getElementById('popupSaveWordButton').addEventListener('click', async () => {
-            const english = document.getElementById('popupNewEnglish').value.trim();
-            const odia = document.getElementById('popupNewOdia').value.trim();
-            const hindi = document.getElementById('popupNewHindi').value.trim();
-            const imageFile = document.getElementById('popupNewImage').files[0];
-            if (english || odia || hindi) {
-                const saved = await saveCustomWord(english || '', odia || '', hindi || '', imageFile);
-                if (saved) {
-                    document.getElementById('popupNewEnglish').value = '';
-                    document.getElementById('popupNewOdia').value = '';
-                    document.getElementById('popupNewHindi').value = '';
-                    document.getElementById('popupNewImage').value = '';
-                    searchInput.value = english || odia || hindi;
-                    await searchWord(searchInput.value, resultsElement, suggestionsElement, true);
-                    setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton);
-                    speakButton.disabled = !isTTSSupported || resultsElement.innerHTML === '';
-                }
             }
         });
 
@@ -1652,7 +2020,7 @@ async function showPopup(word = null) {
             });
         }
 
-        await searchWord(word, resultsElement, suggestionsElement, true);
+        await searchWord(word, resultsElement, suggestionsElement, false);
         speakButton.disabled = !isTTSSupported || resultsElement.innerHTML === '';
         setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton);
     }, 0);
@@ -1668,7 +2036,7 @@ function setupSuggestionListeners(suggestionsElement, searchInput, resultsElemen
             if (selectedWord) {
                 searchInput.value = selectedWord;
                 suggestionsElement.innerHTML = '';
-                await searchWord(selectedWord, resultsElement, suggestionsElement, true);
+                await searchWord(selectedWord, resultsElement, suggestionsElement, false);
                 speakButton.disabled = !isTTSSupported || resultsElement.innerHTML === '';
                 setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, speakButton);
             }
@@ -1703,6 +2071,11 @@ sections.forEach((section, sectionIndex) => {
     sectionsContainer.appendChild(sectionDiv);
 });
 
+const fileUploadContainer = document.createElement('div');
+fileUploadContainer.className = 'file-upload';
+fileUploadContainer.innerHTML = '<input type="file" id="fileUpload" accept=".pdf,.txt,.html" multiple>';
+document.getElementById('chapterContainer').appendChild(fileUploadContainer);
+
 function populateVoiceList() {
     if (!isTTSSupported) {
         document.getElementById('voiceButton').style.display = 'none';
@@ -1717,12 +2090,8 @@ function populateVoiceList() {
 }
 
 function playSpeech() {
-    if (!isTTSSupported) {
-        document.getElementById('processing-status').textContent = 'Text-to-speech is not supported in this browser.';
-        return;
-    }
-    if (!sentences.length) {
-        document.getElementById('processing-status').textContent = 'No text to read';
+    if (!isTTSSupported || isMCQContent() || sentences.length === 0) {
+        updateTTSVisibility();
         return;
     }
     if (isReadingAloud && isPaused) {
@@ -1749,9 +2118,12 @@ function playSpeech() {
 }
 
 function readNextSentence() {
-    if (!isTTSSupported) {
-        document.getElementById('processing-status').textContent = 'Text-to-speech is not supported in this browser.';
+    if (!isTTSSupported || isMCQContent() || sentences.length === 0) {
+        updateTTSVisibility();
         return;
+    }
+    while (currentSentenceIndex < sentences.length && !sentences[currentSentenceIndex].trim()) {
+        currentSentenceIndex++;
     }
     if (currentSentenceIndex >= sentences.length || !isReadingAloud) {
         stopSpeech();
@@ -1761,17 +2133,17 @@ function readNextSentence() {
         }
         return;
     }
+    const text = sentences[currentSentenceIndex];
     const sentenceSpans = document.getElementById('contentInner').querySelectorAll('span[data-sentence-index]');
     sentenceSpans.forEach(span => span.classList.remove('highlight'));
-    if (sentenceSpans[currentSentenceIndex]) {
-        sentenceSpans[currentSentenceIndex].classList.add('highlight');
+    const currentSpan = sentenceSpans[currentSentenceIndex];
+    if (currentSpan) {
+        currentSpan.classList.add('highlight');
         const contentInner = document.getElementById('contentInner');
-        const currentSpan = sentenceSpans[currentSentenceIndex];
         const spanRect = currentSpan.getBoundingClientRect();
         const containerRect = contentInner.getBoundingClientRect();
         contentInner.scrollTop += spanRect.top - containerRect.top - (containerRect.height / 2) + (spanRect.height / 2);
     }
-    const text = sentences[currentSentenceIndex];
     const voiceMap = { 
         'hi': defaultHindiVoice,
         'or': defaultOdiaVoice,
@@ -1794,20 +2166,11 @@ function readNextSentence() {
                 utterance.onend = () => {
                     activeUtterances--;
                     if (activeUtterances === 0 && isReadingAloud) {
-                        if (currentSentenceIndex < sentences.length - 1) {
-                            currentSentenceIndex++;
-                            if (lastTappedFile) {
-                                saveLastTappedPosition(lastTappedFile, currentSentenceIndex, 0);
-                            }
-                            readNextSentence();
-                        } else {
-                            stopSpeech();
-                            document.getElementById('processing-status').textContent = 'Finished reading';
-                            if (lastTappedFile) {
-                                clearLastTappedPosition(lastTappedFile);
-                                lastTappedSentenceIndex = -1;
-                            }
+                        currentSentenceIndex++;
+                        if (lastTappedFile) {
+                            saveLastTappedPosition(lastTappedFile, currentSentenceIndex, 0);
                         }
+                        readNextSentence();
                     }
                 };
                 speechUtterances.push(utterance);
@@ -1822,8 +2185,11 @@ function readNextSentence() {
         document.getElementById('stopButton').disabled = false;
         document.getElementById('processing-status').textContent = `Reading with ${usedVoicesCount} voice${usedVoicesCount > 1 ? 's' : ''}...`;
     } else {
-        stopSpeech();
-        document.getElementById('processing-status').textContent = 'No text available for reading';
+        currentSentenceIndex++;
+        if (lastTappedFile) {
+            saveLastTappedPosition(lastTappedFile, currentSentenceIndex, 0);
+        }
+        readNextSentence();
     }
 }
 
@@ -1837,7 +2203,6 @@ function stopSpeech() {
     isPaused = false;
     isDictionaryReading = false;
     document.getElementById('voiceButton').textContent = '🗣️';
-    document.getElementById('voiceButton').disabled = !isTTSSupported || sentences.length === 0;
     document.getElementById('stopButton').disabled = true;
     document.getElementById('dictionarySpeakButton').textContent = '🗣️';
     document.getElementById('dictionarySpeakButton').disabled = !isTTSSupported || document.getElementById('dictionaryResults').innerHTML === '';
@@ -1846,7 +2211,7 @@ function stopSpeech() {
         span.classList.remove('highlight');
         span.style.display = 'inline';
     });
-    document.getElementById('processing-status').textContent = isTTSSupported ? '' : 'Text-to-speech is not supported in this browser.';
+    updateTTSVisibility();
 }
 
 function speakDictionaryResults(resultsId = 'dictionaryResults', speakButtonId = 'dictionarySpeakButton') {
@@ -1918,12 +2283,15 @@ function setupDictionarySearch() {
     const searchInput = document.getElementById('dictionarySearch');
     const resultsElement = document.getElementById('dictionaryResults');
     const suggestionsElement = document.getElementById('dictionarySuggestions');
+    const addForm = document.querySelector('.dictionary-form');
+    addForm.style.display = 'none';
 
     searchInput.addEventListener('click', () => {
         searchInput.value = '';
         resultsElement.innerHTML = '';
         suggestionsElement.innerHTML = '';
         document.getElementById('dictionarySpeakButton').disabled = true;
+        addForm.style.display = 'none';
     });
 
     searchInput.addEventListener('input', () => {
@@ -1931,6 +2299,7 @@ function setupDictionarySearch() {
         resultsElement.innerHTML = '';
         suggestionsElement.innerHTML = '';
         document.getElementById('dictionarySpeakButton').disabled = true;
+        addForm.style.display = 'none';
 
         const word = searchInput.value;
         if (word.trim()) {
@@ -1946,17 +2315,19 @@ function setupDictionarySearch() {
         const english = document.getElementById('newEnglish').value.trim();
         const odia = document.getElementById('newOdia').value.trim();
         const hindi = document.getElementById('newHindi').value.trim();
-        const imageFile = document.getElementById('newImage').files[0];
+        const imageFileInput = document.getElementById('newImage');
+        const imageFile = imageFileInput.files ? imageFileInput.files[0] : null;
         if (english || odia || hindi) {
             const saved = await saveCustomWord(english || '', odia || '', hindi || '', imageFile);
             if (saved) {
                 document.getElementById('newEnglish').value = '';
                 document.getElementById('newOdia').value = '';
                 document.getElementById('newHindi').value = '';
-                document.getElementById('newImage').value = '';
+                imageFileInput.value = '';
                 await searchWord(english || odia || hindi, resultsElement, suggestionsElement, true);
                 setupSuggestionListeners(suggestionsElement, searchInput, resultsElement, document.getElementById('dictionarySpeakButton'));
                 document.getElementById('dictionarySpeakButton').disabled = !isTTSSupported || resultsElement.innerHTML === '';
+                addForm.style.display = 'none';
             }
         }
     });
@@ -2024,11 +2395,11 @@ async function init() {
         currentSentenceIndex = -1;
         lastTappedSentenceIndex = -1;
         lastTappedFile = null;
-        document.getElementById('voiceButton').disabled = !isTTSSupported;
-        document.getElementById('stopButton').disabled = true;
-        document.getElementById('processing-status').textContent = isTTSSupported ? '' : 'Text-to-speech is not supported in this browser.';
+        currentSubjectsMap = null;
+        currentChapterName = '';
+        currentSubjectName = '';
+        updateTTSVisibility();
 
-        // Scroll to the last selected chapter if available
         if (currentSectionIndex !== null && currentChapterIndex !== null) {
             const sectionElement = document.getElementById(`section-${currentSectionIndex}`);
             const chapterElement = document.getElementById(`chapter-${currentSectionIndex}-${currentChapterIndex}`);
