@@ -1803,6 +1803,10 @@ async function handleFileUpload(event) {
 
 async function loadContent(sectionIndex, chapterIndex) {
     const chapter = sections[sectionIndex].chapters[chapterIndex];
+    if (chapter.type === 'link') {
+        window.open(chapter.url, '_blank');
+        return;
+    }
     const contentArea = document.getElementById('contentArea');
     const contentInner = document.getElementById('contentInner');
     const chapterContainer = document.getElementById('chapterContainer');
@@ -2132,6 +2136,15 @@ function setupSuggestionListeners(suggestionsElement, searchInput, resultsElemen
     });
 }
 
+sections.forEach(section => {
+    const supportName = section.language === 'odia' ? 'ଆମକୁ ସହାୟତା' : 'Support Us';
+    section.chapters.unshift({
+        name: supportName,
+        type: "link",
+        url: "upi://pay?pa=9348692218-3@ibl&pn=ABHAYA%20%20BEHERA&mc=0000&mode=02&purpose=00"
+    });
+});
+
 const sectionsContainer = document.getElementById('sections');
 sections.forEach((section, sectionIndex) => {
     const sectionDiv = document.createElement('div');
@@ -2149,9 +2162,13 @@ sections.forEach((section, sectionIndex) => {
         li.id = `chapter-${sectionIndex}-${chapterIndex}`;
         li.textContent = chapter.name;
         li.addEventListener('click', () => {
-            currentSectionIndex = sectionIndex;
-            currentChapterIndex = chapterIndex;
-            loadContent(sectionIndex, chapterIndex);
+            if (chapter.type === 'link') {
+                window.open(chapter.url, '_blank');
+            } else {
+                currentSectionIndex = sectionIndex;
+                currentChapterIndex = chapterIndex;
+                loadContent(sectionIndex, chapterIndex);
+            }
         });
         chapterList.appendChild(li);
     });
