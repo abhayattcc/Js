@@ -595,6 +595,7 @@
                 </label>
                 <span class="toggle-label">Chapters</span>
             </div>
+            <button class="button" id="helpButton">Help</button>
         </div>
         <div class="dictionary-section" id="dictionarySection">
             <h1 class="section-title">Dictionary</h1>
@@ -2525,6 +2526,27 @@ async function init() {
             popup.style.display = 'none';
             document.getElementById('popupContent').innerHTML = '';
         }, 200);
+    });
+
+    document.getElementById('helpButton').addEventListener('click', () => {
+        const popup = document.getElementById('popup');
+        const popupContent = document.getElementById('popupContent');
+        popupContent.innerHTML = `
+            <h2>App Features</h2>
+            <ul>
+                <li><strong>Dictionary:</strong> Search words across English, Odia, Hindi with images and voice pronunciation.</li>
+                <li><strong>Add Words:</strong> Create custom dictionary entries including images from your device.</li>
+                <li><strong>Chapters:</strong> Explore GK and Grammar in Odia/English, organized into subjects with MCQ quizzes.</li>
+                <li><strong>MCQs:</strong> Take interactive quizzes in sets of 10, receive scores and explanations.</li>
+                <li><strong>Voice Reading:</strong> Listen to content using TTS in multiple languages; play, pause, stop.</li>
+                <li><strong>File Upload:</strong> Load your own documents (PDF, TXT, HTML) for reading or converting to quizzes.</li>
+                <li><strong>Text Selection:</strong> Tap/Select words in content to open dictionary popup instantly.</li>
+                <li><strong>Offline Access:</strong> Download content and dictionaries for use without internet.</li>
+                <li><strong>Support Us:</strong> Contribute via UPI link available in each section.</li>
+            </ul>
+        `;
+        popup.style.display = 'block';
+        setTimeout(() => { popup.classList.add('visible'); }, 10);
     });
 
     if (isTTSSupported) {
