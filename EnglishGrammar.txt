@@ -3108,8 +3108,7 @@ Alright, let's explore the world of interjections!
 
  Interjections: Concepts, Rules, and MCQs
 
-interjections, from basic definitions to their usage and punctuation, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
-
+interjections
  1. What is an Interjection?
 
 Concept: An interjection is a word or short phrase that expresses a sudden burst of emotion, feeling, or sentiment. They are typically independent of the grammatical structure of the rest of the sentence.
@@ -3325,7 +3324,7 @@ Let's delve into the concepts and rules of articles in English grammar!
 
  Articles: Concepts, Rules, and MCQs
 
-articles, including their types, rules for usage, and common pitfalls, complete with multiple-choice questions (MCQs) to test your understanding.
+articles
 
  1. What is an Article?
 
@@ -3675,7 +3674,7 @@ Let's explore determiners in detail!
 
  Determiners: Concepts, Rules, and MCQs
 
-determiners, including their definition, various types, rules for usage, and distinctions from other parts of speech, complete with multiple-choice questions (MCQs) to test your understanding.
+determiners
 
  1. What is a Determiner?
 
@@ -3989,8 +3988,7 @@ You got it! Let's dive deep into Subject-Verb Agreement.
 
  Subject-Verb Agreement: Concepts, Rules, and MCQs
 
-Subject-Verb Agreement (SVA), from basic principles to complex scenarios, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
-
+Subject-Verb Agreement (SVA)
  1. What is Subject-Verb Agreement?
 
 Concept: Subject-Verb Agreement is the grammatical rule that states that the verb in a sentence must match its subject in number. This means a singular subject takes a singular verb, and a plural subject takes a plural verb.
@@ -4379,7 +4377,7 @@ Let's explore the fascinating world of sentence types!
 
  Types of Sentences: Concepts, Rules, and MCQs
 
-sentence types, categorized by both purpose (function) and structure, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
+sentence
 
  1. What is a Sentence?
 
@@ -4403,7 +4401,7 @@ Answer: c) He sings beautifully.
 
  Part 1: Types of Sentences by Purpose (Function)
 
-Sentences can be classified by the function they serve in communication.
+Sentence (Function)
 
  1.1. Declarative Sentence
 
@@ -4602,8 +4600,7 @@ Let's explore phrases in detail!
 
  Phrases: Concepts, Rules, and MCQs
 
-phrases, from their basic definition and types to their rules and functions within a sentence, complete with multiple-choice questions (MCQs) to test your understanding.
-
+phrases
  1. What is a Phrase?
 
 Concept: A phrase is a group of related words that functions as a single unit in a sentence but does not contain a subject-verb pair that expresses a complete thought. Unlike a clause, a phrase cannot stand alone as a complete sentence.
@@ -4846,8 +4843,7 @@ Let's explore clauses in detail!
 
  Clauses: Concepts, Rules, and MCQs
 
-clauses, from their fundamental definition and types to their rules for usage and common pitfalls, complete with multiple-choice questions (MCQs) to test your understanding.
-
+clauses
  1. What is a Clause?
 
 Concept: A clause is a group of words that contains a subject (who or what the clause is about) and a predicate (what the subject does or what is said about the subject). This subject-predicate combination is the defining characteristic of a clause, distinguishing it from a phrase.
@@ -5101,7 +5097,7 @@ Let's master tenses!
 
  Tenses: Concepts, Rules, and MCQs
 
-verb tenses in English, from their fundamental concepts and forms to their specific rules of usage, complete with multiple-choice questions (MCQs) to test your understanding.
+Tense
 
  1. What are Tenses?
 
@@ -5490,10 +5486,7 @@ Answer: c) He owns a large house.
 
 Let's delve into the world of modal verbs!
 
- Modals: Concepts, Rules, and MCQs
-
-modal verbs (or simply "modals"), including their definition, characteristics, various uses, and common pitfalls, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
-
+ Modals
  1. What are Modals?
 
 Concept: Modal verbs are a type of auxiliary (helping) verb that are used to express various moods or attitudes, such as possibility, ability, permission, obligation, advice, certainty, and more. They always precede a main verb in its base form (infinitive without "to").
@@ -5832,9 +5825,7 @@ Answer: b) Strong logical deduction about the past
 
 All right, let's explore non-finite verbs!
 
- Non-Finite Verbs: Concepts, Rules, and MCQs
-
-non-finite verbs, including their definition, types (infinitives, gerunds, and participles), their functions, and common rules, complete with multiple-choice questions (MCQs) to test your understanding.
+ Non-Finite Verbs
 
  1. What is a Non-Finite Verb?
 
@@ -6054,10 +6045,8 @@ Answer: b) "Stopped to eat" means I paused another activity to start eating; "st
 
 Let's delve into Active and Passive Voice!
 
- Active and Passive Voice: Concepts, Rules, and MCQs
-
-active and passive voice, including their concepts, the rules for converting between them across all tenses, and special cases, complete with multiple-choice questions (MCQs) to test your understanding.
-
+ Active and Passive Voice
+ 
  1. What are Active and Passive Voice?
 
 Concept: Voice in grammar refers to the relationship between the action (verb) and the participants (subject and object) in a sentence. There are two main voices:
@@ -6400,10 +6389,7 @@ Answer: b) The car was stolen.
 
 Let's break down Direct and Indirect Speech!
 
- Direct and Indirect Speech (Narration): Concepts, Rules, and MCQs
-
-direct and indirect (reported) speech, including their concepts, detailed rules for converting between them across all tenses, changes in pronouns and time/place expressions, and conversion of imperative, interrogative, and exclamatory sentences, complete with multiple-choice questions (MCQs) to test your understanding.
-
+ Direct and Indirect Speech (Narration)
  1. What is Direct and Indirect Speech?
 
 Concept: Speech (or narration) refers to how we report what someone else has said.
@@ -6689,9 +6675,7 @@ Answer: c) asked
 
 All right, let's explore synonyms and antonyms in detail!
 
- Synonyms and Antonyms: Concepts, Rules, and Important Words
-
-synonyms and antonyms, including their definitions, nuances, and how they function in language. We'll also provide a list of the most important and frequently encountered synonyms and antonyms, complete with multiple-choice questions (MCQs) to test your understanding.
+ Synonyms and Antonyms
 
  1. What are Synonyms?
 
@@ -7046,9 +7030,7 @@ Answer: a) rare
 
 Let's explore phrasal verbs!
 
- Phrasal Verbs: Understanding and Important Examples
-
-Phrasal verbs are a fascinating and often challenging aspect of English. They are combinations of a verb and one or two particles (prepositions or adverbs), which together create a new meaning that is often very different from the meaning of the individual words.
+ Phrasal Verbs
 
  1. Concept of Phrasal Verbs
 
