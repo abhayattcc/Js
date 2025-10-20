@@ -2,7 +2,7 @@
 
  Nouns: Concepts, Rules, and MCQs
 
-This comprehensive guide will cover everything you need to know about nouns, from basic definitions to advanced concepts, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
+nouns, from basic definitions to advanced concepts, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
 
  1. What is a Noun?
 
@@ -556,7 +556,7 @@ Let's delve into the fascinating world of pronouns!
 
  Pronouns: Concepts, Rules, and MCQs
 
-This comprehensive guide will cover everything you need to know about pronouns, from basic definitions to advanced concepts, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
+pronouns, from basic definitions to advanced concepts, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
 
  1. What is a Pronoun?
 
@@ -1066,7 +1066,7 @@ Absolutely! Let's dive deep into the world of verbs.
 
  Verbs: Concepts, Rules, and MCQs
 
-This comprehensive guide will cover everything you need to know about verbs, from basic definitions to advanced concepts, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
+verbs, from basic definitions to advanced concepts, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
 
  1. What is a Verb?
 
@@ -1552,7 +1552,7 @@ Sure, let's explore adjectives in detail!
 
  Adjectives: Concepts, Rules, and MCQs
 
-This comprehensive guide will cover everything you need to know about adjectives, from basic definitions to advanced concepts, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
+adjectives, from basic definitions to advanced concepts, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
 
  1. What is an Adjective?
 
@@ -2000,7 +2000,7 @@ Here's a comprehensive guide to adverbs, complete with concepts, rules, and MCQs
 
  Adverbs: Concepts, Rules, and MCQs
 
-This comprehensive guide will cover everything you need to know about adverbs, from basic definitions to advanced concepts, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
+adverbs, from basic definitions to advanced concepts, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
 
  1. What is an Adverb?
 
@@ -2423,7 +2423,7 @@ Absolutely! Let's explore prepositions in detail.
 
  Prepositions: Concepts, Rules, and MCQs
 
-This comprehensive guide will cover everything you need to know about prepositions, from basic definitions to advanced concepts, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
+prepositions, from basic definitions to advanced concepts, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
 
  1. What is a Preposition?
 
@@ -2816,7 +2816,7 @@ All right, let's explore the world of conjunctions!
 
  Conjunctions: Concepts, Rules, and MCQs
 
-This comprehensive guide will cover everything you need to know about conjunctions, from basic definitions to advanced concepts, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
+conjunctions, from basic definitions to advanced concepts, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
 
  1. What is a Conjunction?
 
@@ -3108,7 +3108,7 @@ Alright, let's explore the world of interjections!
 
  Interjections: Concepts, Rules, and MCQs
 
-This comprehensive guide will cover everything you need to know about interjections, from basic definitions to their usage and punctuation, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
+interjections, from basic definitions to their usage and punctuation, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
 
  1. What is an Interjection?
 
@@ -3325,7 +3325,7 @@ Let's delve into the concepts and rules of articles in English grammar!
 
  Articles: Concepts, Rules, and MCQs
 
-This comprehensive guide will cover everything you need to know about articles, including their types, rules for usage, and common pitfalls, complete with multiple-choice questions (MCQs) to test your understanding.
+articles, including their types, rules for usage, and common pitfalls, complete with multiple-choice questions (MCQs) to test your understanding.
 
  1. What is an Article?
 
@@ -3675,7 +3675,7 @@ Let's explore determiners in detail!
 
  Determiners: Concepts, Rules, and MCQs
 
-This comprehensive guide will cover everything you need to know about determiners, including their definition, various types, rules for usage, and distinctions from other parts of speech, complete with multiple-choice questions (MCQs) to test your understanding.
+determiners, including their definition, various types, rules for usage, and distinctions from other parts of speech, complete with multiple-choice questions (MCQs) to test your understanding.
 
  1. What is a Determiner?
 
@@ -3989,7 +3989,7 @@ You got it! Let's dive deep into Subject-Verb Agreement.
 
  Subject-Verb Agreement: Concepts, Rules, and MCQs
 
-This comprehensive guide will cover everything you need to know about Subject-Verb Agreement (SVA), from basic principles to complex scenarios, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
+Subject-Verb Agreement (SVA), from basic principles to complex scenarios, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
 
  1. What is Subject-Verb Agreement?
 
@@ -4379,7 +4379,7 @@ Let's explore the fascinating world of sentence types!
 
  Types of Sentences: Concepts, Rules, and MCQs
 
-This comprehensive guide will cover everything you need to know about sentence types, categorized by both purpose (function) and structure, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
+sentence types, categorized by both purpose (function) and structure, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
 
  1. What is a Sentence?
 
@@ -4602,7 +4602,7 @@ Let's explore phrases in detail!
 
  Phrases: Concepts, Rules, and MCQs
 
-This comprehensive guide will cover everything you need to know about phrases, from their basic definition and types to their rules and functions within a sentence, complete with multiple-choice questions (MCQs) to test your understanding.
+phrases, from their basic definition and types to their rules and functions within a sentence, complete with multiple-choice questions (MCQs) to test your understanding.
 
  1. What is a Phrase?
 
@@ -4846,7 +4846,7 @@ Let's explore clauses in detail!
 
  Clauses: Concepts, Rules, and MCQs
 
-This comprehensive guide will cover everything you need to know about clauses, from their fundamental definition and types to their rules for usage and common pitfalls, complete with multiple-choice questions (MCQs) to test your understanding.
+clauses, from their fundamental definition and types to their rules for usage and common pitfalls, complete with multiple-choice questions (MCQs) to test your understanding.
 
  1. What is a Clause?
 
@@ -5101,7 +5101,7 @@ Let's master tenses!
 
  Tenses: Concepts, Rules, and MCQs
 
-This comprehensive guide will cover everything you need to know about verb tenses in English, from their fundamental concepts and forms to their specific rules of usage, complete with multiple-choice questions (MCQs) to test your understanding.
+verb tenses in English, from their fundamental concepts and forms to their specific rules of usage, complete with multiple-choice questions (MCQs) to test your understanding.
 
  1. What are Tenses?
 
@@ -5492,7 +5492,7 @@ Let's delve into the world of modal verbs!
 
  Modals: Concepts, Rules, and MCQs
 
-This comprehensive guide will cover everything you need to know about modal verbs (or simply "modals"), including their definition, characteristics, various uses, and common pitfalls, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
+modal verbs (or simply "modals"), including their definition, characteristics, various uses, and common pitfalls, complete with rules, examples, and multiple-choice questions (MCQs) to test your understanding.
 
  1. What are Modals?
 
@@ -5834,7 +5834,7 @@ All right, let's explore non-finite verbs!
 
  Non-Finite Verbs: Concepts, Rules, and MCQs
 
-This comprehensive guide will cover everything you need to know about non-finite verbs, including their definition, types (infinitives, gerunds, and participles), their functions, and common rules, complete with multiple-choice questions (MCQs) to test your understanding.
+non-finite verbs, including their definition, types (infinitives, gerunds, and participles), their functions, and common rules, complete with multiple-choice questions (MCQs) to test your understanding.
 
  1. What is a Non-Finite Verb?
 
@@ -6056,7 +6056,7 @@ Let's delve into Active and Passive Voice!
 
  Active and Passive Voice: Concepts, Rules, and MCQs
 
-This comprehensive guide will cover everything you need to know about active and passive voice, including their concepts, the rules for converting between them across all tenses, and special cases, complete with multiple-choice questions (MCQs) to test your understanding.
+active and passive voice, including their concepts, the rules for converting between them across all tenses, and special cases, complete with multiple-choice questions (MCQs) to test your understanding.
 
  1. What are Active and Passive Voice?
 
@@ -6402,7 +6402,7 @@ Let's break down Direct and Indirect Speech!
 
  Direct and Indirect Speech (Narration): Concepts, Rules, and MCQs
 
-This comprehensive guide will cover everything you need to know about direct and indirect (reported) speech, including their concepts, detailed rules for converting between them across all tenses, changes in pronouns and time/place expressions, and conversion of imperative, interrogative, and exclamatory sentences, complete with multiple-choice questions (MCQs) to test your understanding.
+direct and indirect (reported) speech, including their concepts, detailed rules for converting between them across all tenses, changes in pronouns and time/place expressions, and conversion of imperative, interrogative, and exclamatory sentences, complete with multiple-choice questions (MCQs) to test your understanding.
 
  1. What is Direct and Indirect Speech?
 
@@ -6691,7 +6691,7 @@ All right, let's explore synonyms and antonyms in detail!
 
  Synonyms and Antonyms: Concepts, Rules, and Important Words
 
-This comprehensive guide will cover everything you need to know about synonyms and antonyms, including their definitions, nuances, and how they function in language. We'll also provide a list of the most important and frequently encountered synonyms and antonyms, complete with multiple-choice questions (MCQs) to test your understanding.
+synonyms and antonyms, including their definitions, nuances, and how they function in language. We'll also provide a list of the most important and frequently encountered synonyms and antonyms, complete with multiple-choice questions (MCQs) to test your understanding.
 
  1. What are Synonyms?
 
