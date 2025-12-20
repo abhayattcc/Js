@@ -582,6 +582,66 @@
                 transform: translateX(18px);
             }
         }
+        .skip-btn {
+            margin: 10px 0;
+            padding: 8px 16px;
+            background: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .skip-btn:hover {
+            background: #f57c00;
+        }
+        .skip-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .option-btn {
+            display: block;
+            width: 100%;
+            margin: 5px 0;
+            padding: 10px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: left;
+        }
+        .option-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        .mcq {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: #fafafa;
+        }
+        .question-text {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .options {
+            margin-bottom: 10px;
+        }
+        .answer, .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .answer {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+        }
+        .feedback {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -608,7 +668,7 @@
                 <input type="text" id="newEnglish" placeholder="English">
                 <input type="text" id="newOdia" placeholder="Odia">
                 <input type="text" id="newHindi" placeholder="Hindi">
-                <input type="text" id="newImage" placeholder="Image URL (jpg, jpeg, png, webp)">
+                <input type="file" id="newImage" accept="image/*">
                 <button id="saveWordButton">Save Word</button>
             </div>
         </div>
@@ -757,7 +817,42 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
-function parseChapterToSubjects(lines, lang) {
+function extractGrammarTopic(sentence) {
+    const lower = sentence.toLowerCase().trim();
+    const topics = {
+        'nouns': 'NOUNS',
+        'noun': 'NOUNS',
+        'pronouns': 'PRONOUNS',
+        'pronoun': 'PRONOUNS',
+        'verbs': 'VERBS',
+        'verb': 'VERBS',
+        'adjectives': 'ADJECTIVES',
+        'adjective': 'ADJECTIVES',
+        'adverbs': 'ADVERBS',
+        'adverb': 'ADVERBS',
+        'prepositions': 'PREPOSITIONS',
+        'preposition': 'PREPOSITIONS',
+        'conjunctions': 'CONJUNCTIONS',
+        'conjunction': 'CONJUNCTIONS',
+        'interjections': 'INTERJECTIONS',
+        'interjection': 'INTERJECTIONS',
+        'tenses': 'TENSES',
+        'tense': 'TENSES',
+        'sentences': 'SENTENCES',
+        'sentence': 'SENTENCES',
+        'punctuation': 'PUNCTUATION'
+        // Add more as needed
+    };
+    for (const [key, value] of Object.entries(topics)) {
+        if (lower.includes(key)) {
+            return value;
+        }
+    }
+    // Fallback to uppercasing the sentence or first word
+    return sentence.split(' ').pop().toUpperCase().replace(/[^\w]/g, '');
+}
+
+function parseChapterToSubjects(lines, lang, chapterName = '') {
     const subjects = new Map();
     let currentSubject = null;
     let currentMcqs = [];
@@ -767,6 +862,7 @@ function parseChapterToSubjects(lines, lang) {
     const odiaOneRe = /^୧\.\s*/;
     const optRe = lang === 'english' ? /^[a-d]\)\s*/i : /^[କ-ଘ]\)\s*/;
     const ansRe = lang === 'english' ? /^Answer:\s*[a-d]\)/i : /^ଉତ୍ତର:\s*[କ-ଘ]\)/;
+    const isEnglishGrammar = lang === 'english' && chapterName.toLowerCase().includes('grammar');
     while (i < lines.length) {
         while (i < lines.length && !lines[i].trim()) i++;
         if (i >= lines.length) break;
@@ -783,7 +879,11 @@ function parseChapterToSubjects(lines, lang) {
                         subjects.set(currentSubject, [...currentMcqs]);
                         currentMcqs = [];
                     }
-                    currentSubject = line;
+                    if (isEnglishGrammar) {
+                        currentSubject = extractGrammarTopic(line);
+                    } else {
+                        currentSubject = line;
+                    }
                     i = j;
                     continue;
                 }
@@ -793,7 +893,7 @@ function parseChapterToSubjects(lines, lang) {
         } else {
             if (isOne && currentSubject) {
             } else if (!currentSubject) {
-                currentSubject = 'General';
+                currentSubject = isEnglishGrammar ? 'GENERAL GRAMMAR' : 'General';
             }
             let questionLines = [lines[i]];
             i++;
@@ -1012,7 +1112,8 @@ function loadSubjectMCQs(sectionIndex, chapterIndex, subjectName, batch = 0) {
             html += `<button class="option-btn" data-oidx="${oidx}">${escapeHtml(opt)}</button><br>`;
         });
         html += '</div>';
-        html += `<div class="answer" style="display:none;background:#e3f2fd;padding:10px;margin:10px 0;border-left:4px solid #2196f3;">${escapeHtml(q.answer)}</div>`;
+        html += `<button class="skip-btn">Skip</button><br>`;
+        html += `<div class="answer" style="display:none;">${escapeHtml(q.answer)}</div>`;
         html += `<div class="feedback" style="display:none;"></div>`;
         html += '</div><hr style="margin:20px 0;">';
     });
@@ -1389,21 +1490,11 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
                 document.querySelector('.dictionary-form').style.display = 'none';
             }
         } else {
-            targetElement.innerHTML = '<div class="result-item"><div class="result-text">No exact match found. Add it below.</div></div>';
-            if (isDictionary) {
-                document.querySelector('.dictionary-form').style.display = 'block';
-            }
-        }
-
-        if (suggestionsElement) {
-            suggestionsElement.className = 'dictionary-suggestions';
-            if (suggestions.length > 0) {
-                const suggestionsHtml = await Promise.all(suggestions.map(async suggestion => {
-                    let suggestionText = `<li data-english="${suggestion.English}"`;
-                    if (suggestion.odia) suggestionText += ` data-odia="${suggestion.odia}"`;
-                    if (suggestion.hindi) suggestionText += ` data-hindi="${suggestion.hindi}"`;
-                    if (suggestion.image) suggestionText += ` data-image="${suggestion.image}"`;
-                    suggestionText += `>${escapeHtml(suggestion.English)}`;
+            targetElement.innerHTML = '<div class="result-item"><div class="result-text">No results found.</div></div>';
+            if (suggestionsElement) {
+                const suggestionsHtml = await Promise.all(suggestions.slice(0, 5).map(async suggestion => {
+                    let suggestionText = `<li data-english="${suggestion.English}" data-odia="${suggestion.odia || ''}" data-hindi="${suggestion.hindi || ''}">`;
+                    suggestionText += `${escapeHtml(suggestion.English)}`;
                     if (suggestion.hindi) suggestionText += `, ${escapeHtml(suggestion.hindi)}`;
                     if (suggestion.odia) suggestionText += `, ${escapeHtml(suggestion.odia)}`;
                     if (suggestion.image && !deletedImages.includes(suggestion.image)) {
@@ -1561,13 +1652,14 @@ function speakFeedback(msg) {
 
 function setupMCQListeners(lang) {
     document.querySelectorAll('.option-btn').forEach(btn => {
-        btn.style.cssText = 'display: block; width: 100%; margin: 5px 0; padding: 10px; background: #f0f0f0; border: none; border-radius: 5px; cursor: pointer; text-align: left;';
         btn.addEventListener('click', function() {
             const mcqDiv = this.closest('.mcq');
             const options = mcqDiv.querySelectorAll('.option-btn');
             const answerDiv = mcqDiv.querySelector('.answer');
             const feedbackDiv = mcqDiv.querySelector('.feedback');
+            const skipBtn = mcqDiv.querySelector('.skip-btn');
             options.forEach(b => b.disabled = true);
+            skipBtn.disabled = true;
             const ansStr = mcqDiv.dataset.answer;
             const correctChar = extractCorrect(ansStr, lang);
             if (!correctChar) return;
@@ -1577,10 +1669,10 @@ function setupMCQListeners(lang) {
             let msg, myColor, correctColor = '#4caf50';
             if (myIdx === correctIdx) {
                 currentScore++;
-                msg = 'yah, correct';
+                msg = 'Yes, correct!';
                 myColor = '#4caf50';
             } else {
-                msg = 'sorry, it\'s wrong';
+                msg = 'Sorry, it\'s wrong';
                 myColor = '#f44336';
                 const correctBtn = Array.from(options)[correctIdx];
                 if (correctBtn) {
@@ -1592,9 +1684,32 @@ function setupMCQListeners(lang) {
             this.style.color = 'white';
             feedbackDiv.textContent = msg;
             feedbackDiv.style.display = 'block';
-            feedbackDiv.style.cssText = 'font-weight: bold; color: #d32f2f; margin: 10px 0; padding: 5px;';
+            feedbackDiv.style.cssText = `font-weight: bold; color: ${myColor === '#4caf50' ? '#2e7d32' : '#d32f2f'}; margin: 10px 0; padding: 5px;`;
             answerDiv.style.display = 'block';
             speakFeedback(msg);
+            currentAttempted++;
+            document.getElementById('attempted-count').textContent = currentAttempted;
+            document.getElementById('score-count').textContent = currentScore;
+            if (currentAttempted === currentBatchSize) {
+                setTimeout(() => showResultsPopUp(), 1000);
+            }
+        });
+    });
+
+    // Skip button listeners
+    document.querySelectorAll('.skip-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const mcqDiv = this.closest('.mcq');
+            const options = mcqDiv.querySelectorAll('.option-btn');
+            const answerDiv = mcqDiv.querySelector('.answer');
+            const feedbackDiv = mcqDiv.querySelector('.feedback');
+            options.forEach(b => b.disabled = true);
+            this.disabled = true;
+            this.style.backgroundColor = '#ccc';
+            feedbackDiv.textContent = 'Skipped';
+            feedbackDiv.style.color = '#ff9800';
+            feedbackDiv.style.display = 'block';
+            answerDiv.style.display = 'block';
             currentAttempted++;
             document.getElementById('attempted-count').textContent = currentAttempted;
             document.getElementById('score-count').textContent = currentScore;
@@ -1665,6 +1780,7 @@ async function handleFileUpload(event) {
                     html += `<button class="option-btn" data-oidx="${oidx}">${opt}</button><br>`;
                 });
                 html += '</div>';
+                html += `<button class="skip-btn">Skip</button><br>`;
                 html += `<div class="answer" style="display:none;background:#e3f2fd;padding:10px;margin:10px 0;border-left:4px solid #2196f3;">${q.answer}</div>`;
                 html += `<div class="feedback" style="display:none;"></div>`;
                 html += '</div><hr style="margin:20px 0;">';
@@ -1695,7 +1811,7 @@ async function handleFileUpload(event) {
                     allText += text + '\n';
                     const allLines = text.split(/\r?\n/);
                     const language = 'english';
-                    const subjects = parseChapterToSubjects(allLines, language);
+                    const subjects = parseChapterToSubjects(allLines, language, file.name);
                     if (subjects.size > 0) {
                         currentSubjectsMap = subjects;
                         fileHtml += `<div class="section"><h1 class="section-title">Subjects</h1>`;
@@ -1726,6 +1842,7 @@ async function handleFileUpload(event) {
                                     fileHtml += `<button class="option-btn" data-oidx="${oidx}">${opt}</button><br>`;
                                 });
                                 fileHtml += '</div>';
+                                fileHtml += `<button class="skip-btn">Skip</button><br>`;
                                 fileHtml += `<div class="answer" style="display:none;background:#e3f2fd;padding:10px;margin:10px 0;border-left:4px solid #2196f3;">${q.answer}</div>`;
                                 fileHtml += `<div class="feedback" style="display:none;"></div>`;
                                 fileHtml += '</div><hr style="margin:20px 0;">';
@@ -1865,7 +1982,7 @@ async function loadContent(sectionIndex, chapterIndex) {
     } else if (chapter.type === 'text') {
         const allLines = textContent.split(/\r?\n/);
         const language = sections[sectionIndex].language;
-        const subjects = parseChapterToSubjects(allLines, language);
+        const subjects = parseChapterToSubjects(allLines, language, chapter.name);
         currentSubjectsMap = subjects;
         currentChapterName = chapter.name;
         let html = `<div class="section"><h1 class="section-title">${escapeHtml(chapter.name)} - Subjects</h1>`;
@@ -1908,6 +2025,7 @@ async function loadContent(sectionIndex, chapterIndex) {
                     mcqHtml += `<button class="option-btn" data-oidx="${oidx}">${escapeHtml(opt)}</button><br>`;
                 });
                 mcqHtml += '</div>';
+                mcqHtml += `<button class="skip-btn">Skip</button><br>`;
                 mcqHtml += `<div class="answer" style="display:none;background:#e3f2fd;padding:10px;margin:10px 0;border-left:4px solid #2196f3;">${escapeHtml(q.answer)}</div>`;
                 mcqHtml += `<div class="feedback" style="display:none;"></div>`;
                 mcqHtml += '</div><hr style="margin:20px 0;">';
@@ -2537,7 +2655,7 @@ async function init() {
                 <li><strong>Dictionary:</strong> Search words across English, Odia, Hindi with images and voice pronunciation.</li>
                 <li><strong>Add Words:</strong> Create custom dictionary entries including images from your device.</li>
                 <li><strong>Chapters:</strong> Explore GK and Grammar in Odia/English, organized into subjects with MCQ quizzes.</li>
-                <li><strong>MCQs:</strong> Take interactive quizzes in sets of 10, receive scores and explanations.</li>
+                <li><strong>MCQs:</strong> Take interactive quizzes in sets of 10, receive scores and explanations. Use Skip button to move on (counts as attempted).</li>
                 <li><strong>Voice Reading:</strong> Listen to content using TTS in multiple languages; play, pause, stop.</li>
                 <li><strong>File Upload:</strong> Load your own documents (PDF, TXT, HTML) for reading or converting to quizzes.</li>
                 <li><strong>Text Selection:</strong> Tap/Select words in content to open dictionary popup instantly.</li>
