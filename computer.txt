@@ -7751,5 +7751,3 @@ MCQs from the provided "Answer keys" and "Solutions" sections (Internet/Browser/
     (4) Only for network configuration.
     (5) Only for database management.
     Answer: (2) To bundle a Java library containing many classes into a single file or to bundle a Java application into a so-called executable JAR file.
-
-COMPLETED
