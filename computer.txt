@@ -6060,10 +6060,6 @@ INTERNET
     (5) It allows for file attachments only.
     Answer: (3) The recipients of the message and other recipients (BCC) cannot see the persons who all receive the e-mail.
 
----
-
-MCQs from the provided "Answer keys" and "Solutions" sections (Internet/Browser/Windows Explorer):
-
 52. Which of the following is NOT an Internet Browser?
     (1) Safari
     (2) Opera
