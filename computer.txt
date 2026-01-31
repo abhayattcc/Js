@@ -5649,7 +5649,7 @@ NETWORK
 
 
 
-MCQs based on "Internet" Section:
+INTERNET
 
 1.  What is the Internet defined as?
     (1) A local area network providing communication facilities.
