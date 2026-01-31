@@ -713,7 +713,7 @@ const sections = [
             { name: "ଭୌତିକ ବିଜ୍ଞାନ", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/physics(1).txt" },
             { name: "ରାଜନୀତି ବିଜ୍ଞାନ", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/polity(1).txt" },
             { name: "Statik Gk ଓଡିଆ", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/statikgk(1).txt" },
-            { name: "ଓଡ଼ିଆ GK Theory", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/gktheory(1).txt" }
+            { name: "ଓଡ଼ିଆ GK Theory", type: "text", url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/gk theory(1).txt" }
         ]
     },
     {
@@ -799,17 +799,6 @@ let voices = [];
 let isTTSSupported = 'speechSynthesis' in window;
 let dictionaryTimeout = null;
 let isDictionaryReading = false;
-let currentSubjectsMap = null;
-let currentChapterName = '';
-let currentSubjectName = '';
-let currentBatch = 0;
-let totalBatches = 0;
-let currentScore = 0;
-let currentAttempted = 0;
-let currentBatchSize = 0;
-let currentSectionIdx = null;
-let currentChapterIdx = null;
-let currentSubject = '';
 
 function escapeHtml(text) {
     const div = document.createElement('div');
@@ -817,155 +806,23 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
-function extractGrammarTopic(sentence) {
-    const lower = sentence.toLowerCase().trim();
-    const topics = {
-        'nouns': 'NOUNS',
-        'noun': 'NOUNS',
-        'pronouns': 'PRONOUNS',
-        'pronoun': 'PRONOUNS',
-        'verbs': 'VERBS',
-        'verb': 'VERBS',
-        'adjectives': 'ADJECTIVES',
-        'adjective': 'ADJECTIVES',
-        'adverbs': 'ADVERBS',
-        'adverb': 'ADVERBS',
-        'prepositions': 'PREPOSITIONS',
-        'preposition': 'PREPOSITIONS',
-        'conjunctions': 'CONJUNCTIONS',
-        'conjunction': 'CONJUNCTIONS',
-        'interjections': 'INTERJECTIONS',
-        'interjection': 'INTERJECTIONS',
-        'tenses': 'TENSES',
-        'tense': 'TENSES',
-        'sentences': 'SENTENCES',
-        'sentence': 'SENTENCES',
-        'punctuation': 'PUNCTUATION'
-        // Add more as needed
-    };
-    for (const [key, value] of Object.entries(topics)) {
-        if (lower.includes(key)) {
-            return value;
-        }
-    }
-    // Fallback to uppercasing the sentence or first word
-    return sentence.split(' ').pop().toUpperCase().replace(/[^\w]/g, '');
-}
-
-function parseChapterToSubjects(lines, lang, chapterName = '') {
-    const subjects = new Map();
-    let currentSubject = null;
-    let currentMcqs = [];
-    let i = 0;
-    const numRe = /^[0-9\u0B66-\u0B6F]+\.\s*/;
-    const oneRe = /^1\.\s*/;
-    const odiaOneRe = /^୧\.\s*/;
-    const optRe = lang === 'english' ? /^[a-d]\)\s*/i : /^[କ-ଘ]\)\s*/;
-    const ansRe = lang === 'english' ? /^Answer:\s*[a-d]\)/i : /^ଉତ୍ତର:\s*[କ-ଘ]\)/;
-    const isEnglishGrammar = lang === 'english' && chapterName.toLowerCase().includes('grammar');
-    while (i < lines.length) {
-        while (i < lines.length && !lines[i].trim()) i++;
-        if (i >= lines.length) break;
-        const line = lines[i].trim();
-        const isNumbered = numRe.test(line);
-        const isOne = oneRe.test(line) || odiaOneRe.test(line);
-        if (!isNumbered) {
-            let j = i + 1;
-            while (j < lines.length && !lines[j].trim()) j++;
-            if (j < lines.length) {
-                const nextLine = lines[j].trim();
-                if (oneRe.test(nextLine) || odiaOneRe.test(nextLine)) {
-                    if (currentSubject && currentMcqs.length > 0) {
-                        subjects.set(currentSubject, [...currentMcqs]);
-                        currentMcqs = [];
-                    }
-                    if (isEnglishGrammar) {
-                        currentSubject = extractGrammarTopic(line);
-                    } else {
-                        currentSubject = line;
-                    }
-                    i = j;
-                    continue;
-                }
-            }
-            i++;
-            continue;
-        } else {
-            if (isOne && currentSubject) {
-            } else if (!currentSubject) {
-                currentSubject = isEnglishGrammar ? 'GENERAL GRAMMAR' : 'General';
-            }
-            let questionLines = [lines[i]];
-            i++;
-            while (i < lines.length) {
-                while (i < lines.length && !lines[i].trim()) i++;
-                if (i >= lines.length) break;
-                const nextTrim = lines[i].trim();
-                if (optRe.test(nextTrim)) break;
-                questionLines.push(lines[i]);
-                i++;
-            }
-            let opts = [];
-            while (i < lines.length && opts.length < 4) {
-                while (i < lines.length && !lines[i].trim()) i++;
-                if (i >= lines.length) break;
-                const optLine = lines[i].trim();
-                if (optRe.test(optLine)) {
-                    opts.push(lines[i]);
-                    i++;
-                } else {
-                    break;
-                }
-            }
-            let ans = null;
-            while (i < lines.length && !lines[i].trim()) i++;
-            if (i < lines.length) {
-                const ansLine = lines[i].trim();
-                if (ansRe.test(ansLine)) {
-                    ans = lines[i];
-                    i++;
-                }
-            }
-            if (opts.length === 4 && ans && currentSubject) {
-                currentMcqs.push({
-                    question: questionLines.join('\n'),
-                    options: opts,
-                    answer: ans
-                });
-            }
-        }
-    }
-    if (currentSubject && currentMcqs.length > 0) {
-        subjects.set(currentSubject, currentMcqs);
-    }
-    return subjects;
-}
-
-function parseMCQs(allLines, lang) {
-    const questions = [];
+function parseQAs(allLines, lang) {
+    const qas = [];
     const remainingLines = [];
     let i = 0;
     const numLines = allLines.length;
-    const optPrefixEng = /^[a-d]\)\s*/i;
-    const optPrefixOdia = /^[କ-ଘ]\)\s*/;
-    const ansPrefixEng = /^Answer:\s*[a-d]\)/i;
-    const ansPrefixOdia = /^ଉତ୍ତର:\s*[କ-ଘ]\)/;
+    const optPrefixEng = /^[a-e]\)\s*/i;
+    const optPrefixOdia = /^[କ-ଙ]\)\s*/;
+    const ansPrefixEng = /^Answer:\s*/i;
+    const ansPrefixOdia = /^ଉତ୍ତର:\s*/;
     while (i < numLines) {
         while (i < numLines && !allLines[i].trim()) i++;
         if (i >= numLines) break;
         const line = allLines[i].trim();
-        const isOptEng = optPrefixEng.test(line);
-        const isOptOdia = optPrefixOdia.test(line);
-        const isAnsEng = ansPrefixEng.test(line);
-        const isAnsOdia = ansPrefixOdia.test(line);
         let question = [];
         while (i < numLines) {
             const l = allLines[i].trim();
-            const isOptEng2 = optPrefixEng.test(l);
-            const isOptOdia2 = optPrefixOdia.test(l);
-            const isAnsEng2 = ansPrefixEng.test(l);
-            const isAnsOdia2 = ansPrefixOdia.test(l);
-            if ((lang === 'english' && (isOptEng2 || isAnsEng2)) || (lang === 'odia' && (isOptOdia2 || isAnsOdia2))) {
+            if ((lang === 'english' && (optPrefixEng.test(l) || ansPrefixEng.test(l))) || (lang === 'odia' && (optPrefixOdia.test(l) || ansPrefixOdia.test(l)))) {
                 break;
             }
             question.push(allLines[i]);
@@ -976,33 +833,28 @@ function parseMCQs(allLines, lang) {
             i++;
             continue;
         }
-        let optStart = i;
         let opts = [];
-        while (i < numLines && opts.length < 4) {
+        while (i < numLines) {
             while (i < numLines && !allLines[i].trim()) i++;
             if (i >= numLines) break;
             const l = allLines[i].trim();
-            const isOptEng3 = optPrefixEng.test(l);
-            const isOptOdia3 = optPrefixOdia.test(l);
-            if ((lang === 'english' && isOptEng3) || (lang === 'odia' && isOptOdia3)) {
+            const isOpt = (lang === 'english' && optPrefixEng.test(l)) || (lang === 'odia' && optPrefixOdia.test(l));
+            const isAns = (lang === 'english' && ansPrefixEng.test(l)) || (lang === 'odia' && ansPrefixOdia.test(l));
+            if (isOpt) {
                 opts.push(allLines[i]);
                 i++;
+            } else if (isAns) {
+                break;
             } else {
                 break;
             }
-        }
-        if (opts.length !== 4) {
-            remainingLines.push(...question);
-            remainingLines.push(...allLines.slice(optStart, i));
-            continue;
         }
         let ans = null;
         while (i < numLines && !allLines[i].trim()) i++;
         if (i < numLines) {
             const l = allLines[i].trim();
-            const isAnsEng4 = ansPrefixEng.test(l);
-            const isAnsOdia4 = ansPrefixOdia.test(l);
-            if ((lang === 'english' && isAnsEng4) || (lang === 'odia' && isAnsOdia4)) {
+            const isAns = (lang === 'english' && ansPrefixEng.test(l)) || (lang === 'odia' && ansPrefixOdia.test(l));
+            if (isAns) {
                 ans = allLines[i];
                 i++;
             } else {
@@ -1015,119 +867,20 @@ function parseMCQs(allLines, lang) {
             remainingLines.push(...opts);
             continue;
         }
-        questions.push({
-            question: question.join('\n'),
-            options: opts,
-            answer: ans
-        });
+        if (opts.length >= 2 && ans) {
+            qas.push({
+                question: question.join('\n'),
+                options: opts,
+                answer: ans
+            });
+        } else {
+            remainingLines.push(...question);
+            remainingLines.push(...opts);
+            if (ans) remainingLines.push(ans);
+        }
     }
     remainingLines.push(...allLines.slice(i));
-    return { questions, remainingLines };
-}
-
-function showResultsPopUp() {
-    stopSpeech();
-    const popup = document.getElementById('popup');
-    const popupContent = document.getElementById('popupContent');
-    const percentage = Math.round((currentScore / currentBatchSize) * 100);
-    popupContent.innerHTML = `
-        <h2>Results for Set ${currentBatch + 1}</h2>
-        <p>Score: ${currentScore} out of ${currentBatchSize}</p>
-        <p>Percentage: ${percentage}%</p>
-    `;
-    const buttonsDiv = popup.querySelector('.popup-buttons');
-    buttonsDiv.innerHTML = '<button class="popup-close" id="closeResults">Close</button>';
-    if (currentBatch + 1 < totalBatches) {
-        buttonsDiv.innerHTML += '<button id="nextSetBtn" class="button">Next Set</button>';
-        document.getElementById('nextSetBtn').addEventListener('click', () => {
-            loadSubjectMCQs(currentSectionIdx, currentChapterIdx, currentSubject, currentBatch + 1);
-            popup.classList.remove('visible');
-            setTimeout(() => { popup.style.display = 'none'; }, 400);
-        });
-    } else {
-        buttonsDiv.innerHTML += '<button id="finishBtn" class="button">Finish Subject</button>';
-        document.getElementById('finishBtn').addEventListener('click', () => {
-            loadSubjectSets(currentSectionIdx, currentChapterIdx, currentSubject);
-            popup.classList.remove('visible');
-            setTimeout(() => { popup.style.display = 'none'; }, 400);
-        });
-    }
-    document.getElementById('closeResults').addEventListener('click', () => {
-        popup.classList.remove('visible');
-        setTimeout(() => { popup.style.display = 'none'; }, 400);
-    });
-    popup.style.display = 'block';
-    setTimeout(() => { popup.classList.add('visible'); }, 10);
-}
-
-function loadSubjectSets(sectionIndex, chapterIndex, subjectName) {
-    currentSectionIdx = sectionIndex;
-    currentChapterIdx = chapterIndex;
-    currentSubject = subjectName;
-    const mcqs = currentSubjectsMap.get(subjectName);
-    totalBatches = Math.ceil(mcqs.length / 10);
-    let html = `<div class="section"><h1 class="section-title">${escapeHtml(subjectName)} - Question Sets</h1>`;
-    html += '<ul class="chapter-list">';
-    for (let b = 0; b < totalBatches; b++) {
-        html += `<li class="chapter-item" data-batch="${b}">${escapeHtml(`Set ${b + 1} of ${totalBatches}`)}</li>`;
-    }
-    html += '</ul>';
-    html += `<button class="home-button back-to-chapter" id="backToChapter" style="position: relative; bottom: auto; margin: 20px auto; display: block;">Back to Subjects</button></div>`;
-    const contentInner = document.getElementById('contentInner');
-    contentInner.innerHTML = html;
-    contentInner.classList.add('content-text');
-    contentInner.querySelectorAll('.chapter-item').forEach(li => {
-        li.addEventListener('click', (e) => {
-            const batch = parseInt(e.target.dataset.batch);
-            loadSubjectMCQs(sectionIndex, chapterIndex, subjectName, batch);
-        });
-    });
-    document.getElementById('backToChapter').addEventListener('click', () => {
-        loadContent(sectionIndex, chapterIndex);
-    });
-    sentences = [];
-    updateTTSVisibility();
-}
-
-function loadSubjectMCQs(sectionIndex, chapterIndex, subjectName, batch = 0) {
-    currentSectionIdx = sectionIndex;
-    currentChapterIdx = chapterIndex;
-    currentSubject = subjectName;
-    currentBatch = batch;
-    const mcqs = currentSubjectsMap.get(subjectName);
-    const batchSize = 10;
-    const start = batch * batchSize;
-    const end = Math.min(start + batchSize, mcqs.length);
-    currentBatchSize = end - start;
-    const mcqsBatch = mcqs.slice(start, end);
-    const language = sections[sectionIndex].language;
-    currentScore = 0;
-    currentAttempted = 0;
-    let html = `<div class="section"><h1 class="section-title">${escapeHtml(subjectName)} - Set ${batch + 1} of ${Math.ceil(mcqs.length / 10)}</h1>`;
-    mcqsBatch.forEach(q => {
-        html += `<div class="mcq" data-answer="${escapeHtml(q.answer.replace(/"/g, '&quot;'))}">`;
-        html += `<div class="question-text">${escapeHtml(q.question).replace(/\n/g, '<br>')}</div>`;
-        html += '<div class="options">';
-        q.options.forEach((opt, oidx) => {
-            html += `<button class="option-btn" data-oidx="${oidx}">${escapeHtml(opt)}</button><br>`;
-        });
-        html += '</div>';
-        html += `<button class="skip-btn">Skip</button><br>`;
-        html += `<div class="answer" style="display:none;">${escapeHtml(q.answer)}</div>`;
-        html += `<div class="feedback" style="display:none;"></div>`;
-        html += '</div><hr style="margin:20px 0;">';
-    });
-    html += `<div id="progress" style="text-align:center; margin:20px 0; font-size:18px; font-weight:bold;">Attempted: <span id="attempted-count">0</span> / ${currentBatchSize} | Score: <span id="score-count">0</span></div>`;
-    html += `<button class="home-button back-to-sets" id="backToSets" style="position: relative; bottom: auto; margin: 20px auto; display: block;">Back to Sets</button></div>`;
-    const contentInner = document.getElementById('contentInner');
-    contentInner.innerHTML = html;
-    contentInner.classList.add('content-text');
-    setupMCQListeners(language);
-    sentences = [];
-    document.getElementById('backToSets').addEventListener('click', () => {
-        loadSubjectSets(sectionIndex, chapterIndex, subjectName);
-    });
-    updateTTSVisibility();
+    return { qas, remainingLines };
 }
 
 function showProgress(message, percentage) {
@@ -1436,90 +1189,68 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
                 suggestionStmtEnglishHindi.free();
             }
 
-            suggestions.push(...customWords.filter(w => 
-                w.English.toLowerCase().startsWith(trimmedWord) || 
-                (w.odia && w.odia.toLowerCase().startsWith(trimmedWord)) || 
-                (w.hindi && w.hindi.toLowerCase().startsWith(trimmedWord))
-            ));
-
             const mergedSuggestions = mergeResults(suggestions);
-            suggestions = mergedSuggestions;
+            let suggestionsHtml = '<ul>';
+            mergedSuggestions.forEach(sugg => {
+                const english = sugg.English || '';
+                const odia = sugg.odia || '';
+                const hindi = sugg.hindi || '';
+                suggestionsHtml += `<li data-english="${escapeHtml(english)}" data-odia="${escapeHtml(odia)}" data-hindi="${escapeHtml(hindi)}">${escapeHtml(english ? english : (odia ? odia : hindi))}</li>`;
+            });
+            suggestionsHtml += '</ul>';
+            suggestionsElement.innerHTML = suggestionsHtml;
         }
 
-        targetElement.className = 'dictionary-results';
-        if (mergedResults.length > 0) {
-            const resultsHtml = await Promise.all(mergedResults.map(async result => {
-                let resultText = `<div class="result-item">`;
-                resultText += `<div class="result-text">`;
-                resultText += `${escapeHtml(result.English)}`;
-                if (result.hindi) resultText += `, ${escapeHtml(result.hindi)}`;
-                if (result.odia) resultText += `, ${escapeHtml(result.odia)}`;
-                resultText += `</div>`;
-                if (result.image) {
-                    const isDeleted = deletedImages.includes(result.image);
-                    resultText += `<div class="result-image">`;
-                    resultText += `<div class="image-container" data-image="${result.image}" data-word="${result.English}">`;
-                    if (!isDeleted) {
-                        let imageSrc;
-                        if (result.image.startsWith('data:')) {
-                            imageSrc = result.image;
-                        } else {
-                            imageSrc = await loadImage(result.image);
-                        }
+        let html = '';
+        mergedResults.forEach(result => {
+            html += '<div class="result-item">';
+            html += '<div class="result-text">';
+            if (result.English) html += `<strong>English:</strong> ${escapeHtml(result.English)}<br>`;
+            if (result.odia) html += `<strong>Odia:</strong> ${escapeHtml(result.odia)}<br>`;
+            if (result.hindi) html += `<strong>Hindi:</strong> ${escapeHtml(result.hindi)}<br>`;
+            html += '</div>';
+            if (result.image && !deletedImages.includes(result.image)) {
+                html += '<div class="image-container">';
+                if (result.image.startsWith('data:')) {
+                    html += `<img src="${result.image}" alt="Image for ${escapeHtml(result.English || result.odia || result.hindi)}" loading="lazy">`;
+                } else {
+                    loadImage(result.image).then(imageSrc => {
                         if (imageSrc) {
-                            resultText += `<img src="${imageSrc}" alt="Dictionary image for ${result.English}" loading="lazy">`;
-                        } else {
-                            resultText += `<p>Image not available</p>`;
+                            const imgElement = targetElement.querySelector(`[data-image-placeholder="${result.image}"]`);
+                            if (imgElement) {
+                                imgElement.src = imageSrc;
+                                imgElement.alt = `Image for ${escapeHtml(result.English || result.odia || result.hindi)}`;
+                            }
                         }
-                    } else {
-                        resultText += `<p>Image hidden</p>`;
-                    }
-                    resultText += `</div>`;
-                    resultText += `<div class="image-controls">`;
-                    resultText += `<button class="delete-button" data-image="${result.image}" data-word="${result.English}">${isDeleted ? 'Hidden' : 'Delete'}</button>`;
-                    resultText += `<button class="restore-button" data-image="${result.image}" data-word="${result.English}" ${isDeleted ? '' : 'disabled'}>Restore</button>`;
-                    resultText += `</div>`;
-                    resultText += `</div>`;
+                    });
+                    html += `<img data-image-placeholder="${result.image}" src="" loading="lazy">`;
                 }
-                resultText += `</div>`;
-                return resultText;
-            }));
-            targetElement.innerHTML = resultsHtml.join('');
-            setupImageControlListeners(targetElement);
-            if (isDictionary) {
-                document.querySelector('.dictionary-form').style.display = 'none';
+                html += '</div>';
+                html += '<div class="image-controls">';
+                html += `<button class="delete-button" data-image="${result.image}" data-word="${escapeHtml(result.English || result.odia || result.hindi)}">Delete</button>`;
+                html += `<button class="restore-button" data-image="${result.image}" data-word="${escapeHtml(result.English || result.odia || result.hindi)}" disabled>Restore</button>`;
+                html += '</div>';
+            } else if (deletedImages.includes(result.image)) {
+                html += '<div class="image-container"><p>Image hidden</p></div>';
+                html += '<div class="image-controls">';
+                html += `<button class="delete-button" data-image="${result.image}" data-word="${escapeHtml(result.English || result.odia || result.hindi)}" disabled>Hidden</button>`;
+                html += `<button class="restore-button" data-image="${result.image}" data-word="${escapeHtml(result.English || result.odia || result.hindi)}">Restore</button>`;
+                html += '</div>';
             }
-        } else {
-            targetElement.innerHTML = '<div class="result-item"><div class="result-text">No results found.</div></div>';
-            if (suggestionsElement) {
-                const suggestionsHtml = await Promise.all(suggestions.slice(0, 5).map(async suggestion => {
-                    let suggestionText = `<li data-english="${suggestion.English}" data-odia="${suggestion.odia || ''}" data-hindi="${suggestion.hindi || ''}">`;
-                    suggestionText += `${escapeHtml(suggestion.English)}`;
-                    if (suggestion.hindi) suggestionText += `, ${escapeHtml(suggestion.hindi)}`;
-                    if (suggestion.odia) suggestionText += `, ${escapeHtml(suggestion.odia)}`;
-                    if (suggestion.image && !deletedImages.includes(suggestion.image)) {
-                        let imageSrc;
-                        if (suggestion.image.startsWith('data:')) {
-                            imageSrc = suggestion.image;
-                        } else {
-                            imageSrc = await loadImage(suggestion.image);
-                        }
-                        if (imageSrc) {
-                            suggestionText += ` <img src="${imageSrc}" alt="Suggestion image for ${suggestion.English}" style="max-width: 50px; vertical-align: middle;">`;
-                        }
-                    }
-                    suggestionText += `</li>`;
-                    return suggestionText;
-                }));
-                suggestionsElement.innerHTML = '<div style="font-weight: bold;">Suggestions:</div><ul>' + suggestionsHtml.join('') + '</ul>';
-            } else {
-                suggestionsElement.innerHTML = '';
-            }
+            html += '</div>';
+        });
+        targetElement.innerHTML = html;
+        setupImageControlListeners(targetElement);
+
+        if (mergedResults.length === 0 && isDictionary) {
+            document.querySelector('.dictionary-form').style.display = 'block';
+        } else if (isDictionary) {
+            document.getElementById('dictionarySpeakButton').disabled = false;
+            document.querySelector('.dictionary-form').style.display = 'none';
         }
     } catch (error) {
         console.error('Error searching word:', error);
-        targetElement.innerHTML = '<div class="result-item"><div class="result-text">Offline mode: Dictionary not available.</div></div>';
-        if (suggestionsElement) suggestionsElement.innerHTML = '';
+        targetElement.innerHTML = '<div class="result-item"><div class="result-text">Error searching word. Please try again.</div></div>';
         if (isDictionary) {
             document.getElementById('dictionarySpeakButton').disabled = true;
             document.querySelector('.dictionary-form').style.display = 'none';
@@ -1629,108 +1360,13 @@ async function saveCustomWord(english, odia, hindi, imageFile) {
     }
 }
 
-function extractCorrect(answerStr, lang) {
-    if (lang === 'english') {
-        const match = answerStr.match(/Answer:\s*([a-d])\)/i);
-        return match ? match[1].toLowerCase() : null;
-    } else {
-        const match = answerStr.match(/ଉତ୍ତର:\s*([କ-ଘ])\)/);
-        return match ? match[1] : null;
-    }
-}
-
-function speakFeedback(msg) {
-    if (!isTTSSupported || !defaultEnglishVoice) return;
-    const utterance = new SpeechSynthesisUtterance(msg);
-    utterance.voice = defaultEnglishVoice;
-    utterance.lang = 'en-US';
-    utterance.rate = 0.8;
-    utterance.pitch = 1.0;
-    utterance.volume = 1.0;
-    window.speechSynthesis.speak(utterance);
-}
-
-function setupMCQListeners(lang) {
-    document.querySelectorAll('.option-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const mcqDiv = this.closest('.mcq');
-            const options = mcqDiv.querySelectorAll('.option-btn');
-            const answerDiv = mcqDiv.querySelector('.answer');
-            const feedbackDiv = mcqDiv.querySelector('.feedback');
-            const skipBtn = mcqDiv.querySelector('.skip-btn');
-            options.forEach(b => b.disabled = true);
-            skipBtn.disabled = true;
-            const ansStr = mcqDiv.dataset.answer;
-            const correctChar = extractCorrect(ansStr, lang);
-            if (!correctChar) return;
-            const labelStr = lang === 'english' ? 'abcd' : 'କଖଗଘ';
-            const correctIdx = labelStr.indexOf(correctChar);
-            const myIdx = parseInt(this.dataset.oidx);
-            let msg, myColor, correctColor = '#4caf50';
-            if (myIdx === correctIdx) {
-                currentScore++;
-                msg = 'Yes, correct!';
-                myColor = '#4caf50';
-            } else {
-                msg = 'Sorry, it\'s wrong';
-                myColor = '#f44336';
-                const correctBtn = Array.from(options)[correctIdx];
-                if (correctBtn) {
-                    correctBtn.style.backgroundColor = correctColor;
-                    correctBtn.style.color = 'white';
-                }
-            }
-            this.style.backgroundColor = myColor;
-            this.style.color = 'white';
-            feedbackDiv.textContent = msg;
-            feedbackDiv.style.display = 'block';
-            feedbackDiv.style.cssText = `font-weight: bold; color: ${myColor === '#4caf50' ? '#2e7d32' : '#d32f2f'}; margin: 10px 0; padding: 5px;`;
-            answerDiv.style.display = 'block';
-            speakFeedback(msg);
-            currentAttempted++;
-            document.getElementById('attempted-count').textContent = currentAttempted;
-            document.getElementById('score-count').textContent = currentScore;
-            if (currentAttempted === currentBatchSize) {
-                setTimeout(() => showResultsPopUp(), 1000);
-            }
-        });
-    });
-
-    // Skip button listeners
-    document.querySelectorAll('.skip-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const mcqDiv = this.closest('.mcq');
-            const options = mcqDiv.querySelectorAll('.option-btn');
-            const answerDiv = mcqDiv.querySelector('.answer');
-            const feedbackDiv = mcqDiv.querySelector('.feedback');
-            options.forEach(b => b.disabled = true);
-            this.disabled = true;
-            this.style.backgroundColor = '#ccc';
-            feedbackDiv.textContent = 'Skipped';
-            feedbackDiv.style.color = '#ff9800';
-            feedbackDiv.style.display = 'block';
-            answerDiv.style.display = 'block';
-            currentAttempted++;
-            document.getElementById('attempted-count').textContent = currentAttempted;
-            document.getElementById('score-count').textContent = currentScore;
-            if (currentAttempted === currentBatchSize) {
-                setTimeout(() => showResultsPopUp(), 1000);
-            }
-        });
-    });
-}
-
-function isMCQContent() {
-    return document.getElementById('contentInner').querySelector('.mcq') !== null;
-}
-
 function updateTTSVisibility() {
-    const showTTS = isTTSSupported && !isMCQContent() && sentences.length > 0;
+    const showTTS = isTTSSupported && sentences.length > 0;
     document.getElementById('voiceButton').style.display = showTTS ? 'inline-block' : 'none';
     document.getElementById('stopButton').style.display = showTTS ? 'inline-block' : 'none';
     document.getElementById('voiceButton').disabled = !showTTS;
     document.getElementById('stopButton').disabled = !showTTS;
-    document.getElementById('processing-status').textContent = showTTS ? '' : (isMCQContent() ? 'TTS disabled for MCQ content' : (sentences.length === 0 ? 'No text to read' : 'Text-to-speech is not supported in this browser.'));
+    document.getElementById('processing-status').textContent = showTTS ? '' : (sentences.length === 0 ? 'No text to read' : 'Text-to-speech is not supported in this browser.');
 }
 
 async function handleFileUpload(event) {
@@ -1770,35 +1406,47 @@ async function handleFileUpload(event) {
             }
             const allLines = totalText.split(/\r?\n/);
             const language = 'english';
-            const {questions, remainingLines} = parseMCQs(allLines, language);
+            const {qas, remainingLines} = parseQAs(allLines, language);
             let html = '';
-            questions.forEach(q => {
-                html += `<div class="mcq" data-answer="${q.answer.replace(/"/g, '&quot;')}">`;
-                html += `<div class="question-text">${q.question.replace(/\n/g, '<br>')}</div>`;
-                html += '<div class="options">';
-                q.options.forEach((opt, oidx) => {
-                    html += `<button class="option-btn" data-oidx="${oidx}">${opt}</button><br>`;
+            let sentenceIdx = 0;
+            qas.forEach(q => {
+                const showText = language === 'english' ? 'Show Answer' : 'ଉତ୍ତର ଦେଖାଅ';
+                const hideText = language === 'english' ? 'Hide Answer' : 'ଉତ୍ତର ଲୁଚାଅ';
+                html += `<div class="qa">`;
+                html += `<div class="question-text"><span data-sentence-index="${sentenceIdx}">${escapeHtml(q.question).replace(/\n/g, '<br>')}</span></div>`;
+                sentences.push(q.question);
+                sentenceIdx++;
+                html += '<div class="options"><ul>';
+                q.options.forEach(opt => {
+                    html += `<li><span data-sentence-index="${sentenceIdx}">${escapeHtml(opt)}</span></li>`;
+                    sentences.push(opt);
+                    sentenceIdx++;
                 });
-                html += '</div>';
-                html += `<button class="skip-btn">Skip</button><br>`;
-                html += `<div class="answer" style="display:none;background:#e3f2fd;padding:10px;margin:10px 0;border-left:4px solid #2196f3;">${q.answer}</div>`;
-                html += `<div class="feedback" style="display:none;"></div>`;
+                html += '</ul></div>';
+                html += `<button class="toggle-answer" data-show="${showText}" data-hide="${hideText}">${showText}</button>`;
+                html += `<div class="answer" style="display:none; background:#e3f2fd; padding:10px; margin:10px 0; border-left:4px solid #2196f3;"><span data-sentence-index="${sentenceIdx}">${escapeHtml(q.answer)}</span></div>`;
+                sentences.push(q.answer);
+                sentenceIdx++;
                 html += '</div><hr style="margin:20px 0;">';
             });
             remainingLines.forEach((line, idx) => {
-                if (questions.length > 0) {
-                    html += `<span>${escapeHtml(line)}</span><br>`;
-                } else {
-                    html += `<span data-sentence-index="${idx}">${escapeHtml(line)}</span><br>`;
-                }
+                html += `<span data-sentence-index="${sentenceIdx + idx}">${escapeHtml(line)}</span><br>`;
+                sentences.push(line);
             });
             contentInner.innerHTML += html;
             contentInner.classList.add('content-text');
-            if (questions.length > 0) {
-                setupMCQListeners(language);
-            } else {
-                sentences = remainingLines;
-            }
+            document.querySelectorAll('.toggle-answer').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const ansDiv = btn.nextElementSibling;
+                    if (ansDiv.style.display === 'none') {
+                        ansDiv.style.display = 'block';
+                        btn.textContent = btn.dataset.hide;
+                    } else {
+                        ansDiv.style.display = 'none';
+                        btn.textContent = btn.dataset.show;
+                    }
+                });
+            });
             hideProgress();
         }
         if (textFiles.length > 0) {
@@ -1811,56 +1459,47 @@ async function handleFileUpload(event) {
                     allText += text + '\n';
                     const allLines = text.split(/\r?\n/);
                     const language = 'english';
-                    const subjects = parseChapterToSubjects(allLines, language, file.name);
-                    if (subjects.size > 0) {
-                        currentSubjectsMap = subjects;
-                        fileHtml += `<div class="section"><h1 class="section-title">Subjects</h1>`;
-                        fileHtml += '<ul class="chapter-list">';
-                        for (let [subjectName, mcqsList] of subjects) {
-                            if (mcqsList.length > 0) {
-                                fileHtml += `<li class="chapter-item" data-subject="${escapeHtml(subjectName)}">${escapeHtml(subjectName)}</li>`;
-                            }
-                        }
-                        fileHtml += '</ul></div>';
-                        contentInner.innerHTML += fileHtml;
-                        contentInner.querySelectorAll('.chapter-item').forEach(li => {
-                            li.addEventListener('click', (e) => {
-                                const subject = e.target.dataset.subject;
-                                loadSubjectSets(0, 0, subject);
-                            });
+                    const {qas, remainingLines} = parseQAs(allLines, language);
+                    let sentenceIdx = sentences.length;
+                    qas.forEach(q => {
+                        const showText = language === 'english' ? 'Show Answer' : 'ଉତ୍ତର ଦେଖାଅ';
+                        const hideText = language === 'english' ? 'Hide Answer' : 'ଉତ୍ତର ଲୁଚାଅ';
+                        fileHtml += `<div class="qa">`;
+                        fileHtml += `<div class="question-text"><span data-sentence-index="${sentenceIdx}">${escapeHtml(q.question).replace(/\n/g, '<br>')}</span></div>`;
+                        sentences.push(q.question);
+                        sentenceIdx++;
+                        fileHtml += '<div class="options"><ul>';
+                        q.options.forEach(opt => {
+                            fileHtml += `<li><span data-sentence-index="${sentenceIdx}">${escapeHtml(opt)}</span></li>`;
+                            sentences.push(opt);
+                            sentenceIdx++;
                         });
-                        contentInner.classList.add('content-text');
-                        sentences = [];
-                    } else {
-                        const {questions, remainingLines} = parseMCQs(allLines, language);
-                        if (questions.length > 0) {
-                            questions.forEach(q => {
-                                fileHtml += `<div class="mcq" data-answer="${q.answer.replace(/"/g, '&quot;')}">`;
-                                fileHtml += `<div class="question-text">${q.question.replace(/\n/g, '<br>')}</div>`;
-                                fileHtml += '<div class="options">';
-                                q.options.forEach((opt, oidx) => {
-                                    fileHtml += `<button class="option-btn" data-oidx="${oidx}">${opt}</button><br>`;
-                                });
-                                fileHtml += '</div>';
-                                fileHtml += `<button class="skip-btn">Skip</button><br>`;
-                                fileHtml += `<div class="answer" style="display:none;background:#e3f2fd;padding:10px;margin:10px 0;border-left:4px solid #2196f3;">${q.answer}</div>`;
-                                fileHtml += `<div class="feedback" style="display:none;"></div>`;
-                                fileHtml += '</div><hr style="margin:20px 0;">';
-                            });
-                            remainingLines.forEach((line) => {
-                                fileHtml += `<span>${escapeHtml(line)}</span><br>`;
-                            });
-                            setupMCQListeners(language);
-                            sentences = [];
-                        } else {
-                            remainingLines.forEach((line, idx) => {
-                                fileHtml += `<span data-sentence-index="${sentences.length + idx}">${escapeHtml(line)}</span><br>`;
-                            });
-                            sentences = sentences.concat(remainingLines);
-                        }
-                        contentInner.innerHTML += fileHtml;
-                        contentInner.classList.add('content-text');
-                    }
+                        fileHtml += '</ul></div>';
+                        fileHtml += `<button class="toggle-answer" data-show="${showText}" data-hide="${hideText}">${showText}</button>`;
+                        fileHtml += `<div class="answer" style="display:none; background:#e3f2fd; padding:10px; margin:10px 0; border-left:4px solid #2196f3;"><span data-sentence-index="${sentenceIdx}">${escapeHtml(q.answer)}</span></div>`;
+                        sentences.push(q.answer);
+                        sentenceIdx++;
+                        fileHtml += '</div><hr style="margin:20px 0;">';
+                    });
+                    remainingLines.forEach((line) => {
+                        fileHtml += `<span data-sentence-index="${sentenceIdx}">${escapeHtml(line)}</span><br>`;
+                        sentences.push(line);
+                        sentenceIdx++;
+                    });
+                    contentInner.innerHTML += fileHtml;
+                    contentInner.classList.add('content-text');
+                    document.querySelectorAll('.toggle-answer').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            const ansDiv = btn.nextElementSibling;
+                            if (ansDiv.style.display === 'none') {
+                                ansDiv.style.display = 'block';
+                                btn.textContent = btn.dataset.hide;
+                            } else {
+                                ansDiv.style.display = 'none';
+                                btn.textContent = btn.dataset.show;
+                            }
+                        });
+                    });
                 } else if (file.name.endsWith('.html')) {
                     const text = await file.text();
                     const tempDiv = document.createElement('div');
@@ -1982,72 +1621,48 @@ async function loadContent(sectionIndex, chapterIndex) {
     } else if (chapter.type === 'text') {
         const allLines = textContent.split(/\r?\n/);
         const language = sections[sectionIndex].language;
-        const subjects = parseChapterToSubjects(allLines, language, chapter.name);
-        currentSubjectsMap = subjects;
-        currentChapterName = chapter.name;
-        let html = `<div class="section"><h1 class="section-title">${escapeHtml(chapter.name)} - Subjects</h1>`;
-        html += '<ul class="chapter-list">';
-        let hasSubjects = false;
-        for (let [subjectName, mcqsList] of subjects) {
-            if (mcqsList.length > 0) {
-                html += `<li class="chapter-item" data-subject="${escapeHtml(subjectName)}">${escapeHtml(subjectName)}</li>`;
-                hasSubjects = true;
-            }
-        }
-        if (hasSubjects) {
+        const {qas, remainingLines} = parseQAs(allLines, language);
+        let html = '';
+        let sentenceIdx = 0;
+        const showText = language === 'english' ? 'Show Answer' : 'ଉତ୍ତର ଦେଖାଅ';
+        const hideText = language === 'english' ? 'Hide Answer' : 'ଉତ୍ତର ଲୁଚାଅ';
+        qas.forEach(q => {
+            html += `<div class="qa">`;
+            html += `<div class="question-text"><span data-sentence-index="${sentenceIdx}">${escapeHtml(q.question).replace(/\n/g, '<br>')}</span></div>`;
+            sentences.push(q.question);
+            sentenceIdx++;
+            html += '<div class="options"><ul>';
+            q.options.forEach(opt => {
+                html += `<li><span data-sentence-index="${sentenceIdx}">${escapeHtml(opt)}</span></li>`;
+                sentences.push(opt);
+                sentenceIdx++;
+            });
             html += '</ul></div>';
-            contentInner.innerHTML = html;
-            contentInner.classList.add('content-text');
-            contentInner.querySelectorAll('.chapter-item').forEach(li => {
-                li.addEventListener('click', (e) => {
-                    const subject = e.target.dataset.subject;
-                    loadSubjectSets(sectionIndex, chapterIndex, subject);
-                });
-            });
-            if (currentSubjectName) {
-                const subjectLi = contentInner.querySelector(`[data-subject="${escapeHtml(currentSubjectName)}"]`);
-                if (subjectLi) {
-                    subjectLi.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    subjectLi.classList.add('highlight');
-                    setTimeout(() => subjectLi.classList.remove('highlight'), 2000);
-                }
-                currentSubjectName = '';
-            }
-            sentences = [];
-        } else {
-            const {questions, remainingLines} = parseMCQs(allLines, language);
-            let mcqHtml = '';
-            questions.forEach(q => {
-                mcqHtml += `<div class="mcq" data-answer="${escapeHtml(q.answer.replace(/"/g, '&quot;'))}">`;
-                mcqHtml += `<div class="question-text">${escapeHtml(q.question).replace(/\n/g, '<br>')}</div>`;
-                mcqHtml += '<div class="options">';
-                q.options.forEach((opt, oidx) => {
-                    mcqHtml += `<button class="option-btn" data-oidx="${oidx}">${escapeHtml(opt)}</button><br>`;
-                });
-                mcqHtml += '</div>';
-                mcqHtml += `<button class="skip-btn">Skip</button><br>`;
-                mcqHtml += `<div class="answer" style="display:none;background:#e3f2fd;padding:10px;margin:10px 0;border-left:4px solid #2196f3;">${escapeHtml(q.answer)}</div>`;
-                mcqHtml += `<div class="feedback" style="display:none;"></div>`;
-                mcqHtml += '</div><hr style="margin:20px 0;">';
-            });
-            let remainingHtml = '';
-            remainingLines.forEach((line, idx) => {
-                if (questions.length > 0) {
-                    remainingHtml += `<span>${escapeHtml(line)}</span><br>`;
+            html += `<button class="toggle-answer" data-show="${showText}" data-hide="${hideText}">${showText}</button>`;
+            html += `<div class="answer" style="display:none; background:#e3f2fd; padding:10px; margin:10px 0; border-left:4px solid #2196f3;"><span data-sentence-index="${sentenceIdx}">${escapeHtml(q.answer)}</span></div>`;
+            sentences.push(q.answer);
+            sentenceIdx++;
+            html += '</div><hr style="margin:20px 0;">';
+        });
+        remainingLines.forEach((line) => {
+            html += `<span data-sentence-index="${sentenceIdx}">${escapeHtml(line)}</span><br>`;
+            sentences.push(line);
+            sentenceIdx++;
+        });
+        contentInner.innerHTML = html;
+        contentInner.classList.add('content-text');
+        document.querySelectorAll('.toggle-answer').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const ansDiv = btn.nextElementSibling;
+                if (ansDiv.style.display === 'none') {
+                    ansDiv.style.display = 'block';
+                    btn.textContent = btn.dataset.hide;
                 } else {
-                    remainingHtml += `<span data-sentence-index="${idx}">${escapeHtml(line)}</span><br>`;
+                    ansDiv.style.display = 'none';
+                    btn.textContent = btn.dataset.show;
                 }
             });
-            html = mcqHtml + remainingHtml;
-            contentInner.innerHTML = html;
-            contentInner.classList.add('content-text');
-            if (questions.length > 0) {
-                setupMCQListeners(language);
-                sentences = [];
-            } else {
-                sentences = remainingLines;
-            }
-        }
+        });
     }
 
     contentArea.classList.add('active');
@@ -2314,7 +1929,7 @@ function populateVoiceList() {
 }
 
 function playSpeech() {
-    if (!isTTSSupported || isMCQContent() || sentences.length === 0) {
+    if (!isTTSSupported || sentences.length === 0) {
         updateTTSVisibility();
         return;
     }
@@ -2342,7 +1957,7 @@ function playSpeech() {
 }
 
 function readNextSentence() {
-    if (!isTTSSupported || isMCQContent() || sentences.length === 0) {
+    if (!isTTSSupported || sentences.length === 0) {
         updateTTSVisibility();
         return;
     }
@@ -2619,9 +2234,6 @@ async function init() {
         currentSentenceIndex = -1;
         lastTappedSentenceIndex = -1;
         lastTappedFile = null;
-        currentSubjectsMap = null;
-        currentChapterName = '';
-        currentSubjectName = '';
         updateTTSVisibility();
 
         if (currentSectionIndex !== null && currentChapterIndex !== null) {
