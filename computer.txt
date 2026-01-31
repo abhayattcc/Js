@@ -5715,10 +5715,6 @@ INTERNET
     (5) Wide Area Network
     Answer: (3) Modern Internet
 
----
-
-MCQs based on "World Wide Web - WWW" Section:
-
 9.  What is WWW?
     (1) A hardware component of the Internet.
     (2) A collection of computer networks.
@@ -5751,10 +5747,6 @@ MCQs based on "World Wide Web - WWW" Section:
     (5) DNS
     Answer: (3) HTTP
 
----
-
-MCQs based on "Web Server" Section:
-
 13. What is the function of a Web Server?
     (1) To create web pages.
     (2) To browse the internet.
@@ -5770,10 +5762,6 @@ MCQs based on "Web Server" Section:
     (4) TCP/IP
     (5) URL
     Answer: (3) HTTP
-
----
-
-MCQs based on "Web Page" Section:
 
 15. What is a Web Page primarily written in?
     (1) CSS
@@ -5799,10 +5787,6 @@ MCQs based on "Web Page" Section:
     (5) HTML
     Answer: (3) Uniform Resource Locator
 
----
-
-MCQs based on "Web Browser" Section:
-
 18. What is a Web Browser?
     (1) A hardware device for internet connection.
     (2) A software application that allows users to access websites.
@@ -5819,10 +5803,6 @@ MCQs based on "Web Browser" Section:
     (5) Apple Safari
     Answer: (4) Ruby
 
----
-
-MCQs based on "Home Page" Section:
-
 20. What is the definition of a Home Page?
     (1) Any page on a website.
     (2) The default page of the website.
@@ -5831,10 +5811,6 @@ MCQs based on "Home Page" Section:
     (5) A page with multimedia content.
     Answer: (2) The default page of the website.
 
----
-
-MCQs based on "Hypertext Mark-up Language (HTML)" Section:
-
 21. What is HTML used for?
     (1) To transfer data over the web.
     (2) To create web pages that are displayed on the Internet.
@@ -5842,10 +5818,6 @@ MCQs based on "Hypertext Mark-up Language (HTML)" Section:
     (4) To store web pages.
     (5) To manage computer files.
     Answer: (2) To create web pages that are displayed on the Internet.
-
----
-
-MCQs based on "Hypertext Transfer Protocol (HTTP)" Section:
 
 22. What is the primary function of HTTP?
     (1) To secure data transmission.
@@ -5871,10 +5843,6 @@ MCQs based on "Hypertext Transfer Protocol (HTTP)" Section:
     (5) Star model
     Answer: (3) Server-client model
 
----
-
-MCQs based on "Transmission Control Protocol/Internet Protocol (TCP/IP)" Section:
-
 25. What is TCP/IP?
     (1) A single communication protocol.
     (2) A set of communication protocols used to access the internet.
@@ -5891,9 +5859,6 @@ MCQs based on "Transmission Control Protocol/Internet Protocol (TCP/IP)" Section
     (5) Linus Torvalds in 1991
     Answer: (2) Vinton Cerf and Robert Kahn in 1978
 
----
-
-MCQs based on "Internet Host" Section:
 
 27. What is an Internet Host?
     (1) A type of internet service.
@@ -5910,10 +5875,6 @@ MCQs based on "Internet Host" Section:
     (4) Web Page ID
     (5) MAC Address
     Answer: (3) Hostname (also known as IP address)
-
----
-
-MCQs based on "Internet Protocol Address (IP Address)" Section:
 
 29. What is an IP Address?
     (1) A text-based address for a website.
@@ -5955,10 +5916,6 @@ MCQs based on "Internet Protocol Address (IP Address)" Section:
     (5) In text, separated by underscores.
     Answer: (3) In hexadecimal, separated by colons.
 
----
-
-MCQs based on "Uniform Resource Locator (URL)" Section:
-
 34. What is the purpose of a Uniform Resource Locator (URL)?
     (1) To identify an IP address.
     (2) To translate domain names.
@@ -5966,10 +5923,6 @@ MCQs based on "Uniform Resource Locator (URL)" Section:
     (4) To transfer files between computers.
     (5) To display web pages.
     Answer: (3) To locate the address of a resource and protocol.
-
----
-
-MCQs based on "Domain Name" Section:
 
 35. What is the function of a Domain Name?
     (1) To provide a physical address for a server.
@@ -6035,10 +5988,6 @@ MCQs based on "Domain Name" Section:
     (5) International Treaties
     Answer: (5) International Treaties
 
----
-
-MCQs based on "Domain Name System (DNS)" Section:
-
 43. What is the function of the Domain Name System (DNS)?
     (1) To create domain names.
     (2) To translate domain names into IP addresses.
@@ -6054,10 +6003,6 @@ MCQs based on "Domain Name System (DNS)" Section:
     (4) A database of user Browse history.
     (5) A database of programming languages.
     Answer: (3) A large database of domain names and its IP addresses.
-
----
-
-MCQs based on "Uploading" Section:
 
 45. What does "Uploading" refer to?
     (1) Copying files from the internet to the user’s computer.
@@ -6075,10 +6020,6 @@ MCQs based on "Uploading" Section:
     (5) No one.
     Answer: (3) Anyone.
 
----
-
-MCQs based on "Downloading" Section:
-
 47. What is "Downloading"?
     (1) The transmission of data from the computer to the internet server.
     (2) The process of copying files from the internet to the user’s computer.
@@ -6086,10 +6027,6 @@ MCQs based on "Downloading" Section:
     (4) The process of creating new files on the internet.
     (5) The transfer of data between two local computers.
     Answer: (2) The process of copying files from the internet to the user’s computer.
-
----
-
-MCQs based on "Email" Section:
 
 48. What is Electronic mail (Email)?
     (1) A method for Browse web pages.
@@ -6107,10 +6044,6 @@ MCQs based on "Email" Section:
     (5) Nothing else besides the main message.
     Answer: (2) Documents, pictures, videos etc.
 
----
-
-MCQs based on "Carbon copy (CC)" Section:
-
 50. What is the purpose of Carbon Copy (CC) in an email?
     (1) To hide recipients from each other.
     (2) To share e-mail with one or more recipients where all recipients can see all mail addresses.
@@ -6118,10 +6051,6 @@ MCQs based on "Carbon copy (CC)" Section:
     (4) To encrypt the email message.
     (5) To set an automatic reply.
     Answer: (2) To share e-mail with one or more recipients where all recipients can see all mail addresses.
-
----
-
-MCQs based on "Blind Carbon Copy (BCC)" Section:
 
 51. What is the characteristic of Blind Carbon Copy (BCC) in an email?
     (1) All recipients can see everyone who received the email.
@@ -6231,10 +6160,6 @@ MCQs from the provided "Answer keys" and "Solutions" sections (Internet/Browser/
     (5) The start menu.
     Answer: (3) The desktop and the taskbar.
 
----
-
-MCQs based on "Computer Hacking" Section:
-
 64. What is Hacking defined as?
     (1) Legitimate access to a computer system for maintenance.
     (2) An attempt to exploit a computer system or a private network inside a computer.
@@ -6258,10 +6183,6 @@ MCQs based on "Computer Hacking" Section:
     (4) Firewall
     (5) Spoofing attack
     Answer: (4) Firewall
-
----
-
-MCQs based on "Computer Virus" Section:
 
 67. What is a computer virus?
     (1) A beneficial software program that enhances computer performance.
@@ -6311,10 +6232,6 @@ MCQs based on "Computer Virus" Section:
     (5) Stuxnet and Petya
     Answer: (3) Ryuk and Troldesh
 
----
-
-MCQs based on "Computer Worm" Section:
-
 73. What is a computer worm?
     (1) A legitimate software program.
     (2) A malicious, self-replicating software program (malware) which affects the functions of software and hardware programs.
@@ -6331,10 +6248,6 @@ MCQs based on "Computer Worm" Section:
     (5) MyDoom
     Answer: (3) Stuxnet
 
----
-
-MCQs based on "Ransomware" Section:
-
 75. What is Ransomware?
     (1) A type of antivirus software.
     (2) A type of malware program that infects and takes control of a system with the intention of extorting money from its owner.
@@ -6342,10 +6255,6 @@ MCQs based on "Ransomware" Section:
     (4) A tool for data recovery.
     (5) A network security protocol.
     Answer: (2) A type of malware program that infects and takes control of a system with the intention of extorting money from its owner.
-
----
-
-MCQs based on "Botnet" Section:
 
 76. What is a Botnet?
     (1) A single, isolated computer.
@@ -6363,10 +6272,6 @@ MCQs based on "Botnet" Section:
     (5) Rootkit
     Answer: (3) Zombie (or Bot)
 
----
-
-MCQs based on "Trojan horse" Section:
-
 78. What is a Trojan horse?
     (1) A beneficial program that boosts system speed.
     (2) A type of malware that presents itself as legitimate software but installs malware actions.
@@ -6374,10 +6279,6 @@ MCQs based on "Trojan horse" Section:
     (4) An operating system.
     (5) A network protocol for secure communication.
     Answer: (2) A type of malware that presents itself as legitimate software but installs malware actions.
-
----
-
-MCQs based on "Keylogger" Section:
 
 79. What does a Keylogger do?
     (1) Encrypts data to protect it.
@@ -6395,10 +6296,6 @@ MCQs based on "Keylogger" Section:
     (5) Only operating system updates.
     Answer: (3) Usernames, passwords, credit card numbers, and personal documents.
 
----
-
-MCQs based on "Rootkit" Section:
-
 81. What is a Rootkit?
     (1) A program designed to optimize system performance.
     (2) A secret computer program designed to provide continued access to a computer while actively hiding its presence.
@@ -6414,10 +6311,6 @@ MCQs based on "Rootkit" Section:
     (4) Only web browsers.
     (5) Only email clients.
     Answer: (3) Trojans, worms, viruses.
-
----
-
-MCQs based on "Spyware" Section:
 
 83. How is Spyware installed on a computing device?
     (1) With the end user's full knowledge and consent.
@@ -6443,10 +6336,6 @@ MCQs based on "Spyware" Section:
     (5) Sending faxes.
     Answer: (2) Activating the microphone or camera to record physical activity.
 
----
-
-MCQs based on "Adware" Section:
-
 86. What is Adware designed to do?
     (1) Protect against viruses.
     (2) Display advertisements on the computer screen to generate income.
@@ -6462,10 +6351,6 @@ MCQs based on "Adware" Section:
     (4) They only appear on specific websites.
     (5) They are always static images.
     Answer: (3) They cannot be removed easily.
-
----
-
-MCQs based on "Phishing" Section:
 
 88. What is Phishing?
     (1) A cyber-defense technique.
@@ -6499,10 +6384,6 @@ MCQs based on "Phishing" Section:
     (5) Adware
     Answer: (3) Spear Phishing
 
----
-
-MCQs based on "Smurfing" Section:
-
 92. ______ is a type of denial-of-service attack that relies on flooding a network with a large volume of traffic through the manipulation of IP addresses in that network.
     (1) Phishing
     (2) Hacking
@@ -6518,10 +6399,6 @@ MCQs based on "Smurfing" Section:
     (4) Improved system performance.
     (5) Faster data transfer.
     Answer: (3) A high volume of excess activity, which can overwhelm a server or IT setup.
-
----
-
-MCQs based on "List of Abbreviations" Section (Only testing the abbreviations provided in the list):
 
 94. What is the full form of ASCII?
     (1) American Standard Computer Information Interface
@@ -7826,10 +7703,6 @@ MCQs based on "List of Abbreviations" Section (Only testing the abbreviations pr
     (4) Cross-platform Hypertext Markup Language
     (5) Extra Hyper Text Markup Language
     Answer: (1) Extensible Hyper Text Mark-up Language
-
----
-
-MCQs from the provided "Answer keys" and "Solutions" sections (SMTP/JAR):
 
 257. What is the Full form of SMTP in Computer aspects?
     (1) Switched Mail Transmitting Protocol
