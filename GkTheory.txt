@@ -2,7 +2,7 @@
 
 
 
-HISTORY
+###HISTORY###
 ANCIENT INDIA
 SOURCES OF ANCIENT INDIAN HISTORY
 1. Literary Sources : Vedic, Sanskrit, Pali, Prakrit and other literature and
@@ -719,6 +719,7 @@ Ajivika sect).
 ● These southern followers later formed the Digambra sect (lives nude)
 ●  Those who remained at Magadha, under the leadership of Sthalabahu,
 formed Shvetambar sect (wears white garments)
+
 FIVE MAIN TEACHINGS
 
 
@@ -4237,7 +4238,7 @@ Vivekanand Swami Vivekanand Maharaja Khetadi
 
 
 
-POLITY AND CONSTITUTION
+###POLITY AND CONSTITUTION###
 EVOLUTION OF THE CONSTITUTION OF INDIA
 ● A constitution is a document of people’s faith and aspirations possessing a
 special legal sanctity. It is the fundamental law of the country and all other
@@ -6221,7 +6222,7 @@ state
 
 
 
-GEOGRAPHY
+###GEOGRAPHY###
 UNIVERSE AND SOLAR SYSTEM
 Universe
 ● The vast surrounding space is called Universe. It incorporates everything
@@ -7706,7 +7707,7 @@ Andmanese India Arapesh Papua New Guinea
 
 Arunta Australia Ashants Ghana
  
-GEOGRAPHY (INDIA)
+###GEOGRAPHY (INDIA)###
 Location
 India is the seventh largest and the second most populous country in the
 world. It lies between latitudes 8°4' N and 37°6' N and longitudes 68°7' E and
@@ -8897,7 +8898,7 @@ West Bengal Debar Lake, East Calcutta Wetlands, Jore Pokhri, Mirik
 Lake, Rabindra Sarobar, Rasikbil, Santragacchi Lake,
 Senchal Lake.
 
-HUMAN GEOGRAPHY
+###HUMAN GEOGRAPHY###
 ●  The present day population of the Indian Sub-continent is supposed to
 have affinity to the following racial groups :
 1. The Negrito 2. The Proto-Australoids
@@ -8935,7 +8936,7 @@ Uttar Pradesh - Khasa, Tharu, Bhotia
 
 
 
-ECONOMY
+###ECONOMY###
 ECONOMY AND ECONOMICS
 ● Economy is the state of a country or region in terms of the production and
 consumption of goods and services and the supply of money.
@@ -10212,7 +10213,8 @@ supervision of the Indian insurance Industry.
 
 
 GENERAL SCIENCE
-PHYSICS
+###PHYSICS###
+
 Physics is the branch of science that deals with the study of matter and
 energy and their inter–relationship.
 MOTION
@@ -11126,7 +11128,10 @@ sudden destruction of high energy free electrons.
 ● Gamma radiation are produced by the nucleus of an atom, by the sudden
 destructions of high energy particles. They find use in the cure of cancer like
 the one released by Co-60.
-CHEMISTRY
+
+
+###CHEMISTRY###
+
 Chemistry is the branch of science concerned with the composition,
 properties, characteristics and reactions of substances along with energy
 changes. Inorganic Chemistry is associated with the properties of
@@ -12313,7 +12318,9 @@ NATURAL OCCURENCE OF SOME ACIDS
 ● Hydrochloric acid – Gastric juice
 ● Acetic acid – Vinegar
 ● Oxalic acid – Tomatoes
-BIOLOGY
+
+###BIOLOGY###
+
 Biology is considered as a natural science concerned with the study of life
 and living organism including their structure, function, growth, evolution,
 distribution and environment. In general, it recognizes the cell as the basic
@@ -14768,8 +14775,7 @@ Mahatma Gandhi Marine National Park
 102. Campbell Bay National Park 1992 426.23
 103. Golathea National Park 1992 110
 
-COMPUTER
-HISTORY
+###COMPUTER HISTORY###
 ● The genesis of mechanical/digital computing can be traced back to Blaise
 Pascal (1623-1662) and GW Liebnitz (1646-1716). However, Charles
 Babbage (1792-1871) was the first to imagine a machine that could process
