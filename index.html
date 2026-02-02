@@ -799,6 +799,8 @@ let voices = [];
 let isTTSSupported = 'speechSynthesis' in window;
 let dictionaryTimeout = null;
 let isDictionaryReading = false;
+let navigationHistory = [];
+let lastSelectedSetIndex = -1;
 
 function escapeHtml(text) {
     const div = document.createElement('div');
@@ -811,8 +813,8 @@ function parseQAs(allLines, lang) {
     const remainingLines = [];
     let i = 0;
     const numLines = allLines.length;
-    const optPrefixEng = /^[a-e]\)\s*/i;
-    const optPrefixOdia = /^[କ-ଙ]\)\s*/;
+    const optPrefixEng = /^[a-e1-5]\)\s*/i;
+    const optPrefixOdia = /^[କ-ଙ୧-୫]\)\s*/;
     const ansPrefixEng = /^Answer:\s*/i;
     const ansPrefixOdia = /^ଉତ୍ତର:\s*/;
     while (i < numLines) {
@@ -1382,6 +1384,7 @@ async function handleFileUpload(event) {
     lastTappedFile = files[0].name;
     lastTappedSentenceIndex = -1;
     sentences = [];
+    navigationHistory = [() => handleFileUpload(event)];
 
     const pdfFiles = files.filter(f => f.name.endsWith('.pdf'));
     const textFiles = files.filter(f => f.name.endsWith('.txt') || f.name.endsWith('.html'));
@@ -1409,44 +1412,45 @@ async function handleFileUpload(event) {
             const {qas, remainingLines} = parseQAs(allLines, language);
             let html = '';
             let sentenceIdx = 0;
-            qas.forEach(q => {
-                const showText = language === 'english' ? 'Show Answer' : 'ଉତ୍ତର ଦେଖାଅ';
-                const hideText = language === 'english' ? 'Hide Answer' : 'ଉତ୍ତର ଲୁଚାଅ';
-                html += `<div class="qa">`;
-                html += `<div class="question-text"><span data-sentence-index="${sentenceIdx}">${escapeHtml(q.question).replace(/\n/g, '<br>')}</span></div>`;
-                sentences.push(q.question);
-                sentenceIdx++;
-                html += '<div class="options"><ul>';
-                q.options.forEach(opt => {
-                    html += `<li><span data-sentence-index="${sentenceIdx}">${escapeHtml(opt)}</span></li>`;
-                    sentences.push(opt);
-                    sentenceIdx++;
-                });
-                html += '</ul></div>';
-                html += `<button class="toggle-answer" data-show="${showText}" data-hide="${hideText}">${showText}</button>`;
-                html += `<div class="answer" style="display:none; background:#e3f2fd; padding:10px; margin:10px 0; border-left:4px solid #2196f3;"><span data-sentence-index="${sentenceIdx}">${escapeHtml(q.answer)}</span></div>`;
-                sentences.push(q.answer);
-                sentenceIdx++;
-                html += '</div><hr style="margin:20px 0;">';
-            });
-            remainingLines.forEach((line, idx) => {
-                html += `<span data-sentence-index="${sentenceIdx + idx}">${escapeHtml(line)}</span><br>`;
+            remainingLines.forEach((line) => {
+                html += `<span data-sentence-index="${sentenceIdx}">${escapeHtml(line)}</span><br>`;
                 sentences.push(line);
+                sentenceIdx++;
             });
-            contentInner.innerHTML += html;
-            contentInner.classList.add('content-text');
-            document.querySelectorAll('.toggle-answer').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const ansDiv = btn.nextElementSibling;
-                    if (ansDiv.style.display === 'none') {
-                        ansDiv.style.display = 'block';
-                        btn.textContent = btn.dataset.hide;
-                    } else {
-                        ansDiv.style.display = 'none';
-                        btn.textContent = btn.dataset.show;
+            if (qas.length > 0) {
+                html += '<h3>MCQ Sets</h3><ul class="chapter-list">';
+                const sets = [];
+                for (let i = 0; i < qas.length; i += 10) {
+                    const setQas = qas.slice(i, i + 10);
+                    if (setQas.length > 0) {
+                        const firstQ = setQas[0].question.trim();
+                        const first5Words = firstQ.split(/\s+/).slice(0, 5).join(' ');
+                        sets.push({name: first5Words + '...', qas: setQas});
+                        html += `<li class="chapter-item" data-set-index="${sets.length - 1}">${escapeHtml(first5Words + '...')}</li>`;
                     }
+                }
+                html += '</ul>';
+                contentInner.innerHTML = html;
+                document.querySelectorAll('.chapter-item[data-set-index]').forEach(item => {
+                    item.addEventListener('click', () => {
+                        const idx = parseInt(item.getAttribute('data-set-index'));
+                        lastSelectedSetIndex = idx;
+                        loadMcqSet(sets[idx], language, files[0].name);
+                    });
                 });
-            });
+                if (lastSelectedSetIndex !== -1) {
+                    const selectedItem = contentInner.querySelector(`.chapter-item[data-set-index="${lastSelectedSetIndex}"]`);
+                    if (selectedItem) {
+                        selectedItem.classList.add('highlight');
+                        selectedItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        setTimeout(() => selectedItem.classList.remove('highlight'), 2000);
+                    }
+                    lastSelectedSetIndex = -1;
+                }
+            } else {
+                contentInner.innerHTML = html;
+            }
+            contentInner.classList.add('content-text');
             hideProgress();
         }
         if (textFiles.length > 0) {
@@ -1460,46 +1464,47 @@ async function handleFileUpload(event) {
                     const allLines = text.split(/\r?\n/);
                     const language = 'english';
                     const {qas, remainingLines} = parseQAs(allLines, language);
-                    let sentenceIdx = sentences.length;
-                    qas.forEach(q => {
-                        const showText = language === 'english' ? 'Show Answer' : 'ଉତ୍ତର ଦେଖାଅ';
-                        const hideText = language === 'english' ? 'Hide Answer' : 'ଉତ୍ତର ଲୁଚାଅ';
-                        fileHtml += `<div class="qa">`;
-                        fileHtml += `<div class="question-text"><span data-sentence-index="${sentenceIdx}">${escapeHtml(q.question).replace(/\n/g, '<br>')}</span></div>`;
-                        sentences.push(q.question);
-                        sentenceIdx++;
-                        fileHtml += '<div class="options"><ul>';
-                        q.options.forEach(opt => {
-                            fileHtml += `<li><span data-sentence-index="${sentenceIdx}">${escapeHtml(opt)}</span></li>`;
-                            sentences.push(opt);
-                            sentenceIdx++;
-                        });
-                        fileHtml += '</ul></div>';
-                        fileHtml += `<button class="toggle-answer" data-show="${showText}" data-hide="${hideText}">${showText}</button>`;
-                        fileHtml += `<div class="answer" style="display:none; background:#e3f2fd; padding:10px; margin:10px 0; border-left:4px solid #2196f3;"><span data-sentence-index="${sentenceIdx}">${escapeHtml(q.answer)}</span></div>`;
-                        sentences.push(q.answer);
-                        sentenceIdx++;
-                        fileHtml += '</div><hr style="margin:20px 0;">';
-                    });
+                    let html = '';
+                    let sentenceIdx = 0;
                     remainingLines.forEach((line) => {
-                        fileHtml += `<span data-sentence-index="${sentenceIdx}">${escapeHtml(line)}</span><br>`;
+                        html += `<span data-sentence-index="${sentenceIdx}">${escapeHtml(line)}</span><br>`;
                         sentences.push(line);
                         sentenceIdx++;
                     });
-                    contentInner.innerHTML += fileHtml;
-                    contentInner.classList.add('content-text');
-                    document.querySelectorAll('.toggle-answer').forEach(btn => {
-                        btn.addEventListener('click', () => {
-                            const ansDiv = btn.nextElementSibling;
-                            if (ansDiv.style.display === 'none') {
-                                ansDiv.style.display = 'block';
-                                btn.textContent = btn.dataset.hide;
-                            } else {
-                                ansDiv.style.display = 'none';
-                                btn.textContent = btn.dataset.show;
+                    if (qas.length > 0) {
+                        html += '<h3>MCQ Sets</h3><ul class="chapter-list">';
+                        const sets = [];
+                        for (let i = 0; i < qas.length; i += 10) {
+                            const setQas = qas.slice(i, i + 10);
+                            if (setQas.length > 0) {
+                                const firstQ = setQas[0].question.trim();
+                                const first5Words = firstQ.split(/\s+/).slice(0, 5).join(' ');
+                                sets.push({name: first5Words + '...', qas: setQas});
+                                html += `<li class="chapter-item" data-set-index="${sets.length - 1}">${escapeHtml(first5Words + '...')}</li>`;
                             }
+                        }
+                        html += '</ul>';
+                        contentInner.innerHTML = html;
+                        document.querySelectorAll('.chapter-item[data-set-index]').forEach(item => {
+                            item.addEventListener('click', () => {
+                                const idx = parseInt(item.getAttribute('data-set-index'));
+                                lastSelectedSetIndex = idx;
+                                loadMcqSet(sets[idx], language, file.name);
+                            });
                         });
-                    });
+                        if (lastSelectedSetIndex !== -1) {
+                            const selectedItem = contentInner.querySelector(`.chapter-item[data-set-index="${lastSelectedSetIndex}"]`);
+                            if (selectedItem) {
+                                selectedItem.classList.add('highlight');
+                                selectedItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                setTimeout(() => selectedItem.classList.remove('highlight'), 2000);
+                            }
+                            lastSelectedSetIndex = -1;
+                        }
+                    } else {
+                        contentInner.innerHTML = html;
+                    }
+                    contentInner.classList.add('content-text');
                 } else if (file.name.endsWith('.html')) {
                     const text = await file.text();
                     const tempDiv = document.createElement('div');
@@ -1569,6 +1574,8 @@ async function loadContent(sectionIndex, chapterIndex) {
     const chapterContainer = document.getElementById('chapterContainer');
     const processingStatus = document.getElementById('processing-status');
 
+    stopSpeech();
+    navigationHistory = [() => loadContent(sectionIndex, chapterIndex)];
     contentInner.innerHTML = '';
     lastTappedFile = chapter.url;
     lastTappedSentenceIndex = -1;
@@ -1587,6 +1594,53 @@ async function loadContent(sectionIndex, chapterIndex) {
         tempDiv.style.whiteSpace = 'pre-wrap';
     }
     
+    if ((chapter.name === "GK Theory" && sections[sectionIndex].language === "english") || (chapter.name === "ଓଡ଼ିଆ GK Theory" && sections[sectionIndex].language === "odia")) {
+        const lines = textContent.split(/\r?\n/);
+        const subChapters = [];
+        let currentSub = {name: "Introduction", lines: []};
+        for (let line of lines) {
+            const match = line.match(/^#+\s*(.*?)\s*#+$/);
+            if (match) {
+                if (currentSub.lines.length > 0) {
+                    subChapters.push(currentSub);
+                }
+                currentSub = {name: match[1].trim(), lines: []};
+            } else {
+                currentSub.lines.push(line);
+            }
+        }
+        if (currentSub.lines.length > 0) {
+            subChapters.push(currentSub);
+        }
+        let html = '<h1>GK Theory Chapters</h1><ul class="chapter-list">';
+        subChapters.forEach((sub, idx) => {
+            html += `<li class="chapter-item" data-set-index="${idx}">${escapeHtml(sub.name)}</li>`;
+        });
+        html += '</ul>';
+        contentInner.innerHTML = html;
+        document.querySelectorAll('.chapter-item[data-set-index]').forEach(item => {
+            item.addEventListener('click', () => {
+                const idx = parseInt(item.getAttribute('data-set-index'));
+                lastSelectedSetIndex = idx;
+                loadSubChapter(subChapters[idx], sections[sectionIndex].language);
+            });
+        });
+        if (lastSelectedSetIndex !== -1) {
+            const selectedItem = contentInner.querySelector(`.chapter-item[data-set-index="${lastSelectedSetIndex}"]`);
+            if (selectedItem) {
+                selectedItem.classList.add('highlight');
+                selectedItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => selectedItem.classList.remove('highlight'), 2000);
+            }
+            lastSelectedSetIndex = -1;
+        }
+        sentences = [];
+        updateTTSVisibility();
+        contentArea.classList.add('active');
+        chapterContainer.classList.add('hidden');
+        processingStatus.textContent = '';
+        return;
+    }
     if (chapter.type === 'html') {
         tempDiv.innerHTML = textContent;
         const processNode = (node) => {
@@ -1624,45 +1678,45 @@ async function loadContent(sectionIndex, chapterIndex) {
         const {qas, remainingLines} = parseQAs(allLines, language);
         let html = '';
         let sentenceIdx = 0;
-        const showText = language === 'english' ? 'Show Answer' : 'ଉତ୍ତର ଦେଖାଅ';
-        const hideText = language === 'english' ? 'Hide Answer' : 'ଉତ୍ତର ଲୁଚାଅ';
-        qas.forEach(q => {
-            html += `<div class="qa">`;
-            html += `<div class="question-text"><span data-sentence-index="${sentenceIdx}">${escapeHtml(q.question).replace(/\n/g, '<br>')}</span></div>`;
-            sentences.push(q.question);
-            sentenceIdx++;
-            html += '<div class="options"><ul>';
-            q.options.forEach(opt => {
-                html += `<li><span data-sentence-index="${sentenceIdx}">${escapeHtml(opt)}</span></li>`;
-                sentences.push(opt);
-                sentenceIdx++;
-            });
-            html += '</ul></div>';
-            html += `<button class="toggle-answer" data-show="${showText}" data-hide="${hideText}">${showText}</button>`;
-            html += `<div class="answer" style="display:none; background:#e3f2fd; padding:10px; margin:10px 0; border-left:4px solid #2196f3;"><span data-sentence-index="${sentenceIdx}">${escapeHtml(q.answer)}</span></div>`;
-            sentences.push(q.answer);
-            sentenceIdx++;
-            html += '</div><hr style="margin:20px 0;">';
-        });
         remainingLines.forEach((line) => {
             html += `<span data-sentence-index="${sentenceIdx}">${escapeHtml(line)}</span><br>`;
             sentences.push(line);
             sentenceIdx++;
         });
-        contentInner.innerHTML = html;
-        contentInner.classList.add('content-text');
-        document.querySelectorAll('.toggle-answer').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const ansDiv = btn.nextElementSibling;
-                if (ansDiv.style.display === 'none') {
-                    ansDiv.style.display = 'block';
-                    btn.textContent = btn.dataset.hide;
-                } else {
-                    ansDiv.style.display = 'none';
-                    btn.textContent = btn.dataset.show;
+        if (qas.length > 0) {
+            html += '<h3>MCQ Sets</h3><ul class="chapter-list">';
+            const sets = [];
+            for (let i = 0; i < qas.length; i += 10) {
+                const setQas = qas.slice(i, i + 10);
+                if (setQas.length > 0) {
+                    const firstQ = setQas[0].question.trim();
+                    const first5Words = firstQ.split(/\s+/).slice(0, 5).join(' ');
+                    sets.push({name: first5Words + '...', qas: setQas});
+                    html += `<li class="chapter-item" data-set-index="${sets.length - 1}">${escapeHtml(first5Words + '...')}</li>`;
                 }
+            }
+            html += '</ul>';
+            contentInner.innerHTML = html;
+            document.querySelectorAll('.chapter-item[data-set-index]').forEach(item => {
+                item.addEventListener('click', () => {
+                    const idx = parseInt(item.getAttribute('data-set-index'));
+                    lastSelectedSetIndex = idx;
+                    loadMcqSet(sets[idx], language, chapter.name);
+                });
             });
-        });
+            if (lastSelectedSetIndex !== -1) {
+                const selectedItem = contentInner.querySelector(`.chapter-item[data-set-index="${lastSelectedSetIndex}"]`);
+                if (selectedItem) {
+                    selectedItem.classList.add('highlight');
+                    selectedItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    setTimeout(() => selectedItem.classList.remove('highlight'), 2000);
+                }
+                lastSelectedSetIndex = -1;
+            }
+        } else {
+            contentInner.innerHTML = html;
+        }
+        contentInner.classList.add('content-text');
     }
 
     contentArea.classList.add('active');
@@ -2196,6 +2250,171 @@ function setupToggleSwitch() {
     sectionsContainer.classList.add('hidden');
 }
 
+function loadSubChapter(subChapter, language) {
+    stopSpeech();
+    navigationHistory.push(() => loadSubChapter(subChapter, language));
+    const contentInner = document.getElementById('contentInner');
+    contentInner.innerHTML = '';
+    sentences = [];
+    const allLines = subChapter.lines;
+    const {qas, remainingLines} = parseQAs(allLines, language);
+    let html = `<h2>${escapeHtml(subChapter.name)}</h2>`;
+    let sentenceIdx = 0;
+    remainingLines.forEach(line => {
+        html += `<span data-sentence-index="${sentenceIdx}">${escapeHtml(line)}</span><br>`;
+        sentences.push(line);
+        sentenceIdx++;
+    });
+    if (qas.length > 0) {
+        html += '<h3>MCQ Sets</h3><ul class="chapter-list">';
+        const sets = [];
+        for (let i = 0; i < qas.length; i += 10) {
+            const setQas = qas.slice(i, i + 10);
+            if (setQas.length > 0) {
+                const firstQ = setQas[0].question.trim();
+                const first5Words = firstQ.split(/\s+/).slice(0, 5).join(' ');
+                sets.push({name: first5Words + '...', qas: setQas});
+                html += `<li class="chapter-item" data-set-index="${sets.length - 1}">${escapeHtml(first5Words + '...')}</li>`;
+            }
+        }
+        html += '</ul>';
+        contentInner.innerHTML = html;
+        document.querySelectorAll('.chapter-item[data-set-index]').forEach(item => {
+            item.addEventListener('click', () => {
+                const idx = parseInt(item.getAttribute('data-set-index'));
+                lastSelectedSetIndex = idx;
+                loadMcqSet(sets[idx], language, subChapter.name);
+            });
+        });
+        if (lastSelectedSetIndex !== -1) {
+            const selectedItem = contentInner.querySelector(`.chapter-item[data-set-index="${lastSelectedSetIndex}"]`);
+            if (selectedItem) {
+                selectedItem.classList.add('highlight');
+                selectedItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => selectedItem.classList.remove('highlight'), 2000);
+            }
+            lastSelectedSetIndex = -1;
+        }
+    } else {
+        contentInner.innerHTML = html;
+    }
+    contentInner.classList.add('content-text');
+    setupInteractionListeners();
+    updateTTSVisibility();
+}
+
+function loadMcqSet(mcqSet, language, subName) {
+    stopSpeech();
+    navigationHistory.push(() => loadMcqSet(mcqSet, language, subName));
+    const contentInner = document.getElementById('contentInner');
+    contentInner.innerHTML = '';
+    sentences = [];
+    const showText = language === 'english' ? 'Show Answer' : 'ଉତ୍ତର ଦେଖାଅ';
+    const hideText = language === 'english' ? 'Hide Answer' : 'ଉତ୍ତର ଲୁଚାଅ';
+    let html = `<h2>${escapeHtml(subName)} - ${escapeHtml(mcqSet.name)}</h2>`;
+    let sentenceIdx = 0;
+    mcqSet.qas.forEach((qa, qaIdx) => {
+        html += `<div class="mcq" id="mcq-${qaIdx}">`;
+        html += `<div class="question-text"><span data-sentence-index="${sentenceIdx}">${escapeHtml(qa.question).replace(/\n/g, '<br>')}</span></div>`;
+        sentences.push(qa.question);
+        sentenceIdx++;
+        html += '<div class="options">';
+        qa.options.forEach((opt, optIdx) => {
+            const optPrefixMatch = opt.match(/^([a-e1-5କ-ଙ୧-୫])\)/);
+            const optKey = optPrefixMatch ? optPrefixMatch[1] : optIdx + 1;
+            html += `<button class="option-btn" data-opt="${optKey}" data-sentence-index="${sentenceIdx}">${escapeHtml(opt)}</button>`;
+            sentences.push(opt);
+            sentenceIdx++;
+        });
+        html += '</div>';
+        html += '<div class="feedback"></div>';
+        html += `<button class="toggle-answer" data-show="${showText}" data-hide="${hideText}" data-mcq-id="${qaIdx}">${showText}</button>`;
+        html += `<div class="answer" style="display:none;"><span class="answer-highlight" data-sentence-index="${sentenceIdx}">${escapeHtml(qa.answer)}</span></div>`;
+        sentences.push(qa.answer);
+        sentenceIdx++;
+        html += '</div>';
+    });
+    contentInner.innerHTML = html;
+    contentInner.classList.add('content-text');
+    document.querySelectorAll('.toggle-answer').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const mcqId = btn.getAttribute('data-mcq-id');
+            const mcqDiv = document.getElementById(`mcq-${mcqId}`);
+            const ansDiv = btn.nextElementSibling;
+            const isShowing = ansDiv.style.display === 'none';
+            ansDiv.style.display = isShowing ? 'block' : 'none';
+            btn.textContent = isShowing ? btn.dataset.hide : btn.dataset.show;
+            const ansMatch = ansDiv.textContent.match(/\(([a-e1-5କ-ଙ୧-୫])\)/);
+            if (ansMatch) {
+                const correctKey = ansMatch[1];
+                mcqDiv.querySelectorAll('.option-btn').forEach(optBtn => {
+                    if (optBtn.getAttribute('data-opt') === correctKey) {
+                        optBtn.classList.toggle('answer-highlight', isShowing);
+                    } else {
+                        optBtn.classList.remove('answer-highlight');
+                    }
+                });
+            }
+        });
+    });
+    document.querySelectorAll('.mcq').forEach(mcqDiv => {
+        const qaIdx = mcqDiv.id.split('-')[1];
+        const qa = mcqSet.qas[qaIdx];
+        const ansMatch = qa.answer.match(/\(([a-e1-5କ-ଙ୧-୫])\)/);
+        const correctKey = ansMatch ? ansMatch[1] : null;
+        if (!correctKey) return;
+        const optionBtns = mcqDiv.querySelectorAll('.option-btn');
+        optionBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (mcqDiv.classList.contains('answered')) return;
+                mcqDiv.classList.add('answered');
+                const selectedKey = btn.getAttribute('data-opt');
+                const isCorrect = selectedKey === correctKey;
+                const toggleBtn = mcqDiv.querySelector('.toggle-answer');
+                const ansDiv = toggleBtn.nextElementSibling;
+                ansDiv.style.display = 'block';
+                toggleBtn.textContent = toggleBtn.dataset.hide;
+                const feedbackDiv = mcqDiv.querySelector('.feedback');
+                optionBtns.forEach(ob => {
+                    const ok = ob.getAttribute('data-opt');
+                    if (ok === correctKey) {
+                        ob.classList.add('answer-highlight');
+                    }
+                    if (ok === selectedKey && !isCorrect) {
+                        ob.style.backgroundColor = 'red';
+                    }
+                    ob.disabled = true;
+                });
+                if (isCorrect) {
+                    feedbackDiv.textContent = 'Right!';
+                    feedbackDiv.style.color = 'green';
+                    const speakText = 'right';
+                    if (isTTSSupported) {
+                        const utterance = new SpeechSynthesisUtterance(speakText);
+                        utterance.voice = defaultEnglishVoice;
+                        utterance.lang = 'en-US';
+                        utterance.rate = 1.0;
+                        window.speechSynthesis.speak(utterance);
+                    }
+                } else {
+                    feedbackDiv.textContent = 'Wrong! The correct answer is highlighted.';
+                    feedbackDiv.style.color = 'red';
+                    const speakText = 'wrong';
+                    if (isTTSSupported) {
+                        const utterance = new SpeechSynthesisUtterance(speakText);
+                        utterance.voice = defaultEnglishVoice;
+                        utterance.lang = 'en-US';
+                        utterance.rate = 1.0;
+                        window.speechSynthesis.speak(utterance);
+                    }
+                }
+            });
+        });
+    });
+    setupInteractionListeners();
+    updateTTSVisibility();
+}
+
 async function init() {
     showProgress('Initializing application', 0);
     await cacheFiles();
@@ -2226,25 +2445,31 @@ async function init() {
 
     document.getElementById('homeButton').addEventListener('click', () => {
         stopSpeech();
-        document.getElementById('contentArea').classList.remove('active');
-        document.getElementById('chapterContainer').classList.remove('hidden');
-        document.getElementById('contentInner').innerHTML = '';
-        document.getElementById('fileUpload').value = '';
-        sentences = [];
-        currentSentenceIndex = -1;
-        lastTappedSentenceIndex = -1;
-        lastTappedFile = null;
-        updateTTSVisibility();
+        if (navigationHistory.length > 1) {
+            navigationHistory.pop();
+            navigationHistory[navigationHistory.length - 1]();
+        } else {
+            navigationHistory = [];
+            document.getElementById('contentArea').classList.remove('active');
+            document.getElementById('chapterContainer').classList.remove('hidden');
+            document.getElementById('contentInner').innerHTML = '';
+            document.getElementById('fileUpload').value = '';
+            sentences = [];
+            currentSentenceIndex = -1;
+            lastTappedSentenceIndex = -1;
+            lastTappedFile = null;
+            updateTTSVisibility();
 
-        if (currentSectionIndex !== null && currentChapterIndex !== null) {
-            const sectionElement = document.getElementById(`section-${currentSectionIndex}`);
-            const chapterElement = document.getElementById(`chapter-${currentSectionIndex}-${currentChapterIndex}`);
-            if (sectionElement && chapterElement) {
-                sectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                chapterElement.classList.add('highlight');
-                setTimeout(() => {
-                    chapterElement.classList.remove('highlight');
-                }, 2000);
+            if (currentSectionIndex !== null && currentChapterIndex !== null) {
+                const sectionElement = document.getElementById(`section-${currentSectionIndex}`);
+                const chapterElement = document.getElementById(`chapter-${currentSectionIndex}-${currentChapterIndex}`);
+                if (sectionElement && chapterElement) {
+                    sectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    chapterElement.classList.add('highlight');
+                    setTimeout(() => {
+                        chapterElement.classList.remove('highlight');
+                    }, 2000);
+                }
             }
         }
     });
@@ -2267,8 +2492,7 @@ async function init() {
                 <li><strong>Dictionary:</strong> Search words across English, Odia, Hindi with images and voice pronunciation.</li>
                 <li><strong>Add Words:</strong> Create custom dictionary entries including images from your device.</li>
                 <li><strong>Chapters:</strong> Explore GK and Grammar in Odia/English, organized into subjects with MCQ quizzes.</li>
-                <li><strong>MCQs:</strong> Take interactive quizzes in sets of 10, receive scores and explanations. Use Skip button to move on (counts as attempted).</li>
-                <li><strong>Voice Reading:</strong> Listen to content using TTS in multiple languages; play, pause, stop.</li>
+                <li><strong>Voice Reading:</strong> Listen to content using TTS in multiple languages; play, pause, stop. Only if browser supported, otherwise not</li>
                 <li><strong>File Upload:</strong> Load your own documents (PDF, TXT, HTML) for reading or converting to quizzes.</li>
                 <li><strong>Text Selection:</strong> Tap/Select words in content to open dictionary popup instantly.</li>
                 <li><strong>Offline Access:</strong> Download content and dictionaries for use without internet.</li>
