@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-site-verification" content="iCsi-epYMmiXTzOIapQORJQ-PZ50AWOjA8fKbIYgZmc" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ଓଡ଼ିଆ GK - Kids Edition</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"></script>
@@ -771,7 +770,6 @@ const sections = [
 const chapterUrls = [...new Set(sections.flatMap(section => 
     section.chapters.map(chapter => chapter.url)
 ))];
-
 const STATIC_ASSETS = [
     '/',
     'https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js',
@@ -783,11 +781,12 @@ const STATIC_ASSETS = [
     ...Object.values(dbFiles),
     ...chapterUrls
 ];
-
 let dbEnglishOdia, dbEnglishHindi;
 let defaultEnglishVoice, defaultHindiVoice, defaultOdiaVoice;
 let speechUtterances = [];
 let currentSentenceIndex = -1;
+let currentMcqIndex = 0;
+// Added for MCQ tracking
 let sentences = [];
 let isReadingAloud = false;
 let isPaused = false;
@@ -812,6 +811,7 @@ let currentSectionIdx = null;
 let currentChapterIdx = null;
 let currentSubject = '';
 let subPages = [];
+let lastEnglishGrammarPageIndex = -1;
 
 function escapeHtml(text) {
     const div = document.createElement('div');
@@ -822,35 +822,18 @@ function escapeHtml(text) {
 function extractGrammarTopic(sentence) {
     const lower = sentence.toLowerCase().trim();
     const topics = {
-        'nouns': 'NOUNS',
-        'noun': 'NOUNS',
-        'pronouns': 'PRONOUNS',
-        'pronoun': 'PRONOUNS',
-        'verbs': 'VERBS',
-        'verb': 'VERBS',
-        'adjectives': 'ADJECTIVES',
-        'adjective': 'ADJECTIVES',
-        'adverbs': 'ADVERBS',
-        'adverb': 'ADVERBS',
-        'prepositions': 'PREPOSITIONS',
-        'preposition': 'PREPOSITIONS',
-        'conjunctions': 'CONJUNCTIONS',
-        'conjunction': 'CONJUNCTIONS',
-        'interjections': 'INTERJECTIONS',
-        'interjection': 'INTERJECTIONS',
-        'tenses': 'TENSES',
-        'tense': 'TENSES',
-        'sentences': 'SENTENCES',
-        'sentence': 'SENTENCES',
-        'punctuation': 'PUNCTUATION'
-        // Add more as needed
+        'nouns': 'NOUNS', 'noun': 'NOUNS', 'pronouns': 'PRONOUNS', 'pronoun': 'PRONOUNS',
+        'verbs': 'VERBS', 'verb': 'VERBS', 'adjectives': 'ADJECTIVES', 'adjective': 'ADJECTIVES',
+        'adverbs': 'ADVERBS', 'adverb': 'ADVERBS', 'prepositions': 'PREPOSITIONS', 'preposition': 'PREPOSITIONS',
+        'conjunctions': 'CONJUNCTIONS', 'conjunction': 'CONJUNCTIONS', 'interjections': 'INTERJECTIONS',
+        'interjection': 'INTERJECTIONS', 'tenses': 'TENSES', 'tense': 'TENSES', 'sentences': 'SENTENCES',
+        'sentence': 'SENTENCES', 'punctuation': 'PUNCTUATION'
     };
     for (const [key, value] of Object.entries(topics)) {
         if (lower.includes(key)) {
             return value;
         }
     }
-    // Fallback to uppercasing the sentence or first word
     return sentence.split(' ').pop().toUpperCase().replace(/[^\w]/g, '');
 }
 
@@ -865,6 +848,7 @@ function parseChapterToSubjects(lines, lang, chapterName = '') {
     const optRe = lang === 'english' ? /^([a-e]\)|\([1-5]\)|[1-5]\.)\s*/i : /^([କ-ଙ]\)|\([୧-୫]\)|[୧-୫]\.)\s*/;
     const ansRe = lang === 'english' ? /^Answer:\s*([a-e]\)|\([1-5]\)|[1-5]\.)/i : /^ଉତ୍ତର:\s*([କ-ଙ]\)|\([୧-୫]\)|[୧-୫]\.)/;
     const isEnglishGrammar = lang === 'english' && chapterName.toLowerCase().includes('grammar');
+    
     while (i < lines.length) {
         while (i < lines.length && !lines[i].trim()) i++;
         if (i >= lines.length) break;
@@ -895,7 +879,8 @@ function parseChapterToSubjects(lines, lang, chapterName = '') {
         } else {
             if (isOne && currentSubject) {
             } else if (!currentSubject) {
-                currentSubject = isEnglishGrammar ? 'GENERAL GRAMMAR' : 'General';
+                currentSubject = isEnglishGrammar ?
+                'GENERAL GRAMMAR' : 'General';
             }
             let questionLines = [lines[i]];
             i++;
@@ -948,7 +933,8 @@ function parseMCQs(allLines, lang) {
     const remainingLines = [];
     let i = 0;
     const numLines = allLines.length;
-    const optRe = lang === 'english' ? /^([a-e]\)|\([1-5]\)|[1-5]\.)\s*/i : /^([କ-ଙ]\)|\([୧-୫]\)|[୧-୫]\.)\s*/;
+    const optRe = lang === 'english' ?
+    /^([a-e]\)|\([1-5]\)|[1-5]\.)\s*/i : /^([କ-ଙ]\)|\([୧-୫]\)|[୧-୫]\.)\s*/;
     const ansRe = lang === 'english' ? /^Answer:\s*([a-e]\)|\([1-5]\)|[1-5]\.)/i : /^ଉତ୍ତର:\s*([କ-ଙ]\)|\([୧-୫]\)|[୧-୫]\.)/;
     while (i < numLines) {
         while (i < numLines && !allLines[i].trim()) i++;
@@ -957,6 +943,7 @@ function parseMCQs(allLines, lang) {
         const isOpt = optRe.test(line);
         const isAns = ansRe.test(line);
         let question = [];
+        
         while (i < numLines) {
             const l = allLines[i].trim();
             const isOpt2 = optRe.test(l);
@@ -1078,6 +1065,7 @@ function loadSubjectSets(sectionIndex, chapterIndex, subjectName) {
         loadContent(sectionIndex, chapterIndex);
     });
     sentences = [];
+    currentMcqIndex = 0;
     updateTTSVisibility();
 }
 
@@ -1116,6 +1104,7 @@ function loadSubjectMCQs(sectionIndex, chapterIndex, subjectName, batch = 0) {
     contentInner.classList.add('content-text');
     setupMCQListeners(language);
     sentences = [];
+    currentMcqIndex = 0;
     document.getElementById('backToSets').addEventListener('click', () => {
         loadSubjectSets(sectionIndex, chapterIndex, subjectName);
     });
@@ -1143,7 +1132,19 @@ function loadPageList(sectionIndex, chapterIndex, pages) {
     document.getElementById('backToMain').addEventListener('click', () => {
         document.getElementById('homeButton').click();
     });
+
+    if (sectionIndex === 3 && lastEnglishGrammarPageIndex >= 0) {
+        const pageItems = contentInner.querySelectorAll('.chapter-item');
+        const targetItem = pageItems[lastEnglishGrammarPageIndex];
+        if (targetItem) {
+            targetItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            targetItem.classList.add('highlight');
+            setTimeout(() => targetItem.classList.remove('highlight'), 2000);
+        }
+    }
+
     sentences = [];
+    currentMcqIndex = 0;
     updateTTSVisibility();
 }
 
@@ -1152,17 +1153,49 @@ function loadPageContent(sectionIndex, chapterIndex, pageIdx) {
     const page = subPages[pageIdx];
     const allLines = page.content.split(/\r?\n/);
     const contentInner = document.getElementById('contentInner');
+    if (sectionIndex === 3) {
+        lastEnglishGrammarPageIndex = pageIdx;
+    }
+
     let html = `<div class="section"><h1 class="section-title">${escapeHtml(page.name)}</h1>`;
+    if (sectionIndex === 3) {
+        html += `<button id="toggleAnswersBtn" class="button" style="margin: 10px 0 15px 0; font-size: 18px;">Show Answers</button>`;
+    }
     allLines.forEach((line, idx) => {
-        html += `<span data-sentence-index="${idx}">${escapeHtml(line)}</span><br>`;
+        const trimmedLower = line.trim().toLowerCase();
+        const isAnswer = (sectionIndex === 3) && (
+            trimmedLower.startsWith('answer:') || trimmedLower.startsWith('ans:') ||
+            trimmedLower.startsWith('ans.') || trimmedLower.startsWith('solution:') ||
+            trimmedLower.includes('answer is') || trimmedLower.includes('correct answer')
+        );
+        const extraClass = isAnswer ? ' answer-line' : '';
+        const extraStyle = isAnswer ? ' style="display: none; color: #4caf50; font-weight: bold;"' : '';
+        html += `<span data-sentence-index="${idx}" class="${extraClass.trim()}"${extraStyle}>${escapeHtml(line)}</span><br>`;
     });
     sentences = allLines;
     html += `<button class="home-button back-to-page-list" id="backToPageList" style="position: relative; bottom: auto; margin: 20px auto; display: block;">Back to Pages</button></div>`;
     contentInner.innerHTML = html;
     contentInner.classList.add('content-text');
+
+    if (sectionIndex === 3) {
+        const toggleBtn = document.getElementById('toggleAnswersBtn');
+        if (toggleBtn) {
+            let answersVisible = false;
+            toggleBtn.addEventListener('click', () => {
+                answersVisible = !answersVisible;
+                toggleBtn.textContent = answersVisible ? 'Hide Answers' : 'Show Answers';
+                const answerSpans = contentInner.querySelectorAll('span.answer-line');
+                answerSpans.forEach(span => {
+                    span.style.display = answersVisible ? 'inline' : 'none';
+                });
+            });
+        }
+    }
+
     document.getElementById('backToPageList').addEventListener('click', () => {
         loadPageList(sectionIndex, chapterIndex, subPages);
     });
+    currentMcqIndex = 0;
     updateTTSVisibility();
 }
 
@@ -1190,7 +1223,6 @@ async function cacheFiles() {
         const cachedRequests = await cache.keys();
         const cachedUrls = cachedRequests.map(req => req.url);
         const filesToFetch = STATIC_ASSETS.filter(url => !cachedUrls.includes(url));
-
         if (filesToFetch.length > 0) {
             showProgress('Caching resources', 0);
             const totalFiles = filesToFetch.length;
@@ -1314,7 +1346,6 @@ async function initDatabases() {
         const SQL = await initSqlJs({
             locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${file}`
         });
-
         const loadDatabase = async (url) => {
             const response = await loadResource(url);
             if (!response) throw new Error(`Failed to load ${url}`);
@@ -1345,9 +1376,9 @@ function filterTextByLanguage(text, lang) {
         return '';
     }
     const languagePatterns = {
-        or: /[\u0B00-\u0B7F\.":;!?() ]+/g,
-        hi: /[\u0900-\u097F\A-Za-z0-9]+/g,
-        en: /[]+/g
+        or: /[\u0B00-\u0B7F\,.":;!?() ]+/g,
+        hi: /[\u0900-\u097F]+/g,
+        en: /[A-Za-z\0-9]+/g
     };
     const langKey = lang.toLowerCase().slice(0, 2);
     if (!languagePatterns[langKey]) {
@@ -1448,7 +1479,6 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
         }
 
         const mergedResults = mergeResults(results);
-
         if (suggestionsElement) {
             if (dbEnglishOdia) {
                 const suggestionStmtEnglishOdia = dbEnglishOdia.prepare("SELECT English, odia FROM dictionary WHERE English LIKE ? OR odia LIKE ? LIMIT 5");
@@ -1522,7 +1552,6 @@ async function searchWord(word, targetElement, suggestionsElement = null, isDict
         });
         targetElement.innerHTML = html;
         setupImageControlListeners(targetElement);
-
         if (mergedResults.length === 0 && isDictionary) {
             document.querySelector('.dictionary-form').style.display = 'block';
         } else if (isDictionary) {
@@ -1559,7 +1588,6 @@ function setupImageControlListeners(targetElement) {
             controls.querySelector('.restore-button').disabled = false;
         });
     });
-
     targetElement.querySelectorAll('.restore-button').forEach(button => {
         button.addEventListener('click', async () => {
             const imageUrl = button.getAttribute('data-image');
@@ -1659,7 +1687,8 @@ function setupMCQListeners(lang) {
             let correctIdx = -1;
             options.forEach((b, idx) => {
                 const optText = b.textContent.trim();
-                const optMatch = optText.match(lang === 'english' ? /^(\(?[a-e1-5]\)?\.?)/ : /^(\(?[କ-ଙ୧-୫]\)?\.?)/);
+                const optMatch = optText.match(lang === 'english' ?
+                /^(\(?[a-e1-5]\)?\.?)/ : /^(\(?[କ-ଙ୧-୫]\)?\.?)/);
                 const optLabel = optMatch ? optMatch[1] : '';
                 if (optLabel === correctLabel) {
                     correctIdx = idx;
@@ -1684,7 +1713,8 @@ function setupMCQListeners(lang) {
             this.style.color = 'white';
             feedbackDiv.textContent = msg;
             feedbackDiv.style.display = 'block';
-            feedbackDiv.style.cssText = `font-weight: bold; color: ${myColor === '#4caf50' ? '#2e7d32' : '#d32f2f'}; margin: 10px 0; padding: 5px;`;
+            feedbackDiv.style.cssText = `font-weight: bold; color: ${myColor === '#4caf50' ?
+            '#2e7d32' : '#d32f2f'}; margin: 10px 0; padding: 5px;`;
             answerDiv.style.display = 'block';
             speakFeedback(msg);
             currentAttempted++;
@@ -1695,8 +1725,6 @@ function setupMCQListeners(lang) {
             }
         });
     });
-
-    // Skip button listeners
     document.querySelectorAll('.skip-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const mcqDiv = this.closest('.mcq');
@@ -1721,6 +1749,8 @@ function setupMCQListeners(lang) {
 }
 
 function speakFeedback(msg) {
+    if (isReadingAloud && isMCQContent()) return;
+    // Suppress auto reading overlapping feedback
     if (!isTTSSupported || !defaultEnglishVoice) return;
     const utterance = new SpeechSynthesisUtterance(msg);
     utterance.voice = defaultEnglishVoice;
@@ -1736,12 +1766,14 @@ function isMCQContent() {
 }
 
 function updateTTSVisibility() {
-    const showTTS = isTTSSupported && !isMCQContent() && sentences.length > 0;
-    document.getElementById('voiceButton').style.display = showTTS ? 'inline-block' : 'none';
+    const showTTS = isTTSSupported && (sentences.length > 0 || isMCQContent());
+    document.getElementById('voiceButton').style.display = showTTS ?
+    'inline-block' : 'none';
     document.getElementById('stopButton').style.display = showTTS ? 'inline-block' : 'none';
     document.getElementById('voiceButton').disabled = !showTTS;
     document.getElementById('stopButton').disabled = !showTTS;
-    document.getElementById('processing-status').textContent = showTTS ? '' : (isMCQContent() ? 'TTS disabled for MCQ content' : (sentences.length === 0 ? 'No text to read' : 'Text-to-speech is not supported in this browser.'));
+    document.getElementById('processing-status').textContent = showTTS ?
+    '' : (sentences.length === 0 && !isMCQContent() ? 'No text to read' : 'Text-to-speech is not supported in this browser.');
 }
 
 async function handleFileUpload(event) {
@@ -1757,10 +1789,10 @@ async function handleFileUpload(event) {
     lastTappedFile = files[0].name;
     lastTappedSentenceIndex = -1;
     sentences = [];
+    currentMcqIndex = 0;
 
     const pdfFiles = files.filter(f => f.name.endsWith('.pdf'));
     const textFiles = files.filter(f => f.name.endsWith('.txt') || f.name.endsWith('.html'));
-
     let allText = '';
     try {
         if (pdfFiles.length > 0) {
@@ -1936,10 +1968,10 @@ async function loadContent(sectionIndex, chapterIndex) {
     const contentInner = document.getElementById('contentInner');
     const chapterContainer = document.getElementById('chapterContainer');
     const processingStatus = document.getElementById('processing-status');
-
     contentInner.innerHTML = '';
     lastTappedFile = chapter.url;
     lastTappedSentenceIndex = -1;
+    currentMcqIndex = 0;
 
     const content = await loadResource(chapter.url);
     if (!content) {
@@ -1947,7 +1979,6 @@ async function loadContent(sectionIndex, chapterIndex) {
         return;
     }
     const textContent = await content.text();
-
     const tempDiv = document.createElement('div');
     if (sectionIndex === 2) {
         tempDiv.style.whiteSpace = 'pre';
@@ -1987,12 +2018,25 @@ async function loadContent(sectionIndex, chapterIndex) {
         contentInner.appendChild(tempDiv);
         contentInner.classList.remove('content-text');
     } else if (chapter.type === 'text') {
-        if (chapter.name === 'GK Theory' || chapter.name === 'ଓଡ଼ିଆ GK Theory') {
+        if (chapter.name === 'GK Theory' || chapter.name === 'ଓଡ଼ିଆ GK Theory' || chapter.name === 'English Grammar') {
             let pages = [];
-            const regex = /###\s*(.*?)\s*###([\s\S]*?)(?=###|$)/g;
-            let match;
-            while ((match = regex.exec(textContent)) !== null) {
-                pages.push({name: match[1].trim(), content: match[2].trim()});
+            if (chapter.name === 'English Grammar') {
+                const lines = textContent.split(/\r?\n/);
+                const pageSize = 30;
+                for (let i = 0; i < lines.length; i += pageSize) {
+                    const pageLines = lines.slice(i, i + pageSize);
+                    const pageName = `Page ${pages.length + 1} of ${Math.ceil(lines.length / pageSize)}`;
+                    pages.push({name: pageName, content: pageLines.join('\n')});
+                }
+            } else {
+                const regex = /###\s*(.*?)\s*###([\s\S]*?)(?=###|$)/g;
+                let match;
+                while ((match = regex.exec(textContent)) !== null) {
+                    pages.push({name: match[1].trim(), content: match[2].trim()});
+                }
+            }
+            if (pages.length === 0) {
+                pages = [{name: chapter.name, content: textContent}];
             }
             loadPageList(sectionIndex, chapterIndex, pages);
         } else {
@@ -2046,6 +2090,7 @@ async function loadContent(sectionIndex, chapterIndex) {
                     mcqHtml += `<div class="feedback" style="display:none;"></div>`;
                     mcqHtml += '</div><hr style="margin:20px 0;">';
                 });
+               
                 let remainingHtml = '';
                 remainingLines.forEach((line, idx) => {
                     if (questions.length > 0) {
@@ -2098,17 +2143,14 @@ function clearLastTappedPosition(fileKey) {
 
 function setupInteractionListeners() {
     const contentInner = document.getElementById('contentInner');
-
     contentInner.addEventListener('mouseup', handleTextSelection);
     contentInner.addEventListener('touchend', handleTextSelection);
 }
 
 function handleTextSelection(event) {
     if (!document.getElementById('contentArea').classList.contains('active')) return;
-
     const selection = window.getSelection();
     const selectedText = selection.toString().trim();
-
     if (selectedText) {
         const range = selection.getRangeAt(0);
         const element = range.startContainer.parentElement.closest('span[data-sentence-index]');
@@ -2173,7 +2215,6 @@ async function showPopup(word = null) {
         suggestionsElement.className = 'dictionary-suggestions';
         suggestionsElement.id = 'popupSuggestions';
         popupContent.appendChild(suggestionsElement);
-
         searchInput.addEventListener('input', () => {
             clearTimeout(dictionaryTimeout);
             resultsElement.innerHTML = '';
@@ -2189,7 +2230,6 @@ async function showPopup(word = null) {
                 }, 300);
             }
         });
-
         if (isTTSSupported) {
             speakButton.addEventListener('click', () => {
                 if (isDictionaryReading) {
@@ -2280,7 +2320,6 @@ sections.forEach(section => {
         url: "https://raw.githubusercontent.com/abhayattcc/Js/refs/heads/Js/AccountQRCodeState Bank of India - 5687_LIGHT_THEME.png"
     });
 });
-
 const sectionsContainer = document.getElementById('sections');
 sections.forEach((section, sectionIndex) => {
     const sectionDiv = document.createElement('div');
@@ -2316,7 +2355,6 @@ const fileUploadContainer = document.createElement('div');
 fileUploadContainer.className = 'file-upload';
 fileUploadContainer.innerHTML = '<input type="file" id="fileUpload" accept=".pdf,.txt,.html" multiple>';
 document.getElementById('chapterContainer').appendChild(fileUploadContainer);
-
 function populateVoiceList() {
     if (!isTTSSupported) {
         document.getElementById('voiceButton').style.display = 'none';
@@ -2326,12 +2364,13 @@ function populateVoiceList() {
     }
     voices = window.speechSynthesis.getVoices();
     defaultEnglishVoice = voices.find(v => v.lang.startsWith('en') && v.name.includes('Google')) || voices.find(v => v.lang.startsWith('en'));
-    defaultHindiVoice = voices.find(v => v.lang.startsWith('hi') && v.name.includes('Google')) || voices.find(v => v.lang.startsWith('hi'));
+    defaultHindiVoice = voices.find(v => v.lang.startsWith('hi') && v.name.includes('Google')) ||
+    voices.find(v => v.lang.startsWith('hi'));
     defaultOdiaVoice = voices.find(v => v.lang.startsWith('or') && v.name.includes('Google')) || voices.find(v => v.lang.startsWith('or'));
 }
 
 function playSpeech() {
-    if (!isTTSSupported || isMCQContent() || sentences.length === 0) {
+    if (!isTTSSupported || (!isMCQContent() && sentences.length === 0)) {
         updateTTSVisibility();
         return;
     }
@@ -2339,23 +2378,139 @@ function playSpeech() {
         window.speechSynthesis.resume();
         isPaused = false;
         document.getElementById('voiceButton').textContent = '⏸️';
-        document.getElementById('processing-status').textContent = 'Resuming reading...';
+        document.getElementById('processing-status').textContent = isMCQContent() ? 'Resuming MCQ reading...' : 'Resuming reading...';
         return;
     } else if (isReadingAloud) {
         window.speechSynthesis.pause();
         isPaused = true;
         document.getElementById('voiceButton').textContent = '▶️';
-        document.getElementById('processing-status').textContent = 'Paused reading';
+        document.getElementById('processing-status').textContent = isMCQContent() ? 'Paused MCQ reading' : 'Paused reading';
         return;
     }
 
     stopSpeech();
     isReadingAloud = true;
     isPaused = false;
-    currentSentenceIndex = lastTappedSentenceIndex >= 0 ? lastTappedSentenceIndex : (currentSentenceIndex >= sentences.length - 1 ? 0 : currentSentenceIndex + 1);
     document.getElementById('voiceButton').textContent = '⏸️';
-    document.getElementById('processing-status').textContent = 'Reading...';
-    readNextSentence();
+
+    if (isMCQContent()) {
+        document.getElementById('processing-status').textContent = 'Reading MCQs...';
+        readNextMCQ();
+    } else {
+        currentSentenceIndex = lastTappedSentenceIndex >= 0 ?
+        lastTappedSentenceIndex : (currentSentenceIndex >= sentences.length - 1 ? 0 : currentSentenceIndex + 1);
+        document.getElementById('processing-status').textContent = 'Reading...';
+        readNextSentence();
+    }
+}
+
+// Function to handle speaking with a generic chainable callback
+function speakWithCallback(text, callback) {
+    if (!isReadingAloud) return;
+    const voiceMap = { 'hi': defaultHindiVoice, 'or': defaultOdiaVoice, 'en': defaultEnglishVoice };
+    speechUtterances = [];
+    activeUtterances = 0;
+    ['hi', 'or', 'en'].forEach(langPrefix => {
+        const filteredText = filterTextByLanguage(text, langPrefix);
+        if (filteredText) {
+            const voice = voiceMap[langPrefix];
+            if (voice) {
+                const utterance = new SpeechSynthesisUtterance(filteredText);
+                utterance.voice = voice;
+                utterance.lang = voice.lang;
+                utterance.rate = 0.7;
+                utterance.volume = 4.0;
+                utterance.onend = () => {
+                    activeUtterances--;
+                    if (activeUtterances === 0 && isReadingAloud) {
+                        setTimeout(callback, 500); // Slight delay for natural flow
+                    }
+                };
+                speechUtterances.push(utterance);
+                activeUtterances++;
+            }
+        }
+    });
+    if (activeUtterances > 0) {
+        speechUtterances.forEach(u => window.speechSynthesis.speak(u));
+    } else {
+        // Fallback if the text is pure symbols or no matching voice filter is caught
+        const fallbackUtterance = new SpeechSynthesisUtterance(text);
+        fallbackUtterance.voice = defaultEnglishVoice || defaultOdiaVoice;
+        fallbackUtterance.rate = 0.7;
+        fallbackUtterance.onend = () => { if (isReadingAloud) setTimeout(callback, 500); };
+        window.speechSynthesis.speak(fallbackUtterance);
+        speechUtterances.push(fallbackUtterance);
+    }
+}
+
+// Function to step through MCQs natively
+function readNextMCQ() {
+    const mcqs = document.querySelectorAll('.mcq');
+    if (currentMcqIndex >= mcqs.length || !isReadingAloud) {
+        stopSpeech();
+        return;
+    }
+
+    const mcqDiv = mcqs[currentMcqIndex];
+    mcqDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    const qDiv = mcqDiv.querySelector('.question-text');
+    const optsDiv = mcqDiv.querySelector('.options');
+    const ansDiv = mcqDiv.querySelector('.answer');
+    const optionsBtns = Array.from(mcqDiv.querySelectorAll('.option-btn'));
+
+    const qText = qDiv.textContent;
+    const optionsText = optionsBtns.map(btn => btn.textContent).join('. ');
+    // Match Correct Option
+    const ansStr = mcqDiv.dataset.answer || ansDiv.textContent;
+    let correctLabelMatch = ansStr.match(/Answer:\s*(\(?[a-eA-E1-5]\)?\.?)/i) || ansStr.match(/ଉତ୍ତର:\s*(\(?[କ-ଙ୧-୫]\)?\.?)/);
+    let correctLabel = correctLabelMatch ? correctLabelMatch[1] : null;
+
+    let correctIdx = -1;
+    optionsBtns.forEach((b, idx) => {
+        const optText = b.textContent.trim();
+        const optMatch = optText.match(/^(\(?[a-eA-E1-5]\)?\.?)/) || optText.match(/^(\(?[କ-ଙ୧-୫]\)?\.?)/);
+        const optLabel = optMatch ? optMatch[1] : '';
+        if (optLabel === correctLabel) correctIdx = idx;
+    });
+    if (correctIdx === -1) {
+        const ansClean = ansStr.replace(/Answer:|ଉତ୍ତର:/ig, '').trim();
+        correctIdx = optionsBtns.findIndex(b => b.textContent.includes(ansClean) || ansClean.includes(b.textContent));
+        if (correctIdx === -1) correctIdx = 0;
+        // Safe fallback
+    }
+
+    const correctBtn = optionsBtns[correctIdx];
+    const answerSpeechText = " " + correctBtn.textContent;
+
+    // Phase 1: Read Question (highlight)
+    qDiv.style.backgroundColor = '#ffff99';
+    speakWithCallback(qText, () => {
+        qDiv.style.backgroundColor = '';
+        if (!isReadingAloud) return;
+
+        // Phase 2: Read Options (highlight)
+        optsDiv.style.backgroundColor = '#e0f7fa';
+        speakWithCallback(" " + optionsText, () => {
+            optsDiv.style.backgroundColor = '';
+            if (!isReadingAloud) return;
+
+            
+            // Phase 3: Speak & Reveal Correct Answer
+            if (!correctBtn.disabled) correctBtn.click();
+            ansDiv.style.backgroundColor = '#c8e6c9';
+            
+            speakWithCallback(answerSpeechText, () => {
+                ansDiv.style.backgroundColor = '#e3f2fd'; // Reset to default blue
+               
+                if (!isReadingAloud) return;
+                
+                currentMcqIndex++;
+                readNextMCQ();
+            });
+        });
+    });
 }
 
 function readNextSentence() {
@@ -2447,10 +2602,19 @@ function stopSpeech() {
     document.getElementById('stopButton').disabled = true;
     document.getElementById('dictionarySpeakButton').textContent = '🗣️';
     document.getElementById('dictionarySpeakButton').disabled = !isTTSSupported || document.getElementById('dictionaryResults').innerHTML === '';
+    // Cleanup highlighted sentence parts
     const sentenceSpans = document.getElementById('contentInner').querySelectorAll('span[data-sentence-index]');
     sentenceSpans.forEach(span => {
         span.classList.remove('highlight');
         span.style.display = 'inline';
+    });
+    // Cleanup MCQ manual highlights
+    document.querySelectorAll('.mcq .question-text, .mcq .options, .mcq .answer').forEach(el => {
+        if (el.classList.contains('answer')) {
+            el.style.backgroundColor = '#e3f2fd'; // Restore default answer styling
+        } else {
+            el.style.backgroundColor = '';
+        }
     });
     updateTTSVisibility();
 }
@@ -2526,7 +2690,6 @@ function setupDictionarySearch() {
     const suggestionsElement = document.getElementById('dictionarySuggestions');
     const addForm = document.querySelector('.dictionary-form');
     addForm.style.display = 'none';
-
     searchInput.addEventListener('click', () => {
         searchInput.value = '';
         resultsElement.innerHTML = '';
@@ -2534,7 +2697,6 @@ function setupDictionarySearch() {
         document.getElementById('dictionarySpeakButton').disabled = true;
         addForm.style.display = 'none';
     });
-
     searchInput.addEventListener('input', () => {
         clearTimeout(dictionaryTimeout);
         resultsElement.innerHTML = '';
@@ -2551,7 +2713,6 @@ function setupDictionarySearch() {
             }, 300);
         }
     });
-
     document.getElementById('saveWordButton').addEventListener('click', async () => {
         const english = document.getElementById('newEnglish').value.trim();
         const odia = document.getElementById('newOdia').value.trim();
@@ -2583,7 +2744,6 @@ function setupToggleSwitch() {
     const toggleSwitch = document.getElementById('sectionToggle');
     const dictionarySection = document.getElementById('dictionarySection');
     const sectionsContainer = document.getElementById('sections');
-
     toggleSwitch.addEventListener('change', () => {
         if (toggleSwitch.checked) {
             dictionarySection.classList.add('hidden');
@@ -2593,7 +2753,6 @@ function setupToggleSwitch() {
             sectionsContainer.classList.add('hidden');
         }
     });
-
     dictionarySection.classList.remove('hidden');
     sectionsContainer.classList.add('hidden');
 }
@@ -2634,6 +2793,7 @@ async function init() {
         document.getElementById('fileUpload').value = '';
         sentences = [];
         currentSentenceIndex = -1;
+        currentMcqIndex = 0;
         lastTappedSentenceIndex = -1;
         lastTappedFile = null;
         currentSubjectsMap = null;
@@ -2653,7 +2813,6 @@ async function init() {
             }
         }
     });
-
     document.getElementById('popupClose').addEventListener('click', () => {
         const popup = document.getElementById('popup');
         popup.classList.remove('visible');
@@ -2662,7 +2821,6 @@ async function init() {
             document.getElementById('popupContent').innerHTML = '';
         }, 200);
     });
-
     document.getElementById('helpButton').addEventListener('click', () => {
         const popup = document.getElementById('popup');
         const popupContent = document.getElementById('popupContent');
@@ -2673,7 +2831,7 @@ async function init() {
                 <li><strong>Add Words:</strong> Create custom dictionary entries including images from your device.</li>
                 <li><strong>Chapters:</strong> Explore GK and Grammar in Odia/English, organized into subjects with MCQ quizzes.</li>
                 <li><strong>MCQs:</strong> Take interactive quizzes in sets of 10, receive scores and explanations. Use Skip button to move on (counts as attempted).</li>
-                <li><strong>Voice Reading:</strong> Listen to content using TTS in multiple languages; play, pause, stop.</li>
+                <li><strong>Voice Reading:</strong> Listen to content using TTS in multiple languages; play, pause, stop. Automatically highlights and reads MCQs and correct answers.</li>
                 <li><strong>File Upload:</strong> Load your own documents (PDF, TXT, HTML) for reading or converting to quizzes.</li>
                 <li><strong>Text Selection:</strong> Tap/Select words in content to open dictionary popup instantly.</li>
                 <li><strong>Offline Access:</strong> Download content and dictionaries for use without internet.</li>
@@ -2683,7 +2841,6 @@ async function init() {
         popup.style.display = 'block';
         setTimeout(() => { popup.classList.add('visible'); }, 10);
     });
-
     if (isTTSSupported) {
         document.getElementById('voiceButton').addEventListener('click', playSpeech);
         document.getElementById('stopButton').addEventListener('click', stopSpeech);
