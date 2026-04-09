@@ -4,8 +4,7 @@
 [](https://www.google.com/search?q=https://github.com/abhayattcc/lucentgkonline/stargazers)
 [](https://www.google.com/search?q=%23)
 
-Free Practice & Quiz">
-<meta name="description" content="Lucent gk mock test online free is a best website where you can read lucent gk book theory with select to show word meaning and give mock test chapter wise serialy. lucent gk mock test is the best site for learning and practice for govt exam.
+Lucent gk mock test online free is a best website where you can read lucent gk book theory with select to show word meaning and give mock test chapter wise serialy. lucent gk mock test is the best site for learning and practice for govt exam.
 
 🔗 **Access the App Here:** [https://abhayattcc.github.io/lucentgkonline/](https://abhayattcc.github.io/lucentgkonline/)
 
