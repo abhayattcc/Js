@@ -1,4 +1,4 @@
-# 📚 Lucent GK Online Mock Test Free | General Knowledge Practice
+# 📚 Lucent GK Mock Test Online Free | General Knowledge Practice
 
 [](https://www.google.com/search?q=https://github.com/abhayattcc/lucentgkonline/blob/main/LICENSE)
 [](https://www.google.com/search?q=https://github.com/abhayattcc/lucentgkonline/stargazers)
