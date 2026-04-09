@@ -2,7 +2,7 @@
 
 # Lucent GK Free Test | Lucent Gk Mock Test Free | Lucent Gk online free 2026 | Free Practice & Quiz
 
-[![Website Status](https://img.shields.io/website?url=https%3A%2F%2Fabhayattcc.github.io%2Flucentgkonline%2F&style=for-the-badge)](https://abhayattcc.github.io/lucentgkonline/)
+[![Website Status](https://img.shields.io/website?url=https%3A%2F%2Fabhayattcc.github.io%2Flucentgkonline%2F&style=for-the-badge)]([https://abhayattcc.github.io/lucent-gk-mock-test-free/])
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 **Master General Knowledge for your upcoming competitive exams with the ultimate, 100% free interactive platform.**
@@ -47,7 +47,7 @@ By visiting our live site, you get access to comprehensive, chapter-wise, and mi
 2.  **Time Management:** Our timed **Lucent GK online free 2026** quizzes help you improve your speed and accuracy.
 3.  **Cross-Platform Compatibility:** Practice anywhere, anytime—on your smartphone, tablet, or desktop.
 
-For an uninterrupted, fast-paced study session, [Click Here to Access the Quizzes](https://abhayattcc.github.io/lucentgkonline/).
+For an uninterrupted, fast-paced study session, [Click Here to Access the Quizzes](https://abhayattcc.github.io/lucent-gk-mock-test-free/).
 
 ---
 
@@ -55,7 +55,7 @@ For an uninterrupted, fast-paced study session, [Click Here to Access the Quizze
 
 Getting started is incredibly simple. You do not need to download or install any heavy applications.
 
-1.  **Navigate to the Live Site:** Click on our official link: [Lucent GK Online Free](https://abhayattcc.github.io/lucentgkonline/).
+1.  **Navigate to the Live Site:** Click on our official link: [Lucent GK Online Free](https://abhayattcc.github.io/lucent-gk-mock-test-free/).
 2.  **Select Your Topic:** Choose from various subjects like History, Science, or Full-Length Mock Tests.
 3.  **Start the Quiz:** Read the questions carefully and select the correct multiple-choice option.
 4.  **Review Performance:** Submit the test to view your final score and detailed answer keys.
@@ -66,7 +66,7 @@ Getting started is incredibly simple. You do not need to download or install any
 
 Stop waiting and start practicing today. Boost your exam preparation and guarantee your success by taking the most reliable **Lucent GK Mock Test Free** available on the internet!
 
-👉 **[TAKE THE LUCENT GK ONLINE TEST EXAM NOW - CLICK HERE](https://abhayattcc.github.io/lucentgkonline/)** 👈
+👉 **[TAKE THE LUCENT GK ONLINE TEST EXAM NOW - CLICK HERE](https://abhayattcc.github.io/lucent-gk-mock-test-free/)** 👈
 
 ---
 
