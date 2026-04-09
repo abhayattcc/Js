@@ -1,0 +1,133 @@
+{
+  "name": "Lucent Gk Online",
+  "short_name": "Lucentgkonline",
+  "description": "General & Trending Tags (20)
+1. Lucent GK Online
+2. Lucent General Knowledge
+3. Lucent GK 2026
+4. Lucent GK PDF
+5. Lucent GK English
+6. Lucent GK Hindi
+7. Static GK Online
+8. Lucent GK MCQs
+9. General Studies Online
+10. Lucent GK Summary
+11. Lucent GK Full Book
+12. Best GK for Exams
+13. One Liner GK
+14. Lucent GK Quiz
+15. Competitive Exam Prep
+16. Lucent GK Audio
+17. Daily GK Updates
+18. Lucent Objective GK
+19. General Awareness 2026
+20. Lucent GK Notes
+
+### History & Culture (15)
+21. Ancient Indian History
+22. Medieval India GK
+23. Modern History Lucent
+24. Indus Valley Civilization
+25. Vedic Culture
+26. Mughal Empire GK
+27. Indian Freedom Struggle
+28. Revolt of 1857
+29. Buddhism and Jainism
+30. Maratha Empire
+31. Delhi Sultanate
+32. World History Online
+33. Indian Architecture
+34. Classical Dances India
+35. Indian Renaissance
+
+### Indian Polity & Constitution (15)
+36. Indian Constitution Online
+37. Fundamental Rights GK
+38. Indian Parliament GK
+39. Articles of Constitution
+40. Preamble of India
+41. Supreme Court GK
+42. Panchayati Raj System
+43. Constitutional Amendments
+44. President of India GK
+45. Directive Principles
+46. State Legislature
+47. Election Commission India
+48. Union Territories GK
+49. Official Languages India
+50. Emergency Provisions
+
+### Geography (15)
+51. Indian Geography Online
+52. World Geography Lucent
+53. Solar System GK
+54. Rivers of India
+55. Mountains and Peaks
+56. Climate of India
+57. Indian Agriculture GK
+58. Atmosphere and Layers
+59. Oceans and Currents
+60. Earth and Universe
+61. National Parks India
+62. Wildlife Sanctuaries
+63. Latitudes and Longitudes
+64. Neighboring Countries
+65. Important Dams India
+
+### General Science (15)
+66. Lucent Physics GK
+67. Lucent Chemistry GK
+68. Lucent Biology GK
+69. Scientific Instruments
+70. Human Body Systems
+71. Vitamins and Minerals
+72. Chemical Formulas
+73. Periodic Table GK
+74. Space Science India
+75. Inventions and Discoveries
+76. Sound and Light GK
+77. Acids Bases Salts
+78. Botany Lucent GK
+79. Genetics and Evolution
+80. Environmental Science
+
+### Economy & Computer (10)
+81. Indian Economy GK
+82. Five Year Plans
+83. Banking in India
+84. Budget and Taxation
+85. Computer Fundamentals
+86. MS Office Shortcuts
+87. Internet and Networking
+88. Computer Abbreviations
+89. Operating Systems GK
+90. Digital India Initiatives
+
+### Miscellaneous & Static GK (10)
+91. First in India
+92. First in World
+93. Important Dates and Days
+94. Sports and Trophies
+95. Awards and Honors
+96. Books and Authors
+97. International Organizations
+98. National Symbols
+99. Headquarters of Agencies
+100. Superlatives of India.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fffde7",
+  "theme_color": "#ff6f61",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
