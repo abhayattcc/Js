@@ -7,7 +7,7 @@
 
 **Master General Knowledge for your upcoming competitive exams with the ultimate, 100% free interactive platform.**
 
-### 🚀 **[START YOUR FREE LUCENT GK MOCK TEST NOW][https://abhayattcc.github.io/lucent-gk-mock-test-free/])** 🚀
+### 🚀 **[START YOUR FREE LUCENT GK MOCK TEST NOW](https://abhayattcc.github.io/lucent-gk-mock-test-free/)** 🚀
 
 </div>
 
