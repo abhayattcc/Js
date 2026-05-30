@@ -1,11 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ବିଶେଷ୍ୟ ଓ ବିଶେଷଣ — Mind Map</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:'Outfit',sans-serif;color:#000000;background:#ffffff;text-shadow:0 0 8px rgba(245,195,0,0.8),0 0 18px rgba(245,195,0,0.4)}
 
-    <!doctype html>
-    <html>
-      <head>
+/* ── LIGHT ANIMATED BACKGROUND ── */
+body{
+  background:#ffffff;
+  position:relative;
+  overflow-x:hidden;
+}
+.bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);animation:drift 16s ease-in-out infinite alternate}
+.orb:nth-child(1){width:500px;height:500px;background:linear-gradient(135deg,#c7b8ff,#e0d4ff);top:-150px;left:-100px;opacity:0.35;animation-duration:18s}
+.orb:nth-child(2){width:450px;height:450px;background:linear-gradient(135deg,#ffd6e7,#ffb3cc);top:30%;right:-120px;opacity:0.3;animation-duration:14s;animation-delay:-6s}
+.orb:nth-child(3){width:400px;height:400px;background:linear-gradient(135deg,#b2f0e8,#c8ffe0);bottom:-100px;left:20%;opacity:0.32;animation-duration:20s;animation-delay:-4s}
+.orb:nth-child(4){width:300px;height:300px;background:linear-gradient(135deg,#fff3b0,#ffe066);top:10%;left:50%;opacity:0.28;animation-duration:12s;animation-delay:-8s}
+.orb:nth-child(5){width:360px;height:360px;background:linear-gradient(135deg,#b3e5fc,#81d4fa);bottom:10%;right:10%;opacity:0.25;animation-duration:22s;animation-delay:-2s}
+.orb:nth-child(6){width:250px;height:250px;background:linear-gradient(135deg,#ffcdd2,#fff9c4);top:55%;left:5%;opacity:0.22;animation-duration:15s;animation-delay:-10s}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(50px,35px) scale(1.1)}}
+
+/* GRID LINES */
+.grid{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(0,0,0,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.04) 1px,transparent 1px);
+  background-size:40px 40px}
+
+/* ── HEADER ── */
+header{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.1);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.hd{display:flex;align-items:center;gap:10px}
+.hglow{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,#feca57,#ff6b6b);box-shadow:0 0 12px rgba(254,202,87,0.8);animation:pglow 2s ease infinite}
+@keyframes pglow{0%,100%{box-shadow:0 0 12px rgba(254,202,87,0.8)}50%{box-shadow:0 0 28px rgba(254,202,87,1)}}
+header h1{font-size:16px;font-weight:800;background:linear-gradient(90deg,#e6a800,#c0392b,#8e44ad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:none}
+header small{font-size:11px;color:#666;margin-left:8px;text-shadow:0 0 6px rgba(245,195,0,0.5)}
+.hbtns{display:flex;gap:8px}
+.hbtn{background:rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.1);color:#222;padding:6px 16px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;text-shadow:0 0 6px rgba(245,195,0,0.7)}
+.hbtn:hover{background:rgba(0,0,0,0.1);color:#000}
+
+/* ── HINT ── */
+.hint{text-align:center;padding:8px;font-size:11.5px;color:#555;position:relative;z-index:1}
+.hint kbd{background:rgba(0,0,0,0.07);border:1px solid rgba(0,0,0,0.12);border-radius:4px;padding:1px 7px;font-size:10px;font-family:monospace;text-shadow:none}
+
+/* ── CONTENT ── */
+.mm{position:relative;z-index:1;padding:20px 16px 80px;max-width:980px;margin:0 auto}
+
+/* Root node */
+.rn{display:flex;justify-content:center;margin-bottom:10px}
+.rb{
+  font-size:22px;font-weight:800;
+  padding:14px 38px;border-radius:60px;
+  background:linear-gradient(135deg,#feca57,#ff6b6b,#fd79a8);
+  color:#1a0500;
+  box-shadow:0 0 0 4px rgba(254,202,87,0.3),0 0 40px rgba(254,202,87,0.5),0 8px 30px rgba(0,0,0,0.15);
+  cursor:default;
+  animation:rootpulse 4s ease infinite;
+  text-shadow:0 0 10px rgba(254,202,87,0.9),0 0 22px rgba(254,202,87,0.6);
+}
+@keyframes rootpulse{0%,100%{box-shadow:0 0 0 4px rgba(254,202,87,0.3),0 0 40px rgba(254,202,87,0.5),0 8px 30px rgba(0,0,0,0.15)}50%{box-shadow:0 0 0 8px rgba(254,202,87,0.2),0 0 60px rgba(254,202,87,0.7),0 8px 30px rgba(0,0,0,0.15)}}
+
+.rno{text-align:center;font-size:11.5px;color:#444;margin:0 auto 20px;padding:7px 18px;background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.1);border-radius:24px;max-width:450px}
+
+/* Control bar */
+.cb{display:flex;justify-content:center;gap:10px;margin-bottom:24px}
+.cbtn{background:rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.12);color:#222;padding:7px 20px;border-radius:24px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;text-shadow:0 0 6px rgba(245,195,0,0.6)}
+.cbtn:hover{background:rgba(0,0,0,0.1);color:#000;border-color:rgba(0,0,0,0.25)}
+
+/* Branch split */
+.bsplit{display:flex;gap:14px}
+.bcol{flex:1;min-width:0}
+.scol{max-width:620px;margin:0 auto}
+
+/* L1 toggle */
+.l1t{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;padding:11px 16px;border-radius:14px;border:2px solid;margin-bottom:8px;transition:all .2s;backdrop-filter:blur(8px);background:rgba(255,255,255,0.6)!important}
+.l1t:hover{filter:brightness(0.95);transform:translateX(2px)}
+.l1lb{font-size:15px;font-weight:700;flex:1}
+.l1ar{font-size:11px;color:rgba(0,0,0,0.35);transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.l1ar.open{transform:rotate(90deg)}
+
+/* Collapsible */
+.col{display:none;padding-left:20px;margin-top:4px;position:relative}
+.col.open{display:block}
+.col::before{content:'';position:absolute;left:8px;top:0;bottom:12px;width:1.5px;background:linear-gradient(to bottom,rgba(0,0,0,0.12),transparent)}
+
+/* Node item */
+.ni{position:relative;margin-bottom:6px}
+.ni::before{content:'';position:absolute;left:-12px;top:16px;width:12px;height:1.5px;background:rgba(0,0,0,0.1)}
+.nh{display:flex;align-items:center;gap:9px;cursor:pointer;user-select:none;padding:8px 12px;border-radius:9px;transition:background .18s}
+.nh:hover:not(.lf){background:rgba(0,0,0,0.05)}
+.lf{cursor:default}
+.bd{width:8px;height:8px;border-radius:50%;flex-shrink:0;box-shadow:0 0 6px currentColor}
+.lb{font-size:13px;font-weight:500;flex:1;line-height:1.4;color:#000;text-shadow:0 0 8px rgba(245,195,0,0.8),0 0 16px rgba(245,195,0,0.4)}
+.ar{font-size:10px;color:rgba(0,0,0,0.3);transition:transform .25s;flex-shrink:0;text-shadow:none}
+.ar.open{transform:rotate(90deg)}
+.nb{font-size:11.5px;color:#333;background:rgba(0,0,0,0.04);border-left:2px solid rgba(0,0,0,0.1);border-radius:0 8px 8px 0;padding:6px 12px;margin:2px 0 7px 20px;line-height:1.65;text-shadow:0 0 6px rgba(245,195,0,0.6)}
+
+/* Animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+.col.open>.ni{animation:fadeUp .2s ease both}
+.col.open>.ni:nth-child(2){animation-delay:.05s}
+.col.open>.ni:nth-child(3){animation-delay:.1s}
+.col.open>.ni:nth-child(4){animation-delay:.15s}
+.col.open>.ni:nth-child(5){animation-delay:.2s}
+
+@media(max-width:580px){.bsplit{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="bg">
+  <div class="orb"></div><div class="orb"></div><div class="orb"></div>
+  <div class="orb"></div><div class="orb"></div><div class="orb"></div>
+</div>
+<div class="grid"></div>
+<header>
+  <div class="hd">
+    <div class="hglow"></div>
+    <h1>ବିଶେଷ୍ୟ ଓ ବିଶେଷଣ</h1>
+    <small>Mind Map</small>
+  </div>
+  <div class="hbtns">
+    <button class="hbtn" onclick="expandAll()">▸ Expand All</button>
+    <button class="hbtn" onclick="collapseAll()">▾ Collapse All</button>
+  </div>
+</header>
+<div class="hint">Click any node to expand &nbsp;|&nbsp; <kbd>Ctrl+E</kbd> expand all</div>
+<div class="mm">
+  <div class="rn"><div class="rb">ବିଶେଷ୍ୟ ଓ ବିଶେଷଣ</div></div>
   
-      </head>
-      <body>
-      <h1>ବିଶେଷ୍ୟ ଓ ବିଶେଷଣ</h1>
-      <ul><li><p>ବିଶେଷ୍ୟ ଓ ବିଶେଷଣ</p><ul><li><p>ବିଶେଷ୍ୟ</p><pre><p>ବ୍ୟକ୍ତି, ଜାତି, ବସ୍ତୁ, ଗୁଣ, କ୍ରିୟା ର ନାମକୁ ବୁଝାଏ</p></pre><ul><li><p>ନାମ ବାଚକ</p><pre><p>ମଣିଷ, ପଶୁ, ପକ୍ଷୀ, ଦେଶ, ସହର, ଗାଁ, ଜାଗା, ଗଛ, ଫୁଲ, ଫଳ, ବହି, ର ନାମ</p><p>{}= ନାମ ବାଚକ ବିଶେଷ୍ୟ</p><p>{ରାମାୟଣ} ରେ {ରାମ} ସୁନା ହରିଣ {ମାରିଚି} କୁ {ଚିତ୍ରକୁଟ} ଠାରେ</p><p>ଧରିବାକୁ ଯାଇଥିଲେ କିନ୍ତୁ ତାକୁ ହାଲିଆ ଲାଗିଲୁକୁ ପାଖରେ ଥିବା {ଅଛୁଲି}ଗ୍ରାମର ଗୋଟିଏ {ଆମ୍ବ ଗଛ} ତଳେ ବସି {ଆମ୍ବ} ଖାଇଲେ</p></pre></li><li><p>ଜାତି ବାଚକ</p><pre><p>ନାମ ଯାହା ସମୂହ ଜାତି କୁ ବୁଝାଏ</p><p>{}=ଜାତି ବାଚକ</p><p>ମଣିଷ, ପଶୁ, ପକ୍ଷୀ, ଦେଶ, ସହର, ଗାଁ,</p><p>ଜାଗା, ଗଛ, ଫୁଲ, ଫଳ, ବହି, ଶିକ୍ଷକ, ବାଘ, ଶୁଆ</p><p>{କୁକୁର} ଟି {ଶିକ୍ଷକ} ଙ୍କ ପଛ ପଟକୁ ଚୋବେଇଦେଲା</p></pre></li><li><p>ବସ୍ତୁ ବାଚକ</p><pre><p>ଯେଉଁ ବସ୍ତୁରୁ ଜିନିଷ ତିଆରି ତାହାର ନାମ</p><p>ରୂପା, ସୁନା, ହୀରା, କାଠ, ପଥର, ମାଟି, </p><p><br></p><p>ବେଳେବେଳେ ଆମକୁ ବସ୍ତୁ ବାଚକ ଓ ଜାତି ବାଚକରେ </p><p><span style="color: var(--text-color-caption);">ଚିହ୍ନିବାରେ ଅସୁବିଧା ହୁଏ:-</span></p><p>ହାର (ଜାତି ବାଚକ) ସୁନା ହାର (ବସ୍ତୁ ବାଚକ)</p><p>ଚୁଡି (ଜାତି ବାଚକ) ସୁନା ଚୁଡି (ବସ୍ତୁ ବାଚକ)</p><p><br></p><p><br></p><p><br></p></pre></li><li><p>ଗୁଣ ବାଚକ</p><pre><p>ଗୁଣ ବା ଯେକୌଣି ଅବସ୍ଥା ର ନାମ</p><p>ନିରୀହତା, ସୌନ୍ଦର୍ଯ୍ୟ, ଚାଞ୍ଚଲ୍ଯ, ସତ୍ୟ, ଶାନ୍ତି, ସାଧୁତା, ଦୁଷ୍ଟାମି </p><p>ଯୌବନ, ସୁଖ, ଦୁଃଖ, ଦାରିଦ୍ର୍ୟ</p></pre></li><li><p>କ୍ରିୟା ବାଚକ</p><pre><p>ସିଦ୍ଧ କ୍ରିୟା ବା  କାମର ନାମ କୁ ବୁଝାଏ</p><p><br></p><p>ସିଦ୍ଧ କ୍ରିୟା = ପଢ଼ା, ପଠନ, ଭୋଜନ, ଗମନ, ଦେବା, ରକ୍ଷା</p><p>ସାଧ୍ୟ କ୍ରିୟା = ପଢ଼େ, ପଢ଼ୁଛି, ପଢିଲା, କଲା, କରୁଛି, କରିବ</p><p><br></p></pre></li></ul></li><li><p>ବିଶେଷଣ</p><pre><p>ବିଶେଷ୍ୟର ଗୁଣ, ଅବସ୍ଥା, ପରିମାଣ, ସଂଖ୍ୟା ବିଷୟରେ କହିଥାଏ</p><p><br></p></pre><ul><li><p>ବିଶେଷ୍ୟ ର ବିଶେଷଣ</p><pre><p>ବିଶେଷ୍ୟ ର ଠିକ୍ ପୂର୍ବରୁ ବସୁଥିବା ବିଶେଷଣ ପଦ</p><p>{ଶାନ୍ତ} ପିଲାଟି {ସୁନ୍ଦର} ବଗିଚାରେ ବୁଲୁଥିଲା</p></pre></li><li><p>ପ୍ରକାର ଭେଦ</p><ul><li><p>ଗୁଣବାଚକ</p><pre><p>ଯେଉଁ ଶବ୍ଦ ବିଶେଷ୍ୟ ପଦ ର ଗୁଣ(ଧର୍ମ, ସ୍ଵଭାବ,ପ୍ରକୃତି) ବିଷୟରେ କହେ</p><p>{ଭାରି} ଜିନିଷ, {ମଧୁର} ଜଳ, {ନାଲି} ଗାମୁଛା</p><p>{ଅଲଣା} ତରକାରୀ, {ନରମ} କଥା</p></pre></li><li><p>ଅବସ୍ଥା ବାଚକ</p><pre><p>ବିଶେଷ୍ୟ ପଦର ଅବସ୍ଥା ବିଷୟରେ କହିଥାଏ</p><p>{ଧନୀ} ଲୋକ, {ଭଙ୍ଗା} ଘର, {ପୋକଡା} ଗଛ , {ବୁଢ଼ା} ଲୋକ,{ପାଣିଆ} କ୍ଷୀରି, {ଛୋଟା} ଲୋକ, {ରୋଗୀଣା} ଗାଈ</p></pre></li><li><p>ସଂଖ୍ୟା ବାଚକ ବିଶେଷଣ</p><pre><p>ବିଶେଷ୍ୟ ପଦର ସଂଖ୍ୟା ବିଷୟରେ କୁହେ</p><p>ଏହା ବିଶେଷ୍ୟ ପଦର ସମଷ୍ଟି କୁ ବୁଝାଏ</p><p>ଏହା ସାଧାଣତଃ ଗଣନ ସଂଖ୍ୟା ରୁ ଆରମ୍ଭ {୧,୨,୩...}</p><p>{ବାରଶହ} ବଢେଇ= ବାରଶହ ବଢେଇ ଙ୍କ ସମଷ୍ଟି</p><p>{ବାର} ମାସ, {ସାତ} ବାର , {ଦଶ} ମୁଣ୍ଡିଆ ନାଗ</p></pre><ul><li><p>ପୂରଣ ବାଚକ ବିଶେଷଣ</p><pre><p>ଏହା ସଂଖ୍ୟା ବାଚକ ବିଶେଷଣ ର କେବଳ ଗୋଟିଏ ନିର୍ଦ୍ଧିଷ୍ଟ ସଂଖ୍ୟା କୁ ବୁଝାଏ</p><p>ଏହା ସାଧାଣତଃ ରୋମାନ ଅକ୍ଷର ରୁ ଆରମ୍ଭ {I,II,III,IV,V...} ବା</p><p>{ପ୍ରଥମ, ଦ୍ୱିତୀୟ, ତୃତୀୟ,.....}</p><p>{ଦଶମ} ପିଲା = କେବଳ ଦଶମ ଶ୍ରେଣୀର ପିଲା{ପୂରଣ ବାଚକ}</p><p>[ସାତ] ବାର= ସାତ ଟି ବାରର ସମଷ୍ଟି [ସଂଖ୍ୟା ବାଚକ]</p><p>{ତୃତୀୟ} ଗାଈ, {ତୃତୀୟ} ମହଲା ଘର ରେ ରହୁଛି</p></pre></li></ul></li><li><p>ପରିମାଣ ବାଚକ ବିଶେଷଣ</p><pre><p>ବିଶେଷ୍ୟ ପଦର ପରିମାଣ କୁ ବୁଝାଏ</p><p>(ବସ୍ତାଏ) ଚାଉଳ, (ପୁଳାଏ) ମାଂସ, (ବିଡ଼ାଏ) ଘାସ</p><p>(ପୁରା) ମାଠିଆ, (ଅଧିକ) ଭାତ, (କିଛି) କୁକୁଡ଼ା, (ସବୁ) ମାଛ</p></pre></li><li><p>ତୁଳନାତ୍ମକ ବିଶେଷଣ</p><pre><p>ଦୁଇ ବା ଅଧିକ ବିଶେଷ୍ୟ ପଦ ର ତୁଳନା ରେ ବ୍ୟବହାର କରାଯାଉଥିବା ପଦ</p><p>ରାମ {ଅପେକ୍ଷା} ଶ୍ୟାମ ଡେଙ୍ଗା</p><p>ରାମ {ଠାରୁ} ହରି ୨ ଗୁଣ</p><p>ରାମ, ଶ୍ୟାମ, ହରି ଠାରୁ ରାମ {ବେଶୀ} ଚାଲାଗ</p></pre></li></ul></li><li><p>ବିଧେୟ ବିଶେଷଣ</p><pre><p>ବିଶେଷ ପଦର ପରେ ବସୁଥିବା ବିଶେଷଣ ପଦ</p><p>ପିଲାଟି {ଶାନ୍ତ} ଅଟେ , ଛବି ଟି { ଚମତ୍କାର}</p><p>ଝିଅଟି { ସୁନ୍ଦର} , ପିଲାଟି {ଚତୁର}</p></pre></li><li><p>ସାର୍ବନାମିକ ବିଶେଷଣ</p><pre><p>ସର୍ବନାମ ପଦ ବିଶେଷଣ ପଦଭଳି କାମ କରେ</p><p>ଏହା କେବଳ ବିଶେଷ୍ୟ ପଦ ସହ ଲାଗେ ଓ ବିଶେଷଣ ପଦ ସହ ଲାଗେ ନାହିଁ</p><p>{ସେହି } ଝିଅଟି, {ଯେମିତି} ଠାକୁର {ସେମିତି} ପୂଜା</p><p>{ଯେପରି} କାମ {ସେପରି} ମୂଲ</p><p>{ ଏଇ } ଘର {ସେଇ} ଘର , {କେଉଁ} କାମ {ଯେଉଁ} କାମ</p><p>{ମୋ} କଥା, { ତୋ} କଥା, { ଆମ} ସମୟ, { ତାଙ୍କ} ସମୟ</p></pre></li><li><p>ବିଶେଷ୍ୟ ରୂପି ବିଶେଷଣ</p><pre><p>ବିଶେଷ୍ୟ ପଦକୁ ବିଶେଷଣ ଭଳି ବ୍ୟବହାର</p><p>{ମାଟି} କାନ୍ଥ, {ସୁନା} ମନ୍ଦିର, {ଶୀତ} ଦିନ</p></pre></li><li><p>ସମନ୍ଧବାଚକ ବିଶେଷଣ</p><pre><p>(ବିଶେଷ୍ୟ) ପଦକୁ ଅନ୍ୟ ଏକ ଉପାୟରେ ବ୍ୟବହାର {ସମନ୍ଧବାଚକ ବିଶେଷଣ}</p><p>(ସୁଖ){ର} (ସାଥୀ), (ଜାଣିବା){ର} (ବିଷୟ)</p></pre></li><li><p>କ୍ରିୟା ବିଶେଷଣ</p><pre><p>ଯେଉଁ ବିଶେଷଣ ପଦ କ୍ରିୟା ବା କାମ ପୂର୍ବରୁ ବା ପରେ ଲାଗେ</p><p>ପବନ { ଜୋର୍ ରେ} ବହିଲା, {ଶୀଘ୍ର} ଆସ ମୋ ପାଖକୁ</p><p>{ ଧୀରେ ଧୀରେ} ପବନ ବହିଲା</p><p><br></p></pre></li></ul></li></ul></li></ul>
-      </body>
-    </html>
+  <div class="cb">
+    <button class="cbtn" onclick="expandAll()">▸ Expand All</button>
+    <button class="cbtn" onclick="collapseAll()">▾ Collapse All</button>
+  </div>
+  <div class="bsplit"><div class="bcol"><div class="l1t" onclick="toggleL1('n1',this)" style="border-color:#ff6b6b;background:#ff6b6b18"><span class="l1lb" style="color:#ff6b6b">ବିଶେଷ୍ୟ</span><span class="l1ar" id="l1ar-n1">▶</span></div><div class="col" id="n1"><div class="nb">ବ୍ୟକ୍ତି, ଜାତି, ବସ୍ତୁ, ଗୁଣ, କ୍ରିୟା ର ନାମକୁ ବୁଝାଏ</div><div class="ni"><div class="nh lf"><span class="bd" style="background:#48dbfb;width:5px;height:5px"></span><span class="lb" style="color:#334155">ନାମ ବାଚକ</span></div><div class="nb">ମଣିଷ, ପଶୁ, ପକ୍ଷୀ, ଦେଶ, ସହର, ଗାଁ, ଜାଗା, ଗଛ, ଫୁଲ, ଫଳ, ବହି, ର ନାମ · {}= ନାମ ବାଚକ ବିଶେଷ୍ୟ · {ରାମାୟଣ} ରେ {ରାମ} ସୁନା ହରିଣ {ମାରିଚି} କୁ {ଚିତ୍ରକୁଟ} ଠାରେ · ଧରିବାକୁ ଯାଇଥିଲେ କିନ୍ତୁ ତାକୁ ହାଲିଆ ଲାଗିଲୁକୁ ପାଖରେ ଥିବା {ଅଛୁଲି}ଗ୍ରାମର ଗୋଟିଏ {ଆମ୍ବ ଗଛ} ତଳେ ବସି {ଆମ୍ବ} ଖାଇଲେ</div></div><div class="ni"><div class="nh lf"><span class="bd" style="background:#48dbfb;width:5px;height:5px"></span><span class="lb" style="color:#334155">ଜାତି ବାଚକ</span></div><div class="nb">ନାମ ଯାହା ସମୂହ ଜାତି କୁ ବୁଝାଏ · {}=ଜାତି ବାଚକ · ମଣିଷ, ପଶୁ, ପକ୍ଷୀ, ଦେଶ, ସହର, ଗାଁ, · ଜାଗା, ଗଛ, ଫୁଲ, ଫଳ, ବହି, ଶିକ୍ଷକ, ବାଘ, ଶୁଆ · {କୁକୁର} ଟି {ଶିକ୍ଷକ} ଙ୍କ ପଛ ପଟକୁ ଚୋବେଇଦେଲା</div></div><div class="ni"><div class="nh lf"><span class="bd" style="background:#48dbfb;width:5px;height:5px"></span><span class="lb" style="color:#334155">ବସ୍ତୁ ବାଚକ</span></div><div class="nb">ଯେଉଁ ବସ୍ତୁରୁ ଜିନିଷ ତିଆରି ତାହାର ନାମ · ରୂପା, ସୁନା, ହୀରା, କାଠ, ପଥର, ମାଟି, · ବେଳେବେଳେ ଆମକୁ ବସ୍ତୁ ବାଚକ ଓ ଜାତି ବାଚକରେ · ଚିହ୍ନିବାରେ ଅସୁବିଧା ହୁଏ:- · ହାର (ଜାତି ବାଚକ) ସୁନା ହାର (ବସ୍ତୁ ବାଚକ) · ଚୁଡି (ଜାତି ବାଚକ) ସୁନା ଚୁଡି (ବସ୍ତୁ ବାଚକ)</div></div><div class="ni"><div class="nh lf"><span class="bd" style="background:#48dbfb;width:5px;height:5px"></span><span class="lb" style="color:#334155">ଗୁଣ ବାଚକ</span></div><div class="nb">ଗୁଣ ବା ଯେକୌଣି ଅବସ୍ଥା ର ନାମ · ନିରୀହତା, ସୌନ୍ଦର୍ଯ୍ୟ, ଚାଞ୍ଚଲ୍ଯ, ସତ୍ୟ, ଶାନ୍ତି, ସାଧୁତା, ଦୁଷ୍ଟାମି · ଯୌବନ, ସୁଖ, ଦୁଃଖ, ଦାରିଦ୍ର୍ୟ</div></div><div class="ni"><div class="nh lf"><span class="bd" style="background:#48dbfb;width:5px;height:5px"></span><span class="lb" style="color:#334155">କ୍ରିୟା ବାଚକ</span></div><div class="nb">ସିଦ୍ଧ କ୍ରିୟା ବା  କାମର ନାମ କୁ ବୁଝାଏ · ସିଦ୍ଧ କ୍ରିୟା = ପଢ଼ା, ପଠନ, ଭୋଜନ, ଗମନ, ଦେବା, ରକ୍ଷା · ସାଧ୍ୟ କ୍ରିୟା = ପଢ଼େ, ପଢ଼ୁଛି, ପଢିଲା, କଲା, କରୁଛି, କରିବ</div></div></div></div><div class="bcol"><div class="l1t" onclick="toggleL1('n7',this)" style="border-color:#feca57;background:#feca5718"><span class="l1lb" style="color:#feca57">ବିଶେଷଣ</span><span class="l1ar" id="l1ar-n7">▶</span></div><div class="col" id="n7"><div class="nb">ବିଶେଷ୍ୟର ଗୁଣ, ଅବସ୍ଥା, ପରିମାଣ, ସଂଖ୍ୟା ବିଷୟରେ କହିଥାଏ</div><div class="ni"><div class="nh lf"><span class="bd" style="background:#48dbfb;width:5px;height:5px"></span><span class="lb" style="color:#334155">ବିଶେଷ୍ୟ ର ବିଶେଷଣ</span></div><div class="nb">ବିଶେଷ୍ୟ ର ଠିକ୍ ପୂର୍ବରୁ ବସୁଥିବା ବିଶେଷଣ ପଦ · {ଶାନ୍ତ} ପିଲାଟି {ସୁନ୍ଦର} ବଗିଚାରେ ବୁଲୁଥିଲା</div></div><div class="ni"><div class="nh" onclick="toggle('n9')"><span class="bd" style="background:#48dbfb"></span><span class="lb">ପ୍ରକାର ଭେଦ</span><span class="ar" id="ar-n9">▶</span></div><div class="col" id="n9"><div class="ni"><div class="nh lf"><span class="bd" style="background:#ff9ff3;width:5px;height:5px"></span><span class="lb" style="color:#334155">ଗୁଣବାଚକ</span></div><div class="nb">ଯେଉଁ ଶବ୍ଦ ବିଶେଷ୍ୟ ପଦ ର ଗୁଣ(ଧର୍ମ, ସ୍ଵଭାବ,ପ୍ରକୃତି) ବିଷୟରେ କହେ · {ଭାରି} ଜିନିଷ, {ମଧୁର} ଜଳ, {ନାଲି} ଗାମୁଛା · {ଅଲଣା} ତରକାରୀ, {ନରମ} କଥା</div></div><div class="ni"><div class="nh lf"><span class="bd" style="background:#ff9ff3;width:5px;height:5px"></span><span class="lb" style="color:#334155">ଅବସ୍ଥା ବାଚକ</span></div><div class="nb">ବିଶେଷ୍ୟ ପଦର ଅବସ୍ଥା ବିଷୟରେ କହିଥାଏ · {ଧନୀ} ଲୋକ, {ଭଙ୍ଗା} ଘର, {ପୋକଡା} ଗଛ , {ବୁଢ଼ା} ଲୋକ,{ପାଣିଆ} କ୍ଷୀରି, {ଛୋଟା} ଲୋକ, {ରୋଗୀଣା} ଗାଈ</div></div><div class="ni"><div class="nh" onclick="toggle('n12')"><span class="bd" style="background:#ff9ff3"></span><span class="lb">ସଂଖ୍ୟା ବାଚକ ବିଶେଷଣ</span><span class="ar" id="ar-n12">▶</span></div><div class="nb">ବିଶେଷ୍ୟ ପଦର ସଂଖ୍ୟା ବିଷୟରେ କୁହେ · ଏହା ବିଶେଷ୍ୟ ପଦର ସମଷ୍ଟି କୁ ବୁଝାଏ · ଏହା ସାଧାଣତଃ ଗଣନ ସଂଖ୍ୟା ରୁ ଆରମ୍ଭ {୧,୨,୩...} · {ବାରଶହ} ବଢେଇ= ବାରଶହ ବଢେଇ ଙ୍କ ସମଷ୍ଟି · {ବାର} ମାସ, {ସାତ} ବାର , {ଦଶ} ମୁଣ୍ଡିଆ ନାଗ</div><div class="col" id="n12"><div class="ni"><div class="nh lf"><span class="bd" style="background:#54a0ff;width:5px;height:5px"></span><span class="lb" style="color:#334155">ପୂରଣ ବାଚକ ବିଶେଷଣ</span></div><div class="nb">ଏହା ସଂଖ୍ୟା ବାଚକ ବିଶେଷଣ ର କେବଳ ଗୋଟିଏ ନିର୍ଦ୍ଧିଷ୍ଟ ସଂଖ୍ୟା କୁ ବୁଝାଏ · ଏହା ସାଧାଣତଃ ରୋମାନ ଅକ୍ଷର ରୁ ଆରମ୍ଭ {I,II,III,IV,V...} ବା · {ପ୍ରଥମ, ଦ୍ୱିତୀୟ, ତୃତୀୟ,.....} · {ଦଶମ} ପିଲା = କେବଳ ଦଶମ ଶ୍ରେଣୀର ପିଲା{ପୂରଣ ବାଚକ} · [ସାତ] ବାର= ସାତ ଟି ବାରର ସମଷ୍ଟି [ସଂଖ୍ୟା ବାଚକ] · {ତୃତୀୟ} ଗାଈ, {ତୃତୀୟ} ମହଲା ଘର ରେ ରହୁଛି</div></div></div></div><div class="ni"><div class="nh lf"><span class="bd" style="background:#ff9ff3;width:5px;height:5px"></span><span class="lb" style="color:#334155">ପରିମାଣ ବାଚକ ବିଶେଷଣ</span></div><div class="nb">ବିଶେଷ୍ୟ ପଦର ପରିମାଣ କୁ ବୁଝାଏ · (ବସ୍ତାଏ) ଚାଉଳ, (ପୁଳାଏ) ମାଂସ, (ବିଡ଼ାଏ) ଘାସ · (ପୁରା) ମାଠିଆ, (ଅଧିକ) ଭାତ, (କିଛି) କୁକୁଡ଼ା, (ସବୁ) ମାଛ</div></div><div class="ni"><div class="nh lf"><span class="bd" style="background:#ff9ff3;width:5px;height:5px"></span><span class="lb" style="color:#334155">ତୁଳନାତ୍ମକ ବିଶେଷଣ</span></div><div class="nb">ଦୁଇ ବା ଅଧିକ ବିଶେଷ୍ୟ ପଦ ର ତୁଳନା ରେ ବ୍ୟବହାର କରାଯାଉଥିବା ପଦ · ରାମ {ଅପେକ୍ଷା} ଶ୍ୟାମ ଡେଙ୍ଗା · ରାମ {ଠାରୁ} ହରି ୨ ଗୁଣ · ରାମ, ଶ୍ୟାମ, ହରି ଠାରୁ ରାମ {ବେଶୀ} ଚାଲାଗ</div></div></div></div><div class="ni"><div class="nh lf"><span class="bd" style="background:#48dbfb;width:5px;height:5px"></span><span class="lb" style="color:#334155">ବିଧେୟ ବିଶେଷଣ</span></div><div class="nb">ବିଶେଷ ପଦର ପରେ ବସୁଥିବା ବିଶେଷଣ ପଦ · ପିଲାଟି {ଶାନ୍ତ} ଅଟେ , ଛବି ଟି { ଚମତ୍କାର} · ଝିଅଟି { ସୁନ୍ଦର} , ପିଲାଟି {ଚତୁର}</div></div><div class="ni"><div class="nh lf"><span class="bd" style="background:#48dbfb;width:5px;height:5px"></span><span class="lb" style="color:#334155">ସାର୍ବନାମିକ ବିଶେଷଣ</span></div><div class="nb">ସର୍ବନାମ ପଦ ବିଶେଷଣ ପଦଭଳି କାମ କରେ · ଏହା କେବଳ ବିଶେଷ୍ୟ ପଦ ସହ ଲାଗେ ଓ ବିଶେଷଣ ପଦ ସହ ଲାଗେ ନାହିଁ · {ସେହି } ଝିଅଟି, {ଯେମିତି} ଠାକୁର {ସେମିତି} ପୂଜା · {ଯେପରି} କାମ {ସେପରି} ମୂଲ · { ଏଇ } ଘର {ସେଇ} ଘର , {କେଉଁ} କାମ {ଯେଉଁ} କାମ · {ମୋ} କଥା, { ତୋ} କଥା, { ଆମ} ସମୟ, { ତାଙ୍କ} ସମୟ</div></div><div class="ni"><div class="nh lf"><span class="bd" style="background:#48dbfb;width:5px;height:5px"></span><span class="lb" style="color:#334155">ବିଶେଷ୍ୟ ରୂପି ବିଶେଷଣ</span></div><div class="nb">ବିଶେଷ୍ୟ ପଦକୁ ବିଶେଷଣ ଭଳି ବ୍ୟବହାର · {ମାଟି} କାନ୍ଥ, {ସୁନା} ମନ୍ଦିର, {ଶୀତ} ଦିନ</div></div><div class="ni"><div class="nh lf"><span class="bd" style="background:#48dbfb;width:5px;height:5px"></span><span class="lb" style="color:#334155">ସମନ୍ଧବାଚକ ବିଶେଷଣ</span></div><div class="nb">(ବିଶେଷ୍ୟ) ପଦକୁ ଅନ୍ୟ ଏକ ଉପାୟରେ ବ୍ୟବହାର {ସମନ୍ଧବାଚକ ବିଶେଷଣ} · (ସୁଖ){ର} (ସାଥୀ), (ଜାଣିବା){ର} (ବିଷୟ)</div></div><div class="ni"><div class="nh lf"><span class="bd" style="background:#48dbfb;width:5px;height:5px"></span><span class="lb" style="color:#334155">କ୍ରିୟା ବିଶେଷଣ</span></div><div class="nb">ଯେଉଁ ବିଶେଷଣ ପଦ କ୍ରିୟା ବା କାମ ପୂର୍ବରୁ ବା ପରେ ଲାଗେ · ପବନ { ଜୋର୍ ରେ} ବହିଲା, {ଶୀଘ୍ର} ଆସ ମୋ ପାଖକୁ · { ଧୀରେ ଧୀରେ} ପବନ ବହିଲା</div></div></div></div></div>
+</div>
+<script>
+function toggle(id){var c=document.getElementById(id),a=document.getElementById('ar-'+id);if(!c)return;var o=c.classList.toggle('open');if(a)a.classList.toggle('open',o)}
+function toggleL1(id,el){var c=document.getElementById(id),a=document.getElementById('l1ar-'+id);if(!c)return;var o=c.classList.toggle('open');if(a)a.classList.toggle('open',o)}
+function expandAll(){document.querySelectorAll('.col').forEach(function(c){c.classList.add('open')});document.querySelectorAll('.ar,.l1ar').forEach(function(a){a.classList.add('open')})}
+function collapseAll(){document.querySelectorAll('.col').forEach(function(c){c.classList.remove('open')});document.querySelectorAll('.ar,.l1ar').forEach(function(a){a.classList.remove('open')})}
+document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='e'){e.preventDefault();expandAll()}if((e.ctrlKey||e.metaKey)&&e.key==='d'){e.preventDefault();collapseAll()}});
+</script>
+</body>
+</html>
