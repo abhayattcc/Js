@@ -31,12 +31,8 @@
             color: #1a237e;
         }
 
-        /* ── Floating Donate Button – bottom right, never overlaps ── */
+        /* ── Donate Button – fixed to right side of app title area ── */
         .donate-float {
-            position: fixed;
-            bottom: 90px;
-            right: 14px;
-            z-index: 600;
             background: linear-gradient(45deg, #ff6b6b, #ffb347);
             color: white;
             border: none;
@@ -52,8 +48,20 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            flex-shrink: 0;
+            align-self: center;
         }
         .donate-float:hover { transform: scale(1.07); box-shadow: 0 6px 18px rgba(255,107,107,0.6); }
+
+        /* ── App Title Row (title + donate side by side) ── */
+        .app-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin: 0 0 24px;
+            flex-wrap: wrap;
+        }
 
         /* ── Main Container ── */
         .container {
@@ -68,7 +76,7 @@
           font-size: 28px;
           color: #d81b60;
           text-shadow: 1px 1px 3px rgba(255,255,255,0.7);
-          margin: 0 0 24px;
+          margin: 0;
 }
 
         /* ── Section & Chapter List – centered beautiful UI ── */
@@ -504,12 +512,12 @@
     </style>
 </head>
 <body>
-<a class="donate-float" href="https://razorpay.me/@abhayabehera4628" target="_blank">
-    💳 Donate
-</a>
 <!-- Main Chapter Screen -->
 <div class="container" id="chapterContainer">
-    <h1 class="app-title">Gk By Abhaya 📖</h1>
+    <div class="app-title-row">
+        <h1 class="app-title">Gk By Abhaya 📖</h1>
+        <a class="donate-float" href="https://razorpay.me/@abhayabehera4628" target="_blank">💳 Donate</a>
+    </div>
     <div class="file-upload-strip">
         <span>📂 Open file:</span>
         <input type="file" id="fileUpload" accept=".pdf,.txt,.html" multiple>
