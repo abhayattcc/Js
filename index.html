@@ -239,17 +239,16 @@
             gap: 8px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.25);
         }
-        .tts-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; }
         .tts-btn.speak-tts {
             background: linear-gradient(135deg, #43e97b, #38f9d7);
             color: #1a237e;
         }
-        .tts-btn.speak-tts:hover:not(:disabled) { transform: scale(1.07); box-shadow: 0 5px 16px rgba(56,249,215,0.4); }
+        .tts-btn.speak-tts:hover { transform: scale(1.07); box-shadow: 0 5px 16px rgba(56,249,215,0.4); }
         .tts-btn.stop-tts {
             background: linear-gradient(135deg, #f44336, #ff7043);
             color: white;
         }
-        .tts-btn.stop-tts:hover:not(:disabled) { transform: scale(1.07); box-shadow: 0 5px 16px rgba(244,67,54,0.4); }
+        .tts-btn.stop-tts:hover { transform: scale(1.07); box-shadow: 0 5px 16px rgba(244,67,54,0.4); }
 
         /* Status bar at bottom of reader */
         #processing-status {
@@ -535,8 +534,8 @@
     <div id="processing-status"></div>
     <!-- TTS Controls Bar – below reader -->
     <div class="tts-bar" id="ttsBar">
-        <button class="tts-btn speak-tts" id="voiceButton" title="Play/Pause" disabled>🗣️ Speak</button>
-        <button class="tts-btn stop-tts" id="stopButton" title="Stop" disabled>🛑 Stop</button>
+        <button class="tts-btn speak-tts" id="voiceButton" title="Play/Pause">🗣️ Speak</button>
+        <button class="tts-btn stop-tts" id="stopButton" title="Stop">🛑 Stop</button>
     </div>
 </div>
 
@@ -1211,6 +1210,7 @@ function showResultsPopUp(){
 }
 
 function loadSubjectSets(sectionIndex,chapterIndex,subjectName){
+    stopSpeech();
     currentSectionIdx=sectionIndex; currentChapterIdx=chapterIndex; currentSubject=subjectName;
     const mcqs=currentSubjectsMap.get(subjectName);
     totalBatches=Math.ceil(mcqs.length/10);
@@ -1224,6 +1224,7 @@ function loadSubjectSets(sectionIndex,chapterIndex,subjectName){
 }
 
 function loadSubjectMCQs(sectionIndex,chapterIndex,subjectName,batch=0){
+    stopSpeech();
     currentSectionIdx=sectionIndex; currentChapterIdx=chapterIndex; currentSubject=subjectName; currentBatch=batch;
     const mcqs=currentSubjectsMap.get(subjectName);
     const batchSize=10,start=batch*batchSize,end=Math.min(start+batchSize,mcqs.length);
@@ -1244,6 +1245,7 @@ function loadSubjectMCQs(sectionIndex,chapterIndex,subjectName,batch=0){
 }
 
 function loadPageList(sectionIndex,chapterIndex,pages){
+    stopSpeech();
     const ci=document.getElementById('contentInner');
     subPages=pages;
     let html=`<div class="section"><h1 class="section-title">${escapeHtml(sections[sectionIndex].chapters[chapterIndex].name)} – Pages</h1><ul class="chapter-list">`;
@@ -1260,6 +1262,7 @@ function loadPageList(sectionIndex,chapterIndex,pages){
 }
 
 function loadPageContent(sectionIndex,chapterIndex,pageIdx){
+    stopSpeech();
     const lang=sections[sectionIndex].language,page=subPages[pageIdx];
     const allLines=page.content.split(/\r?\n/);
     const ci=document.getElementById('contentInner');
@@ -1300,9 +1303,10 @@ function setupMCQListeners(lang){
             fbDiv.textContent=msg; fbDiv.style.display='block'; fbDiv.style.cssText=`font-weight:bold;color:${myColor==='#4caf50'?'#2e7d32':'#d32f2f'};margin:10px 0;padding:5px;`;
             ansDiv.style.display='block'; speakFeedback(msg);
             currentAttempted++;
-            document.getElementById('attempted-count').textContent=currentAttempted;
-            document.getElementById('score-count').textContent=currentScore;
-            if(currentAttempted===currentBatchSize) setTimeout(showResultsPopUp,1000);
+            const ac=document.getElementById('attempted-count'),sc=document.getElementById('score-count');
+            if(ac) ac.textContent=currentAttempted;
+            if(sc) sc.textContent=currentScore;
+            if(currentBatchSize>0&&currentAttempted===currentBatchSize) setTimeout(showResultsPopUp,1000);
         });
     });
     document.querySelectorAll('.skip-btn').forEach(btn=>{
@@ -1313,20 +1317,26 @@ function setupMCQListeners(lang){
             md.querySelector('.feedback').textContent='Skipped'; md.querySelector('.feedback').style.color='#ff9800'; md.querySelector('.feedback').style.display='block';
             md.querySelector('.answer').style.display='block';
             currentAttempted++;
-            document.getElementById('attempted-count').textContent=currentAttempted;
-            document.getElementById('score-count').textContent=currentScore;
-            if(currentAttempted===currentBatchSize) setTimeout(showResultsPopUp,1000);
+            const ac2=document.getElementById('attempted-count'),sc2=document.getElementById('score-count');
+            if(ac2) ac2.textContent=currentAttempted;
+            if(sc2) sc2.textContent=currentScore;
+            if(currentBatchSize>0&&currentAttempted===currentBatchSize) setTimeout(showResultsPopUp,1000);
         });
     });
 }
 
 /* ── TTS ── */
 function isMCQContent(){ return !!document.getElementById('contentInner').querySelector('.mcq'); }
+function hasReadableContent(){
+    if(sentences.length>0) return true;
+    if(isMCQContent()) return true;
+    const ci=document.getElementById('contentInner');
+    if(ci && ci.textContent.trim().length>10) return true;
+    return false;
+}
 function updateTTSVisibility(){
-    const show=isTTSSupported&&(sentences.length>0||isMCQContent());
-    document.getElementById('voiceButton').disabled=!show;
-    document.getElementById('stopButton').disabled=!show;
-    // Always keep tts-bar visible in reader, just disable buttons when not applicable
+    document.getElementById('voiceButton').disabled = false;
+    document.getElementById('stopButton').disabled = false;
     document.getElementById('processing-status').textContent='';
 }
 
@@ -1346,12 +1356,47 @@ function speakFeedback(msg){
 }
 
 function playSpeech(){
-    if(!isTTSSupported||(!isMCQContent()&&sentences.length===0)){updateTTSVisibility();return;}
+    if(!isTTSSupported||!hasReadableContent()){updateTTSVisibility();return;}
     if(isReadingAloud&&isPaused){window.speechSynthesis.resume();isPaused=false;document.getElementById('voiceButton').textContent='⏸️ Pause';return;}
     if(isReadingAloud){window.speechSynthesis.pause();isPaused=true;document.getElementById('voiceButton').textContent='▶️ Resume';return;}
     stopSpeech(); isReadingAloud=true; isPaused=false; document.getElementById('voiceButton').textContent='⏸️ Pause';
-    if(isMCQContent()){document.getElementById('processing-status').textContent='Reading MCQs...';readNextMCQ();}
-    else{currentSentenceIndex=lastTappedSentenceIndex>=0?lastTappedSentenceIndex:(currentSentenceIndex>=sentences.length-1?0:currentSentenceIndex+1);readNextSentence();}
+    if(isMCQContent()){
+        // Collect MCQ text as sentences if sentences array is empty
+        if(sentences.length===0) collectContentSentences();
+        document.getElementById('processing-status').textContent='Reading MCQs...';
+        readNextMCQ();
+    } else if(sentences.length>0){
+        currentSentenceIndex=lastTappedSentenceIndex>=0?lastTappedSentenceIndex:(currentSentenceIndex>=sentences.length-1?0:currentSentenceIndex+1);
+        readNextSentence();
+    } else {
+        // Mind map or other HTML content — collect visible text and read it
+        collectContentSentences();
+        currentSentenceIndex=0;
+        readNextSentence();
+    }
+}
+
+function collectContentSentences(){
+    const ci=document.getElementById('contentInner');
+    if(!ci) return;
+    // Walk all text nodes, split by newlines, filter empty
+    const walker=document.createTreeWalker(ci, NodeFilter.SHOW_TEXT, {
+        acceptNode(node){
+            const p=node.parentElement;
+            // Skip hidden elements and script/style
+            if(!p||p.tagName==='SCRIPT'||p.tagName==='STYLE') return NodeFilter.FILTER_REJECT;
+            if(p.closest('.mm-note')||p.closest('.mindmap-toggle')||p.closest('.mindmap-leaf')){
+                return NodeFilter.FILTER_ACCEPT;
+            }
+            return NodeFilter.FILTER_ACCEPT;
+        }
+    });
+    const collected=[];
+    while(walker.nextNode()){
+        const t=walker.currentNode.textContent.trim();
+        if(t) t.split(/\n|。|[.!?]\s+/).forEach(s=>{const st=s.trim();if(st.length>1)collected.push(st);});
+    }
+    sentences=collected;
 }
 
 function speakWithCallback(text,cb){
@@ -1402,7 +1447,7 @@ function readNextMCQ(){
 }
 
 function readNextSentence(){
-    if(!isTTSSupported||isMCQContent()||sentences.length===0){updateTTSVisibility();return;}
+    if(!isTTSSupported||sentences.length===0){updateTTSVisibility();return;}
     while(currentSentenceIndex<sentences.length&&!sentences[currentSentenceIndex].trim()) currentSentenceIndex++;
     if(currentSentenceIndex>=sentences.length||!isReadingAloud){
         stopSpeech();
@@ -1423,7 +1468,7 @@ function readNextSentence(){
         u.onend=()=>{activeUtterances--;if(activeUtterances===0&&isReadingAloud){currentSentenceIndex++;if(lastTappedFile)saveLastTappedPosition(lastTappedFile,currentSentenceIndex,0);readNextSentence();}};
         speechUtterances.push(u); activeUtterances++;
     });
-    if(activeUtterances>0){speechUtterances.forEach(u=>window.speechSynthesis.speak(u));document.getElementById('voiceButton').disabled=false;document.getElementById('stopButton').disabled=false;}
+    if(activeUtterances>0){speechUtterances.forEach(u=>window.speechSynthesis.speak(u));}
     else{currentSentenceIndex++;if(lastTappedFile)saveLastTappedPosition(lastTappedFile,currentSentenceIndex,0);readNextSentence();}
 }
 
@@ -1431,7 +1476,8 @@ function stopSpeech(){
     if(isTTSSupported) window.speechSynthesis.cancel();
     speechUtterances=[]; activeUtterances=0; isReadingAloud=false; isPaused=false; isDictionaryReading=false;
     document.getElementById('voiceButton').textContent='🗣️ Speak';
-    document.getElementById('stopButton').disabled=true;
+    document.getElementById('stopButton').disabled=false;
+    document.getElementById('voiceButton').disabled=false;
     document.getElementById('contentInner').querySelectorAll('span[data-sentence-index]').forEach(s=>{s.classList.remove('highlight');s.style.display='inline';});
     document.querySelectorAll('.mcq .question-text,.mcq .options,.mcq .answer').forEach(el=>{el.style.backgroundColor=el.classList.contains('answer')?'#e3f2fd':'';});
     updateTTSVisibility();
@@ -1461,6 +1507,7 @@ async function loadContent(sectionIndex, chapterIndex){
     const chapter = sections[sectionIndex].chapters[chapterIndex];
     if(chapter.type === 'link'){ window.open(chapter.url, '_blank'); return; }
     
+    stopSpeech();
     const contentArea = document.getElementById('contentArea');
     const ci = document.getElementById('contentInner');
     const cc = document.getElementById('chapterContainer');
@@ -1489,6 +1536,11 @@ async function loadContent(sectionIndex, chapterIndex){
             buildMindMap(ci, textContent);
             ci.classList.remove('content-text');
             sentences = [];
+            contentArea.classList.add('active');
+            cc.classList.add('hidden');
+            setupInteractionListeners();
+            updateTTSVisibility();
+            return;
         // ── Standalone HTML / App: full document with scripts/styles → iframe ──
         } else if (/<html/i.test(textContent) && /<head/i.test(textContent) && (/<script/i.test(textContent) || /<style/i.test(textContent))) {
             document.getElementById('iframeChapterName').textContent = chapter.name;
