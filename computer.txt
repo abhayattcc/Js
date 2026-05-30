@@ -1,5 +1,5 @@
 
-COMPUTER
+### COMPUTER ###
 
 1.  A computer is an electronic device that performs calculations and operations based on instructions provided by a __________.
     a) Software or hardware program
@@ -436,7 +436,7 @@ COMPUTER
     Answer: c) Robots
 
 
-TYPES OF COMPUTER
+### TYPES OF COMPUTER ###
 
 1.  Which type of computer stores data continuously in the form of physical quantities and produces output as a graph?
     a) Digital Computer
@@ -1015,7 +1015,7 @@ TYPES OF COMPUTER
 
 
 
-OUTPUT DEVICE
+### OUTPUT DEVICE ###
 
 1.  What is the primary function of an output unit?
     a) To receive data from external devices.
@@ -1495,7 +1495,7 @@ OUTPUT DEVICE
 
 
 
-OPERATING SYSTEM
+### OPERATING SYSTEM ###
 
 1.  What is an Operating System (OS)?
     a) A hardware component
@@ -2188,7 +2188,7 @@ OPERATING SYSTEM
 
 
 
-STORAGE UNIT
+### STORAGE UNIT ###
 
 1.  What is the smallest unit of memory storage, represented logically by 0 and 1?
     a) Nibble
@@ -3106,7 +3106,7 @@ d) F7
 
 
 
-EXCEL
+### EXCEL ###
 
 1.  What is a spreadsheet program used to present and organize copious amounts of data systematically, and to perform basic arithmetic operations and create graphs/charts?
     a) Microsoft Word
@@ -4454,7 +4454,7 @@ EXCEL
 
 
 
-MS ACCESS
+### MS ACCESS ###
 
 1.  Which of the following is the primary purpose of Microsoft Access?
     a) Word processing
@@ -4748,7 +4748,7 @@ Category 6: Advanced & General Management
 
 
 
-NETWORK
+### NETWORK ###
 
 1.  What is a telecommunications network that allows computers to exchange data using a data link?
     a) Standalone Computer
@@ -5649,7 +5649,7 @@ NETWORK
 
 
 
-INTERNET
+### INTERNET ###
 
 1.  What is the Internet defined as?
     a) A local area network providing communication facilities.
