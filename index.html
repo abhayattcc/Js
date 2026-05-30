@@ -695,12 +695,13 @@ let lastEnglishGrammarPageIndex = -1;
 
 /* ── Mind Map Renderer ── */
 function isMindMapHtml(htmlString) {
-    // Detect if the HTML looks like a nested UL mind map (h1 + ul structure)
+    // Detect if the HTML looks like a nested UL mind map (heading + ul>li structure)
     const div = document.createElement('div');
     div.innerHTML = htmlString;
-    const h1 = div.querySelector('h1');
+    const heading = div.querySelector('h1, h2, h3');
     const ul = div.querySelector('ul');
-    return !!(h1 && ul);
+    const li = ul && ul.querySelector('li');
+    return !!(heading && ul && li);
 }
 
 function buildMindMap(container, htmlString) {
@@ -711,7 +712,7 @@ function buildMindMap(container, htmlString) {
     wrapper.className = 'mindmap-container';
 
     // Title
-    const h1 = tempDiv.querySelector('h1');
+    const h1 = tempDiv.querySelector('h1, h2, h3');
     if (h1) {
         const title = document.createElement('h1');
         title.textContent = h1.textContent;
@@ -731,8 +732,8 @@ function buildMindMap(container, htmlString) {
     ctrlBar.appendChild(expandAllBtn);
     wrapper.appendChild(ctrlBar);
 
-    // Build root UL
-    const rootUl = tempDiv.querySelector('body > ul') || tempDiv.querySelector('ul');
+    // Build root UL — works for both full-doc and fragment HTML
+    const rootUl = tempDiv.querySelector('body > ul') || tempDiv.querySelector(':scope > ul') || tempDiv.querySelector('ul');
     if (rootUl) {
         const mmRoot = document.createElement('ul');
         mmRoot.className = 'mindmap-root';
@@ -761,12 +762,38 @@ function buildMMLevel(srcUl, destUl, level) {
         const nodeDiv = document.createElement('li');
         nodeDiv.className = `mindmap-node mm-level-${Math.min(level, 5)}`;
 
-        // Get the <p> text (node label)
+        // Get the <p> text (node label), or fallback to direct text node
         const pEl = li.querySelector(':scope > p');
-        const label = pEl ? pEl.textContent.trim() : '';
+        let label = '';
+        if (pEl) {
+            label = pEl.textContent.trim();
+        } else {
+            // Collect direct text nodes (ignore child element text)
+            label = Array.from(li.childNodes)
+                .filter(n => n.nodeType === 3)
+                .map(n => n.textContent.trim())
+                .join(' ')
+                .trim();
+            // If still empty, try first inline element (span, strong, em, a)
+            if (!label) {
+                const inline = li.querySelector(':scope > span, :scope > strong, :scope > em, :scope > a');
+                if (inline) label = inline.textContent.trim();
+            }
+        }
 
-        // Get <pre> notes
+        // Get <pre> notes — handle both <pre>text</pre> and <pre><p>text</p></pre>
         const preEls = Array.from(li.querySelectorAll(':scope > pre'));
+        function extractNoteText(pre) {
+            // If pre contains <p> tags, join their text with newlines
+            const pTags = pre.querySelectorAll('p');
+            if (pTags.length > 0) {
+                return Array.from(pTags)
+                    .map(p => p.textContent.replace(/\u00A0/g, ' ').trim())
+                    .filter(t => t.length > 0)
+                    .join('\n');
+            }
+            return pre.textContent.replace(/\u00A0/g, ' ').trim();
+        }
 
         // Get child <ul>
         const childUl = li.querySelector(':scope > ul');
@@ -774,7 +801,7 @@ function buildMMLevel(srcUl, destUl, level) {
         if (childUl) {
             // Togglable node
             const btn = document.createElement('button');
-            btn.className = `mindmap-toggle mm-level-${Math.min(level, 5)}`;
+            btn.className = 'mindmap-toggle';
             const arrow = document.createElement('span');
             arrow.className = 'mm-arrow';
             arrow.textContent = '▾';
@@ -784,9 +811,11 @@ function buildMMLevel(srcUl, destUl, level) {
 
             // Notes
             preEls.forEach(pre => {
+                const noteText = extractNoteText(pre);
+                if (!noteText) return;
                 const note = document.createElement('div');
                 note.className = 'mm-note';
-                note.textContent = pre.textContent.trim();
+                note.textContent = noteText;
                 nodeDiv.appendChild(note);
             });
 
@@ -803,14 +832,16 @@ function buildMMLevel(srcUl, destUl, level) {
         } else {
             // Leaf node
             const leaf = document.createElement('span');
-            leaf.className = `mindmap-leaf mm-level-${Math.min(level, 5)}`;
+            leaf.className = 'mindmap-leaf';
             leaf.textContent = label;
             nodeDiv.appendChild(leaf);
 
             preEls.forEach(pre => {
+                const noteText = extractNoteText(pre);
+                if (!noteText) return;
                 const note = document.createElement('div');
                 note.className = 'mm-note';
-                note.textContent = pre.textContent.trim();
+                note.textContent = noteText;
                 nodeDiv.appendChild(note);
             });
         }
@@ -1451,23 +1482,20 @@ async function loadContent(sectionIndex, chapterIndex){
     
     const textContent = await content.text();
 
-    // ── Standalone HTML / App Check ──
-    // If the HTML has a full document structure, open it as a separate app page (iframe)
-    if (chapter.type === 'html' && /<html/i.test(textContent) && /<head/i.test(textContent)) {
-        document.getElementById('iframeChapterName').textContent = chapter.name;
-        document.getElementById('app-iframe').srcdoc = textContent;
-        cc.classList.add('hidden');
-        document.getElementById('iframe-container').classList.add('active');
-        return;
-    }
-    
     if(chapter.type === 'html'){
-        // Check if it's a mind map style HTML
+        // ── Mind Map check FIRST (even if file has full <html> wrapper) ──
         if(isMindMapHtml(textContent)){
             ci.innerHTML = '';
             buildMindMap(ci, textContent);
             ci.classList.remove('content-text');
             sentences = [];
+        // ── Standalone HTML / App: full document with scripts/styles → iframe ──
+        } else if (/<html/i.test(textContent) && /<head/i.test(textContent) && (/<script/i.test(textContent) || /<style/i.test(textContent))) {
+            document.getElementById('iframeChapterName').textContent = chapter.name;
+            document.getElementById('app-iframe').srcdoc = textContent;
+            cc.classList.add('hidden');
+            document.getElementById('iframe-container').classList.add('active');
+            return;
         } else {
             const tempDiv = document.createElement('div');
             if(sectionIndex === 2) tempDiv.style.whiteSpace = 'pre'; else tempDiv.style.whiteSpace = 'pre-wrap';
