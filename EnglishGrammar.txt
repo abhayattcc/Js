@@ -1,8 +1,4 @@
-
-
- Nouns: Concepts, Rules, and MCQs
-
-nouns
+### NOUN ###
 
  1. What is a Noun?
 
@@ -552,11 +548,7 @@ d) Independent clause
 
 Answer: c) Noun clause (acting as the direct object of "believe")
 
-Let's delve into the fascinating world of pronouns!
-
- Pronouns: Concepts, Rules, and MCQs
-
-pronouns
+### PRONOUN ###
 
  1. What is a Pronoun?
 
@@ -1062,11 +1054,7 @@ d) whom
 Answer: c) that (or 'which' if you're deliberately using it restrictively, but 'that' is preferred for restrictive clauses)
 
 
-Absolutely! Let's dive deep into the world of verbs.
-
- Verbs: Concepts, Rules, and MCQs
-
-verbs
+### VERB ###
 
  1. What is a Verb?
 
@@ -1234,7 +1222,7 @@ d) To start crying
 
 Answer: b) To stop functioning
 
- 3. Verb Tenses
+ ### Tense ###
 
 Concept: Verb tense indicates the time an action or state of being occurs (past, present, or future).
 
@@ -1349,7 +1337,7 @@ d) Clean
 
 Answer: c) Sing (Sing - Sang - Sung)
 
- 6. Subject-Verb Agreement
+ ### Subject-Verb Agreement ###
 
 Concept: The verb in a sentence must agree in number (singular or plural) with its subject.
 
@@ -1413,7 +1401,7 @@ d) were
 
 Answer: b) has (The committee is acting as a single unit)
 
- 7. Voice of Verbs: Active and Passive
+ VOICE OF VERBS: ACTIVE AND PASSIVE 
 
 Concept: Voice indicates whether the subject of the verb performs the action (active voice) or receives the action (passive voice).
 
@@ -1548,11 +1536,8 @@ d) A main verb
 Answer: b) A present participle (acting as an adjective modifying 'baby')
 
 
-Sure, let's explore adjectives in detail!
-
- Adjectives: Concepts, Rules, and MCQs
-
-adjectives
+ 
+### ADJECTIVES ###
 
  1. What is an Adjective?
 
@@ -1996,11 +1981,7 @@ d) He bought a new, expensive sports car.
 
 Answer: b) He bought a new expensive sports car. (New and expensive are cumulative)
 
-Here's a comprehensive guide to adverbs, complete with concepts, rules, and MCQs!
-
- Adverbs: Concepts, Rules, and MCQs
-
-adverbs
+### ADVERBS ###
 
  1. What is an Adverb?
 
@@ -2418,12 +2399,7 @@ d) Fast food is unhealthy.
 
 Answer: c) The rabbit ran fast. (Describes how the rabbit ran)
 
-
-Absolutely! Let's explore prepositions in detail.
-
- Prepositions: Concepts, Rules, and MCQs
-
-prepositions
+### PREPOSITIONS ###
 
  1. What is a Preposition?
 
@@ -2812,11 +2788,7 @@ d) out
 Answer: b) off
 
 
-All right, let's explore the world of conjunctions!
-
- Conjunctions: Concepts, Rules, and MCQs
-
-conjunctions
+### CONJUNCTIONS ###
 
  1. What is a Conjunction?
 
@@ -3104,11 +3076,8 @@ d) He is, neither tall nor short.
 Answer: c) He is neither tall nor short.
 
 
-Alright, let's explore the world of interjections!
 
- Interjections: Concepts, Rules, and MCQs
-
-interjections
+### INTERJECTIONS ###
  1. What is an Interjection?
 
 Concept: An interjection is a word or short phrase that expresses a sudden burst of emotion, feeling, or sentiment. They are typically independent of the grammatical structure of the rest of the sentence.
@@ -3320,11 +3289,7 @@ d) He just kept talking and talking ugh.
 Answer: b) He just kept talking and talking, ugh! (Implied strong emotion, though less common to end with a strong interjection and a comma before it)
 
 
-Let's delve into the concepts and rules of articles in English grammar!
-
- Articles: Concepts, Rules, and MCQs
-
-articles
+### ARTICLE ###
 
  1. What is an Article?
 
@@ -3670,11 +3635,8 @@ d) no article
 Answer: b) an
 
 
-Let's explore determiners in detail!
 
- Determiners: Concepts, Rules, and MCQs
-
-determiners
+### DETERMINERS ###
 
  1. What is a Determiner?
 
@@ -3984,9 +3946,8 @@ d) either
 Answer: b) other (plural countable noun, meaning "additional" issues)
 
 
-You got it! Let's dive deep into Subject-Verb Agreement.
 
- Subject-Verb Agreement: Concepts, Rules, and MCQs
+### SUBJECT VERB AGREEMENT ###
 
 Subject-Verb Agreement (SVA)
  1. What is Subject-Verb Agreement?
@@ -4373,11 +4334,8 @@ d) has been
 Answer: b) were (That refers to 'books', plural)
 
 
-Let's explore the fascinating world of sentence types!
 
- Types of Sentences: Concepts, Rules, and MCQs
-
-sentence
+### SENTENCE ###
 
  1. What is a Sentence?
 
@@ -4596,11 +4554,9 @@ d) Compound-complex
 
 Answer: c) Simple
 
-Let's explore phrases in detail!
 
- Phrases: Concepts, Rules, and MCQs
 
-phrases
+### PHRASE ###
  1. What is a Phrase?
 
 Concept: A phrase is a group of related words that functions as a single unit in a sentence but does not contain a subject-verb pair that expresses a complete thought. Unlike a clause, a phrase cannot stand alone as a complete sentence.
@@ -4839,11 +4795,9 @@ d) The old car, sputtering and rattling, finally stopped.
 Answer: d) The old car, sputtering and rattling, finally stopped. (The phrase "sputtering and rattling" describes the car but isn't essential to identify which car.)
 
 
-Let's explore clauses in detail!
 
- Clauses: Concepts, Rules, and MCQs
 
-clauses
+### CLAUSES ###
  1. What is a Clause?
 
 Concept: A clause is a group of words that contains a subject (who or what the clause is about) and a predicate (what the subject does or what is said about the subject). This subject-predicate combination is the defining characteristic of a clause, distinguishing it from a phrase.
@@ -5093,11 +5047,8 @@ d) Although it rained, we enjoyed the picnic.
 Answer: b) He was tired, he went to bed early. (Two independent clauses joined by only a comma)
 
 
-Let's master tenses!
 
- Tenses: Concepts, Rules, and MCQs
-
-Tense
+### TENSE ###
 
  1. What are Tenses?
 
@@ -5484,9 +5435,8 @@ d) We are needing more time.
 Answer: c) He owns a large house.
 
 
-Let's delve into the world of modal verbs!
 
- Modals
+### MODALS ###
  1. What are Modals?
 
 Concept: Modal verbs are a type of auxiliary (helping) verb that are used to express various moods or attitudes, such as possibility, ability, permission, obligation, advice, certainty, and more. They always precede a main verb in its base form (infinitive without "to").
@@ -5823,9 +5773,9 @@ d) Past advice
 Answer: b) Strong logical deduction about the past
 
 
-All right, let's explore non-finite verbs!
 
- Non-Finite Verbs
+
+### NON-FINITE VERBS ###
 
  1. What is a Non-Finite Verb?
 
@@ -6043,9 +5993,8 @@ d) "Stopped to eat" means I started eating; "stopped eating" means I never ate.
 Answer: b) "Stopped to eat" means I paused another activity to start eating; "stopped eating" means I ceased the act of eating.
 
 
-Let's delve into Active and Passive Voice!
 
- Active and Passive Voice
+### ACTIVE AND PASSIVE VOICE ###
  
  1. What are Active and Passive Voice?
 
@@ -6387,8 +6336,8 @@ d) Someone's car was stolen.
 Answer: b) The car was stolen.
 
 
-Let's break down Direct and Indirect Speech!
 
+### NARRATION ###
  Direct and Indirect Speech (Narration)
  1. What is Direct and Indirect Speech?
 
@@ -6673,9 +6622,8 @@ d) advised
 Answer: c) asked
 
 
-All right, let's explore synonyms and antonyms in detail!
 
- Synonyms and Antonyms
+### SYNONYMS AND ANTONYMS ###
 
  1. What are Synonyms?
 
@@ -7027,7 +6975,7 @@ d) widespread
 
 Answer: a) rare
 
- phrasel verb
+ ### PHRASEL VERB ###
 
  1. Concept of Phrasal Verbs
 
@@ -7344,7 +7292,7 @@ Answer: c) Anticipation/excitement
 
 
 
- idioms
+### IDIOMS ###
 
  Idioms Related to Feelings/Emotions
 
