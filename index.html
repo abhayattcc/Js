@@ -1458,7 +1458,7 @@ function setupMCQListeners(lang){
             const match=ansStr.match(lbRe),correctLabel=match?match[1]:null;
             if(!correctLabel) return;
             let correctIdx=-1;
-            opts.forEach((b,i)=>{ const m=b.textContent.trim().match(lang==='english'?/^(\(?[a-e1-5]\)?\.?)/:/ ^(\(?[କ-ଙ୧-୫]\)?\.?)/); if(m&&m[1]===correctLabel) correctIdx=i; });
+            opts.forEach((b,i)=>{ const m=b.textContent.trim().match(lang==='english'?/^(\(?[a-e1-5]\)?\.?)/:/^(\(?[କ-ଙ୧-୫]\)?\.?)/); if(m&&m[1]===correctLabel) correctIdx=i; });
             const myIdx=parseInt(this.dataset.oidx);
             let msg,myColor='#f44336';
             if(myIdx===correctIdx){currentScore++;msg='✓ Correct!';myColor='#4caf50';}
