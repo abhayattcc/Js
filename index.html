@@ -1022,7 +1022,36 @@ function filterTextByLanguage(text, lang) {
 function getDeletedImages() { return JSON.parse(localStorage.getItem('deletedImages')||'[]'); }
 function saveDeletedImage(u) { const d=getDeletedImages(); if(!d.includes(u)){d.push(u);localStorage.setItem('deletedImages',JSON.stringify(d));} }
 function removeDeletedImage(u) { localStorage.setItem('deletedImages',JSON.stringify(getDeletedImages().filter(x=>x!==u))); }
+/* ── Language-aware dictionary speak ────────────────────────────────────────
+   Reads each .dict-field[data-lang] span in DOM order and speaks each one
+   in its own language serially: English → Odia → Hindi, sentence by sentence.
+   ─────────────────────────────────────────────────────────────────────────── */
+function speakDictionaryResults(resultsEl, onDone) {
+    // Collect all tagged fields in DOM order
+    const fields = Array.from(resultsEl.querySelectorAll('.dict-field[data-lang]'));
+    if (!fields.length) { if (onDone) onDone(); return; }
+
+    // Build ordered segments: [{text, lang}, ...]
+    const segments = [];
+    fields.forEach(span => {
+        const text = span.textContent.trim();
+        const lang = span.getAttribute('data-lang'); // 'en' | 'or' | 'hi'
+        if (text) segments.push({ text, lang });
+    });
+
+    if (!segments.length) { if (onDone) onDone(); return; }
+
+    // Speak each segment serially, in its own language
+    function speakNext(i) {
+        if (i >= segments.length) { if (onDone) onDone(); return; }
+        const { text, lang } = segments[i];
+        TTS.speak(text, lang, () => speakNext(i + 1));
+    }
+    speakNext(0);
+}
+
 function getDictionaryTextToSpeak(el) {
+    // Legacy fallback — plain text (used nowhere now but kept for safety)
     const t=document.createElement('div');
     el.querySelectorAll('.result-item').forEach(i=>{ const tx=i.querySelector('.result-text'); if(tx) t.appendChild(tx.cloneNode(true)); });
     return t.textContent.trim();
@@ -1129,7 +1158,7 @@ function setupSuggestionListeners(suggestionsEl, searchInput, resultsEl, speakBt
             suggestionsEl.innerHTML='';
             await searchWord(w,resultsEl,suggestionsEl,false);
             setupSuggestionListeners(suggestionsEl,searchInput,resultsEl,speakBtn);
-            if(speakBtn) speakBtn.disabled=!isTTSSupported||resultsEl.innerHTML==='';
+            if(speakBtn) speakBtn.disabled=!isTTSSupported||!resultsEl.querySelector('.dict-field[data-lang]');
         });
     });
 }
@@ -1166,9 +1195,9 @@ async function searchWord(word, targetEl, suggestionsEl=null, isDictionary=false
         let html='';
         merged.forEach(r=>{
             html+=`<div class="result-item"><div class="result-text">`;
-            if(r.English) html+=`<strong>English:</strong> ${escapeHtml(r.English)}<br>`;
-            if(r.odia)    html+=`<strong>Odia:</strong> ${escapeHtml(r.odia)}<br>`;
-            if(r.hindi)   html+=`<strong>Hindi:</strong> ${escapeHtml(r.hindi)}<br>`;
+            if(r.English) html+=`<strong>English:</strong> <span class="dict-field" data-lang="en">${escapeHtml(r.English)}</span><br>`;
+            if(r.odia)    html+=`<strong>Odia:</strong> <span class="dict-field" data-lang="or">${escapeHtml(r.odia)}</span><br>`;
+            if(r.hindi)   html+=`<strong>Hindi:</strong> <span class="dict-field" data-lang="hi">${escapeHtml(r.hindi)}</span><br>`;
             html+=`</div>`;
             if(r.image && !deletedImages.includes(r.image)){
                 html+=`<div class="image-container">`;
@@ -1249,16 +1278,16 @@ async function showPopup(word=null){
                 dictionaryTimeout=setTimeout(async()=>{
                     await searchWord(searchInput.value,resultsEl,suggestionsEl,false);
                     setupSuggestionListeners(suggestionsEl,searchInput,resultsEl,speakBtn);
-                    speakBtn.disabled=!isTTSSupported||resultsEl.innerHTML==='';
+                    speakBtn.disabled=!isTTSSupported||!resultsEl.querySelector('.dict-field[data-lang]');
                 },300);
             }
         });
         if(isTTSSupported){
             speakBtn.addEventListener('click',()=>{
                 if(isDictionaryReading){ TTS.stop(); isDictionaryReading=false; speakBtn.textContent='🗣️'; return; }
-                const txt=getDictionaryTextToSpeak(resultsEl); if(!txt) return;
+                if(resultsEl.querySelector('.dict-field[data-lang]') === null) return;
                 TTS.stop(); isDictionaryReading=true; speakBtn.textContent='⏸️';
-                TTS.speakMultiLang(txt, ()=>{
+                speakDictionaryResults(resultsEl, ()=>{
                     isDictionaryReading=false;
                     speakBtn.textContent='🗣️';
                 });
@@ -1266,7 +1295,7 @@ async function showPopup(word=null){
         }
         await searchWord(word,resultsEl,suggestionsEl,false);
         setupSuggestionListeners(suggestionsEl,searchInput,resultsEl,speakBtn);
-        speakBtn.disabled=!isTTSSupported||resultsEl.innerHTML==='';
+        speakBtn.disabled=!isTTSSupported||!resultsEl.querySelector('.dict-field[data-lang]');
     });
 }
 
