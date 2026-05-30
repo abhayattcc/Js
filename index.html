@@ -460,6 +460,25 @@
             line-height: 1.6;
             white-space: pre-wrap;
         }
+        /* ── Iframe Container for Standalone Pages ── */
+        #iframe-container {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #fff;
+            z-index: 50;
+            flex-direction: column;
+        }
+        #iframe-container.active {
+            display: flex;
+        }
+        #app-iframe {
+            flex: 1;
+            border: none;
+            width: 100%;
+            background: #f5f5f5;
+        }
 
         /* Children container */
         .mindmap-children {
@@ -497,6 +516,13 @@
         <input type="file" id="fileUpload" accept=".pdf,.txt,.html" multiple>
     </div>
     <div id="sections"></div>
+</div>
+<div id="iframe-container">
+    <div class="reader-topbar">
+        <button class="reader-btn" id="iframeHomeButton">🏠 Home</button>
+        <span class="chapter-name" id="iframeChapterName"></span>
+    </div>
+    <iframe id="app-iframe"></iframe>
 </div>
 
 <!-- Reader / Content Area -->
@@ -1424,6 +1450,16 @@ async function loadContent(sectionIndex, chapterIndex){
     }
     
     const textContent = await content.text();
+
+    // ── Standalone HTML / App Check ──
+    // If the HTML has a full document structure, open it as a separate app page (iframe)
+    if (chapter.type === 'html' && /<html/i.test(textContent) && /<head/i.test(textContent)) {
+        document.getElementById('iframeChapterName').textContent = chapter.name;
+        document.getElementById('app-iframe').srcdoc = textContent;
+        cc.classList.add('hidden');
+        document.getElementById('iframe-container').classList.add('active');
+        return;
+    }
     
     if(chapter.type === 'html'){
         // Check if it's a mind map style HTML
@@ -1463,7 +1499,6 @@ async function loadContent(sectionIndex, chapterIndex){
         const isEnglishGrammar = chapter.name.includes('English Grammar');
         const isComputer = chapter.name.includes('Computer');
 
-        // Apply ### subject ### logic to Theory, English Grammar, and Computer
         if (isTheory || isEnglishGrammar || isComputer) {
             let pages = [];
             const rx = /###\s*(.*?)\s*###([\s\S]*?)(?=###|$)/g; 
@@ -1472,10 +1507,8 @@ async function loadContent(sectionIndex, chapterIndex){
                 pages.push({name: m[1].trim(), content: m[2].trim()});
             }
             
-            // Fallback if no ### markers are found in the text
             if(!pages.length) pages = [{name: chapter.name, content: textContent}];
 
-            // If it's English Grammar or Computer, load them as Subject-Wise Mock Tests
             if (isEnglishGrammar || isComputer) {
                 const subjects = new Map();
                 pages.forEach(p => {
@@ -1498,16 +1531,13 @@ async function loadContent(sectionIndex, chapterIndex){
                     );
                     sentences = [];
                 } else {
-                    // Fallback to text reader if no MCQs are parsed correctly
                     loadPageList(sectionIndex, chapterIndex, pages);
                 }
             } else {
-                // GK Theory - Show subject menu. Clicking loads ONLY that subject's text.
                 loadPageList(sectionIndex, chapterIndex, pages);
             }
             
         } else {
-            // Normal fallback for standard Chapter-Wise Mock Tests
             const allLines = textContent.split(/\r?\n/), lang = sections[sectionIndex].language;
             const subjects = parseChapterToSubjects(allLines, lang, chapter.name);
             currentSubjectsMap = subjects; 
@@ -1564,7 +1594,6 @@ async function loadContent(sectionIndex, chapterIndex){
     setupInteractionListeners(); 
     updateTTSVisibility();
 }
-
 
 /* ── File Upload ── */
 async function handleFileUpload(event){
@@ -1692,6 +1721,11 @@ async function init(){
     document.getElementById('popupClose').addEventListener('click',()=>{
         const p=document.getElementById('popup'); p.classList.remove('visible');
         setTimeout(()=>{p.style.display='none';document.getElementById('popupContent').innerHTML='';},200);
+    });
+           document.getElementById('iframeHomeButton').addEventListener('click', () => {
+        document.getElementById('iframe-container').classList.remove('active');
+        document.getElementById('chapterContainer').classList.remove('hidden');
+        document.getElementById('app-iframe').srcdoc = ''; // Clear iframe memory
     });
 
     if('serviceWorker' in navigator){
