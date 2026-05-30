@@ -1,147 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>କାରକ — Mind Map</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{min-height:100%;font-family:'Outfit',sans-serif;color:#000000;background:#ffffff;text-shadow:0 0 8px rgba(245,195,0,0.8),0 0 18px rgba(245,195,0,0.4)}
 
-/* ── LIGHT ANIMATED BACKGROUND ── */
-body{
-  background:#ffffff;
-  position:relative;
-  overflow-x:hidden;
-}
-.bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-.orb{position:absolute;border-radius:50%;filter:blur(80px);animation:drift 16s ease-in-out infinite alternate}
-.orb:nth-child(1){width:500px;height:500px;background:linear-gradient(135deg,#c7b8ff,#e0d4ff);top:-150px;left:-100px;opacity:0.35;animation-duration:18s}
-.orb:nth-child(2){width:450px;height:450px;background:linear-gradient(135deg,#ffd6e7,#ffb3cc);top:30%;right:-120px;opacity:0.3;animation-duration:14s;animation-delay:-6s}
-.orb:nth-child(3){width:400px;height:400px;background:linear-gradient(135deg,#b2f0e8,#c8ffe0);bottom:-100px;left:20%;opacity:0.32;animation-duration:20s;animation-delay:-4s}
-.orb:nth-child(4){width:300px;height:300px;background:linear-gradient(135deg,#fff3b0,#ffe066);top:10%;left:50%;opacity:0.28;animation-duration:12s;animation-delay:-8s}
-.orb:nth-child(5){width:360px;height:360px;background:linear-gradient(135deg,#b3e5fc,#81d4fa);bottom:10%;right:10%;opacity:0.25;animation-duration:22s;animation-delay:-2s}
-.orb:nth-child(6){width:250px;height:250px;background:linear-gradient(135deg,#ffcdd2,#fff9c4);top:55%;left:5%;opacity:0.22;animation-duration:15s;animation-delay:-10s}
-@keyframes drift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(50px,35px) scale(1.1)}}
+    <!doctype html>
+    <html>
+      <head>
+  
+      </head>
+      <body>
+      <h1>କାରକ</h1>
+      <ul><li><p>କାରକ</p><pre><p>ବାକ୍ୟରେ କ୍ରିୟାପଦ ସହ ଯେଉଁ ପଦର ସମ୍ବନ୍ଧ ଥାଏ </p></pre>
 
-/* GRID LINES */
-.grid{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:linear-gradient(rgba(0,0,0,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.04) 1px,transparent 1px);
-  background-size:40px 40px}
-
-/* ── HEADER ── */
-header{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.1);padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between}
-.hd{display:flex;align-items:center;gap:10px}
-.hglow{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,#feca57,#ff6b6b);box-shadow:0 0 12px rgba(254,202,87,0.8);animation:pglow 2s ease infinite}
-@keyframes pglow{0%,100%{box-shadow:0 0 12px rgba(254,202,87,0.8)}50%{box-shadow:0 0 28px rgba(254,202,87,1)}}
-header h1{font-size:16px;font-weight:800;background:linear-gradient(90deg,#e6a800,#c0392b,#8e44ad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:none}
-header small{font-size:11px;color:#666;margin-left:8px;text-shadow:0 0 6px rgba(245,195,0,0.5)}
-.hbtns{display:flex;gap:8px}
-.hbtn{background:rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.1);color:#222;padding:6px 16px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;text-shadow:0 0 6px rgba(245,195,0,0.7)}
-.hbtn:hover{background:rgba(0,0,0,0.1);color:#000}
-
-/* ── HINT ── */
-.hint{text-align:center;padding:8px;font-size:11.5px;color:#555;position:relative;z-index:1}
-.hint kbd{background:rgba(0,0,0,0.07);border:1px solid rgba(0,0,0,0.12);border-radius:4px;padding:1px 7px;font-size:10px;font-family:monospace;text-shadow:none}
-
-/* ── CONTENT ── */
-.mm{position:relative;z-index:1;padding:20px 16px 80px;max-width:980px;margin:0 auto}
-
-/* Root node */
-.rn{display:flex;justify-content:center;margin-bottom:10px}
-.rb{
-  font-size:22px;font-weight:800;
-  padding:14px 38px;border-radius:60px;
-  background:linear-gradient(135deg,#feca57,#ff6b6b,#fd79a8);
-  color:#1a0500;
-  box-shadow:0 0 0 4px rgba(254,202,87,0.3),0 0 40px rgba(254,202,87,0.5),0 8px 30px rgba(0,0,0,0.15);
-  cursor:default;
-  animation:rootpulse 4s ease infinite;
-  text-shadow:0 0 10px rgba(254,202,87,0.9),0 0 22px rgba(254,202,87,0.6);
-}
-@keyframes rootpulse{0%,100%{box-shadow:0 0 0 4px rgba(254,202,87,0.3),0 0 40px rgba(254,202,87,0.5),0 8px 30px rgba(0,0,0,0.15)}50%{box-shadow:0 0 0 8px rgba(254,202,87,0.2),0 0 60px rgba(254,202,87,0.7),0 8px 30px rgba(0,0,0,0.15)}}
-
-.rno{text-align:center;font-size:11.5px;color:#444;margin:0 auto 20px;padding:7px 18px;background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.1);border-radius:24px;max-width:450px}
-
-/* Control bar */
-.cb{display:flex;justify-content:center;gap:10px;margin-bottom:24px}
-.cbtn{background:rgba(0,0,0,0.06);border:1px solid rgba(0,0,0,0.12);color:#222;padding:7px 20px;border-radius:24px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;text-shadow:0 0 6px rgba(245,195,0,0.6)}
-.cbtn:hover{background:rgba(0,0,0,0.1);color:#000;border-color:rgba(0,0,0,0.25)}
-
-/* Branch split */
-.bsplit{display:flex;gap:14px}
-.bcol{flex:1;min-width:0}
-.scol{max-width:620px;margin:0 auto}
-
-/* L1 toggle */
-.l1t{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;padding:11px 16px;border-radius:14px;border:2px solid;margin-bottom:8px;transition:all .2s;backdrop-filter:blur(8px);background:rgba(255,255,255,0.6)!important}
-.l1t:hover{filter:brightness(0.95);transform:translateX(2px)}
-.l1lb{font-size:15px;font-weight:700;flex:1}
-.l1ar{font-size:11px;color:rgba(0,0,0,0.35);transition:transform .3s cubic-bezier(.4,0,.2,1)}
-.l1ar.open{transform:rotate(90deg)}
-
-/* Collapsible */
-.col{display:none;padding-left:20px;margin-top:4px;position:relative}
-.col.open{display:block}
-.col::before{content:'';position:absolute;left:8px;top:0;bottom:12px;width:1.5px;background:linear-gradient(to bottom,rgba(0,0,0,0.12),transparent)}
-
-/* Node item */
-.ni{position:relative;margin-bottom:6px}
-.ni::before{content:'';position:absolute;left:-12px;top:16px;width:12px;height:1.5px;background:rgba(0,0,0,0.1)}
-.nh{display:flex;align-items:center;gap:9px;cursor:pointer;user-select:none;padding:8px 12px;border-radius:9px;transition:background .18s}
-.nh:hover:not(.lf){background:rgba(0,0,0,0.05)}
-.lf{cursor:default}
-.bd{width:8px;height:8px;border-radius:50%;flex-shrink:0;box-shadow:0 0 6px currentColor}
-.lb{font-size:13px;font-weight:500;flex:1;line-height:1.4;color:#000;text-shadow:0 0 8px rgba(245,195,0,0.8),0 0 16px rgba(245,195,0,0.4)}
-.ar{font-size:10px;color:rgba(0,0,0,0.3);transition:transform .25s;flex-shrink:0;text-shadow:none}
-.ar.open{transform:rotate(90deg)}
-.nb{font-size:11.5px;color:#333;background:rgba(0,0,0,0.04);border-left:2px solid rgba(0,0,0,0.1);border-radius:0 8px 8px 0;padding:6px 12px;margin:2px 0 7px 20px;line-height:1.65;text-shadow:0 0 6px rgba(245,195,0,0.6)}
-
-/* Animations */
-@keyframes fadeUp{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
-.col.open>.ni{animation:fadeUp .2s ease both}
-.col.open>.ni:nth-child(2){animation-delay:.05s}
-.col.open>.ni:nth-child(3){animation-delay:.1s}
-.col.open>.ni:nth-child(4){animation-delay:.15s}
-.col.open>.ni:nth-child(5){animation-delay:.2s}
-
-@media(max-width:580px){.bsplit{flex-direction:column}}
-</style>
-</head>
-<body>
-<div class="bg">
-  <div class="orb"></div><div class="orb"></div><div class="orb"></div>
-  <div class="orb"></div><div class="orb"></div><div class="orb"></div>
-</div>
-<div class="grid"></div>
-<header>
-  <div class="hd">
-    <div class="hglow"></div>
-    <h1>କାରକ</h1>
-    <small>Mind Map</small>
-  </div>
-  <div class="hbtns">
-    <button class="hbtn" onclick="expandAll()">▸ Expand All</button>
-    <button class="hbtn" onclick="collapseAll()">▾ Collapse All</button>
-  </div>
-</header>
-<div class="hint">Click any node to expand &nbsp;|&nbsp; <kbd>Ctrl+E</kbd> expand all</div>
-<div class="mm">
-  <div class="rn"><div class="rb">କାରକ</div></div>
-  <div class="rno">ବାକ୍ୟରେ କ୍ରିୟାପଦ ସହ ଯେଉଁ ପଦର ସମ୍ବନ୍ଧ ଥାଏ</div>
-  <div class="cb">
-    <button class="cbtn" onclick="expandAll()">▸ Expand All</button>
-    <button class="cbtn" onclick="collapseAll()">▾ Collapse All</button>
-  </div>
-  <div class="bsplit"><div class="bcol"><div class="l1t" onclick="toggleL1('n1',this)" style="border-color:#ff6b6b;background:#ff6b6b18"><span class="l1lb" style="color:#ff6b6b">ରାଜା ପ୍ରଭାତରେ ଭିକ୍ଷୁକମାନଙ୍କୁ ରାଜକୋଷରୁ ସ୍ଵହସ୍ତରେ ଗାଇଗୁଡ଼ିକ ଦାନ କଲେ</span><span class="l1ar" id="l1ar-n1">▶</span></div><div class="col" id="n1"><div class="ni"><div class="nh" onclick="toggle('n2')"><span class="bd" style="background:#48dbfb"></span><span class="lb">କର୍ତ୍ତା କାରକ</span><span class="ar" id="ar-n2">▶</span></div><div class="nb">କିଏ? · କିଏ ଦାନ କଲେ? ରାଜା</div><div class="col" id="n2"><div class="ni"><div class="nh lf"><span class="bd" style="background:#ff9ff3;width:5px;height:5px"></span><span class="lb" style="color:#334155">ପ୍ରଥମା ବିଭକ୍ତି</span></div><div class="nb">ପିଲା(ଟା), ପିଲା(ଟେ), ପିଲା(ଟି), ପିଲା(ଟିଏ), ପିଲା(ଏ), ପିଲା(ମାନେ)</div></div></div></div><div class="ni"><div class="nh" onclick="toggle('n4')"><span class="bd" style="background:#48dbfb"></span><span class="lb">କର୍ମ କାରକ</span><span class="ar" id="ar-n4">▶</span></div><div class="nb">କଣ, କେଉଁ ଟିକୁ, କାହାକୁ? · କଣ ଦାନ କଲେ? ଗାଈ · କାହାକୁ ଦାନ କଲେ? · କେଉଁ ଟିକୁ ଦାନ କଲେ</div><div class="col" id="n4"><div class="ni"><div class="nh lf"><span class="bd" style="background:#ff9ff3;width:5px;height:5px"></span><span class="lb" style="color:#334155">ଦ୍ଵିତୀୟା ବିଭକ୍ତି</span></div><div class="nb">ଗାଇ(କୁ), ଗାଇ(ଟିକୁ), ଗାଈ(କି), ଗାଈ (ମାନଙ୍କୁ), ଗାଈ(ଗୁଡ଼ିକୁ)</div></div></div></div><div class="ni"><div class="nh" onclick="toggle('n6')"><span class="bd" style="background:#48dbfb"></span><span class="lb">କରଣ କାରକ</span><span class="ar" id="ar-n6">▶</span></div><div class="nb">କାହାଦ୍ଵାରା/କେମିତି? · କାହାଦ୍ଵାରା ଦାନ କଲେ? ହାତରେ</div><div class="col" id="n6"><div class="ni"><div class="nh lf"><span class="bd" style="background:#ff9ff3;width:5px;height:5px"></span><span class="lb" style="color:#334155">ତୃତୀୟା ବିଭକ୍ତି</span></div><div class="nb">ହାତ(ରେ), ହାତ(ଦ୍ବାରା), ହାତ (ମାନଙ୍କ ଦ୍ଵାରା)</div></div></div></div><div class="ni"><div class="nh" onclick="toggle('n8')"><span class="bd" style="background:#48dbfb"></span><span class="lb">ସମ୍ପ୍ରଦାନ କାରକ</span><span class="ar" id="ar-n8">▶</span></div><div class="nb">କାହା କୁ ଦାନ କଲେ?(ଭିକ୍ଷୁକଙ୍କୁ) · କେଉଁ ମାନଙ୍କୁ ?</div><div class="col" id="n8"><div class="ni"><div class="nh lf"><span class="bd" style="background:#ff9ff3;width:5px;height:5px"></span><span class="lb" style="color:#334155">ଚତୁର୍ଥୀ ବିଭକ୍ତି</span></div><div class="nb">ରାମ(ଙ୍କୁ), ଗାଈ(କୁ), ବିଲ(ଗୁଡ଼ିକୁ), ଲୋକ(ମାନଙ୍କୁ)</div></div></div></div><div class="ni"><div class="nh" onclick="toggle('n10')"><span class="bd" style="background:#48dbfb"></span><span class="lb">ଅପାଦାନ କାରକ</span><span class="ar" id="ar-n10">▶</span></div><div class="nb">କାହାଠାରୁ, କେଉଁଠାରୁ ଦାନ କଲେ?</div><div class="col" id="n10"><div class="ni"><div class="nh lf"><span class="bd" style="background:#ff9ff3;width:5px;height:5px"></span><span class="lb" style="color:#334155">ପଞ୍ଚମୀ ବିଭକ୍ତି</span></div><div class="nb">ଘର(ରୁ), ଘର(ଠାରୁ), ଘର(ଗୁଡିକରୁ)</div></div></div></div><div class="ni"><div class="nh" onclick="toggle('n12')"><span class="bd" style="background:#48dbfb"></span><span class="lb">ଅଧିକରଣ କାରକ</span><span class="ar" id="ar-n12">▶</span></div><div class="nb">କେଉଁଠାରେ, କେତେ ବେଳେ · କେତେବେଳେ ଦାନ କଲେ? ପ୍ରଭାତରେ</div><div class="col" id="n12"><div class="ni"><div class="nh lf"><span class="bd" style="background:#ff9ff3;width:5px;height:5px"></span><span class="lb" style="color:#334155">ସପ୍ତମୀ ବିଭକ୍ତି</span></div><div class="nb">ଘର(ଠାରେ), ଘର ପାଖ(ରେ), ଘର (ମାନଙ୍କଠାରେ), 5 ଟା (ବେଳେ)</div></div></div></div></div></div></div>
-</div>
-<script>
-function toggle(id){var c=document.getElementById(id),a=document.getElementById('ar-'+id);if(!c)return;var o=c.classList.toggle('open');if(a)a.classList.toggle('open',o)}
-function toggleL1(id,el){var c=document.getElementById(id),a=document.getElementById('l1ar-'+id);if(!c)return;var o=c.classList.toggle('open');if(a)a.classList.toggle('open',o)}
-function expandAll(){document.querySelectorAll('.col').forEach(function(c){c.classList.add('open')});document.querySelectorAll('.ar,.l1ar').forEach(function(a){a.classList.add('open')})}
-function collapseAll(){document.querySelectorAll('.col').forEach(function(c){c.classList.remove('open')});document.querySelectorAll('.ar,.l1ar').forEach(function(a){a.classList.remove('open')})}
-document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='e'){e.preventDefault();expandAll()}if((e.ctrlKey||e.metaKey)&&e.key==='d'){e.preventDefault();collapseAll()}});
-</script>
-</body>
-</html>
+<ul><li>
+<p>ରାଜା ପ୍ରଭାତରେ ଭିକ୍ଷୁକମାନଙ୍କୁ ରାଜକୋଷରୁ ସ୍ଵହସ୍ତରେ ଗାଇଗୁଡ଼ିକ ଦାନ କଲେ</p>
+<ul><li>
+<p>କର୍ତ୍ତା କାରକ</p>
+<pre><p>କିଏ? </p><p>କିଏ ଦାନ କଲେ? ରାଜା</p></pre>
+<ul><li>
+<p>ପ୍ରଥମା ବିଭକ୍ତି </p>
+<pre><p>ପିଲା(ଟା), ପିଲା(ଟେ), ପିଲା(ଟି), ପିଲା(ଟିଏ), ପିଲା(ଏ), ପିଲା(ମାନେ)</p></pre>
+</li></ul></li>
+<li><p>କର୍ମ କାରକ </p>
+<pre><p>କଣ, କେଉଁ ଟିକୁ, କାହାକୁ?</p><p>କଣ ଦାନ କଲେ? ଗାଈ </p><p>କାହାକୁ ଦାନ କଲେ?</p><p>କେଉଁ ଟିକୁ ଦାନ କଲେ</p></pre>
+<ul><li>
+<p>ଦ୍ଵିତୀୟା ବିଭକ୍ତି </p>
+<pre><p>ଗାଇ(କୁ), ଗାଇ(ଟିକୁ), ଗାଈ(କି), ଗାଈ (ମାନଙ୍କୁ), ଗାଈ(ଗୁଡ଼ିକୁ)</p></pre>
+</li></ul></li>
+<li><p>କରଣ କାରକ </p>
+<pre><p>କାହାଦ୍ଵାରା/କେମିତି?</p><p>କାହାଦ୍ଵାରା ଦାନ କଲେ? ହାତରେ</p></pre>
+<ul><li><p>ତୃତୀୟା ବିଭକ୍ତି</p>
+<pre><p>ହାତ(ରେ), ହାତ(ଦ୍ବାରା), ହାତ (ମାନଙ୍କ ଦ୍ଵାରା)</p></pre></li></ul></li>
+<li><p>ସମ୍ପ୍ରଦାନ କାରକ </p>
+<pre><p>କାହା କୁ ଦାନ କଲେ?(ଭିକ୍ଷୁକଙ୍କୁ)</p><p>କେଉଁ ମାନଙ୍କୁ ?</p></pre>
+<ul><li><p>ଚତୁର୍ଥୀ ବିଭକ୍ତି </p>
+<pre><p>ରାମ(ଙ୍କୁ), ଗାଈ(କୁ), ବିଲ(ଗୁଡ଼ିକୁ), ଲୋକ(ମାନଙ୍କୁ)</p></pre>
+</li></ul></li>
+<li><p>ଅପାଦାନ କାରକ</p>
+<pre><p>କାହାଠାରୁ, କେଉଁଠାରୁ ଦାନ କଲେ?</p></pre>
+<ul><li><p>ପଞ୍ଚମୀ ବିଭକ୍ତି</p>
+<pre><p>ଘର(ରୁ), ଘର(ଠାରୁ), ଘର(ଗୁଡିକରୁ)</p></pre>
+</li></ul>
+<li><p>ଅଧିକରଣ କାରକ </p>
+<pre><p>କେଉଁଠାରେ, କେତେ ବେଳେ</p><p>କେତେବେଳେ ଦାନ କଲେ? ପ୍ରଭାତରେ</p></pre>
+<ul><li><p>ସପ୍ତମୀ ବିଭକ୍ତି</p>
+<pre><p>ଘର(ଠାରେ), ଘର ପାଖ(ରେ), ଘର (ମାନଙ୍କଠାରେ), 5 ଟା (ବେଳେ)</p></pre>
+</li></ul></li>
+      </body>
+    </html>
