@@ -683,7 +683,140 @@ let lastTappedFile = null;
 let currentSectionIndex = null;
 let currentChapterIndex = null;
 let voices = [];
-let isTTSSupported = 'speechSynthesis' in window;
+let isTTSSupported = 'speechSynthesis' in window || !!window.AndroidTTS;
+
+/* ══════════════════════════════════════════════════════════════════════════
+   TTS BRIDGE — uses AndroidTTS Java bridge when inside the Android app,
+   falls back to Web Speech API in browsers.
+   
+   AndroidTTS Java interface (from MainActivity):
+     AndroidTTS.speak(text, lang, utteranceId)   — queues speech
+     AndroidTTS.stop()                            — cancels all speech
+     AndroidTTS.isSpeaking()                      — returns boolean
+   
+   Java calls back via:
+     window._attsOnEnd(utteranceId)               — called when utterance finishes
+   ══════════════════════════════════════════════════════════════════════════ */
+const TTS = (function(){
+    const isAndroid = () => !!window.AndroidTTS;
+
+    // Callback registry: utteranceId → function()
+    const _endCallbacks = {};
+    let _utteranceCounter = 0;
+
+    // Called by Java (TtsProgressListener.onDone / onError)
+    window._attsOnEnd = function(id) {
+        if (_endCallbacks[id]) {
+            const cb = _endCallbacks[id];
+            delete _endCallbacks[id];
+            cb();
+        }
+    };
+
+    function _nextId() {
+        return 'utt_' + (++_utteranceCounter) + '_' + Date.now();
+    }
+
+    // Detect language for a text chunk: 'or' | 'hi' | 'en'
+    function _detectLang(text) {
+        if (/[଀-୿]/.test(text)) return 'or';
+        if (/[ऀ-ॿ]/.test(text)) return 'hi';
+        return 'en';
+    }
+
+    /* speak(text, lang, onEnd)
+       lang: 'or' | 'hi' | 'en' | null (auto-detect)
+       onEnd: optional callback fired when this utterance finishes        */
+    function speak(text, lang, onEnd) {
+        if (!text || !text.trim()) { if (onEnd) onEnd(); return; }
+        lang = lang || _detectLang(text);
+
+        if (isAndroid()) {
+            const id = _nextId();
+            if (onEnd) _endCallbacks[id] = onEnd;
+            else _endCallbacks[id] = function(){};
+            window.AndroidTTS.speak(text.trim(), lang, id);
+        } else {
+            // Web Speech API fallback
+            if (!window.speechSynthesis) { if (onEnd) onEnd(); return; }
+            const u = new SpeechSynthesisUtterance(text);
+            const voiceMap = { or: defaultOdiaVoice, hi: defaultHindiVoice, en: defaultEnglishVoice };
+            const v = voiceMap[lang];
+            if (v) { u.voice = v; u.lang = v.lang; }
+            u.rate = 0.75; u.pitch = 1.0; u.volume = 1.0;
+            if (onEnd) u.onend = onEnd;
+            window.speechSynthesis.speak(u);
+            speechUtterances.push(u);
+        }
+    }
+
+    /* speakMultiLang(text, onAllDone)
+       Splits text by script, speaks each chunk in its own language,
+       chains them serially, then calls onAllDone.                        */
+    function speakMultiLang(text, onAllDone) {
+        if (!text || !text.trim()) { if (onAllDone) onAllDone(); return; }
+
+        // Build ordered list of {chunk, lang} segments
+        const segments = [];
+        // Split on script boundaries: Odia, Devanagari, Latin
+        const re = /[଀-୿]+|[ऀ-ॿ]+|[A-Za-z0-9][A-Za-z0-9 ,.\-!?;:'"()]*/g;
+        let m;
+        while ((m = re.exec(text)) !== null) {
+            const chunk = m[0].trim();
+            if (!chunk) continue;
+            const lang = _detectLang(chunk);
+            // Merge consecutive same-lang segments
+            if (segments.length > 0 && segments[segments.length-1].lang === lang) {
+                segments[segments.length-1].chunk += ' ' + chunk;
+            } else {
+                segments.push({ chunk, lang });
+            }
+        }
+
+        if (segments.length === 0) { if (onAllDone) onAllDone(); return; }
+
+        // Chain: speak each segment, then next, then onAllDone
+        function speakNext(i) {
+            if (!isReadingAloud && i > 0) return; // stopped
+            if (i >= segments.length) { if (onAllDone) setTimeout(onAllDone, 300); return; }
+            const seg = segments[i];
+            speak(seg.chunk, seg.lang, () => {
+                if (isReadingAloud || i === 0) speakNext(i + 1);
+            });
+        }
+        speakNext(0);
+    }
+
+    function stop() {
+        if (isAndroid()) {
+            window.AndroidTTS.stop();
+            // Clear all pending callbacks
+            Object.keys(_endCallbacks).forEach(k => delete _endCallbacks[k]);
+        } else {
+            if (window.speechSynthesis) window.speechSynthesis.cancel();
+        }
+        speechUtterances = [];
+        activeUtterances = 0;
+    }
+
+    function isSpeaking() {
+        if (isAndroid()) return window.AndroidTTS.isSpeaking();
+        return window.speechSynthesis && window.speechSynthesis.speaking;
+    }
+
+    function pause() {
+        if (!isAndroid() && window.speechSynthesis) window.speechSynthesis.pause();
+        // Android TTS has no pause — we just stop and resume from index
+    }
+
+    function resume() {
+        if (!isAndroid() && window.speechSynthesis) window.speechSynthesis.resume();
+    }
+
+    function isAndroidMode() { return isAndroid(); }
+
+    return { speak, speakMultiLang, stop, isSpeaking, pause, resume, isAndroidMode };
+})();
 let dictionaryTimeout = null;
 let isDictionaryReading = false;
 let currentSubjectsMap = null;
@@ -1122,19 +1255,13 @@ async function showPopup(word=null){
         });
         if(isTTSSupported){
             speakBtn.addEventListener('click',()=>{
-                if(isDictionaryReading){ window.speechSynthesis.cancel(); isDictionaryReading=false; speakBtn.textContent='🗣️'; return; }
+                if(isDictionaryReading){ TTS.stop(); isDictionaryReading=false; speakBtn.textContent='🗣️'; return; }
                 const txt=getDictionaryTextToSpeak(resultsEl); if(!txt) return;
-                stopSpeech(); isDictionaryReading=true; speakBtn.textContent='⏸️';
-                speechUtterances=[]; activeUtterances=0;
-                ['hi','or','en'].forEach(lp=>{
-                    const ft=filterTextByLanguage(txt,lp); if(!ft) return;
-                    const v={hi:defaultHindiVoice,or:defaultOdiaVoice,en:defaultEnglishVoice}[lp]; if(!v) return;
-                    const u=new SpeechSynthesisUtterance(ft); u.voice=v; u.lang=v.lang; u.rate=0.7; u.pitch=1; u.volume=4;
-                    u.onend=()=>{ activeUtterances--; if(activeUtterances===0){isDictionaryReading=false;speakBtn.textContent='🗣️';} };
-                    speechUtterances.push(u); activeUtterances++;
+                TTS.stop(); isDictionaryReading=true; speakBtn.textContent='⏸️';
+                TTS.speakMultiLang(txt, ()=>{
+                    isDictionaryReading=false;
+                    speakBtn.textContent='🗣️';
                 });
-                if(activeUtterances>0) speechUtterances.forEach(u=>window.speechSynthesis.speak(u));
-                else{ isDictionaryReading=false; speakBtn.textContent='🗣️'; }
             });
         }
         await searchWord(word,resultsEl,suggestionsEl,false);
@@ -1349,7 +1476,9 @@ function updateTTSVisibility(){
 }
 
 function populateVoiceList(){
-    if(!isTTSSupported) return;
+    // AndroidTTS handles voices natively — no Web Speech voices needed
+    if(TTS.isAndroidMode()) return;
+    if(!window.speechSynthesis) return;
     voices=window.speechSynthesis.getVoices();
     defaultEnglishVoice=voices.find(v=>v.lang.startsWith('en')&&v.name.includes('Google'))||voices.find(v=>v.lang.startsWith('en'));
     defaultHindiVoice=voices.find(v=>v.lang.startsWith('hi')&&v.name.includes('Google'))||voices.find(v=>v.lang.startsWith('hi'));
@@ -1358,18 +1487,23 @@ function populateVoiceList(){
 
 function speakFeedback(msg){
     if(isReadingAloud&&isMCQContent()) return;
-    if(!isTTSSupported||!defaultEnglishVoice) return;
-    const u=new SpeechSynthesisUtterance(msg); u.voice=defaultEnglishVoice; u.lang='en-US'; u.rate=0.8; u.pitch=1; u.volume=1;
-    window.speechSynthesis.speak(u);
+    if(!isTTSSupported) return;
+    TTS.speak(msg, 'en', null);
 }
 
 function playSpeech(){
     if(!isTTSSupported||!hasReadableContent()){updateTTSVisibility();return;}
-    if(isReadingAloud&&isPaused){window.speechSynthesis.resume();isPaused=false;document.getElementById('voiceButton').textContent='⏸️ Pause';return;}
-    if(isReadingAloud){window.speechSynthesis.pause();isPaused=true;document.getElementById('voiceButton').textContent='▶️ Resume';return;}
+    if(isReadingAloud&&isPaused){
+        // Android TTS has no pause/resume — restart from current index
+        if(TTS.isAndroidMode()){ isPaused=false; document.getElementById('voiceButton').textContent='⏸️ Pause'; if(isMCQContent()) readNextMCQ(); else readNextSentence(); return; }
+        TTS.resume(); isPaused=false; document.getElementById('voiceButton').textContent='⏸️ Pause'; return;
+    }
+    if(isReadingAloud){
+        if(TTS.isAndroidMode()){ TTS.stop(); isPaused=true; isReadingAloud=true; document.getElementById('voiceButton').textContent='▶️ Resume'; return; }
+        TTS.pause(); isPaused=true; document.getElementById('voiceButton').textContent='▶️ Resume'; return;
+    }
     stopSpeech(); isReadingAloud=true; isPaused=false; document.getElementById('voiceButton').textContent='⏸️ Pause';
     if(isMCQContent()){
-        // Collect MCQ text as sentences if sentences array is empty
         if(sentences.length===0) collectContentSentences();
         document.getElementById('processing-status').textContent='Reading MCQs...';
         readNextMCQ();
@@ -1377,7 +1511,6 @@ function playSpeech(){
         currentSentenceIndex=lastTappedSentenceIndex>=0?lastTappedSentenceIndex:(currentSentenceIndex>=sentences.length-1?0:currentSentenceIndex+1);
         readNextSentence();
     } else {
-        // Mind map or other HTML content — collect visible text and read it
         collectContentSentences();
         currentSentenceIndex=0;
         readNextSentence();
@@ -1410,16 +1543,8 @@ function collectContentSentences(){
 function speakWithCallback(text,cb){
     if(!isReadingAloud) return;
     speechUtterances=[]; activeUtterances=0;
-    const vm={hi:defaultHindiVoice,or:defaultOdiaVoice,en:defaultEnglishVoice};
-    ['hi','or','en'].forEach(lp=>{
-        const ft=filterTextByLanguage(text,lp); if(!ft) return;
-        const v=vm[lp]; if(!v) return;
-        const u=new SpeechSynthesisUtterance(ft); u.voice=v; u.lang=v.lang; u.rate=0.7; u.volume=4;
-        u.onend=()=>{activeUtterances--;if(activeUtterances===0&&isReadingAloud) setTimeout(cb,500);};
-        speechUtterances.push(u); activeUtterances++;
-    });
-    if(activeUtterances>0) speechUtterances.forEach(u=>window.speechSynthesis.speak(u));
-    else{ const fu=new SpeechSynthesisUtterance(text); fu.voice=defaultEnglishVoice||defaultOdiaVoice; fu.rate=0.7; fu.onend=()=>{if(isReadingAloud)setTimeout(cb,500);}; window.speechSynthesis.speak(fu); speechUtterances.push(fu); }
+    // Use TTS bridge (handles both Android native TTS and Web Speech API)
+    TTS.speakMultiLang(text, ()=>{ if(isReadingAloud) setTimeout(cb, 300); });
 }
 
 function readNextMCQ(){
@@ -1463,25 +1588,23 @@ function readNextSentence(){
         return;
     }
     const text=sentences[currentSentenceIndex];
+    // Highlight the current sentence span
     const spans=document.getElementById('contentInner').querySelectorAll('span[data-sentence-index]');
     spans.forEach(s=>s.classList.remove('highlight'));
     const cs=Array.from(spans).find(s=>parseInt(s.getAttribute('data-sentence-index'))===currentSentenceIndex);
     if(cs){ cs.classList.add('highlight'); const ci=document.getElementById('contentInner'),sr=cs.getBoundingClientRect(),cr=ci.getBoundingClientRect(); ci.scrollTop+=sr.top-cr.top-(cr.height/2)+(sr.height/2); }
     speechUtterances=[]; activeUtterances=0;
-    const vm={hi:defaultHindiVoice,or:defaultOdiaVoice,en:defaultEnglishVoice};
-    ['hi','or','en'].forEach(lp=>{
-        const ft=filterTextByLanguage(text,lp); if(!ft) return;
-        const v=vm[lp]; if(!v) return;
-        const u=new SpeechSynthesisUtterance(ft); u.voice=v; u.lang=v.lang; u.rate=0.7; u.pitch=1; u.volume=4;
-        u.onend=()=>{activeUtterances--;if(activeUtterances===0&&isReadingAloud){currentSentenceIndex++;if(lastTappedFile)saveLastTappedPosition(lastTappedFile,currentSentenceIndex,0);readNextSentence();}};
-        speechUtterances.push(u); activeUtterances++;
+    // Use TTS bridge — handles multi-lang text and both Android/Web Speech
+    TTS.speakMultiLang(text, ()=>{
+        if(!isReadingAloud) return;
+        currentSentenceIndex++;
+        if(lastTappedFile) saveLastTappedPosition(lastTappedFile, currentSentenceIndex, 0);
+        readNextSentence();
     });
-    if(activeUtterances>0){speechUtterances.forEach(u=>window.speechSynthesis.speak(u));}
-    else{currentSentenceIndex++;if(lastTappedFile)saveLastTappedPosition(lastTappedFile,currentSentenceIndex,0);readNextSentence();}
 }
 
 function stopSpeech(){
-    if(isTTSSupported) window.speechSynthesis.cancel();
+    TTS.stop();
     speechUtterances=[]; activeUtterances=0; isReadingAloud=false; isPaused=false; isDictionaryReading=false;
     document.getElementById('voiceButton').textContent='🗣️ Speak';
     document.getElementById('stopButton').disabled=false;
@@ -1783,7 +1906,7 @@ async function init(){
     await initDatabases();
     showProgress('Ready',100);
     populateVoiceList();
-    if(isTTSSupported) window.speechSynthesis.onvoiceschanged=populateVoiceList;
+    if(isTTSSupported && !TTS.isAndroidMode()) window.speechSynthesis.onvoiceschanged=populateVoiceList;
 
     document.getElementById('fileUpload').addEventListener('change',handleFileUpload);
 
