@@ -280,7 +280,33 @@
         .answer { margin-top: 10px; padding: 10px; border-radius: 5px; background: #e3f2fd; border-left: 4px solid #2196f3; }
         .feedback { margin-top: 10px; padding: 10px; border-radius: 5px; font-weight: bold; }
 
-        /* Back-to buttons inline */
+        /* ── In-content nav bar (top of each MCQ/set/page screen) ── */
+        .nav-bar-top {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 14px;
+            padding: 8px 0 4px;
+        }
+        .nav-top-btn {
+            background: linear-gradient(135deg, #1565c0, #0d47a1);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            padding: 9px 18px;
+            font-size: 15px;
+            font-family: 'Noto Sans', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(21,101,192,0.3);
+            transition: transform 0.18s, box-shadow 0.18s;
+        }
+        .nav-top-btn:hover { transform: scale(1.06); box-shadow: 0 5px 14px rgba(21,101,192,0.45); }
+        .nav-top-btn.home-top-btn { background: linear-gradient(135deg, #d81b60, #880e4f); box-shadow: 0 3px 10px rgba(216,27,96,0.3); }
+        .nav-top-btn.home-top-btn:hover { box-shadow: 0 5px 14px rgba(216,27,96,0.45); }
+
+        /* Back-to buttons inline (kept for legacy, now mostly replaced by nav-bar-top) */
         .back-btn {
             display: inline-block;
             margin: 20px auto;
@@ -535,6 +561,7 @@
 <!-- Reader / Content Area -->
 <div class="content" id="contentArea">
     <div class="reader-topbar">
+        <button class="reader-btn" id="backButton">← Back</button>
         <button class="reader-btn" id="homeButton">🏠 Home</button>
         <span class="chapter-name" id="readerChapterName"></span>
     </div>
@@ -562,7 +589,12 @@
 </div>
 
 <script>
-const CACHE_NAME = 'odia-grammar-app-v1';
+const CACHE_NAME = 'odia-grammar-app-v1'; // legacy, not used for storage
+const IDB_NAME='gk-app-store';const IDB_STORE='files';
+function openIDB(){return new Promise((res,rej)=>{const req=indexedDB.open(IDB_NAME,1);req.onupgradeneeded=e=>e.target.result.createObjectStore(IDB_STORE);req.onsuccess=e=>res(e.target.result);req.onerror=e=>rej(e.target.error);});}
+async function idbGet(db,key){return new Promise((res,rej)=>{const tx=db.transaction(IDB_STORE,'readonly');const req=tx.objectStore(IDB_STORE).get(key);req.onsuccess=()=>res(req.result);req.onerror=e=>rej(e.target.error);});}
+async function idbPut(db,key,value){return new Promise((res,rej)=>{const tx=db.transaction(IDB_STORE,'readwrite');const req=tx.objectStore(IDB_STORE).put(value,key);req.onsuccess=()=>res();req.onerror=e=>rej(e.target.error);});}
+let _idb=null;async function getIDB(){if(!_idb)_idb=await openIDB();return _idb;}
 const dbFiles = {
     english_odia: 'https://raw.githubusercontent.com/abhayattcc/Best-odia-dictionary/refs/heads/main/data/english_odia.db.gz',
     english_hindi: 'https://raw.githubusercontent.com/abhayattcc/Best-odia-dictionary/refs/heads/main/data/english_hindi.db.gz'
@@ -1076,37 +1108,42 @@ function showProgress(msg, pct) {
 }
 function hideProgress(){ document.getElementById('progress-container').classList.remove('visible'); }
 
-/* ── Cache ── */
+/* ── IndexedDB Cache (survives Clear Cache; only deleted by Clear Data) ── */
 async function cacheFiles(){
     try{
-        const cache=await caches.open(CACHE_NAME);
-        const cached=(await cache.keys()).map(r=>r.url);
-        const toFetch=STATIC_ASSETS.filter(u=>!cached.includes(u));
-        if(toFetch.length>0){
-            let loaded=0;
-            for(const f of toFetch){
-                try{
-                    const r=await fetch(f,{cache:'no-cache'});
-                    if(!r.ok) throw new Error();
-                    await cache.put(f,r.clone());
-                    loaded++;
-                    showProgress('Caching resources',Math.round((loaded/toFetch.length)*100));
-                }catch(e){ console.error('Cache err',f,e); }
-            }
-            hideProgress();
+        const db=await getIDB();
+        const toFetch=[];
+        for(const url of STATIC_ASSETS){
+            const existing=await idbGet(db,url);
+            if(!existing) toFetch.push(url);
         }
-    }catch(e){ console.error(e); hideProgress(); }
+        if(toFetch.length===0) return false; // nothing to download
+        let loaded=0;
+        for(const url of toFetch){
+            try{
+                const r=await fetch(url,{cache:'no-cache'});
+                if(!r.ok) throw new Error();
+                const buf=await r.arrayBuffer();
+                await idbPut(db,url,buf);
+                loaded++;
+                showProgress('Caching resources',Math.round((loaded/toFetch.length)*100));
+            }catch(e){console.error('IDB cache err',url,e);}
+        }
+        hideProgress();
+        return true; // downloaded something
+    }catch(e){console.error(e);hideProgress();return false;}
 }
 
 async function loadResource(url){
     try{
-        const cache=await caches.open(CACHE_NAME);
-        const cached=await cache.match(url);
-        if(cached) return cached;
+        const db=await getIDB();
+        const buf=await idbGet(db,url);
+        if(buf) return new Response(buf);
         const r=await fetch(url,{cache:'no-cache'});
         if(!r.ok) throw new Error(`fetch failed ${url}`);
-        await cache.put(url,r.clone());
-        return r;
+        const b=await r.arrayBuffer();
+        await idbPut(db,url,b);
+        return new Response(b.slice(0));
     }catch(e){
         console.error(e);
         document.getElementById('contentInner').innerHTML='<p>Offline: Resource not cached. Connect to internet first.</p>';
@@ -1116,14 +1153,15 @@ async function loadResource(url){
 
 async function loadImage(url){
     try{
-        const cache=await caches.open(CACHE_NAME);
-        const cached=await cache.match(url);
-        if(cached){ const b=await cached.blob(); return URL.createObjectURL(b); }
+        const db=await getIDB();
+        const buf=await idbGet(db,url);
+        if(buf) return URL.createObjectURL(new Blob([buf]));
         const r=await fetch(url,{cache:'no-cache'});
         if(!r.ok) throw new Error();
-        await cache.put(url,r.clone());
-        return URL.createObjectURL(await r.blob());
-    }catch(e){ return null; }
+        const b=await r.arrayBuffer();
+        await idbPut(db,url,b);
+        return URL.createObjectURL(new Blob([b]));
+    }catch(e){return null;}
 }
 
 /* ── Databases ── */
@@ -1136,15 +1174,10 @@ async function initDatabases(){
             const buf=await r.arrayBuffer();
             return new SQL.Database(pako.ungzip(new Uint8Array(buf)));
         };
-        showProgress('Loading dictionaries',0);
         dbEnglishOdia=await loadDB(dbFiles.english_odia);
-        showProgress('Loading dictionaries',50);
         dbEnglishHindi=await loadDB(dbFiles.english_hindi);
-        showProgress('Loading dictionaries',100);
-        hideProgress();
     }catch(e){
         console.error('DB init error',e);
-        hideProgress();
     }
 }
 
@@ -1376,35 +1409,44 @@ function showResultsPopUp(){
 function loadSubjectSets(sectionIndex,chapterIndex,subjectName){
     stopSpeech();
     currentSectionIdx=sectionIndex; currentChapterIdx=chapterIndex; currentSubject=subjectName;
+    navPush({type:'sets',si:sectionIndex,ci:chapterIndex,subject:subjectName});
     const mcqs=currentSubjectsMap.get(subjectName);
     totalBatches=Math.ceil(mcqs.length/10);
-    let html=`<div class="section"><h1 class="section-title">${escapeHtml(subjectName)} – Sets</h1><ul class="chapter-list">`;
+    let html=`<div class="section">`;
+    html+=`<div class="nav-bar-top"><button class="nav-top-btn" id="backToChapterTop">← Subjects</button><button class="nav-top-btn home-top-btn" id="homeFromSets">🏠 Home</button></div>`;
+    html+=`<h1 class="section-title">${escapeHtml(subjectName)} – Sets</h1><ul class="chapter-list">`;
     for(let b=0;b<totalBatches;b++) html+=`<li class="chapter-item" data-batch="${b}">Set ${b+1} of ${totalBatches}</li>`;
-    html+=`</ul><button class="back-btn" id="backToChapter">← Subjects</button></div>`;
+    html+=`</ul></div>`;
     const ci=document.getElementById('contentInner'); ci.innerHTML=html; ci.classList.add('content-text');
     ci.querySelectorAll('.chapter-item').forEach(li=>li.addEventListener('click',e=>loadSubjectMCQs(sectionIndex,chapterIndex,subjectName,parseInt(e.target.dataset.batch))));
-    document.getElementById('backToChapter').addEventListener('click',()=>loadContent(sectionIndex,chapterIndex));
+    document.getElementById('backToChapterTop').addEventListener('click',()=>{ navStack.pop(); navStack.pop(); loadContent(sectionIndex,chapterIndex); });
+    document.getElementById('homeFromSets').addEventListener('click',goHome);
     sentences=[]; currentMcqIndex=0; updateTTSVisibility();
 }
 
 function loadSubjectMCQs(sectionIndex,chapterIndex,subjectName,batch=0){
     stopSpeech();
     currentSectionIdx=sectionIndex; currentChapterIdx=chapterIndex; currentSubject=subjectName; currentBatch=batch;
+    navPush({type:'mcqs',si:sectionIndex,ci:chapterIndex,subject:subjectName,batch:batch});
     const mcqs=currentSubjectsMap.get(subjectName);
     const batchSize=10,start=batch*batchSize,end=Math.min(start+batchSize,mcqs.length);
     currentBatchSize=end-start; const batchMcqs=mcqs.slice(start,end);
     const lang=sections[sectionIndex].language;
     currentScore=0; currentAttempted=0;
-    let html=`<div class="section"><h1 class="section-title">${escapeHtml(subjectName)} – Set ${batch+1} of ${Math.ceil(mcqs.length/10)}</h1>`;
+    let html=`<div class="section">`;
+    html+=`<div class="nav-bar-top"><button class="nav-top-btn" id="backToSetsTop">← Sets</button><button class="nav-top-btn" id="backToSubjectsTop">← Subjects</button><button class="nav-top-btn home-top-btn" id="homeFromMcqs">🏠 Home</button></div>`;
+    html+=`<h1 class="section-title">${escapeHtml(subjectName)} – Set ${batch+1} of ${Math.ceil(mcqs.length/10)}</h1>`;
     batchMcqs.forEach(q=>{
         html+=`<div class="mcq" data-answer="${escapeHtml(q.answer.replace(/"/g,'&quot;'))}"><div class="question-text">${escapeHtml(q.question).replace(/\n/g,'<br>')}</div><div class="options">`;
         q.options.forEach((o,oi)=>html+=`<button class="option-btn" data-oidx="${oi}">${escapeHtml(o)}</button><br>`);
         html+=`</div><button class="skip-btn">Skip</button><br><div class="answer" style="display:none;">${escapeHtml(q.answer)}</div><div class="feedback" style="display:none;"></div></div><hr style="margin:20px 0;">`;
     });
-    html+=`<div style="text-align:center;margin:20px 0;font-size:17px;font-weight:bold;">Attempted: <span id="attempted-count">0</span> / ${currentBatchSize} | Score: <span id="score-count">0</span></div><button class="back-btn" id="backToSets">← Sets</button></div>`;
+    html+=`<div style="text-align:center;margin:20px 0;font-size:17px;font-weight:bold;">Attempted: <span id="attempted-count">0</span> / ${currentBatchSize} | Score: <span id="score-count">0</span></div></div>`;
     const ci=document.getElementById('contentInner'); ci.innerHTML=html; ci.classList.add('content-text');
     setupMCQListeners(lang); sentences=[]; currentMcqIndex=0;
-    document.getElementById('backToSets').addEventListener('click',()=>loadSubjectSets(sectionIndex,chapterIndex,subjectName));
+    document.getElementById('backToSetsTop').addEventListener('click',()=>{ navStack.pop(); loadSubjectSets(sectionIndex,chapterIndex,subjectName); });
+    document.getElementById('backToSubjectsTop').addEventListener('click',()=>{ navStack.pop(); navStack.pop(); loadContent(sectionIndex,chapterIndex); });
+    document.getElementById('homeFromMcqs').addEventListener('click',goHome);
     updateTTSVisibility();
 }
 
@@ -1412,12 +1454,15 @@ function loadPageList(sectionIndex,chapterIndex,pages){
     stopSpeech();
     const ci=document.getElementById('contentInner');
     subPages=pages;
-    let html=`<div class="section"><h1 class="section-title">${escapeHtml(sections[sectionIndex].chapters[chapterIndex].name)} – Pages</h1><ul class="chapter-list">`;
+    navPush({type:'pages',si:sectionIndex,ci:chapterIndex,pages:pages});
+    let html=`<div class="section">`;
+    html+=`<div class="nav-bar-top"><button class="nav-top-btn home-top-btn" id="homeFromPages">🏠 Home</button></div>`;
+    html+=`<h1 class="section-title">${escapeHtml(sections[sectionIndex].chapters[chapterIndex].name)} – Pages</h1><ul class="chapter-list">`;
     pages.forEach((p,i)=>html+=`<li class="chapter-item" data-page-index="${i}">${escapeHtml(p.name)}</li>`);
-    html+=`</ul><button class="back-btn" id="backToMain">← Home</button></div>`;
+    html+=`</ul></div>`;
     ci.innerHTML=html; ci.classList.add('content-text');
     ci.querySelectorAll('.chapter-item').forEach(li=>li.addEventListener('click',e=>loadPageContent(sectionIndex,chapterIndex,parseInt(e.target.dataset.pageIndex))));
-    document.getElementById('backToMain').addEventListener('click',()=>document.getElementById('homeButton').click());
+    document.getElementById('homeFromPages').addEventListener('click',goHome);
     if(sectionIndex===3&&lastEnglishGrammarPageIndex>=0){
         const items=ci.querySelectorAll('.chapter-item')[lastEnglishGrammarPageIndex];
         if(items){items.scrollIntoView({behavior:'smooth',block:'center'});items.classList.add('highlight');setTimeout(()=>items.classList.remove('highlight'),2000);}
@@ -1431,21 +1476,25 @@ function loadPageContent(sectionIndex,chapterIndex,pageIdx){
     const allLines=page.content.split(/\r?\n/);
     const ci=document.getElementById('contentInner');
     if(sectionIndex===3) lastEnglishGrammarPageIndex=pageIdx;
-    let html=`<div class="section"><h1 class="section-title">${escapeHtml(page.name)}</h1>`;
-    if(sectionIndex===3) html+=`<button id="toggleAnswersBtn" class="reader-btn" style="margin:10px 0 15px;display:inline-block;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.35);color:#1a237e;background:#e3f2fd;">Show Answers</button>`;
+    navPush({type:'pageContent',si:sectionIndex,ci:chapterIndex,pageIdx:pageIdx});
+    let html=`<div class="section">`;
+    html+=`<div class="nav-bar-top"><button class="nav-top-btn" id="backToPageListTop">← Pages</button><button class="nav-top-btn home-top-btn" id="homeFromPageContent">🏠 Home</button></div>`;
+    html+=`<h1 class="section-title">${escapeHtml(page.name)}</h1>`;
+    if(sectionIndex===3) html+=`<button id="toggleAnswersBtn" class="reader-btn" style="margin:10px 0 15px;display:inline-block;background:#e3f2fd;color:#1a237e;">Show Answers</button>`;
     allLines.forEach((line,idx)=>{
         const tl=line.trim().toLowerCase();
         const isAns=sectionIndex===3&&(tl.startsWith('answer:')||tl.startsWith('ans:')||tl.startsWith('ans.')||tl.startsWith('solution:')||tl.includes('answer is')||tl.includes('correct answer'));
         html+=`<span data-sentence-index="${idx}"${isAns?' class="answer-line" style="display:none;color:#4caf50;font-weight:bold;"':''}>${escapeHtml(line)}</span><br>`;
     });
     sentences=allLines;
-    html+=`<button class="back-btn" id="backToPageList">← Pages</button></div>`;
+    html+=`</div>`;
     ci.innerHTML=html; ci.classList.add('content-text');
     if(sectionIndex===3){
         const tb=document.getElementById('toggleAnswersBtn');
         if(tb){ let vis=false; tb.addEventListener('click',()=>{ vis=!vis; tb.textContent=vis?'Hide Answers':'Show Answers'; ci.querySelectorAll('span.answer-line').forEach(s=>s.style.display=vis?'inline':'none'); }); }
     }
-    document.getElementById('backToPageList').addEventListener('click',()=>loadPageList(sectionIndex,chapterIndex,subPages));
+    document.getElementById('backToPageListTop').addEventListener('click',()=>{ navStack.pop(); loadPageList(sectionIndex,chapterIndex,subPages); });
+    document.getElementById('homeFromPageContent').addEventListener('click',goHome);
     currentMcqIndex=0; updateTTSVisibility();
 }
 
@@ -1668,6 +1717,7 @@ async function loadContent(sectionIndex, chapterIndex){
     if(chapter.type === 'link'){ window.open(chapter.url, '_blank'); return; }
     
     stopSpeech();
+    navPush({type:'chapter',si:sectionIndex,ci:chapterIndex});
     const contentArea = document.getElementById('contentArea');
     const ci = document.getElementById('contentInner');
     const cc = document.getElementById('chapterContainer');
@@ -1759,7 +1809,7 @@ async function loadContent(sectionIndex, chapterIndex){
                 if(subjects.size > 0){
                     currentSubjectsMap = subjects; 
                     currentChapterName = chapter.name;
-                    let html = `<div class="section"><h1 class="section-title">${escapeHtml(chapter.name)} – Subjects</h1><ul class="chapter-list">`;
+                    let html = `<div class="section"><div class="nav-bar-top"><button class="nav-top-btn home-top-btn" id="homeFromSubj1">🏠 Home</button></div><h1 class="section-title">${escapeHtml(chapter.name)} – Subjects</h1><ul class="chapter-list">`;
                     for(let sn of subjects.keys()){
                         html += `<li class="chapter-item" data-subject="${escapeHtml(sn)}">${escapeHtml(sn)}</li>`;
                     }
@@ -1769,6 +1819,7 @@ async function loadContent(sectionIndex, chapterIndex){
                     ci.querySelectorAll('.chapter-item').forEach(li => 
                         li.addEventListener('click', e => loadSubjectSets(sectionIndex, chapterIndex, e.target.dataset.subject))
                     );
+                    document.getElementById('homeFromSubj1').addEventListener('click', goHome);
                     sentences = [];
                 } else {
                     loadPageList(sectionIndex, chapterIndex, pages);
@@ -1797,6 +1848,11 @@ async function loadContent(sectionIndex, chapterIndex){
                 html += '</ul></div>'; 
                 ci.innerHTML = html; 
                 ci.classList.add('content-text');
+                const navEl = document.createElement('div');
+                navEl.className = 'nav-bar-top';
+                navEl.innerHTML = '<button class="nav-top-btn home-top-btn" id="homeFromSubj2">🏠 Home</button>';
+                ci.querySelector('.section').insertBefore(navEl, ci.querySelector('.section-title'));
+                document.getElementById('homeFromSubj2').addEventListener('click', goHome);
                 ci.querySelectorAll('.chapter-item').forEach(li => 
                     li.addEventListener('click', e => loadSubjectSets(sectionIndex, chapterIndex, e.target.dataset.subject))
                 );
@@ -1927,46 +1983,105 @@ sections.forEach((section,si)=>{
     div.appendChild(ul); sectionsContainer.appendChild(div);
 });
 
+/* ══════════════════════════════════════════════════════════════
+   NAVIGATION STACK
+   Each entry: { type, ...params }
+   Types: 'home' | 'chapter' | 'subjects' | 'sets' | 'mcqs' | 'pages' | 'pageContent'
+   ══════════════════════════════════════════════════════════════ */
+let navStack = [];
+
+function navPush(entry){ navStack.push(entry); }
+
+function goHome(){
+    stopSpeech();
+    navStack = [];
+    document.getElementById('contentArea').classList.remove('active');
+    document.getElementById('iframe-container').classList.remove('active');
+    document.getElementById('chapterContainer').classList.remove('hidden');
+    document.getElementById('contentInner').innerHTML='';
+    document.getElementById('app-iframe').srcdoc='';
+    document.getElementById('fileUpload').value='';
+    sentences=[]; currentSentenceIndex=-1; currentMcqIndex=0;
+    lastTappedSentenceIndex=-1; lastTappedFile=null;
+    currentSubjectsMap=null; currentChapterName=''; currentSubjectName='';
+    updateTTSVisibility();
+    if(currentSectionIndex!==null&&currentChapterIndex!==null){
+        const se=document.getElementById(`section-${currentSectionIndex}`),ce=document.getElementById(`chapter-${currentSectionIndex}-${currentChapterIndex}`);
+        if(se&&ce){se.scrollIntoView({behavior:'smooth',block:'start'});ce.classList.add('highlight');setTimeout(()=>ce.classList.remove('highlight'),2000);}
+    }
+}
+
+function goBack(){
+    // Close popup if open
+    const popup=document.getElementById('popup');
+    if(popup.classList.contains('visible')){
+        popup.classList.remove('visible');
+        setTimeout(()=>{popup.style.display='none';document.getElementById('popupContent').innerHTML='';},200);
+        return;
+    }
+    // Iframe: go back inside iframe first, then exit iframe
+    const iframeContainer=document.getElementById('iframe-container');
+    if(iframeContainer.classList.contains('active')){
+        const iframe=document.getElementById('app-iframe');
+        try{
+            if(iframe.contentWindow&&iframe.contentWindow.history.length>1){
+                iframe.contentWindow.history.back();
+                return;
+            }
+        }catch(e){}
+        // Exit iframe → go home
+        iframeContainer.classList.remove('active');
+        document.getElementById('chapterContainer').classList.remove('hidden');
+        document.getElementById('app-iframe').srcdoc='';
+        navStack=[];
+        return;
+    }
+    // Content area: pop nav stack
+    if(navStack.length>1){
+        navStack.pop(); // remove current
+        const prev=navStack.pop(); // we'll re-push inside the called fn
+        stopSpeech();
+        if(prev.type==='chapter') loadContent(prev.si,prev.ci);
+        else if(prev.type==='subjects') loadContent(prev.si,prev.ci); // re-loads subject list
+        else if(prev.type==='sets') loadSubjectSets(prev.si,prev.ci,prev.subject);
+        else if(prev.type==='mcqs') loadSubjectMCQs(prev.si,prev.ci,prev.subject,prev.batch);
+        else if(prev.type==='pages') loadPageList(prev.si,prev.ci,prev.pages);
+        else if(prev.type==='pageContent') loadPageContent(prev.si,prev.ci,prev.pageIdx);
+        else goHome();
+    } else {
+        goHome();
+    }
+}
+
+/* Android back button bridge — called by AndroidBridge.onBackPressed() */
+window._appGoBack = goBack;
+
 /* ── Init ── */
 async function init(){
-    showProgress('Initializing',0);
     await cacheFiles();
-    showProgress('Loading databases',50);
     await initDatabases();
-    showProgress('Ready',100);
     populateVoiceList();
     if(isTTSSupported && !TTS.isAndroidMode()) window.speechSynthesis.onvoiceschanged=populateVoiceList;
 
     document.getElementById('fileUpload').addEventListener('change',handleFileUpload);
-
     document.getElementById('voiceButton').addEventListener('click',playSpeech);
     document.getElementById('stopButton').addEventListener('click',stopSpeech);
 
-    document.getElementById('homeButton').addEventListener('click',()=>{
-        stopSpeech();
-        document.getElementById('contentArea').classList.remove('active');
-        document.getElementById('chapterContainer').classList.remove('hidden');
-        document.getElementById('contentInner').innerHTML='';
-        document.getElementById('fileUpload').value='';
-        sentences=[]; currentSentenceIndex=-1; currentMcqIndex=0;
-        lastTappedSentenceIndex=-1; lastTappedFile=null;
-        currentSubjectsMap=null; currentChapterName=''; currentSubjectName='';
-        updateTTSVisibility();
-        if(currentSectionIndex!==null&&currentChapterIndex!==null){
-            const se=document.getElementById(`section-${currentSectionIndex}`),ce=document.getElementById(`chapter-${currentSectionIndex}-${currentChapterIndex}`);
-            if(se&&ce){se.scrollIntoView({behavior:'smooth',block:'start'});ce.classList.add('highlight');setTimeout(()=>ce.classList.remove('highlight'),2000);}
-        }
-    });
+    document.getElementById('homeButton').addEventListener('click', goHome);
+    document.getElementById('backButton').addEventListener('click', goBack);
 
     document.getElementById('popupClose').addEventListener('click',()=>{
         const p=document.getElementById('popup'); p.classList.remove('visible');
         setTimeout(()=>{p.style.display='none';document.getElementById('popupContent').innerHTML='';},200);
     });
-           document.getElementById('iframeHomeButton').addEventListener('click', () => {
-        document.getElementById('iframe-container').classList.remove('active');
-        document.getElementById('chapterContainer').classList.remove('hidden');
-        document.getElementById('app-iframe').srcdoc = ''; // Clear iframe memory
-    });
+
+    document.getElementById('iframeHomeButton').addEventListener('click', goHome);
+
+    // Hardware back button (Android WebView calls window._appGoBack via JavascriptInterface,
+    // but also intercept browser popstate for browsers)
+    window.addEventListener('popstate', e => { e.preventDefault(); goBack(); });
+    // Push a dummy state so popstate fires on first back press
+    history.pushState({app:true}, '');
 
     if('serviceWorker' in navigator){
         navigator.serviceWorker.register('/service-worker.js').catch(e=>console.log('SW:',e));
