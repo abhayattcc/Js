@@ -1421,20 +1421,31 @@ function parseMCQs(allLines,lang){
     return {questions,remainingLines:remaining};
 }
 
+let currentIsFullTest = false;
+let _fullTestBackFn = null;
 /* ── MCQ UI ── */
 function showResultsPopUp(){
     stopSpeech();
     const popup=document.getElementById('popup'),pc=document.getElementById('popupContent');
     const pct=Math.round((currentScore/currentBatchSize)*100);
-    pc.innerHTML=`<h2>Results – Set ${currentBatch+1}</h2><p>Score: ${currentScore} / ${currentBatchSize}</p><p>${pct}%</p>`;
     const bd=popup.querySelector('.popup-buttons');
-    bd.innerHTML='<button class="popup-close" id="closeResults">Close</button>';
-    if(currentBatch+1<totalBatches){
-        bd.innerHTML+='<button id="nextSetBtn" class="reader-btn" style="background:#4caf50;">Next Set</button>';
-        document.getElementById('nextSetBtn').addEventListener('click',()=>{ loadSubjectMCQs(currentSectionIdx,currentChapterIdx,currentSubject,currentBatch+1); popup.classList.remove('visible'); setTimeout(()=>popup.style.display='none',400); });
-    }else{
-        bd.innerHTML+='<button id="finishBtn" class="reader-btn" style="background:#2196f3;">Finish</button>';
-        document.getElementById('finishBtn').addEventListener('click',()=>{ loadSubjectSets(currentSectionIdx,currentChapterIdx,currentSubject); popup.classList.remove('visible'); setTimeout(()=>popup.style.display='none',400); });
+    if(currentIsFullTest){
+        pc.innerHTML=`<h2>Test Complete!</h2><p>Score: ${currentScore} / ${currentBatchSize}</p><p>${pct}%</p>`;
+        bd.innerHTML='<button class="popup-close" id="closeResults">Close</button><button id="backToChaptersBtn" class="reader-btn" style="background:#2196f3;">Chapters</button>';
+        document.getElementById('backToChaptersBtn').addEventListener('click',()=>{
+            popup.classList.remove('visible');
+            setTimeout(()=>{ popup.style.display='none'; if(_fullTestBackFn) _fullTestBackFn(); },400);
+        });
+    } else {
+        pc.innerHTML=`<h2>Results - Set ${currentBatch+1}</h2><p>Score: ${currentScore} / ${currentBatchSize}</p><p>${pct}%</p>`;
+        bd.innerHTML='<button class="popup-close" id="closeResults">Close</button>';
+        if(currentBatch+1<totalBatches){
+            bd.innerHTML+='<button id="nextSetBtn" class="reader-btn" style="background:#4caf50;">Next Set</button>';
+            document.getElementById('nextSetBtn').addEventListener('click',()=>{ loadSubjectMCQs(currentSectionIdx,currentChapterIdx,currentSubject,currentBatch+1); popup.classList.remove('visible'); setTimeout(()=>popup.style.display='none',400); });
+        }else{
+            bd.innerHTML+='<button id="finishBtn" class="reader-btn" style="background:#2196f3;">Finish</button>';
+            document.getElementById('finishBtn').addEventListener('click',()=>{ loadSubjectSets(currentSectionIdx,currentChapterIdx,currentSubject); popup.classList.remove('visible'); setTimeout(()=>popup.style.display='none',400); });
+        }
     }
     document.getElementById('closeResults').addEventListener('click',()=>{ popup.classList.remove('visible'); setTimeout(()=>popup.style.display='none',400); });
     popup.style.display='block'; setTimeout(()=>popup.classList.add('visible'),10);
@@ -1466,7 +1477,7 @@ function loadSubjectMCQs(sectionIndex,chapterIndex,subjectName,batch=0){
     const batchSize=10,start=batch*batchSize,end=Math.min(start+batchSize,mcqs.length);
     currentBatchSize=end-start; const batchMcqs=mcqs.slice(start,end);
     const lang=sections[sectionIndex].language;
-    currentScore=0; currentAttempted=0;
+    currentScore=0; currentAttempted=0; currentIsFullTest=false;
     let html=`<div class="section">`;
     html+=`<div class="nav-bar-top"><button class="nav-top-btn" id="backToSetsTop">← Sets</button><button class="nav-top-btn" id="backToSubjectsTop">← Subjects</button><button class="nav-top-btn home-top-btn" id="homeFromMcqs">🏠 Home</button></div>`;
     html+=`<h1 class="section-title">${escapeHtml(subjectName)} – Set ${batch+1} of ${Math.ceil(mcqs.length/10)}</h1>`;
@@ -1562,6 +1573,7 @@ function loadGrammarSubjectPage(sectionIndex, chapterIndex, pageIdx){
 
     // Show MCQs after concept
     if(questions.length > 0){
+        currentIsFullTest = true;
         currentBatchSize = questions.length;
         currentScore = 0; currentAttempted = 0;
         currentSectionIdx = sectionIndex; currentChapterIdx = chapterIndex; currentSubject = page.name;
@@ -1586,9 +1598,25 @@ function loadGrammarSubjectPage(sectionIndex, chapterIndex, pageIdx){
 
     if(questions.length > 0) setupMCQListeners(lang);
 
+    // Store back function for results popup "Chapters" button
+    _fullTestBackFn = () => {
+        currentIsFullTest = false; _fullTestBackFn = null;
+        const ch = sections[sectionIndex].chapters[chapterIndex];
+        let html = `<div class="section">`;
+        html += `<div class="nav-bar-top"><button class="nav-top-btn home-top-btn" id="homeFromSubj1">🏠 Home</button></div>`;
+        html += `<h1 class="section-title">${escapeHtml(ch.name)}</h1><ul class="chapter-list">`;
+        subPages.forEach((p,i) => { html += `<li class="chapter-item" data-page-index="${i}">${escapeHtml(p.name)}</li>`; });
+        html += `</ul></div>`;
+        ci.innerHTML = html; ci.classList.add('content-text'); sentences = [];
+        ci.querySelectorAll('.chapter-item').forEach(li => li.addEventListener('click', e => loadGrammarSubjectPage(sectionIndex, chapterIndex, parseInt(e.target.dataset.pageIndex))));
+        document.getElementById('homeFromSubj1').addEventListener('click', goHome);
+        updateTTSVisibility();
+    };
+
     document.getElementById('backToGrammarList').addEventListener('click', () => {
         navStack.pop(); // remove pageContent entry
         stopSpeech();
+        currentIsFullTest = false; _fullTestBackFn = null;
         const ch = sections[sectionIndex].chapters[chapterIndex];
         // Re-render subject list
         let html = `<div class="section">`;
@@ -1912,34 +1940,9 @@ async function loadContent(sectionIndex, chapterIndex){
             
             if(!pages.length) pages = [{name: chapter.name, content: textContent}];
 
-            if (isComputer) {
-                // Old logic: extract MCQs from each ### page ###, show as subject → sets → MCQs
-                const subjects = new Map();
-                pages.forEach(p => {
-                    const {questions} = parseMCQs(p.content.split(/\r?\n/), sections[sectionIndex].language);
-                    if(questions.length > 0) subjects.set(p.name, questions);
-                });
-                if(subjects.size > 0){
-                    currentSubjectsMap = subjects;
-                    currentChapterName = chapter.name;
-                    let html = `<div class="section"><div class="nav-bar-top"><button class="nav-top-btn home-top-btn" id="homeFromSubj1">🏠 Home</button></div><h1 class="section-title">${escapeHtml(chapter.name)} – Subjects</h1><ul class="chapter-list">`;
-                    for(let sn of subjects.keys()){
-                        html += `<li class="chapter-item" data-subject="${escapeHtml(sn)}">${escapeHtml(sn)}</li>`;
-                    }
-                    html += '</ul></div>';
-                    ci.innerHTML = html;
-                    ci.classList.add('content-text');
-                    ci.querySelectorAll('.chapter-item').forEach(li =>
-                        li.addEventListener('click', e => loadSubjectSets(sectionIndex, chapterIndex, e.target.dataset.subject))
-                    );
-                    document.getElementById('homeFromSubj1').addEventListener('click', goHome);
-                    sentences = [];
-                } else {
-                    loadPageList(sectionIndex, chapterIndex, pages);
-                }
-            } else if (isEnglishGrammar) {
-                // New logic: show subject list from ### subject ### sections.
-                // Each subject page shows concept/description text first, then MCQs.
+            if (isComputer || isEnglishGrammar) {
+                // Show subject list from ### subject ### sections.
+                // Each subject page shows all content text first, then all MCQs as one full test (no set splitting).
                 if(pages.length > 0){
                     subPages = pages;
                     let html = `<div class="section">`;
