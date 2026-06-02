@@ -10,9 +10,42 @@
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1a237e">
     <link rel="apple-touch-icon" href="icon-192.png">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+    <script>
+/* ── BOOTSTRAP: cache all JS/WASM libs in IndexedDB, inject as blobs ── */
+(function(){
+  const IDB_NAME='gk-app-store', IDB_STORE='files';
+  const LIBS=[
+    {key:'asset:pako:2.0.4',         url:'https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js',            type:'js'},
+    {key:'asset:sqljs:1.8.0',        url:'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.min.js',      type:'js'},
+    {key:'asset:sqlwasm:1.8.0',      url:'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.wasm',        type:'wasm'},
+    {key:'asset:pdfjs:2.14.305',     url:'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js',        type:'js'},
+    {key:'asset:pdfjsw:2.14.305',    url:'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js', type:'worker'}
+  ];
+  function openIDB(){
+    return new Promise((res,rej)=>{
+      const r=indexedDB.open(IDB_NAME,1);
+      r.onupgradeneeded=e=>e.target.result.createObjectStore(IDB_STORE);
+      r.onsuccess=e=>res(e.target.result); r.onerror=()=>rej(r.error);
+    });
+  }
+  function iget(db,k){return new Promise((res,rej)=>{const r=db.transaction(IDB_STORE,'readonly').objectStore(IDB_STORE).get(k);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);});}
+  function iput(db,k,v){return new Promise((res,rej)=>{const r=db.transaction(IDB_STORE,'readwrite').objectStore(IDB_STORE).put(v,k);r.onsuccess=()=>res();r.onerror=()=>rej(r.error);});}
+  function injectJS(buf){const s=document.createElement('script');s.textContent=new TextDecoder().decode(buf);document.head.appendChild(s);}
+  async function boot(){
+    const db=await openIDB();
+    for(const lib of LIBS){
+      let buf=await iget(db,lib.key);
+      if(!buf){const r=await fetch(lib.url);buf=await r.arrayBuffer();await iput(db,lib.key,buf);}
+      if(lib.type==='js') injectJS(buf);
+      else if(lib.type==='wasm') window._sqlWasmBlobUrl=URL.createObjectURL(new Blob([buf],{type:'application/wasm'}));
+      else if(lib.type==='worker') window._pdfWorkerBlobUrl=URL.createObjectURL(new Blob([buf],{type:'application/javascript'}));
+    }
+    window._assetsReady=true;
+    document.dispatchEvent(new Event('assets-ready'));
+  }
+  window._assetsBootstrap=boot();
+})();
+    </script>
     <style>
         @font-face {
             font-family: 'Noto Sans';
@@ -589,7 +622,6 @@
 </div>
 
 <script>
-const CACHE_NAME = 'odia-grammar-app-v1'; // legacy, not used for storage
 const IDB_NAME='gk-app-store';const IDB_STORE='files';
 function openIDB(){return new Promise((res,rej)=>{const req=indexedDB.open(IDB_NAME,1);req.onupgradeneeded=e=>e.target.result.createObjectStore(IDB_STORE);req.onsuccess=e=>res(e.target.result);req.onerror=e=>rej(e.target.error);});}
 async function idbGet(db,key){return new Promise((res,rej)=>{const tx=db.transaction(IDB_STORE,'readonly');const req=tx.objectStore(IDB_STORE).get(key);req.onsuccess=()=>res(req.result);req.onerror=e=>rej(e.target.error);});}
@@ -689,14 +721,9 @@ const sections = [
 ];
 
 const chapterUrls = [...new Set(sections.flatMap(s => s.chapters.map(c => c.url)))];
+const FONT_URL = 'https://cdn.jsdelivr.net/npm/@fontsource/noto-sans@5.0.22/files/noto-sans-all-700-normal.woff';
 const STATIC_ASSETS = [
-    '/',
-    'https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js',
-    'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.min.js',
-    'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.wasm',
-    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js',
-    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js',
-    'https://cdn.jsdelivr.net/npm/@fontsource/noto-sans@5.0.22/files/noto-sans-all-700-normal.woff',
+    FONT_URL,
     ...Object.values(dbFiles),
     ...chapterUrls
 ];
@@ -1029,19 +1056,7 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
-function extractGrammarTopic(sentence) {
-    const lower = sentence.toLowerCase().trim();
-    const topics = {
-        'nouns':'NOUNS','noun':'NOUNS','pronouns':'PRONOUNS','pronoun':'PRONOUNS',
-        'verbs':'VERBS','verb':'VERBS','adjectives':'ADJECTIVES','adjective':'ADJECTIVES',
-        'adverbs':'ADVERBS','adverb':'ADVERBS','prepositions':'PREPOSITIONS','preposition':'PREPOSITIONS',
-        'conjunctions':'CONJUNCTIONS','conjunction':'CONJUNCTIONS','interjections':'INTERJECTIONS',
-        'interjection':'INTERJECTIONS','tenses':'TENSES','tense':'TENSES','sentences':'SENTENCES',
-        'sentence':'SENTENCES','punctuation':'PUNCTUATION'
-    };
-    for (const [k,v] of Object.entries(topics)) if (lower.includes(k)) return v;
-    return sentence.split(' ').pop().toUpperCase().replace(/[^\w]/g,'');
-}
+
 
 function filterTextByLanguage(text, lang) {
     if (typeof text !== 'string' || typeof lang !== 'string') return '';
@@ -1108,16 +1123,32 @@ function showProgress(msg, pct) {
 }
 function hideProgress(){ document.getElementById('progress-container').classList.remove('visible'); }
 
-/* ── IndexedDB Cache (survives Clear Cache; only deleted by Clear Data) ── */
+/* ── IndexedDB Cache ── */
 async function cacheFiles(){
     try{
+        // Wait for JS/WASM bootstrap to finish first
+        if(!window._assetsReady) await window._assetsBootstrap;
+
+        // Inject Noto Sans font from IDB
         const db=await getIDB();
+        let fontBuf=await idbGet(db,FONT_URL);
+        if(!fontBuf){const r=await fetch(FONT_URL);if(r.ok){fontBuf=await r.arrayBuffer();await idbPut(db,FONT_URL,fontBuf);}}
+        if(fontBuf){
+            const blobUrl=URL.createObjectURL(new Blob([fontBuf],{type:'font/woff'}));
+            const style=document.createElement('style');
+            style.textContent=`@font-face{font-family:'Noto Sans';font-weight:bold;src:url('${blobUrl}') format('woff');}`;
+            document.head.appendChild(style);
+        }
+
+        // Check which content files are missing
         const toFetch=[];
         for(const url of STATIC_ASSETS){
+            if(url===FONT_URL) continue; // already handled above
             const existing=await idbGet(db,url);
             if(!existing) toFetch.push(url);
         }
-        if(toFetch.length===0) return false; // nothing to download
+        if(toFetch.length===0) return false; // all cached – no progress shown
+
         let loaded=0;
         for(const url of toFetch){
             try{
@@ -1126,11 +1157,11 @@ async function cacheFiles(){
                 const buf=await r.arrayBuffer();
                 await idbPut(db,url,buf);
                 loaded++;
-                showProgress('Caching resources',Math.round((loaded/toFetch.length)*100));
+                showProgress('Downloading resources',Math.round((loaded/toFetch.length)*100));
             }catch(e){console.error('IDB cache err',url,e);}
         }
         hideProgress();
-        return true; // downloaded something
+        return true;
     }catch(e){console.error(e);hideProgress();return false;}
 }
 
@@ -1167,7 +1198,11 @@ async function loadImage(url){
 /* ── Databases ── */
 async function initDatabases(){
     try{
-        const SQL=await initSqlJs({locateFile:f=>`https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${f}`});
+        if(!window._assetsReady) await window._assetsBootstrap;
+        const SQL=await initSqlJs({locateFile:f=>{
+            if(f.endsWith('.wasm')&&window._sqlWasmBlobUrl) return window._sqlWasmBlobUrl;
+            return 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/'+f;
+        }});
         const loadDB=async(url)=>{
             const r=await loadResource(url);
             if(!r) throw new Error();
@@ -1338,7 +1373,6 @@ function parseChapterToSubjects(lines,lang,chapterName=''){
     const numRe=/^[0-9\u0B66-\u0B6F]+\.\s*/,oneRe=/^1\.\s*/,odiaOneRe=/^୧\.\s*/;
     const optRe=lang==='english'?/^([a-e]\)|\([1-5]\)|[1-5]\.)\s*/i:/^([କ-ଙ]\)|\([୧-୫]\)|[୧-୫]\.)\s*/;
     const ansRe=lang==='english'?/^Answer:\s*([a-e]\)|\([1-5]\)|[1-5]\.)/i:/^ଉତ୍ତର:\s*([କ-ଙ]\)|\([୧-୫]\)|[୧-୫]\.)/;
-    const isEG=lang==='english'&&chapterName.toLowerCase().includes('grammar');
     while(i<lines.length){
         while(i<lines.length&&!lines[i].trim())i++;
         if(i>=lines.length) break;
@@ -1347,11 +1381,11 @@ function parseChapterToSubjects(lines,lang,chapterName=''){
             let j=i+1; while(j<lines.length&&!lines[j].trim())j++;
             if(j<lines.length&&(oneRe.test(lines[j].trim())||odiaOneRe.test(lines[j].trim()))){
                 if(curSubj&&curMcqs.length>0){subjects.set(curSubj,[...curMcqs]);curMcqs=[];}
-                curSubj=isEG?extractGrammarTopic(line):line; i=j; continue;
+                curSubj=line; i=j; continue;
             }
             i++; continue;
         }else{
-            if(!curSubj) curSubj=isEG?'GENERAL GRAMMAR':'General';
+            if(!curSubj) curSubj='General';
             let qLines=[lines[i]]; i++;
             while(i<lines.length){ while(i<lines.length&&!lines[i].trim())i++; if(i>=lines.length) break; if(optRe.test(lines[i].trim())) break; qLines.push(lines[i]); i++; }
             let opts=[];
@@ -1496,6 +1530,85 @@ function loadPageContent(sectionIndex,chapterIndex,pageIdx){
     document.getElementById('backToPageListTop').addEventListener('click',()=>{ navStack.pop(); loadPageList(sectionIndex,chapterIndex,subPages); });
     document.getElementById('homeFromPageContent').addEventListener('click',goHome);
     currentMcqIndex=0; updateTTSVisibility();
+}
+
+/* ── Grammar/Computer Subject Page: show concept text then MCQs ── */
+function loadGrammarSubjectPage(sectionIndex, chapterIndex, pageIdx){
+    stopSpeech();
+    const page = subPages[pageIdx];
+    const lang = sections[sectionIndex].language;
+    const ci = document.getElementById('contentInner');
+    navPush({type:'pageContent', si:sectionIndex, ci:chapterIndex, pageIdx:pageIdx});
+
+    const allLines = page.content.split(/\r?\n/);
+    const {questions, remainingLines} = parseMCQs(allLines, lang);
+
+    // Concept/description lines = remainingLines (non-MCQ content)
+    let html = `<div class="section">`;
+    html += `<div class="nav-bar-top">`;
+    html += `<button class="nav-top-btn" id="backToGrammarList">← Subjects</button>`;
+    html += `<button class="nav-top-btn home-top-btn" id="homeFromGrammarPage">🏠 Home</button>`;
+    html += `</div>`;
+    html += `<h1 class="section-title">${escapeHtml(page.name)}</h1>`;
+
+    // Show concept/description text before MCQs
+    if(remainingLines.some(l => l.trim())){
+        html += `<div class="grammar-concept-box" style="background:linear-gradient(135deg,#e8f5e9,#f1f8e9);border-left:5px solid #43a047;border-radius:10px;padding:16px 18px;margin-bottom:22px;font-size:16px;line-height:1.85;color:#1a237e;white-space:pre-wrap;">`;
+        remainingLines.forEach((l, idx) => {
+            html += `<span data-sentence-index="${idx}">${escapeHtml(l)}</span>\n`;
+        });
+        html += `</div>`;
+    }
+
+    // Show MCQs after concept
+    if(questions.length > 0){
+        currentBatchSize = questions.length;
+        currentScore = 0; currentAttempted = 0;
+        currentSectionIdx = sectionIndex; currentChapterIdx = chapterIndex; currentSubject = page.name;
+        html += `<h2 style="color:#d81b60;margin:18px 0 12px;font-size:18px;text-align:center;">📝 Mock Test</h2>`;
+        questions.forEach(q => {
+            html += `<div class="mcq" data-answer="${escapeHtml(q.answer.replace(/"/g,'&quot;'))}">`;
+            html += `<div class="question-text">${escapeHtml(q.question).replace(/\n/g,'<br>')}</div>`;
+            html += `<div class="options">`;
+            q.options.forEach((o, oi) => html += `<button class="option-btn" data-oidx="${oi}">${escapeHtml(o)}</button><br>`);
+            html += `</div><button class="skip-btn">Skip</button><br>`;
+            html += `<div class="answer" style="display:none;">${escapeHtml(q.answer)}</div>`;
+            html += `<div class="feedback" style="display:none;"></div></div><hr style="margin:20px 0;">`;
+        });
+        html += `<div style="text-align:center;margin:20px 0;font-size:17px;font-weight:bold;">Attempted: <span id="attempted-count">0</span> / ${questions.length} | Score: <span id="score-count">0</span></div>`;
+    }
+
+    html += `</div>`;
+    ci.innerHTML = html;
+    ci.classList.add('content-text');
+    sentences = remainingLines;
+    currentMcqIndex = 0;
+
+    if(questions.length > 0) setupMCQListeners(lang);
+
+    document.getElementById('backToGrammarList').addEventListener('click', () => {
+        navStack.pop(); // remove pageContent entry
+        stopSpeech();
+        const ch = sections[sectionIndex].chapters[chapterIndex];
+        // Re-render subject list
+        let html = `<div class="section">`;
+        html += `<div class="nav-bar-top"><button class="nav-top-btn home-top-btn" id="homeFromSubj1">🏠 Home</button></div>`;
+        html += `<h1 class="section-title">${escapeHtml(ch.name)}</h1><ul class="chapter-list">`;
+        subPages.forEach((p,i) => {
+            html += `<li class="chapter-item" data-page-index="${i}">${escapeHtml(p.name)}</li>`;
+        });
+        html += `</ul></div>`;
+        ci.innerHTML = html;
+        ci.classList.add('content-text');
+        sentences = [];
+        ci.querySelectorAll('.chapter-item').forEach(li =>
+            li.addEventListener('click', e => loadGrammarSubjectPage(sectionIndex, chapterIndex, parseInt(e.target.dataset.pageIndex)))
+        );
+        document.getElementById('homeFromSubj1').addEventListener('click', goHome);
+        updateTTSVisibility();
+    });
+    document.getElementById('homeFromGrammarPage').addEventListener('click', goHome);
+    updateTTSVisibility();
 }
 
 function setupMCQListeners(lang){
@@ -1799,25 +1912,47 @@ async function loadContent(sectionIndex, chapterIndex){
             
             if(!pages.length) pages = [{name: chapter.name, content: textContent}];
 
-            if (isEnglishGrammar || isComputer) {
+            if (isComputer) {
+                // Old logic: extract MCQs from each ### page ###, show as subject → sets → MCQs
                 const subjects = new Map();
                 pages.forEach(p => {
                     const {questions} = parseMCQs(p.content.split(/\r?\n/), sections[sectionIndex].language);
                     if(questions.length > 0) subjects.set(p.name, questions);
                 });
-
                 if(subjects.size > 0){
-                    currentSubjectsMap = subjects; 
+                    currentSubjectsMap = subjects;
                     currentChapterName = chapter.name;
                     let html = `<div class="section"><div class="nav-bar-top"><button class="nav-top-btn home-top-btn" id="homeFromSubj1">🏠 Home</button></div><h1 class="section-title">${escapeHtml(chapter.name)} – Subjects</h1><ul class="chapter-list">`;
                     for(let sn of subjects.keys()){
                         html += `<li class="chapter-item" data-subject="${escapeHtml(sn)}">${escapeHtml(sn)}</li>`;
                     }
                     html += '</ul></div>';
-                    ci.innerHTML = html; 
+                    ci.innerHTML = html;
                     ci.classList.add('content-text');
-                    ci.querySelectorAll('.chapter-item').forEach(li => 
+                    ci.querySelectorAll('.chapter-item').forEach(li =>
                         li.addEventListener('click', e => loadSubjectSets(sectionIndex, chapterIndex, e.target.dataset.subject))
+                    );
+                    document.getElementById('homeFromSubj1').addEventListener('click', goHome);
+                    sentences = [];
+                } else {
+                    loadPageList(sectionIndex, chapterIndex, pages);
+                }
+            } else if (isEnglishGrammar) {
+                // New logic: show subject list from ### subject ### sections.
+                // Each subject page shows concept/description text first, then MCQs.
+                if(pages.length > 0){
+                    subPages = pages;
+                    let html = `<div class="section">`;
+                    html += `<div class="nav-bar-top"><button class="nav-top-btn home-top-btn" id="homeFromSubj1">🏠 Home</button></div>`;
+                    html += `<h1 class="section-title">${escapeHtml(chapter.name)}</h1><ul class="chapter-list">`;
+                    pages.forEach((p,i) => {
+                        html += `<li class="chapter-item" data-page-index="${i}">${escapeHtml(p.name)}</li>`;
+                    });
+                    html += `</ul></div>`;
+                    ci.innerHTML = html;
+                    ci.classList.add('content-text');
+                    ci.querySelectorAll('.chapter-item').forEach(li =>
+                        li.addEventListener('click', e => loadGrammarSubjectPage(sectionIndex, chapterIndex, parseInt(e.target.dataset.pageIndex)))
                     );
                     document.getElementById('homeFromSubj1').addEventListener('click', goHome);
                     sentences = [];
@@ -1902,6 +2037,9 @@ async function handleFileUpload(event){
     try{
         if(pdfs.length>0){
             showProgress('Processing PDFs',0);
+            // Use IDB-cached worker blob URL (set during bootstrap)
+            if(window.pdfjsLib && window._pdfWorkerBlobUrl)
+                window.pdfjsLib.GlobalWorkerOptions.workerSrc = window._pdfWorkerBlobUrl;
             let tot='';
             for(let i=0;i<pdfs.length;i++){
                 const ab=await pdfs[i].arrayBuffer(),pdf=await pdfjsLib.getDocument({data:ab}).promise;
@@ -2082,10 +2220,6 @@ async function init(){
     window.addEventListener('popstate', e => { e.preventDefault(); goBack(); });
     // Push a dummy state so popstate fires on first back press
     history.pushState({app:true}, '');
-
-    if('serviceWorker' in navigator){
-        navigator.serviceWorker.register('/service-worker.js').catch(e=>console.log('SW:',e));
-    }
 }
 
 window.addEventListener('load',init);
