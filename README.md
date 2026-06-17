@@ -263,7 +263,7 @@ AbhayaGK is completely free. If it helped your exam preparation, consider suppor
 
 AbhayaGK **does not collect any personal data**. No login, no tracking, no ads.
 
-📄 [Read our Privacy Policy](https://abhayattcc.github.io/abhayagk/privacy-policy.html)
+📄 [Read our Privacy Policy][(https://abhayattcc.github.io/AbhayaGkPrivacyPolicy/)]
 
 ---
 
