@@ -468,7 +468,6 @@
         .speak-button { background: #2196f3; color: white; padding: 8px 18px; border-radius: 22px; font-size: 17px; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.2); border: none; margin-top: 8px; font-family: 'Noto Sans', sans-serif; }
         .speak-button:hover { background: #1976d2; }
         .speak-button:disabled { background: #90caf9; cursor: not-allowed; }
-        .image-controls { display: flex; gap: 8px; margin-top: 4px; }
         .delete-button, .restore-button { padding: 7px 13px; font-size: 15px; border: none; border-radius: 9px; cursor: pointer; color: white; transition: transform 0.2s; }
         .delete-button { background: #f44336; }
         .restore-button { background: #4caf50; }
@@ -695,8 +694,8 @@ async function idbGet(db,key){return new Promise((res,rej)=>{const tx=db.transac
 async function idbPut(db,key,value){return new Promise((res,rej)=>{const tx=db.transaction(IDB_STORE,'readwrite');const req=tx.objectStore(IDB_STORE).put(value,key);req.onsuccess=()=>res();req.onerror=e=>rej(e.target.error);});}
 let _idb=null;async function getIDB(){if(!_idb)_idb=await openIDB();return _idb;}
 const dbFiles = {
-    english_odia: 'https://raw.githubusercontent.com/abhayattcc/Best-odia-dictionary/refs/heads/main/data/english_odia.db.gz',
-    english_hindi: 'https://raw.githubusercontent.com/abhayattcc/Best-odia-dictionary/refs/heads/main/data/english_hindi.db.gz'
+    english_odia: 'https://raw.githubusercontent.com/abhayattcc/English-Hindi-Odia-Picture-Dictionary/refs/heads/main/data/english_odia.db.gz',
+    english_hindi: 'https://raw.githubusercontent.com/abhayattcc/English-Hindi-Odia-Picture-Dictionary/refs/heads/main/data/english_hindi.db.gz'
 };
 
 const sections = [
@@ -1133,9 +1132,6 @@ function filterTextByLanguage(text, lang) {
     return (text.match(patterns[key]) || []).join(' ').trim();
 }
 
-function getDeletedImages() { return JSON.parse(localStorage.getItem('deletedImages')||'[]'); }
-function saveDeletedImage(u) { const d=getDeletedImages(); if(!d.includes(u)){d.push(u);localStorage.setItem('deletedImages',JSON.stringify(d));} }
-function removeDeletedImage(u) { localStorage.setItem('deletedImages',JSON.stringify(getDeletedImages().filter(x=>x!==u))); }
 /* ── Language-aware dictionary speak ────────────────────────────────────────
    Reads each .dict-field[data-lang] span in DOM order and speaks each one
    in its own language serially: English → Odia → Hindi, sentence by sentence.
@@ -1249,19 +1245,6 @@ async function loadResource(url){
     }
 }
 
-async function loadImage(url){
-    try{
-        const db=await getIDB();
-        const buf=await idbGet(db,url);
-        if(buf) return URL.createObjectURL(new Blob([buf]));
-        const r=await fetch(url,{cache:'no-cache'});
-        if(!r.ok) throw new Error();
-        const b=await r.arrayBuffer();
-        await idbPut(db,url,b);
-        return URL.createObjectURL(new Blob([b]));
-    }catch(e){return null;}
-}
-
 /* ── Databases ── */
 async function initDatabases(){
     try{
@@ -1302,7 +1285,6 @@ async function searchWord(word, targetEl, suggestionsEl=null, isDictionary=false
     const tw=trimInput(word);
     if(!tw){ targetEl.innerHTML=''; if(suggestionsEl) suggestionsEl.innerHTML=''; return; }
     let results=[],suggestions=[];
-    const deletedImages=getDeletedImages();
     const customWords=JSON.parse(localStorage.getItem('customWords')||'[]');
     results.push(...customWords.filter(w=>w.English.toLowerCase()===tw||(w.odia&&w.odia.toLowerCase()===tw)||(w.hindi&&w.hindi.toLowerCase()===tw)));
     try{
@@ -1311,8 +1293,8 @@ async function searchWord(word, targetEl, suggestionsEl=null, isDictionary=false
             s.bind([tw,tw]); while(s.step()){ const r=s.getAsObject(); results.push({English:r.English,odia:r.odia}); } s.free();
         }
         if(dbEnglishHindi){
-            const s=dbEnglishHindi.prepare("SELECT English,hindi,image FROM dictionary WHERE English LIKE ? OR hindi LIKE ?");
-            s.bind([tw,tw]); while(s.step()){ const r=s.getAsObject(); results.push({English:r.English,hindi:r.hindi,image:r.image}); } s.free();
+            const s=dbEnglishHindi.prepare("SELECT English,hindi FROM dictionary WHERE English LIKE ? OR hindi LIKE ?");
+            s.bind([tw,tw]); while(s.step()){ const r=s.getAsObject(); results.push({English:r.English,hindi:r.hindi}); } s.free();
         }
         const merged=mergeResults(results);
         if(suggestionsEl){
@@ -1321,8 +1303,8 @@ async function searchWord(word, targetEl, suggestionsEl=null, isDictionary=false
                 s.bind([`${tw}%`,`${tw}%`]); while(s.step()){ const r=s.getAsObject(); suggestions.push({English:r.English,odia:r.odia}); } s.free();
             }
             if(dbEnglishHindi){
-                const s=dbEnglishHindi.prepare("SELECT English,hindi,image FROM dictionary WHERE English LIKE ? OR hindi LIKE ? LIMIT 5");
-                s.bind([`${tw}%`,`${tw}%`]); while(s.step()){ const r=s.getAsObject(); suggestions.push({English:r.English,hindi:r.hindi,image:r.image}); } s.free();
+                const s=dbEnglishHindi.prepare("SELECT English,hindi FROM dictionary WHERE English LIKE ? OR hindi LIKE ? LIMIT 5");
+                s.bind([`${tw}%`,`${tw}%`]); while(s.step()){ const r=s.getAsObject(); suggestions.push({English:r.English,hindi:r.hindi}); } s.free();
             }
             const ms=mergeResults(suggestions);
             suggestionsEl.innerHTML='<ul>'+ms.map(s=>`<li data-english="${escapeHtml(s.English||'')}" data-odia="${escapeHtml(s.odia||'')}" data-hindi="${escapeHtml(s.hindi||'')}">${escapeHtml(s.English||(s.odia||s.hindi))}</li>`).join('')+'</ul>';
@@ -1334,49 +1316,13 @@ async function searchWord(word, targetEl, suggestionsEl=null, isDictionary=false
             if(r.odia)    html+=`<strong>Odia:</strong> <span class="dict-field" data-lang="or">${escapeHtml(r.odia)}</span><br>`;
             if(r.hindi)   html+=`<strong>Hindi:</strong> <span class="dict-field" data-lang="hi">${escapeHtml(r.hindi)}</span><br>`;
             html+=`</div>`;
-            if(r.image && !deletedImages.includes(r.image)){
-                html+=`<div class="image-container">`;
-                if(r.image.startsWith('data:')){ html+=`<img src="${r.image}" loading="lazy">`; }
-                else{ loadImage(r.image).then(src=>{ if(src){ const el=targetEl.querySelector(`[data-image-placeholder="${r.image}"]`); if(el) el.src=src; } }); html+=`<img data-image-placeholder="${r.image}" src="" loading="lazy">`; }
-                html+=`</div><div class="image-controls"><button class="delete-button" data-image="${r.image}" data-word="${escapeHtml(r.English||r.odia||r.hindi)}">Delete</button><button class="restore-button" data-image="${r.image}" data-word="${escapeHtml(r.English||r.odia||r.hindi)}" disabled>Restore</button></div>`;
-            }
             html+=`</div>`;
         });
         targetEl.innerHTML=html;
-        setupImageControlListeners(targetEl);
     }catch(e){
         console.error(e);
         targetEl.innerHTML='<div class="result-item"><div class="result-text">Error searching.</div></div>';
     }
-}
-
-function setupImageControlListeners(el){
-    el.querySelectorAll('.delete-button').forEach(btn=>{
-        btn.addEventListener('click',()=>{
-            const u=btn.getAttribute('data-image');
-            const ctrl=btn.closest('.image-controls');
-            const cont=ctrl.previousElementSibling;
-            saveDeletedImage(u);
-            cont.querySelector('img')?.remove();
-            let p=cont.querySelector('p'); if(!p){p=document.createElement('p');cont.appendChild(p);}
-            p.textContent='Image hidden'; btn.textContent='Hidden'; btn.disabled=true;
-            ctrl.querySelector('.restore-button').disabled=false;
-        });
-    });
-    el.querySelectorAll('.restore-button').forEach(btn=>{
-        btn.addEventListener('click',async()=>{
-            const u=btn.getAttribute('data-image'),w=btn.getAttribute('data-word');
-            const pwd=prompt('Enter the word to restore image:');
-            if(pwd&&pwd.toLowerCase()===w.toLowerCase()){
-                removeDeletedImage(u);
-                const ctrl=btn.closest('.image-controls'),cont=ctrl.previousElementSibling;
-                cont.querySelector('p')?.remove();
-                const src=u.startsWith('data:')?u:await loadImage(u);
-                if(src){ const img=document.createElement('img'); img.src=src; img.loading='lazy'; cont.appendChild(img); ctrl.querySelector('.restore-button').disabled=true; ctrl.querySelector('.delete-button').disabled=false; ctrl.querySelector('.delete-button').textContent='Delete'; }
-                else alert('Image not available offline.');
-            }else alert('Incorrect word.');
-        });
-    });
 }
 
 function getFirstOdiaWord(){
