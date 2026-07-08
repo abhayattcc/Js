@@ -467,6 +467,8 @@
             padding: 2px 6px;
             animation: dictHlGlow 1.2s ease-in-out infinite;
         }
+        .dict-meanings { margin: 2px 0 6px 0; padding-left: 22px; }
+        .dict-meanings li { margin-bottom: 3px; }
         @keyframes dictHlGlow {
             0%,100% { background: #fff59d; }
             50% { background: #ffeb3b; }
@@ -1181,8 +1183,34 @@ function getDictionaryTextToSpeak(el) {
     return t.textContent.trim();
 }
 function mergeResults(results) {
+    // Merge all rows for the same English word into ONE entry, collecting
+    // every distinct Odia/Hindi meaning instead of the last one overwriting the rest.
     const merged=[],seen=new Map();
-    results.forEach(r=>{ const k=(r.English||'').toLowerCase().trim(); if(!seen.has(k)){seen.set(k,r);merged.push(r);}else Object.assign(seen.get(k),r); });
+    const addUnique=(arr,val)=>{
+        if(!val) return;
+        const v=String(val).trim(); if(!v) return;
+        if(!arr.some(x=>x.toLowerCase()===v.toLowerCase())) arr.push(v);
+    };
+    results.forEach(r=>{
+        const k=(r.English||'').toLowerCase().trim();
+        if(!seen.has(k)){
+            const entry={English:r.English,odiaList:[],hindiList:[]};
+            addUnique(entry.odiaList,r.odia);
+            addUnique(entry.hindiList,r.hindi);
+            seen.set(k,entry);
+            merged.push(entry);
+        }else{
+            const entry=seen.get(k);
+            addUnique(entry.odiaList,r.odia);
+            addUnique(entry.hindiList,r.hindi);
+        }
+    });
+    // Expose combined strings for anything (e.g. custom words, TTS) that expects
+    // single `odia`/`hindi` fields, while keeping the full lists for display.
+    merged.forEach(e=>{
+        e.odia=e.odiaList.join('; ');
+        e.hindi=e.hindiList.join('; ');
+    });
     return merged;
 }
 function trimInput(i){ return i.trim().toLowerCase(); }
@@ -1327,8 +1355,18 @@ async function searchWord(word, targetEl, suggestionsEl=null, isDictionary=false
         merged.forEach(r=>{
             html+=`<div class="result-item"><div class="result-text">`;
             if(r.English) html+=`<strong>English:</strong> <span class="dict-field" data-lang="en">${escapeHtml(r.English)}</span><br>`;
-            if(r.odia)    html+=`<strong>Odia:</strong> <span class="dict-field" data-lang="or">${escapeHtml(r.odia)}</span><br>`;
-            if(r.hindi)   html+=`<strong>Hindi:</strong> <span class="dict-field" data-lang="hi">${escapeHtml(r.hindi)}</span><br>`;
+            const odiaList=r.odiaList&&r.odiaList.length?r.odiaList:(r.odia?[r.odia]:[]);
+            const hindiList=r.hindiList&&r.hindiList.length?r.hindiList:(r.hindi?[r.hindi]:[]);
+            if(odiaList.length===1){
+                html+=`<strong>Odia:</strong> <span class="dict-field" data-lang="or">${escapeHtml(odiaList[0])}</span><br>`;
+            }else if(odiaList.length>1){
+                html+=`<strong>Odia:</strong><br><ol class="dict-meanings">`+odiaList.map(m=>`<li><span class="dict-field" data-lang="or">${escapeHtml(m)}</span></li>`).join('')+`</ol>`;
+            }
+            if(hindiList.length===1){
+                html+=`<strong>Hindi:</strong> <span class="dict-field" data-lang="hi">${escapeHtml(hindiList[0])}</span><br>`;
+            }else if(hindiList.length>1){
+                html+=`<strong>Hindi:</strong><br><ol class="dict-meanings">`+hindiList.map(m=>`<li><span class="dict-field" data-lang="hi">${escapeHtml(m)}</span></li>`).join('')+`</ol>`;
+            }
             html+=`</div>`;
             html+=`</div>`;
         });
