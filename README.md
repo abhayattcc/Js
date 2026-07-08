@@ -1,19 +1,21 @@
-# 📖 AbhayaGK — Free GK App for Odisha Competitive Exams | Odia Grammar | Lucent GK
+# 📖 Abhaya GK (AbhayaGK) — Free GK App for Odisha Competitive Exams | Lucent GK | Odia Grammar | Odia Dictionary
 
-> **The #1 free General Knowledge app for Odisha competitive exam aspirants** — study Lucent GK, Odia Grammar, Odia GK, and more in both English and Odia, with built-in TTS, dictionary, MCQ mock tests, and mind maps. Works online and offline.
+> **Abhaya GK (AbhayaGK)** is the #1 free General Knowledge app for Odisha competitive exam aspirants — study Lucent GK, Odia Grammar, Odia GK, and more in both English and Odia, with built-in TTS, a trilingual dictionary, MCQ mock tests, and mind maps. Works online and offline. No login. No ads.
 
-[![Live Website](https://img.shields.io/badge/🌐_Live_App-abhayattcc.github.io/abhayagk-blue?style=for-the-badge)](https://abhayattcc.github.io/abhayagk/)
-[![Android APK](https://img.shields.io/badge/📱_Android_APK-Download_Free-green?style=for-the-badge)](https://abhayattcc.github.io/abhayagk/)
-[![License](https://img.shields.io/badge/License-Free_to_Use-orange?style=for-the-badge)](https://abhayattcc.github.io/abhayagk/)
+**Search terms:** `Abhaya GK` · `AbhayaGK` · `Abhaya Gk app` · `abhayagk`
+
+[![Live Website](https://img.shields.io/badge/🌐_Live_App-abhayattcc.github.io/abhaya-gk-blue?style=for-the-badge)](https://abhayattcc.github.io/abhaya-gk/)
+[![Android APK](https://img.shields.io/badge/📱_Android_APK-Download_Free-green?style=for-the-badge)](https://abhayattcc.github.io/abhaya-gk/)
+[![License](https://img.shields.io/badge/License-Free_to_Use-orange?style=for-the-badge)](https://abhayattcc.github.io/abhaya-gk/)
 [![Made In India](https://img.shields.io/badge/Made_In-India_🇮🇳-ff9933?style=for-the-badge)](https://github.com/abhayattcc)
 
 ---
 
-## 🚀 Open AbhayaGK Now
+## 🚀 Open Abhaya GK Now
 
 <div align="center">
 
-### 👉 [**https://abhayattcc.github.io/abhayagk/**](https://abhayattcc.github.io/abhayagk/) 👈
+### 👉 [**https://abhayattcc.github.io/abhaya-gk/**](https://abhayattcc.github.io/abhaya-gk/) 👈
 
 **Free · No Login · No Ads · Works Offline**
 
@@ -21,9 +23,9 @@
 
 ---
 
-## 📌 What is AbhayaGK?
+## 📌 What is Abhaya GK (AbhayaGK)?
 
-**AbhayaGK** is a free, lightweight, and powerful web application (also available as an Android APK) designed for students preparing for **Odisha competitive exams** such as:
+**Abhaya GK**, also searched as **AbhayaGK**, is a free, lightweight, and powerful web application (also available as an Android APK) designed for students preparing for **Odisha competitive exams** such as:
 
 - 🏛️ Odisha Police SI / Constable
 - 📝 OPSC / OAS (Odisha Administrative Service)
@@ -181,7 +183,7 @@ AbhayaGK is available as a native **Android APK**:
 |-------------|----------|-------------|------------|
 | Chapter grid with sections | Live scoring mock test | Mind map view | Trilingual popup |
 
-> 📲 Visit [https://abhayattcc.github.io/abhayagk/](https://abhayattcc.github.io/abhayagk/) on your phone to see it live.
+> 📲 Visit [https://abhayattcc.github.io/abhaya-gk/](https://abhayattcc.github.io/abhaya-gk/) on your phone to see it live.
 
 ---
 
@@ -245,7 +247,7 @@ AbhayaGK
 
 ## 🌐 Live Demo
 
-> ### 🔗 [Open AbhayaGK — abhayattcc.github.io/abhayagk](https://abhayattcc.github.io/abhayagk/)
+> ### 🔗 [Open AbhayaGK — abhayattcc.github.io/abhaya-gk](https://abhayattcc.github.io/abhaya-gk/)
 
 No download required. Works instantly in any browser on Android, iOS, or desktop.
 
@@ -263,7 +265,7 @@ AbhayaGK is completely free. If it helped your exam preparation, consider suppor
 
 AbhayaGK **does not collect any personal data**. No login, no tracking, no ads.
 
-📄 [Read our Privacy Policy][(https://abhayattcc.github.io/AbhayaGkPrivacyPolicy/)]
+📄 [Read our Privacy Policy](https://abhayattcc.github.io/AbhayaGkPrivacyPolicy/)
 
 ---
 
@@ -272,13 +274,13 @@ AbhayaGK **does not collect any personal data**. No login, no tracking, no ads.
 **Abhaya** — Independent Android & Web App Developer, India
 
 - 🐙 GitHub: [@abhayattcc](https://github.com/abhayattcc)
-- 🌐 App: [abhayattcc.github.io/abhayagk](https://abhayattcc.github.io/abhayagk/)
+- 🌐 App: [abhayattcc.github.io/abhaya-gk](https://abhayattcc.github.io/abhaya-gk/)
 
 ---
 
 ## 🔍 Keywords (for discoverability)
 
-`Odisha GK` · `Lucent GK in Odia` · `Odia Grammar app` · `ଓଡ଼ିଆ ବ୍ୟାକରଣ` · `Odisha competitive exam` · `free GK app Android` · `Lucent GK mock test` · `Odia dictionary` · `ଓଡ଼ିଆ GK` · `OPSC preparation` · `Odisha Police SI GK` · `MCQ practice app` · `GK app no ads` · `offline GK app` · `Odia TTS app` · `trilingual dictionary English Odia Hindi`
+`Abhaya GK` · `AbhayaGK` · `Abhaya Gk app` · `abhayagk` · `Odisha GK` · `Lucent GK in Odia` · `Odia Grammar app` · `ଓଡ଼ିଆ ବ୍ୟାକରଣ` · `Odisha competitive exam` · `free GK app Android` · `Lucent GK mock test` · `Odia dictionary` · `ଓଡ଼ିଆ GK` · `OPSC preparation` · `OSSC GK` · `Odisha Police SI GK` · `MCQ practice app` · `GK app no ads` · `offline GK app` · `Odia TTS app` · `trilingual dictionary English Odia Hindi`
 
 ---
 
@@ -286,6 +288,6 @@ AbhayaGK **does not collect any personal data**. No login, no tracking, no ads.
 
 ⭐ **Star this repo if AbhayaGK helped you!** ⭐
 
-[![Visit AbhayaGK](https://img.shields.io/badge/🚀_Start_Studying_Now-abhayattcc.github.io/abhayagk-blue?style=for-the-badge)](https://abhayattcc.github.io/abhayagk/)
+[![Visit AbhayaGK](https://img.shields.io/badge/🚀_Start_Studying_Now-abhayattcc.github.io/abhaya-gk-blue?style=for-the-badge)](https://abhayattcc.github.io/abhaya-gk/)
 
 </div>
