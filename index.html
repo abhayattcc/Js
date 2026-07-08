@@ -461,6 +461,16 @@
         .dictionary-results { min-height: 60px; padding: 8px; border-radius: 10px; background: #e1f5fe; }
         .dictionary-results div { padding: 11px; border-bottom: 2px dashed #b3e5fc; font-size: 17px; color: #1a237e; background: #e1f5fe; border-radius: 10px; margin-bottom: 7px; }
         .dictionary-results img { max-width: 100%; height: auto; border-radius: 10px; margin: 8px 0; }
+        .dict-field.speaking {
+            background: #fff59d;
+            border-radius: 5px;
+            padding: 2px 6px;
+            animation: dictHlGlow 1.2s ease-in-out infinite;
+        }
+        @keyframes dictHlGlow {
+            0%,100% { background: #fff59d; }
+            50% { background: #ffeb3b; }
+        }
         .dictionary-suggestions { margin-top: 8px; }
         .dictionary-suggestions ul { list-style: none; padding: 0; }
         .dictionary-suggestions li { padding: 11px; cursor: pointer; border-bottom: 1px solid #c8e6c9; font-size: 17px; color: #1a237e; background: #fff; border-radius: 10px; margin-bottom: 7px; transition: background 0.2s; }
@@ -636,6 +646,7 @@
     <div class="app-title-row">
         <h1 class="app-title">Abhaya GK📖</h1>
         <a class="donate-float" href="https://razorpay.me/@abhayabehera4628" target="_blank">💳 Donate</a>
+        <button class="donate-float" id="watchAdBtn" style="background:linear-gradient(45deg,#43e97b,#38f9d7);color:#1a237e;" onclick="showRewardedAdFromJs()">🎬 Watch Ad to Support Us</button>
     </div>
     <p style="text-align:center;font-size:13px;color:#555;margin:2px 0 10px;padding:0 10px;">
         Free Odisha GK app with Lucent GK, Odia Grammar, MCQ mock tests &amp; a trilingual English-Odia-Hindi dictionary — for OPSC, OSSC, Odisha Police, Railway &amp; SSC exam preparation.
@@ -1141,20 +1152,23 @@ function speakDictionaryResults(resultsEl, onDone) {
     const fields = Array.from(resultsEl.querySelectorAll('.dict-field[data-lang]'));
     if (!fields.length) { if (onDone) onDone(); return; }
 
-    // Build ordered segments: [{text, lang}, ...]
+    // Build ordered segments: [{text, lang, el}, ...]
     const segments = [];
     fields.forEach(span => {
         const text = span.textContent.trim();
         const lang = span.getAttribute('data-lang'); // 'en' | 'or' | 'hi'
-        if (text) segments.push({ text, lang });
+        if (text) segments.push({ text, lang, el: span });
     });
 
     if (!segments.length) { if (onDone) onDone(); return; }
 
-    // Speak each segment serially, in its own language
+    // Speak each segment serially, in its own language, highlighting as we go
     function speakNext(i) {
+        // Clear highlight from previous segment
+        if (i > 0) segments[i - 1].el.classList.remove('speaking');
         if (i >= segments.length) { if (onDone) onDone(); return; }
-        const { text, lang } = segments[i];
+        const { text, lang, el } = segments[i];
+        el.classList.add('speaking');
         TTS.speak(text, lang, () => speakNext(i + 1));
     }
     speakNext(0);
@@ -1365,7 +1379,7 @@ async function showPopup(word=null){
         });
         if(isTTSSupported){
             speakBtn.addEventListener('click',()=>{
-                if(isDictionaryReading){ TTS.stop(); isDictionaryReading=false; speakBtn.textContent='🗣️'; return; }
+                if(isDictionaryReading){ TTS.stop(); isDictionaryReading=false; speakBtn.textContent='🗣️'; resultsEl.querySelectorAll('.dict-field.speaking').forEach(s=>s.classList.remove('speaking')); return; }
                 if(resultsEl.querySelector('.dict-field[data-lang]') === null) return;
                 TTS.stop(); isDictionaryReading=true; speakBtn.textContent='⏸️';
                 speakDictionaryResults(resultsEl, ()=>{
@@ -2239,6 +2253,55 @@ async function init(){
 }
 
 window.addEventListener('load',init);
+
+/* ── Rewarded Ad Bridge ──────────────────────────────────────────────────────
+   Java side: AndroidAds.showRewardedAd(callbackId)
+              AndroidAds.isRewardedAdReady() → boolean
+   Result callback fires as: window._onRewardResult(callbackId, earned)
+   ─────────────────────────────────────────────────────────────────────────── */
+function showRewardedAdFromJs(){
+    if(window.AndroidAds){
+        if(AndroidAds.isRewardedAdReady()){
+            AndroidAds.showRewardedAd('watch_ad_reward');
+        }else{
+            alert('Ad not ready yet, please try again in a moment.');
+        }
+    }else{
+        alert('Ads only available in the app.');
+    }
+}
+
+window._onRewardResult = function(callbackId, earned){
+    if(callbackId==='watch_ad_reward'){
+        if(earned){
+            showAdThankYouPopup();
+        }
+        // earned=false: dismissed early or failed to show — do nothing
+    }
+};
+
+function showAdThankYouPopup(){
+    const popup=document.getElementById('popup');
+    const popupContent=document.getElementById('popupContent');
+    const bd=popup.querySelector('.popup-buttons');
+    popupContent.innerHTML='<div style="text-align:center;font-size:18px;padding:10px 4px;">🙏 Thanks for your support!<br><span style="font-size:14px;color:#555;">Your ad view helps keep this app free.</span></div>';
+    bd.innerHTML='<button class="popup-close" id="adThankYouClose">✖ Close</button>';
+    popup.style.display='block';
+    setTimeout(()=>popup.classList.add('visible'),10);
+    document.getElementById('adThankYouClose').addEventListener('click',()=>{
+        popup.classList.remove('visible');
+        setTimeout(()=>{
+            popup.style.display='none';
+            popupContent.innerHTML='';
+            bd.innerHTML='<button class="popup-close" id="popupClose">✖ Close</button>';
+            document.getElementById('popupClose').addEventListener('click',()=>{
+                popup.classList.remove('visible');
+                setTimeout(()=>{popup.style.display='none';popupContent.innerHTML='';},200);
+            });
+        },400);
+    });
+}
+
 </script>
 </body>
 </html>
