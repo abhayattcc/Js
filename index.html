@@ -108,12 +108,26 @@
 (function(){
   const IDB_NAME='gk-app-store', IDB_STORE='files';
   const LIBS=[
-    {key:'asset:pako:2.0.4',         url:'https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js',            type:'js'},
+    {key:'asset:xzdecompress:0.2.3', url:'https://unpkg.com/xz-decompress@0.2.3/dist/package/xz-decompress.js', type:'js'},
     {key:'asset:sqljs:1.8.0',        url:'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.min.js',      type:'js'},
     {key:'asset:sqlwasm:1.8.0',      url:'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.wasm',        type:'wasm'},
     {key:'asset:pdfjs:2.14.305',     url:'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js',        type:'js'},
     {key:'asset:pdfjsw:2.14.305',    url:'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.worker.min.js', type:'worker'}
   ];
+  // Polyfill stream/web for xz-decompress UMD (uses Web Streams API).
+  // UMD does factory(root["stream/web"]) — must set that exact key, not only stream.web.
+  if (typeof ReadableStream !== 'undefined') {
+    var _streamWeb = {
+      ReadableStream: ReadableStream,
+      WritableStream: typeof WritableStream !== 'undefined' ? WritableStream : undefined,
+      TransformStream: typeof TransformStream !== 'undefined' ? TransformStream : undefined,
+      ByteLengthQueuingStrategy: typeof ByteLengthQueuingStrategy !== 'undefined' ? ByteLengthQueuingStrategy : undefined,
+      CountQueuingStrategy: typeof CountQueuingStrategy !== 'undefined' ? CountQueuingStrategy : undefined
+    };
+    window.stream = window.stream || {};
+    window.stream.web = _streamWeb;
+    window['stream/web'] = _streamWeb;
+  }
   function openIDB(){
     return new Promise((res,rej)=>{
       const r=indexedDB.open(IDB_NAME,1);
@@ -127,11 +141,13 @@
   async function boot(){
     const db=await openIDB();
     for(const lib of LIBS){
-      let buf=await iget(db,lib.key);
-      if(!buf){const r=await fetch(lib.url);buf=await r.arrayBuffer();await iput(db,lib.key,buf);}
-      if(lib.type==='js') injectJS(buf);
-      else if(lib.type==='wasm') window._sqlWasmBlobUrl=URL.createObjectURL(new Blob([buf],{type:'application/wasm'}));
-      else if(lib.type==='worker') window._pdfWorkerBlobUrl=URL.createObjectURL(new Blob([buf],{type:'application/javascript'}));
+      try{
+        let buf=await iget(db,lib.key);
+        if(!buf){const r=await fetch(lib.url);if(!r.ok) throw new Error('fetch '+lib.url+' '+r.status);buf=await r.arrayBuffer();await iput(db,lib.key,buf);}
+        if(lib.type==='js') injectJS(buf);
+        else if(lib.type==='wasm') window._sqlWasmBlobUrl=URL.createObjectURL(new Blob([buf],{type:'application/wasm'}));
+        else if(lib.type==='worker') window._pdfWorkerBlobUrl=URL.createObjectURL(new Blob([buf],{type:'application/javascript'}));
+      }catch(e){console.error('Asset bootstrap failed for',lib.key,e);}
     }
     window._assetsReady=true;
     document.dispatchEvent(new Event('assets-ready'));
@@ -753,8 +769,8 @@ async function idbGet(db,key){return new Promise((res,rej)=>{const tx=db.transac
 async function idbPut(db,key,value){return new Promise((res,rej)=>{const tx=db.transaction(IDB_STORE,'readwrite');const req=tx.objectStore(IDB_STORE).put(value,key);req.onsuccess=()=>res();req.onerror=e=>rej(e.target.error);});}
 let _idb=null;async function getIDB(){if(!_idb)_idb=await openIDB();return _idb;}
 const dbFiles = {
-    english_odia: 'https://raw.githubusercontent.com/abhayattcc/English-Hindi-Odia-Picture-Dictionary/refs/heads/main/data/english_odia.db.gz',
-    english_hindi: 'https://raw.githubusercontent.com/abhayattcc/English-Hindi-Odia-Picture-Dictionary/refs/heads/main/data/english_hindi.db.gz'
+    english_odia: 'https://raw.githubusercontent.com/abhayattcc/abhaya-gk/lucentgkonline/english_odia.db.xz',
+    english_hindi: 'https://raw.githubusercontent.com/abhayattcc/abhaya-gk/lucentgkonline/english_hindi.db.xz'
 };
 
 const sections = [
@@ -1240,7 +1256,7 @@ function mergeResults(results) {
     results.forEach(r=>{
         const k=(r.English||'').toLowerCase().trim();
         if(!seen.has(k)){
-            const entry={English:r.English,odiaList:[],hindiList:[]};
+            const entry={English:r.English,odiaList:[],hindiList:[],image1:r.image1||null};
             addUnique(entry.odiaList,r.odia);
             addUnique(entry.hindiList,r.hindi);
             seen.set(k,entry);
@@ -1249,6 +1265,7 @@ function mergeResults(results) {
             const entry=seen.get(k);
             addUnique(entry.odiaList,r.odia);
             addUnique(entry.hindiList,r.hindi);
+            if(!entry.image1 && r.image1) entry.image1 = r.image1;
         }
     });
     // Expose combined strings for anything (e.g. custom words, TTS) that expects
@@ -1337,18 +1354,34 @@ async function loadResource(url){
 async function initDatabases(){
     try{
         if(!window._assetsReady) await window._assetsBootstrap;
+        if(typeof initSqlJs !== 'function'){
+            console.error('DB init error: sql.js not loaded');
+            return;
+        }
         const SQL=await initSqlJs({locateFile:f=>{
             if(f.endsWith('.wasm')&&window._sqlWasmBlobUrl) return window._sqlWasmBlobUrl;
             return 'https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/'+f;
         }});
         const loadDB=async(url)=>{
             const r=await loadResource(url);
-            if(!r) throw new Error();
+            if(!r) throw new Error('Failed to load DB resource: '+url);
             const buf=await r.arrayBuffer();
-            return new SQL.Database(pako.ungzip(new Uint8Array(buf)));
+            // Decompress .xz using xz-decompress (XzReadableStream)
+            const xzMod = window['xz-decompress'] || window.xzDecompress;
+            const XzReadableStream = (xzMod && xzMod.XzReadableStream) || window.XzReadableStream;
+            if(!XzReadableStream) throw new Error('xz-decompress not loaded (window["stream/web"] polyfill required)');
+            const compressedStream = new Response(buf).body;
+            if(!compressedStream) throw new Error('Response.body not available');
+            const decompressedResponse = new Response(new XzReadableStream(compressedStream));
+            const decompressedBuf = await decompressedResponse.arrayBuffer();
+            if(decompressedBuf.byteLength < 16) throw new Error('Decompressed DB too small');
+            const header = new TextDecoder().decode(new Uint8Array(decompressedBuf, 0, 15));
+            if(header !== 'SQLite format 3') throw new Error('Invalid SQLite header after decompress: '+header);
+            return new SQL.Database(new Uint8Array(decompressedBuf));
         };
         dbEnglishOdia=await loadDB(dbFiles.english_odia);
         dbEnglishHindi=await loadDB(dbFiles.english_hindi);
+        console.log('Dictionary DBs loaded OK');
     }catch(e){
         console.error('DB init error',e);
     }
@@ -1381,8 +1414,8 @@ async function searchWord(word, targetEl, suggestionsEl=null, isDictionary=false
             s.bind([tw,tw]); while(s.step()){ const r=s.getAsObject(); results.push({English:r.English,odia:r.odia}); } s.free();
         }
         if(dbEnglishHindi){
-            const s=dbEnglishHindi.prepare("SELECT English,hindi FROM dictionary WHERE English LIKE ? OR hindi LIKE ?");
-            s.bind([tw,tw]); while(s.step()){ const r=s.getAsObject(); results.push({English:r.English,hindi:r.hindi}); } s.free();
+            const s=dbEnglishHindi.prepare("SELECT English,hindi,image1 FROM dictionary WHERE English LIKE ? OR hindi LIKE ?");
+            s.bind([tw,tw]); while(s.step()){ const r=s.getAsObject(); results.push({English:r.English,hindi:r.hindi,image1:r.image1}); } s.free();
         }
         const merged=mergeResults(results);
         if(suggestionsEl){
@@ -1391,8 +1424,8 @@ async function searchWord(word, targetEl, suggestionsEl=null, isDictionary=false
                 s.bind([`${tw}%`,`${tw}%`]); while(s.step()){ const r=s.getAsObject(); suggestions.push({English:r.English,odia:r.odia}); } s.free();
             }
             if(dbEnglishHindi){
-                const s=dbEnglishHindi.prepare("SELECT English,hindi FROM dictionary WHERE English LIKE ? OR hindi LIKE ? LIMIT 5");
-                s.bind([`${tw}%`,`${tw}%`]); while(s.step()){ const r=s.getAsObject(); suggestions.push({English:r.English,hindi:r.hindi}); } s.free();
+                const s=dbEnglishHindi.prepare("SELECT English,hindi,image1 FROM dictionary WHERE English LIKE ? OR hindi LIKE ? LIMIT 5");
+                s.bind([`${tw}%`,`${tw}%`]); while(s.step()){ const r=s.getAsObject(); suggestions.push({English:r.English,hindi:r.hindi,image1:r.image1}); } s.free();
             }
             const ms=mergeResults(suggestions);
             suggestionsEl.innerHTML='<ul>'+ms.map(s=>`<li data-english="${escapeHtml(s.English||'')}" data-odia="${escapeHtml(s.odia||'')}" data-hindi="${escapeHtml(s.hindi||'')}">${escapeHtml(s.English||(s.odia||s.hindi))}</li>`).join('')+'</ul>';
@@ -1412,6 +1445,9 @@ async function searchWord(word, targetEl, suggestionsEl=null, isDictionary=false
                 html+=`<strong>Hindi:</strong> <span class="dict-field" data-lang="hi">${escapeHtml(hindiList[0])}</span><br>`;
             }else if(hindiList.length>1){
                 html+=`<strong>Hindi:</strong><br><ol class="dict-meanings">`+hindiList.map(m=>`<li><span class="dict-field" data-lang="hi">${escapeHtml(m)}</span></li>`).join('')+`</ol>`;
+            }
+            if(r.image1){
+                html+=`<img src="${escapeHtml(r.image1)}" alt="${escapeHtml(r.English||'word')}" loading="lazy" onerror="this.style.display='none'" style="max-width:100%;height:auto;border-radius:10px;margin:8px 0;display:block;">`;
             }
             html+=`</div>`;
             html+=`</div>`;
